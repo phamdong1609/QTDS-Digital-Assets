@@ -1,0 +1,125 @@
+/**
+ * Section: QTDS Library
+ * Description: Defines styles for the main library section, including toolbar, filters, and grid.
+ * Version: 1.0
+ */
+
+/* ----- Block: Library Section ----- */
+.qtds-library {
+    background-color: var(--gray-50);
+}
+
+/* ----- Toolbar Elements ----- */
+.qtds-library__toolbar {
+    max-width: 800px;
+    margin: 0 auto var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.qtds-library__search-wrapper {
+    position: relative;
+}
+
+.qtds-library__search-input {
+    width: 100%;
+    padding: var(--space-4) var(--space-10) var(--space-4) var(--space-6);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-lg);
+    transition: all var(--transition-base);
+}
+
+.qtds-library__search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+.qtds-library__search-icon {
+    position: absolute;
+    right: var(--space-6);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-600);
+    font-size: var(--text-xl);
+}
+
+.qtds-library__filter-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+.qtds-library__filter-container::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.qtds-library__filters {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: flex-start;
+    padding-bottom: var(--space-2);
+}
+
+/* ----- Grid & Cards ----- */
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+/* ----- States (Loading, Empty) ----- */
+.qtds-library__state-container {
+    text-align: center;
+    padding: var(--space-12) 0;
+}
+
+.qtds-library__loader {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    display: none; /* Controlled by JS */
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.qtds-library__empty {
+    display: none; /* Controlled by JS */
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    padding: var(--space-8);
+    background-color: var(--gray-50);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--gray-200);
+}
+
+/* ----- Load More Button ----- */
+.qtds-library__load-more-container {
+    text-align: center;
+    margin-top: var(--space-12);
+}
+
+/* ----- Responsive Styles ----- */
+@media (min-width: 768px) {
+    .qtds-library__filters {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .qtds-library__grid {
+        padding: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-library__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}

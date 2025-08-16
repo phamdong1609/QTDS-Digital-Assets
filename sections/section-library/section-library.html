@@ -1,0 +1,42 @@
+<!-- Library Section -->
+<section id="library-section" class="section qtds-library">
+    <div class="container">
+        <div class="scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
+            <h2>Khám Phá <span class="text-gradient">Thư Viện QTDS</span></h2>
+            <p>Hơn 100+ bài viết chuyên sâu về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ tiên tiến</p>
+        </div>
+
+        <div class="qtds-library__toolbar">
+            <div class="qtds-library__search-wrapper">
+                <input type="text" 
+                       class="qtds-library__search-input" 
+                       id="search-input" 
+                       placeholder="Tìm kiếm bài viết, chủ đề..." 
+                       aria-label="Tìm kiếm bài viết">
+                <i class="fa-solid fa-search qtds-library__search-icon" aria-hidden="true"></i>
+            </div>
+            <div class="qtds-library__filter-container">
+                <div id="library-filters" class="qtds-library__filters" role="group" aria-label="Lọc theo danh mục">
+                    </div>
+            </div>
+        </div>
+
+        <div id="library-grid" class="qtds-library__grid">
+            </div>
+
+        <div class="qtds-library__state-container">
+            <div id="library-loader" class="qtds-library__loader" aria-live="polite">
+                <span>Đang tải thư viện...</span>
+                </div>
+            <div id="library-empty" class="qtds-library__empty" role="status"></div>
+        </div>
+
+        <div class="qtds-library__load-more-container" id="load-more-container">
+            <button id="load-more-btn" class="qtds-btn qtds-btn--primary hidden">
+                <i class="fa-solid fa-plus"></i>
+                <span>Xem thêm</span>
+            </button>
+        </div>
+    </div>
+</section>
