@@ -2,7 +2,7 @@
  * Section: QTDS Solutions
  * Description: Defines styles for the solutions showcase section, including pillars,
  * process flows, comparisons, and other related components.
- * Version: 1.0
+ * Version: 1.1 - Cleaned and merged
  */
 
 /* ==========================================================
@@ -107,7 +107,7 @@
 }
 
 /* ==========================================================
-   3. SUB-COMPONENTS WITHIN PILLARS
+   3. SUB-COMPONENTS & ELEMENTS
    ========================================================== */
 .qtds-benefit-tag {
     display: inline-flex;
@@ -179,6 +179,31 @@
     box-shadow: var(--shadow-md);
 }
 
+.qtds-comparison__label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-comparison__value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.qtds-comparison__note {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.qtds-comparison__divider {
+    font-weight: 700;
+    color: var(--gray-400);
+}
+
 /* ==========================================================
    4. PROCESS FLOW
    ========================================================== */
@@ -202,15 +227,7 @@
     text-align: center;
     flex: 1;
     max-width: 160px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
 }
-
-.qtds-process-flow__step:nth-child(1) { animation-delay: 0.1s; }
-.qtds-process-flow__step:nth-child(3) { animation-delay: 0.2s; }
-.qtds-process-flow__step:nth-child(5) { animation-delay: 0.3s; }
-.qtds-process-flow__step:nth-child(7) { animation-delay: 0.4s; }
 
 .qtds-process-flow__icon {
     width: 80px;
@@ -260,26 +277,22 @@
     position: relative;
 }
 
-.qtds-benefits-highlight__icon::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 100%; height: 100%;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    animation: pulse 2s ease-in-out infinite;
-}
-
 .qtds-benefits-highlight__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-3);
 }
 
+.qtds-benefits-highlight__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
 /* ==========================================================
    6. RESPONSIVE STYLES
    ========================================================== */
+/* Tablet (1024px and below) */
 @media (max-width: 1024px) {
     .qtds-pillars,
     .qtds-benefits-highlight__grid {
@@ -290,11 +303,13 @@
     .qtds-process-flow {
         overflow-x: auto;
         padding-bottom: var(--space-4);
+        justify-content: flex-start; /* Cho phép cuộn ngang */
     }
 
     .qtds-benefits-highlight {
         flex-direction: column;
         text-align: center;
+        align-items: center;
     }
 
     .qtds-benefits-highlight__icon {
@@ -302,6 +317,7 @@
     }
 }
 
+/* Mobile (768px and below) */
 @media (max-width: 768px) {
     .qtds-solutions__visual,
     .qtds-comparison,
@@ -310,35 +326,38 @@
     }
 
     .qtds-solutions__visual {
-        gap: 2rem; padding: 2rem;
+        gap: 2rem;
+        padding: 2rem;
     }
     
     .qtds-process-flow {
         gap: var(--space-6);
+        overflow-x: visible; /* Không cần cuộn ngang khi đã xuống cột */
     }
 
     .qtds-process-flow__arrow {
         transform: rotate(90deg);
     }
 
+    .qtds-comparison__item {
+        width: 100%;
+    }
+    
     .qtds-comparison__divider {
-        margin: var(--space-4) 0;
-        font-size: var(--text-2xl);
-    }
-
-    .qtds-benefits-highlight {
-        align-items: center;
-    }
-
-    .qtds-benefits-highlight__item {
-        text-align: left;
+        margin: var(--space-3) 0;
+        font-size: var(--text-xl);
     }
     
     .qtds-pillar {
         padding: var(--space-6);
     }
+
+    .qtds-benefits-highlight__item {
+        text-align: left;
+    }
 }
 
+/* Small Mobile (480px and below) */
 @media (max-width: 480px) {
     .qtds-tech-features__item {
         flex-direction: column;
@@ -352,6 +371,28 @@
 /* ==========================================================
    7. ANIMATIONS
    ========================================================== */
+.qtds-process-flow__step {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.qtds-process-flow__step:nth-child(1) { animation-delay: 0.1s; }
+.qtds-process-flow__step:nth-child(3) { animation-delay: 0.2s; }
+.qtds-process-flow__step:nth-child(5) { animation-delay: 0.3s; }
+.qtds-process-flow__step:nth-child(7) { animation-delay: 0.4s; }
+
+.qtds-benefits-highlight__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -362,122 +403,4 @@
 @keyframes pulse {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
-}
-
-/* ==========================================================
-   SUB-COMPONENT: COMPARISON
-   ========================================================== */
-.qtds-comparison {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding: var(--space-4);
-    background: var(--gray-50);
-    border-radius: var(--radius-xl);
-}
-
-.qtds-comparison__item {
-    flex: 1;
-    text-align: center;
-}
-
-.qtds-comparison__item--highlight {
-    background: white;
-    padding: var(--space-4);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-}
-
-.qtds-comparison__label {
-    display: block;
-    font-size: var(--text-sm);
-    color: var(--gray-600);
-    margin-bottom: var(--space-2);
-}
-
-.qtds-comparison__value {
-    display: block;
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    margin-bottom: var(--space-2);
-}
-
-.qtds-comparison__note {
-    display: block;
-    font-size: var(--text-sm);
-    color: var(--gray-600);
-}
-
-.qtds-comparison__divider {
-    font-weight: 700;
-    color: var(--gray-400);
-}
-
-/* Responsive for Comparison */
-@media (max-width: 768px) {
-    .qtds-comparison {
-        flex-direction: column;
-        gap: var(--space-4);
-    }
-
-    .qtds-comparison__item {
-        width: 100%;
-    }
-
-    .qtds-comparison__divider {
-        transform: none;
-        margin: var(--space-3) 0;
-        font-size: var(--text-xl);
-    }
-}
-
-/* ==========================================================
-   SUB-COMPONENT: TECH FEATURES
-   ========================================================== */
-.qtds-tech-features {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-}
-
-.qtds-tech-features__item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-}
-
-.qtds-tech-features__icon {
-    width: 40px;
-    height: 40px;
-    background: var(--gray-50);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    flex-shrink: 0;
-}
-
-.qtds-tech-features__content strong {
-    display: block;
-    font-size: var(--text-base);
-    margin-bottom: var(--space-1);
-}
-
-.qtds-tech-features__content p {
-    font-size: var(--text-sm);
-    color: var(--gray-600);
-    margin: 0;
-}
-
-/* Responsive for Tech Features */
-@media (max-width: 480px) {
-    .qtds-tech-features__item {
-        flex-direction: column;
-        text-align: center;
-    }
-    .qtds-tech-features__icon {
-        margin: 0 auto;
-    }
 }
