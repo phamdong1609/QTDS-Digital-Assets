@@ -143,3 +143,12 @@
                 overflow-x: hidden !important;
             }
         }
+
+/* Text color utilities */
+.text-danger {
+    color: var(--danger);
+}
+
+.text-success {
+    color: var(--secondary);
+}
