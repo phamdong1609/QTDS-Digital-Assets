@@ -1028,29 +1028,6 @@
     }
 }
 
-/* Feature badge hover ripple effect */
-.feature-badge {
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-badge::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.feature-badge:hover::after {
-    width: 300px;
-    height: 300px;
-}
 
 /* ==========================================================================
    CTA SECTION - CALL TO ACTION
