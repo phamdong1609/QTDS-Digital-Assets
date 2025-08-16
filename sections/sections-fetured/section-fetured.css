@@ -1,0 +1,60 @@
+/**
+ * Section: QTDS Featured Posts
+ * Description: Carousel section displaying featured articles with Swiper.js
+ * Version: 1.0
+ */
+
+/* ----- Block: Featured Posts Section ----- */
+.qtds-featured {
+    background-color: white;
+}
+
+/* ----- Elements within Featured Section ----- */
+.qtds-featured__carousel {
+    width: 100%;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+}
+
+/* ----- Featured Cards ----- */
+.qtds-featured-card {
+    height: 100%;
+}
+
+/* ----- Swiper Overrides (Tăng độ ưu tiên) ----- */
+.qtds-featured .swiper-slide {
+    width: 350px;
+    height: auto;
+}
+
+.qtds-featured .swiper-pagination-bullet-active {
+    background: var(--primary); /* Đã bỏ !important */
+}
+
+.qtds-featured .swiper-button-next, 
+.qtds-featured .swiper-button-prev {
+    color: var(--primary); /* Đã bỏ !important */
+}
+
+/* ----- Responsive Styles ----- */
+@media (max-width: 768px) {
+    .qtds-featured__carousel {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-8);
+    }
+    
+    .qtds-featured .swiper-slide {
+        width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-featured .swiper-slide {
+        width: 280px;
+    }
+    
+    .qtds-featured .swiper-button-next,
+    .qtds-featured .swiper-button-prev {
+        display: none; /* Hide navigation arrows on very small screens */
+    }
+}
