@@ -1,0 +1,124 @@
+/* ==========================================================================
+           1. CSS VARIABLES & THEME
+           ========================================================================== */
+        :root {
+            /* Colors */
+            --primary: #1A73E8;
+            --primary-dark: #1557B0;
+            --secondary: #34A853;
+            --secondary-dark: #2E7D32;
+            --accent: #FBBC04;
+            --danger: #EA4335;
+            --purple: #9C27B0;
+            
+            /* Grays */
+            --gray-50: #F8F9FA;
+            --gray-100: #F1F3F4;
+            --gray-200: #E8EAED;
+            --gray-600: #80868B;
+            --gray-700: #5F6368;
+            --gray-800: #3C4043;
+            --gray-900: #202124;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+            --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+            
+            /* Spacing */
+            --space-2: 0.5rem;  /* 8px */
+            --space-3: 0.75rem; /* 12px */
+            --space-4: 1rem;    /* 16px */
+            --space-6: 1.5rem;  /* 24px */
+            --space-8: 2rem;    /* 32px */
+            --space-10: 2.5rem; /* 40px */
+            --space-12: 3rem;   /* 48px */
+            --space-16: 4rem;   /* 64px */
+            --space-20: 5rem;   /* 80px */
+
+            /* Typography - Fluid Sizes */
+            --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+            --text-sm: clamp(1rem, 2vw, 1.125rem);
+            --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+            --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+            --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+            --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+            --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+            --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+            --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transitions */
+            --transition-base: 300ms ease;
+            
+            /* Border Radius */
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+        }
+
+        /* ==========================================================================
+           2. RESET & BASE STYLES
+           ========================================================================== */
+        *, ::before, ::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Prevent horizontal overflow from all sections */
+        main {
+            overflow-x: hidden;
+        }
+
+        section {
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+        }
+
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+
+        p {
+            margin-bottom: var(--space-6);
+            color: var(--gray-700);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: var(--text-5xl); }
+            h2 { font-size: var(--text-4xl); }
+            h3 { font-size: var(--text-2xl); }
+            h4 { font-size: var(--text-xl); }
+            body { font-size: var(--text-base); }
+        }
