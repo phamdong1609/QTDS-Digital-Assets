@@ -341,38 +341,6 @@
         }
 
 
-        /* Hero Badge Animation */
-            .hero__badge {
-            position: relative;
-            overflow: visible;
-            }
-
-            .hero__badge::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(26,115,232,0.3), rgba(255,255,255,0.3));
-            border-radius: var(--radius-full);
-            opacity: 0;
-            z-index: -1;
-            animation: badgeGlow 3s ease-in-out infinite;
-            }
-
-            @keyframes badgeGlow {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            }
-
-
         /* ============== Featured Posts Section ============== */
         .featured {
             background-color: var(--gray-50);  /* Đổi thành: */
@@ -1124,117 +1092,6 @@
 }
 
 /* ==========================================================================
-   PODCAST SECTION
-   ========================================================================== */
-.podcast-card {
-    display: flex;
-    align-items: center;
-    gap: var(--space-8);
-    background: white;
-    border-radius: var(--radius-2xl);
-    padding: var(--space-8);
-    box-shadow: var(--shadow-lg);
-    max-width: 900px;
-    margin: 0 auto;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.podcast-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-}
-
-.podcast-card__icon-wrapper {
-    flex-shrink: 0;
-}
-
-.podcast-card__icon {
-    width: 120px;
-    height: 120px;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: var(--text-5xl);
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
-}
-
-.podcast-card__icon::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    50% { opacity: 0.3; }
-    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
-}
-
-.podcast-card__content {
-    flex: 1;
-}
-
-.podcast-card__title {
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-    color: var(--gray-900);
-}
-
-.podcast-card__description {
-    font-size: var(--text-lg);
-    color: var(--gray-600);
-    margin-bottom: var(--space-6);
-    line-height: 1.6;
-}
-
-.podcast-card__player {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-}
-
-.podcast-card__player iframe {
-    display: block;
-    border-radius: var(--radius-lg);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .podcast-card {
-        flex-direction: column;
-        text-align: center;
-        padding: var(--space-6);
-        gap: var(--space-6);
-    }
-
-    .podcast-card__icon {
-        width: 100px;
-        height: 100px;
-        font-size: var(--text-4xl);
-    }
-
-    .podcast-card__title {
-        font-size: var(--text-xl);
-    }
-
-    .podcast-card__description {
-        font-size: var(--text-base);
-    }
-}
-
-/* ==========================================================================
    CTA SECTION - CALL TO ACTION
    ========================================================================== */
 .cta-qtds {
@@ -1445,69 +1302,17 @@
            7. MOBILE OVERFLOW FIXES
            ========================================================================== */
         @media (max-width: 768px) {
-            html, body {
-                overflow-x: hidden !important;
-                width: 100% !important;
-                position: relative !important;
-            }
 
-            .container {
-                padding-left: var(--space-3);
-                padding-right: var(--space-3);
-            }
-
-            .section {
-                width: 100% !important;
-                overflow-x: hidden !important;
-            }
-
-            .hero__content {
-                padding: 0 var(--space-3);
-            }
-
-            .btn {
-                max-width: calc(100vw - var(--space-6));
-                padding: var(--space-3) var(--space-6);
-                font-size: var(--text-base);
-            }
-
-            .hero__title {
-                font-size: var(--text-4xl);
-                word-wrap: break-word;
-            }
-
-            .hero__description {
-                font-size: var(--text-lg);
-                padding: 0 var(--space-2);
-            }
 
             .library__grid {
                 padding: 0;
                 width: 100%;
             }
-
-            .hero__actions {
-                flex-direction: column;
-                width: 100%;
-                padding: 0 var(--space-4);
-            }
-
-            .hero__actions .btn {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
         }
-
-        @media (max-width: 480px) {
-            .hero__title {
-                font-size: var(--text-3xl);
-            }
 
             .section-header h2 {
                 font-size: var(--text-3xl);
             }
-        }
     </style>
 </head>
 

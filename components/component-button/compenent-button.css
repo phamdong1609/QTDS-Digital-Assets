@@ -66,3 +66,16 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+/* ==========================================================================
+    MOBILE OVERFLOW FIXES
+========================================================================== */
+        @media (max-width: 768px) {
+
+
+            .qtds-btn {
+                max-width: calc(100vw - var(--space-6));
+                padding: var(--space-3) var(--space-6);
+                font-size: var(--text-base);
+            }
+        }

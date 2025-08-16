@@ -122,3 +122,24 @@
             h4 { font-size: var(--text-xl); }
             body { font-size: var(--text-base); }
         }
+
+/* ==========================================================================
+           MOBILE OVERFLOW FIXES
+========================================================================== */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                position: relative !important;
+            }
+
+            .container {
+                padding-left: var(--space-3);
+                padding-right: var(--space-3);
+            }
+
+            .section {
+                width: 100% !important;
+                overflow-x: hidden !important;
+            }
+        }
