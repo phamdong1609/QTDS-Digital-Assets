@@ -22,6 +22,131 @@
     <style>
 
         /* ==========================================================================
+           1. CSS VARIABLES & THEME
+           ========================================================================== */
+        :root {
+            /* Colors */
+            --primary: #1A73E8;
+            --primary-dark: #1557B0;
+            --secondary: #34A853;
+            --secondary-dark: #2E7D32;
+            --accent: #FBBC04;
+            --danger: #EA4335;
+            --purple: #9C27B0;
+            
+            /* Grays */
+            --gray-50: #F8F9FA;
+            --gray-100: #F1F3F4;
+            --gray-200: #E8EAED;
+            --gray-600: #80868B;
+            --gray-700: #5F6368;
+            --gray-800: #3C4043;
+            --gray-900: #202124;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+            --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+            
+            /* Spacing */
+            --space-2: 0.5rem;  /* 8px */
+            --space-3: 0.75rem; /* 12px */
+            --space-4: 1rem;    /* 16px */
+            --space-6: 1.5rem;  /* 24px */
+            --space-8: 2rem;    /* 32px */
+            --space-10: 2.5rem; /* 40px */
+            --space-12: 3rem;   /* 48px */
+            --space-16: 4rem;   /* 64px */
+            --space-20: 5rem;   /* 80px */
+
+            /* Typography - Fluid Sizes */
+            --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+            --text-sm: clamp(1rem, 2vw, 1.125rem);
+            --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+            --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+            --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+            --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+            --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+            --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+            --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transitions */
+            --transition-base: 300ms ease;
+            
+            /* Border Radius */
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+        }
+
+        /* ==========================================================================
+           2. RESET & BASE STYLES
+           ========================================================================== */
+        *, ::before, ::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Prevent horizontal overflow from all sections */
+        main {
+            overflow-x: hidden;
+        }
+
+        section {
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+        }
+
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+
+        p {
+            margin-bottom: var(--space-6);
+            color: var(--gray-700);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: var(--text-5xl); }
+            h2 { font-size: var(--text-4xl); }
+            h3 { font-size: var(--text-2xl); }
+            h4 { font-size: var(--text-xl); }
+            body { font-size: var(--text-base); }
+        }
+
+        /* ==========================================================================
            3. LAYOUT & UTILITIES
            ========================================================================== */
         .container {
@@ -71,14 +196,244 @@
            4. COMPONENTS
            ========================================================================== */
 
-        
+        /* Button Component */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: 2px solid transparent;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn--primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn--secondary {
+            background: white;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn--secondary:hover {
+            background: var(--gray-100);
+        }
+
+        .btn.loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+        }
+
+        .btn.loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
 
         /* ==========================================================================
            5. SECTIONS
            ========================================================================== */
 
+        /* ----- Navigation ----- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: box-shadow var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar--scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .navbar__brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+        }
+
+        .navbar__logo {
+            height: 40px;
+        }
+
+        .navbar__brand-name {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-10);
+        }
+
+        .navbar__link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-base);
+        }
+
+        .navbar__link:hover {
+            color: var(--primary);
+        }
+
+        .navbar__mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--text-2xl);
+            color: var(--gray-700);
+            cursor: pointer;
+        }
+
+        .navbar__mobile-menu {
+            display: none;
+            background: white;
+            border-top: 1px solid var(--gray-200);
+            max-height: calc(100vh - 72px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .navbar__mobile-menu--active {
+            display: block;
+        }
+
+        .navbar__mobile-link {
+            display: block;
+            padding: var(--space-4);
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        @media (max-width: 1024px) {
+            .navbar__links {
+                display: none;
+            }
+            .navbar__mobile-btn {
+                display: block;
+            }
+        }
+
+        /* ----- Hero Section ----- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-hero);
+            color: white;
+            overflow: hidden;
+            padding-top: var(--space-20);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 var(--space-4);
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-6);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-6);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero__title {
+            color: white;
+            margin-bottom: var(--space-6);
+        }
+
+        .hero__description {
+            font-size: var(--text-xl);
+            color: #94A3B8;
+            max-width: 800px;
+            margin: 0 auto var(--space-10);
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            justify-content: center;
+        }
 
         /* ----- Library Section ----- */
         .library {
@@ -341,6 +696,68 @@
         }
 
 
+        /* Hero Badge Animation */
+            .hero__badge {
+            position: relative;
+            overflow: visible;
+            }
+
+            .hero__badge::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(26,115,232,0.3), rgba(255,255,255,0.3));
+            border-radius: var(--radius-full);
+            opacity: 0;
+            z-index: -1;
+            animation: badgeGlow 3s ease-in-out infinite;
+            }
+
+            @keyframes badgeGlow {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            }
+
+
+        /* ============== Featured Posts Section ============== */
+        .featured {
+            background-color: var(--gray-50);  /* Đổi thành: */
+            background-color: white;
+        }
+
+        .featured__carousel {
+            width: 100%;
+            padding-top: var(--space-10);
+            padding-bottom: var(--space-10);
+        }
+
+        .swiper-slide {
+            width: 350px;
+            height: auto;
+        }
+
+        .featured-card {
+            height: 100%;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary) !important;
+        }
+
+        .swiper-button-next, 
+        .swiper-button-prev {
+            color: var(--primary) !important;
+        }
+
         /* ============== Footer ============== */
         .footer {
             background: var(--gray-900);
@@ -390,7 +807,144 @@
             color: var(--gray-700);
         }
 
+      /* ----- Section 4 - Solutions ----- */
+.qtds-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--space-12);
+}
 
+.hero-device {
+    position: relative;
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.feature-badge i {
+    font-size: 1.25rem;
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .qtds-hero-visual {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+}
+
+.feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-badge i {
+    color: var(--primary);
+}
+
+/* Pillars */
+.pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+}
+
+.pillar {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    border: 1px solid var(--gray-100);
+}
+
+.pillar:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.pillar__number {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-size: var(--text-5xl);
+    font-weight: 900;
+    color: var(--gray-100);
+}
+
+.pillar__icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+}
+
+.pillar__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+}
+
+.pillar__subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.pillar__content p {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+}
+
+.benefit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--primary);
+}
 
 /* Tech Features */
 .tech-features {
@@ -429,6 +983,53 @@
     margin: 0;
 }
 
+/* Comparison */
+.comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-xl);
+}
+
+.comparison__item {
+    flex: 1;
+    text-align: center;
+}
+
+.comparison__item--highlight {
+    background: white;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.comparison__label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+}
+
+.comparison__value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.comparison__note {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.comparison__divider {
+    font-weight: 700;
+    color: var(--gray-400);
+}
 
 /* Process Flow */
 .process-section {
@@ -844,6 +1445,149 @@
     }
 }
 
+/* Feature badge hover ripple effect */
+.feature-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-badge::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.feature-badge:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Text color utilities */
+.text-danger {
+    color: var(--danger);
+}
+
+.text-success {
+    color: var(--secondary);
+}
+
+/* ==========================================================================
+   PODCAST SECTION
+   ========================================================================== */
+.podcast-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.podcast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.podcast-card__icon-wrapper {
+    flex-shrink: 0;
+}
+
+.podcast-card__icon {
+    width: 120px;
+    height: 120px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-5xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.podcast-card__icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.podcast-card__content {
+    flex: 1;
+}
+
+.podcast-card__title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    color: var(--gray-900);
+}
+
+.podcast-card__description {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.podcast-card__player {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.podcast-card__player iframe {
+    display: block;
+    border-radius: var(--radius-lg);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .podcast-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-6);
+        gap: var(--space-6);
+    }
+
+    .podcast-card__icon {
+        width: 100px;
+        height: 100px;
+        font-size: var(--text-4xl);
+    }
+
+    .podcast-card__title {
+        font-size: var(--text-xl);
+    }
+
+    .podcast-card__description {
+        font-size: var(--text-base);
+    }
+}
 
 /* ==========================================================================
    CTA SECTION - CALL TO ACTION
@@ -1056,22 +1800,396 @@
            7. MOBILE OVERFLOW FIXES
            ========================================================================== */
         @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                position: relative !important;
+            }
 
+            .container {
+                padding-left: var(--space-3);
+                padding-right: var(--space-3);
+            }
+
+            .section {
+                width: 100% !important;
+                overflow-x: hidden !important;
+            }
+
+            .hero__content {
+                padding: 0 var(--space-3);
+            }
+
+            .btn {
+                max-width: calc(100vw - var(--space-6));
+                padding: var(--space-3) var(--space-6);
+                font-size: var(--text-base);
+            }
+
+            .hero__title {
+                font-size: var(--text-4xl);
+                word-wrap: break-word;
+            }
+
+            .hero__description {
+                font-size: var(--text-lg);
+                padding: 0 var(--space-2);
+            }
+
+            .library__grid {
+                padding: 0;
+                width: 100%;
+            }
+
+            .hero__actions {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 var(--space-4);
+            }
+
+            .hero__actions .btn {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: var(--text-3xl);
+            }
 
             .section-header h2 {
                 font-size: var(--text-3xl);
             }
         }
-
     </style>
 </head>
 
 <body>
-
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container navbar__content">
+            <a href="#" class="navbar__brand">
+                <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="navbar__logo">
+                <span class="navbar__brand-name">QTDS</span>
+            </a>
+            <div class="navbar__links">
+                <a href="#tong-quan" class="navbar__link">Tổng Quan</a>
+                <a href="#featured-section" class="navbar__link">Nổi Bật</a>
+                <a href="#library-section" class="navbar__link">Thư Viện</a>
+                <a href="#lien-he" class="navbar__link">Liên Hệ</a>
+            </div>
+            <button class="navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="navbar__mobile-menu" id="mobileMenu">
+            <a href="#tong-quan" class="navbar__mobile-link">Tổng Quan</a>
+            <a href="#featured-section" class="navbar__mobile-link">Nổi Bật</a>
+            <a href="#library-section" class="navbar__mobile-link">Thư Viện</a>
+            <a href="#lien-he" class="navbar__mobile-link">Liên Hệ</a>
+        </div>
+    </nav>
 
     <main>
-        
+        <!-- Hero Section -->
+        <section id="tong-quan" class="hero">
+            <div class="container hero__content">
+                <div class="scroll-animate hero__badge">
+                    <i class="fas fa-book-open"></i>
+                    <span>THƯ VIỆN TRI THỨC</span>
+                </div>
+                <h1 class="scroll-animate hero__title">
+                    Khám Phá <span class="text-gradient">Thư Viện Tri Thức QTDS</span>
+                </h1>
+                <p class="scroll-animate hero__description">
+                    Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.
+                </p>
+                <div class="scroll-animate hero__actions">
+                    <a href="#library-section" class="btn btn--primary">
+                        <i class="fas fa-compass"></i>
+                        Khám Phá Ngay
+                    </a>
+                </div>
+            </div>
+        </section>
 
+        <!-- Featured Posts Section -->
+        <section id="featured-section" class="section featured hidden">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-header__tagline">NỔI BẬT</span>
+                    <h2>Bài Viết <span class="text-gradient">Nổi Bật</span></h2>
+                    <p>Những phân tích chuyên sâu và case study giá trị nhất bạn không nên bỏ lỡ.</p>
+                </div>
+                <!-- Swiper Carousel -->
+                <div id="featured-swiper" class="swiper featured__carousel">
+                                    <div class="swiper-wrapper" id="featured-post-grid">
+                        <!-- Featured posts will be generated here -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next" role="button" aria-label="Bài viết tiếp theo"></div>
+                    <div class="swiper-button-prev" role="button" aria-label="Bài viết trước"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Section -->
+        <section id="library-section" class="section library">
+            <div class="container">
+                <!-- Section Header -->
+                <div class="scroll-animate section-header">
+                    <span class="section-header__tagline">THƯ VIỆN TRI THỨC</span>
+                    <h2>Khám Phá <span class="text-gradient">Thư Viện QTDS</span></h2>
+                    <p>Hơn 100+ bài viết chuyên sâu về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ tiên tiến</p>
+                </div>
+
+                <!-- Toolbar (Search + Filters) -->
+                <div class="library__toolbar">
+                    <div class="library__search-wrapper">
+                        <input type="text" 
+                               class="library__search-input" 
+                               id="search-input" 
+                               placeholder="Tìm kiếm bài viết, chủ đề..." 
+                               aria-label="Tìm kiếm bài viết">
+                        <i class="fa-solid fa-search library__search-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="library__filter-container">
+                        <div id="library-filters" class="library__filters" role="group" aria-label="Lọc theo danh mục">
+                            <!-- Filter buttons will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Library Grid -->
+                <div id="library-grid" class="library__grid">
+                    <!-- Article cards will be generated by JavaScript -->
+                </div>
+
+                <!-- State Messages -->
+                <div class="library__state-container">
+                    <div id="library-loader" class="library__loader" aria-live="polite">
+                        <span>Đang tải thư viện...</span>
+                        <div class="loader-dots" aria-hidden="true">
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                        </div>
+                    </div>
+                    <div id="library-empty" class="library__empty" role="status"></div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="library__load-more-container" id="load-more-container">
+                    <button id="load-more-btn" class="btn btn--primary hidden">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Xem thêm</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 4 - Giải pháp QTDS -->
+<section id="giai-phap" class="section section--solutions" style="background-color: white;">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="scroll-animate section-header">
+            <span class="section-header__tagline">GIẢI PHÁP CHIẾN LƯỢC</span>
+            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
+            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="qtds-hero-visual">
+    <div class="hero-device">
+        <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/VzvLd5z2WiANVb7tmfy9a.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+    </div>
+    <div class="hero-features">
+        <div class="feature-badge">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Ứng dụng di động</span>
+        </div>
+        <div class="feature-badge">
+            <i class="fas fa-brain"></i>
+            <span>Tích hợp AI/OCR</span>
+        </div>
+        <div class="feature-badge">
+            <i class="fas fa-clock"></i>
+            <span>Triển khai nhanh</span>
+        </div>
+    </div>
+</div>
+
+
+        <!-- 3 Pillars -->
+        <div class="pillars">
+            <!-- Pillar 1: Triết lý -->
+            <div class="scroll-animate pillar">
+                <div class="pillar__number">01</div>
+                <div class="pillar__icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="pillar__title">Triết lý "Từ dưới lên"</h3>
+                <p class="pillar__subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
+                <div class="pillar__content">
+                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
+                    <div class="benefit-tag">
+                        <i class="fas fa-check-circle"></i>
+                        Vượt qua rào cản văn hóa
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Công nghệ -->
+            <div class="scroll-animate pillar" style="animation-delay: 0.2s;">
+                <div class="pillar__number">02</div>
+                <div class="pillar__icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="pillar__title">Công nghệ Cốt lõi</h3>
+                <p class="pillar__subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
+
+                <div class="tech-features">
+                    <div class="tech-features__item">
+                        <div class="tech-features__icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tech-features__content">
+                            <strong>OCR &amp; AI</strong>
+                            <p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p>
+                        </div>
+                    </div>
+                    <div class="tech-features__item">
+                        <div class="tech-features__icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="tech-features__content">
+                            <strong>Kết nối CIC</strong>
+                            <p>Tự động điền thông tin tín dụng chính xác</p>
+                        </div>
+                    </div>
+                    <div class="tech-features__item">
+                        <div class="tech-features__icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="tech-features__content">
+                            <strong>Mẫu chuẩn</strong>
+                            <p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Định vị -->
+            <div class="scroll-animate pillar" style="animation-delay: 0.4s;">
+                <div class="pillar__number">03</div>
+                <div class="pillar__icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="pillar__title">Định vị Chiến lược</h3>
+                <p class="pillar__subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
+
+                <div class="comparison">
+                    <div class="comparison__item">
+                        <span class="comparison__label">Core Banking</span>
+                        <span class="comparison__value text-danger">20-25 tỷ VNĐ</span>
+                        <span class="comparison__note">Phức tạp, triển khai lâu</span>
+                    </div>
+                    <div class="comparison__divider">VS</div>
+                    <div class="comparison__item comparison__item--highlight">
+                        <span class="comparison__label">QTDS</span>
+                        <span class="comparison__value text-success">Tiết kiệm 90%</span>
+                        <span class="comparison__note">Đơn giản, dùng ngay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="scroll-animate process-section">
+            <h3 class="process-section__title">Quy trình Chuẩn hóa Tự động</h3>
+            <div class="process-flow">
+                <div class="process-flow__step">
+                    <div class="process-flow__icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Thu thập</h4>
+                    <p>Chụp ảnh giấy tờ</p>
+                </div>
+                <div class="process-flow__arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="process-flow__step">
+                    <div class="process-flow__icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>Xử lý AI</h4>
+                    <p>Trích xuất tự động</p>
+                </div>
+                <div class="process-flow__arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="process-flow__step">
+                    <div class="process-flow__icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h4>Chuẩn hóa</h4>
+                    <p>Định dạng chuẩn</p>
+                </div>
+                <div class="process-flow__arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="process-flow__step">
+                    <div class="process-flow__icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h4>Hoàn thiện</h4>
+                    <p>Hồ sơ chuẩn mực</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Benefits Box -->
+        <div class="scroll-animate benefits-highlight">
+            <div class="benefits-highlight__icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="benefits-highlight__content">
+                <h4>Lợi ích Cốt lõi:</h4>
+                <div class="benefits-highlight__grid">
+                    <div class="benefits-highlight__item">
+                        <i class="fas fa-check"></i>
+                        <span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span>
+                    </div>
+                    <div class="benefits-highlight__item">
+                        <i class="fas fa-check"></i>
+                        <span>Ngăn chặn gian lận, lập khống hồ sơ</span>
+                    </div>
+                    <div class="benefits-highlight__item">
+                        <i class="fas fa-check"></i>
+                        <span>Tăng tốc xử lý hồ sơ lên 70%</span>
+                    </div>
+                    <div class="benefits-highlight__item">
+                        <i class="fas fa-check"></i>
+                        <span>Tuân thủ 100% quy định NHNN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="scroll-animate" style="text-align: center; margin-top: var(--space-10);">
+            <a href="#san-sang-chuyen-doi" class="btn btn--primary">
+                <i class="fas fa-chart-line" style="color: white !important;"></i>
+<span style="color: white !important;">Dùng Thử Miễn Phí</span>
+<i class="fas fa-arrow-right" style="color: white !important;"></i>
+
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- Podcast Section -->
 <section id="video-gioi-thieu" class="section">
