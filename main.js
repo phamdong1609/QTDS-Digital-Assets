@@ -1,4 +1,4 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     // GLOBAL CONFIGURATIONS
     // =================================================================
@@ -7,13 +7,13 @@
 
     // State variables
     let currentPage = 1;
-    let totalArticles = 0;
     let displayedArticlesCount = 0;
     let currentFilter = 'Tất cả';
     let searchTerm = '';
     let featuredSwiper = null;
     let isLoading = false;
     let isInitialLoad = true;
+    let hasMoreArticles = true; // Reliable state for pagination
 
     // UI elements
     const ui = {
@@ -104,7 +104,7 @@
     // =================================================================
 
     async function loadArticles(isLoadMore = false) {
-        if (isLoading) return;
+        if (isLoading || !hasMoreArticles && isLoadMore) return;
         isLoading = true;
 
         if (isLoadMore) {
@@ -112,6 +112,7 @@
         } else {
             currentPage = 1;
             displayedArticlesCount = 0;
+            hasMoreArticles = true; // Reset for new filter/search
             if (ui.loader) ui.loader.style.display = 'flex';
             if (ui.grid) ui.grid.innerHTML = '';
             if (isInitialLoad && ui.grid) {
@@ -139,9 +140,15 @@
                 isInitialLoad = false;
             }
 
-            renderArticles(data.articles || []);
-            totalArticles = data.totalItems || 0;
-            displayedArticlesCount += (data.articles || []).length;
+            const returnedArticles = data.articles || [];
+            const numReturned = returnedArticles.length;
+
+            if (numReturned < ARTICLES_PER_PAGE) {
+                hasMoreArticles = false; // Reached the end
+            }
+
+            renderArticles(returnedArticles);
+            displayedArticlesCount += numReturned;
             updateUiState();
 
         } catch (error) {
@@ -196,15 +203,35 @@
 
     function renderFilters(categories) {
         if (!categories || categories.length === 0 || !ui.filters) return;
-        ui.filters.innerHTML = `
-            <button class="filter-btn active" data-category="Tất cả" aria-pressed="true">Tất cả</button>
-            ${categories.map(cat => `<button class="filter-btn" data-category="${cat}" aria-pressed="false">${cat}</button>`).join('')}
-        `;
+
+        const categoryIcons = {
+            'Tất cả': 'fa-solid fa-border-all',
+            'Chuyển đổi số': 'fa-solid fa-robot',
+            'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
+            'Công nghệ': 'fa-solid fa-microchip',
+            'Case Study': 'fa-solid fa-book-open',
+        };
+
+        const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
+
+        ui.filters.innerHTML = allCategories.map(cat => {
+            const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
+            const isActive = cat === currentFilter;
+            return `
+                <button class="filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
+                    <i class="${iconClass}"></i>
+                    <span>${cat}</span>
+                </button>
+            `;
+        }).join('');
+
         ui.filters.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 if (isLoading) return;
+
                 ui.filters.querySelector('.active')?.classList.remove('active');
                 this.classList.add('active');
+                
                 currentFilter = this.dataset.category;
                 loadArticles(false);
             });
@@ -213,10 +240,10 @@
 
     function renderFeaturedPosts(featuredArticles) {
         if (!featuredArticles || featuredArticles.length === 0 || !ui.featuredSection) {
-            if (ui.featuredSection) ui.featuredSection.classList.add('hidden');
+            if (ui.featuredSection) ui.featuredSection.classList.add('qtds-hidden');
             return;
         }
-        ui.featuredSection.classList.remove('hidden');
+        ui.featuredSection.classList.remove('qtds-hidden');
         if (ui.featuredWrapper) ui.featuredWrapper.innerHTML = '';
 
         featuredArticles.forEach(article => {
@@ -238,14 +265,13 @@
                 delay: 5000, 
                 disableOnInteraction: false 
             },
-            slidesPerView: 1,
-            spaceBetween: 30,
+            slidesPerView: 'auto', // Use 'auto' for responsive widths
             coverflowEffect: {
-                rotate: 50,
+                rotate: 30,       // Less rotation
                 stretch: 0,
-                depth: 100,
+                depth: 150,       // More depth
                 modifier: 1,
-                slideShadows: true,
+                slideShadows: false,  // Cleaner look without shadows
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -255,28 +281,21 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 50,
-                }
-            }
         });
     }
 
     function updateUiState() {
-        if (ui.loadMoreContainer && ui.loadMoreBtn) {
-            if (displayedArticlesCount < totalArticles) {
-                ui.loadMoreContainer.classList.remove('hidden');
-                ui.loadMoreBtn.classList.remove('hidden');
+        // Handle Load More button visibility
+        if (ui.loadMoreContainer) {
+            if (hasMoreArticles) {
+                ui.loadMoreContainer.classList.remove('qtds-hidden');
+                ui.loadMoreBtn.classList.remove('qtds-hidden');
             } else {
-                ui.loadMoreContainer.classList.add('hidden');
+                ui.loadMoreContainer.classList.add('qtds-hidden');
             }
         }
+
+        // Handle Empty state message
         if (ui.empty) {
             if (displayedArticlesCount === 0 && !isLoading) {
                 ui.empty.textContent = "Không tìm thấy bài viết nào phù hợp với tiêu chí của bạn.";
@@ -308,9 +327,10 @@
         });
     }
 
+    // Re-introduce the IntersectionObserver with the correct logic
     const infiniteScrollObserver = new IntersectionObserver((entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting && !isLoading && displayedArticlesCount < totalArticles) {
+        if (entry.isIntersecting && !isLoading && hasMoreArticles) {
             currentPage++;
             loadArticles(true);
         }

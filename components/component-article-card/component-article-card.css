@@ -59,12 +59,14 @@
 
 .qtds-article-card__title {
     font-size: var(--text-xl);
-    flex-grow: 1; /* Giúp đẩy phần action xuống dưới */
+    margin-bottom: var(--space-2); /* Add margin for spacing */
 }
 
 .qtds-article-card__description {
     color: var(--gray-600);
     margin-bottom: var(--space-4);
+    flex-grow: 1; /* Allow description to grow and push action down */
+    min-height: 4.5rem; /* Fallback for consistency, approx 3 lines */
 }
 
 .qtds-article-card__action {
