@@ -1,7 +1,13 @@
-/* ==========================================================================
-   CTA SECTION - CALL TO ACTION
-   ========================================================================== */
-.cta-qtds {
+/**
+ * Section: QTDS Call to Action (CTA)
+ * Description: Defines styles for the main call-to-action section, including feature highlights and action buttons.
+ * Version: 1.0
+ */
+
+/* ==========================================================
+   1. BLOCK: QTDS CTA
+   ========================================================== */
+.qtds-cta {
     background: white;
     box-shadow: var(--shadow-xl);
     padding: var(--space-12);
@@ -13,8 +19,8 @@
     overflow: hidden;
 }
 
-/* Background decoration */
-.cta-qtds::before {
+/* Background decoration element */
+.qtds-cta::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -23,9 +29,14 @@
     height: 300px;
     background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
     border-radius: 50%;
+    pointer-events: none; /* Thêm để không cản trở việc click */
 }
 
-.cta-qtds__description {
+/* ==========================================================
+   2. ELEMENTS WITHIN QTDS CTA
+   ========================================================== */
+
+.qtds-cta__description {
     font-size: var(--text-xl);
     color: var(--gray-600);
     max-width: 800px;
@@ -33,19 +44,17 @@
     line-height: 1.6;
 }
 
-/* Features Grid */
-.cta-qtds__features {
+/* --- Features Grid --- */
+.qtds-cta__features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-6);
-    margin-bottom: var(--space-10);
+    margin: 0 auto var(--space-10);
     max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* Feature Item */
-.cta-qtds__feature {
+/* --- Feature Item --- */
+.qtds-cta__feature {
     background-color: var(--gray-50);
     padding: var(--space-6);
     border-radius: var(--radius-xl);
@@ -54,108 +63,101 @@
     text-align: center;
 }
 
-.cta-qtds__feature:hover {
+.qtds-cta__feature:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     background-color: white;
 }
 
-/* Feature color variants */
-.cta-qtds__feature--primary {
-    border-color: var(--primary);
-}
-.cta-qtds__feature--primary .cta-qtds__feature-icon {
-    color: var(--primary);
-}
-
-.cta-qtds__feature--secondary {
-    border-color: var(--secondary);
-}
-.cta-qtds__feature--secondary .cta-qtds__feature-icon {
-    color: var(--secondary);
-}
-
-.cta-qtds__feature--accent {
-    border-color: var(--accent);
-}
-.cta-qtds__feature--accent .cta-qtds__feature-icon {
-    color: var(--accent);
-}
-
-.cta-qtds__feature--purple {
-    border-color: var(--purple);
-}
-.cta-qtds__feature--purple .cta-qtds__feature-icon {
-    color: var(--purple);
-}
-
-/* Feature content */
-.cta-qtds__feature-icon {
+.qtds-cta__feature-icon {
     font-size: var(--text-3xl);
     margin-bottom: var(--space-4);
     display: block;
 }
 
-.cta-qtds__feature-title {
+.qtds-cta__feature-title {
     font-size: var(--text-lg);
     font-weight: 700;
     color: var(--gray-800);
     margin-bottom: var(--space-2);
 }
 
-.cta-qtds__feature-text {
+.qtds-cta__feature-text {
     font-size: var(--text-base);
     color: var(--gray-600);
     margin: 0;
     line-height: 1.5;
 }
 
-/* Action Buttons */
-.cta-qtds__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    justify-content: center;
-    align-items: center;
-}
-
-.cta-qtds__btn--primary {
+/* --- Action Buttons --- */
+/* Lưu ý: .qtds-cta__actions đã được định nghĩa trong component-button-group.css. 
+   Chúng ta chỉ cần định nghĩa lại các style đặc thù nếu cần. */
+.qtds-cta__actions .qtds-btn--primary {
     transform: scale(1.05);
-    font-size: var(--text-lg);
-    padding: var(--space-4) var(--space-8);
 }
 
-/* Mobile Responsive */
+
+/* ==========================================================
+   3. MODIFIERS FOR FEATURE ITEM
+   ========================================================== */
+
+.qtds-cta__feature--primary {
+    border-color: var(--primary);
+}
+.qtds-cta__feature--primary .qtds-cta__feature-icon {
+    color: var(--primary);
+}
+
+.qtds-cta__feature--secondary {
+    border-color: var(--secondary);
+}
+.qtds-cta__feature--secondary .qtds-cta__feature-icon {
+    color: var(--secondary);
+}
+
+.qtds-cta__feature--accent {
+    border-color: var(--accent);
+}
+.qtds-cta__feature--accent .qtds-cta__feature-icon {
+    color: var(--accent);
+}
+
+.qtds-cta__feature--purple {
+    border-color: var(--purple);
+}
+.qtds-cta__feature--purple .qtds-cta__feature-icon {
+    color: var(--purple);
+}
+
+
+/* ==========================================================
+   4. RESPONSIVE STYLES
+   ========================================================== */
 @media (max-width: 768px) {
-    .cta-qtds {
+    .qtds-cta {
         padding: var(--space-8);
     }
 
-    .cta-qtds__description {
+    .qtds-cta__description {
         font-size: var(--text-lg);
         margin-bottom: var(--space-8);
     }
 
-    .cta-qtds__features {
+    .qtds-cta__features {
         grid-template-columns: 1fr;
         gap: var(--space-4);
     }
 
-    .cta-qtds__feature {
+    .qtds-cta__feature {
         padding: var(--space-4);
     }
 
-    .cta-qtds__actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .cta-qtds__actions .btn {
+    .qtds-cta__actions .qtds-btn {
         width: 100%;
         max-width: 300px;
     }
 
-    .cta-qtds__btn--primary {
+    .qtds-cta__actions .qtds-btn--primary {
         transform: scale(1);
     }
 }
