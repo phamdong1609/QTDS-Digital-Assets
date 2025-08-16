@@ -90,6 +90,14 @@
 }
 
 /* --- Action Buttons --- */
+.qtds-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+}
+
 /* Lưu ý: .qtds-cta__actions đã được định nghĩa trong component-button-group.css. 
    Chúng ta chỉ cần định nghĩa lại các style đặc thù nếu cần. */
 .qtds-cta__actions .qtds-btn--primary {
