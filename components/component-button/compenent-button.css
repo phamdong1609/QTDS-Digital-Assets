@@ -1,5 +1,5 @@
 /* Button Component */
-        .btn {
+        .qtds-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -18,37 +18,37 @@
             text-overflow: ellipsis;
         }
 
-        .btn:hover {
+        .qtds-btn:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
 
-        .btn--primary {
+        .qtds-btn--primary {
             background: var(--primary);
             color: white;
         }
 
-        .btn--primary:hover {
+        .qtds-btn--primary:hover {
             background: var(--primary-dark);
         }
 
-        .btn--secondary {
+        .qtds-btn--secondary {
             background: white;
             color: var(--primary);
             border-color: var(--primary);
         }
 
-        .btn--secondary:hover {
+        .qtds-btn--secondary:hover  {
             background: var(--gray-100);
         }
 
-        .btn.loading {
+        .qtds-btn.loading {
             position: relative;
             color: transparent !important;
             pointer-events: none;
         }
 
-        .btn.loading::after {
+        .qtds-btn.loading::after {
             content: "";
             position: absolute;
             width: 20px;

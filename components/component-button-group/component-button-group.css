@@ -1,0 +1,37 @@
+/* ==========================================================
+   MODULE: QTDS CALL TO ACTION
+   ========================================================== */
+
+/* Bố cục của nhóm nút bên trong module CTA */
+#module-qtds-cta .qtds-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style riêng cho nút primary bên trong module CTA (nếu có) */
+/* Ví dụ: làm cho nút to hơn một chút */
+#module-qtds-cta .qtds-btn--primary {
+    transform: scale(1.05);
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-8);
+}
+
+/* Responsive cho module CTA */
+@media (max-width: 768px) {
+    #module-qtds-cta .qtds-cta__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #module-qtds-cta .qtds-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #module-qtds-cta .qtds-btn--primary {
+        transform: scale(1);
+    }
+}
