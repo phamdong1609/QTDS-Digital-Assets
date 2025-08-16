@@ -193,3 +193,56 @@ p:last-child {
     h4 { font-size: var(--text-xl); }
     body { font-size: var(--text-base); }
 }
+
+/* ==========================================================================
+   6. ANIMATIONS & HELPERS (Standardized)
+   ========================================================================== */
+.qtds-scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.qtds-scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Note: Changed from ID to a class for reusability */
+.qtds-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xl);
+    text-decoration: none;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+}
+
+.qtds-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   7. MOBILE OVERFLOW FIXES (Standardized)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Note: This rule should be applied to the already standardized class */
+    .qtds-section-header h2 {
+        font-size: var(--text-3xl);
+    }
+}
