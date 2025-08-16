@@ -71,74 +71,7 @@
            4. COMPONENTS
            ========================================================================== */
 
-        /* Button Component */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-3);
-            padding: var(--space-4) var(--space-8);
-            font-size: var(--text-lg);
-            font-weight: 600;
-            border-radius: var(--radius-lg);
-            text-decoration: none;
-            transition: all var(--transition-base);
-            cursor: pointer;
-            border: 2px solid transparent;
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn--primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn--primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn--secondary {
-            background: white;
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .btn--secondary:hover {
-            background: var(--gray-100);
-        }
-
-        .btn.loading {
-            position: relative;
-            color: transparent !important;
-            pointer-events: none;
-        }
-
-        .btn.loading::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: 50%;
-            top: 50%;
-            margin-left: -10px;
-            margin-top: -10px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        
 
         /* Card Component */
         .card {
