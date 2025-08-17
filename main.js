@@ -177,28 +177,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createArticleCard(article, index) {
-        const card = document.createElement('a');
-        card.href = article.landing_page_url;
-        card.className = "qtds-article-card qtds-scroll-animate";
-        card.style.animationDelay = `${index * 50}ms`;
-        const tags = String(article.category_tags || '').split(',').map(tag => tag.trim()).filter(Boolean);
+        const card = document.createElement('a'); // Create the main link element
+        card.href = article.landing_page_url; // Set the URL
+        card.className = "qtds-article-card qtds-scroll-animate"; // Apply classes
+        card.style.animationDelay = `${index * 50}ms`; // Set animation delay
 
-        card.innerHTML = `
-            <div class="qtds-article-card__image-wrapper">
-                <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy" onload="this.classList.add('loaded')">
-            </div>
-            <div class="qtds-article-card__body">
-                <div class="qtds-article-card__tags">
-                    ${tags.map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('')}
-                </div>
-                <h3 class="qtds-article-card__title">${article.title}</h3>
-                <p class="qtds-article-card__description">${article.short_description}</p>
-                <div class="qtds-article-card__action">
-                    Xem chi tiết <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-        `;
-        return card;
+        // --- Create Image Wrapper ---
+        const imageWrapper = document.createElement('div');
+        imageWrapper.className = 'qtds-article-card__image-wrapper';
+        const image = document.createElement('img');
+        image.src = article.featured_image_url;
+        image.alt = article.title; // alt attribute is safe, doesn't execute HTML
+        image.className = 'qtds-article-card__image';
+        image.loading = 'lazy';
+        image.onload = () => image.classList.add('loaded');
+        imageWrapper.appendChild(image);
+
+        // --- Create Body Wrapper ---
+        const body = document.createElement('div');
+        body.className = 'qtds-article-card__body';
+
+        // --- Create and Append Tags (Safely) ---
+        const tagsWrapper = document.createElement('div');
+        tagsWrapper.className = 'qtds-article-card__tags';
+        const tags = String(article.category_tags || '').split(',').map(tag => tag.trim()).filter(Boolean);
+        tags.forEach(tagText => {
+            const tagEl = document.createElement('span');
+            tagEl.className = 'qtds-article-card__tag';
+            tagEl.textContent = tagText; // SAFE: Using textContent prevents XSS
+            tagsWrapper.appendChild(tagEl);
+        });
+
+        // --- Create and Append Title, Description, Action (Safely) ---
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'qtds-article-card__title';
+        titleEl.textContent = article.title; // SAFE
+
+        const descEl = document.createElement('p');
+        descEl.className = 'qtds-article-card__description';
+        descEl.textContent = article.short_description; // SAFE
+
+        const actionEl = document.createElement('div');
+        actionEl.className = 'qtds-article-card__action';
+        actionEl.innerHTML = 'Xem chi tiết <i class="fas fa-arrow-right"></i>'; // SAFE: This is a static, trusted string
+
+        // Assemble the card
+        body.append(tagsWrapper, titleEl, descEl, actionEl);
+        card.append(imageWrapper, body);
+        return card; // Return the fully constructed, safe element
     }
 
     function renderFilters(categories) {
