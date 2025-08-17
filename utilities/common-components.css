@@ -10,3 +10,42 @@
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
 }
+
+/* ==========================================================
+   BACK TO TOP BUTTON (HARDENED)
+   ========================================================== */
+[class*="qtds-back-to-top"] {
+    position: fixed !important;
+    bottom: 2rem !important;
+    right: 2rem !important;
+    background-color: var(--primary) !important;
+    color: white !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.5rem !important;
+    z-index: 1000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+[class*="qtds-back-to-top"]:hover {
+    background-color: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure icon color is also forced */
+[class*="qtds-back-to-top"] i {
+    color: white !important;
+}
