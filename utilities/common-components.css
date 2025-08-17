@@ -1,0 +1,12 @@
+/* utilities/common-components.css */
+.qtds-card-base {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.qtds-card-base:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}

@@ -44,11 +44,7 @@
 
 .qtds-pillar {
     position: relative;
-    background: white;
-    border-radius: var(--radius-2xl);
     padding: var(--space-8);
-    box-shadow: var(--shadow-lg);
-    transition: all var(--transition-base);
     border: 1px solid var(--gray-100);
     overflow: hidden;
 }
