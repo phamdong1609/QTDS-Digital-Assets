@@ -278,6 +278,74 @@ p:last-child {
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
 }
+/* --- Skeleton Loader --- */
+.skeleton-card {
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    height: 100%;
+}
+
+.skeleton-card__image {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: var(--gray-200);
+}
+
+.skeleton-card__body {
+    padding: var(--space-6);
+}
+
+.skeleton-card__tag {
+    width: 25%;
+    height: 20px;
+    background-color: var(--gray-200);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-card__title {
+    width: 80%;
+    height: 24px;
+    background-color: var(--gray-200);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2);
+}
+
+.skeleton-card__description {
+    width: 100%;
+    height: 48px;
+    background-color: var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+/* --- Shimmer Animation --- */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--gray-200);
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
 /* Button Component */
         .qtds-btn {
             display: inline-flex;
@@ -2074,6 +2142,31 @@ p:last-child {
     };
 
     // =================================================================
+    // SKELETON LOADER
+    // =================================================================
+    function renderSkeletonLoader(container, count) {
+        if (!container) return;
+        container.innerHTML = ''; // Clear existing content
+        const skeletonHTML = `
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card__image"></div>
+                <div class="skeleton-card__body">
+                    <div class="skeleton skeleton-card__tag"></div>
+                    <div class="skeleton skeleton-card__title"></div>
+                    <div class="skeleton skeleton-card__description"></div>
+                </div>
+            </div>
+        `;
+        for (let i = 0; i < count; i++) {
+            if (container.classList.contains('swiper-wrapper')) {
+                container.innerHTML += `<div class="swiper-slide">${skeletonHTML}</div>`;
+            } else {
+                container.innerHTML += skeletonHTML;
+            }
+        }
+    }
+
+    // =================================================================
     // NAVIGATION & UI INTERACTIONS
     // =================================================================
 
@@ -2158,12 +2251,11 @@ p:last-child {
             currentPage = 1;
             displayedArticlesCount = 0;
             hasMoreArticles = true; // Reset for new filter/search
-            if (ui.loader) ui.loader.style.display = 'flex';
-            if (ui.grid) ui.grid.innerHTML = '';
-            if (isInitialLoad && ui.grid) {
-                for (let i = 0; i < ARTICLES_PER_PAGE; i++) {
-                    ui.grid.insertAdjacentHTML('beforeend', '<div class="skeleton-card"></div>');
-                }
+            if (isInitialLoad) {
+                renderSkeletonLoader(ui.featuredWrapper, 3);
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
+            } else {
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
             }
         }
 
@@ -2177,7 +2269,10 @@ p:last-child {
             const data = await response.json();
             if (data.error) throw new Error(data.message);
 
-            if (currentPage === 1 && ui.grid) ui.grid.innerHTML = '';
+            if (currentPage === 1) {
+                if (ui.grid) ui.grid.innerHTML = '';
+                if (isInitialLoad && ui.featuredWrapper) ui.featuredWrapper.innerHTML = '';
+            }
 
             if (isInitialLoad && data.metadata) {
                 renderFilters(data.metadata.categories || []);
@@ -2392,6 +2487,3 @@ p:last-child {
         // console.warn("Thư viện không thể khởi tạo: Thiếu các phần tử HTML cần thiết.");
     }
 });
-    </script>
-</body>
-</html>

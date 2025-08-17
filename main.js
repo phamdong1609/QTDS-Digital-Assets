@@ -29,6 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // =================================================================
+    // SKELETON LOADER
+    // =================================================================
+    function renderSkeletonLoader(container, count) {
+        if (!container) return;
+        container.innerHTML = ''; // Clear existing content
+        const skeletonHTML = `
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card__image"></div>
+                <div class="skeleton-card__body">
+                    <div class="skeleton skeleton-card__tag"></div>
+                    <div class="skeleton skeleton-card__title"></div>
+                    <div class="skeleton skeleton-card__description"></div>
+                </div>
+            </div>
+        `;
+        for (let i = 0; i < count; i++) {
+            if (container.classList.contains('swiper-wrapper')) {
+                container.innerHTML += `<div class="swiper-slide">${skeletonHTML}</div>`;
+            } else {
+                container.innerHTML += skeletonHTML;
+            }
+        }
+    }
+
+    // =================================================================
     // NAVIGATION & UI INTERACTIONS
     // =================================================================
 
@@ -113,12 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPage = 1;
             displayedArticlesCount = 0;
             hasMoreArticles = true; // Reset for new filter/search
-            if (ui.loader) ui.loader.style.display = 'flex';
-            if (ui.grid) ui.grid.innerHTML = '';
-            if (isInitialLoad && ui.grid) {
-                for (let i = 0; i < ARTICLES_PER_PAGE; i++) {
-                    ui.grid.insertAdjacentHTML('beforeend', '<div class="skeleton-card"></div>');
-                }
+            if (isInitialLoad) {
+                renderSkeletonLoader(ui.featuredWrapper, 3);
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
+            } else {
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
             }
         }
 
@@ -132,7 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (data.error) throw new Error(data.message);
 
-            if (currentPage === 1 && ui.grid) ui.grid.innerHTML = '';
+            if (currentPage === 1) {
+                if (ui.grid) ui.grid.innerHTML = '';
+                if (isInitialLoad && ui.featuredWrapper) ui.featuredWrapper.innerHTML = '';
+            }
 
             if (isInitialLoad && data.metadata) {
                 renderFilters(data.metadata.categories || []);
