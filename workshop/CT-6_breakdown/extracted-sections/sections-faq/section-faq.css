@@ -1,0 +1,54 @@
+/* ----- FAQ Section ----- */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-4);
+        }
+
+        .faq__button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-6);
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: var(--text-xl);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .faq__icon {
+            transition: transform var(--transition-base);
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .faq__button--active .faq__icon {
+            transform: rotate(180deg);
+        }
+
+        .faq__content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .faq__content-inner {
+            padding: 0 var(--space-6) var(--space-6);
+        }
+
+/* Mobile responsive for FAQ */
+@media (max-width: 768px) {
+    /* Fix FAQ button text */
+    .faq__button {
+        font-size: var(--text-lg);
+        padding: var(--space-4);
+    }
+}        

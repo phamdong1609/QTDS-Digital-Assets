@@ -452,6 +452,10 @@
   }
 }
 
+.roi-preview__bar--cost {
+  height: 30% !important;
+}
+
 /* Animation delay for cards */
 .benefits__stakeholders .stakeholder-card:nth-child(2) {
   animation-delay: 0.2s;

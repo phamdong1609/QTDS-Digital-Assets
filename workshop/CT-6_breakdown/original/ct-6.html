@@ -345,53 +345,7 @@ body {
             font-size: var(--text-sm);
             color: var(--gray-600);
         }
-        
-        /* ----- FAQ Section ----- */
-        .faq {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq__item {
-            background: white;
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            margin-bottom: var(--space-4);
-        }
-
-        .faq__button {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-6);
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: var(--text-xl);
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .faq__icon {
-            transition: transform var(--transition-base);
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
-
-        .faq__button--active .faq__icon {
-            transform: rotate(180deg);
-        }
-
-        .faq__content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-
-        .faq__content-inner {
-            padding: 0 var(--space-6) var(--space-6);
-        }
-
+       
         /* ==========================================================================
            6. ANIMATIONS & HELPERS
            ========================================================================== */
@@ -458,12 +412,6 @@ body {
             /* Fix card overflow */
             .card {
                 max-width: 100%;
-            }
-
-            /* Fix FAQ button text */
-            .faq__button {
-                font-size: var(--text-lg);
-                padding: var(--space-4);
             }
 
             /* Fix data flow items */
@@ -759,12 +707,6 @@ body {
 
 
 
-
-
-.roi-preview__bar--cost {
-  height: 30% !important;
-}
-
 /* Library Card Button */
 .article-card .card__body {
     display: flex;
@@ -845,82 +787,6 @@ body {
 
     <main>
 
-
-<!-- FAQ Section -->
-<section id="faq" class="section" style="background-color: white;">
-    <div class="container">
-        <div class="scroll-animate section-header">
-            <h2>Giải Đáp Thắc Mắc Về QTDS</h2>
-        </div>
-
-        <div class="faq">
-            <!-- Câu hỏi 1 - giữ nguyên -->
-            <div class="scroll-animate faq__item">
-                <button class="faq__button">
-                    <span>QTDS có phù hợp với các QTDND quy mô nhỏ không?</span>
-                    <i class="fas fa-chevron-down faq__icon"></i>
-                </button>
-                <div class="faq__content">
-                    <div class="faq__content-inner">
-                        <p>Hoàn toàn phù hợp. QTDS được thiết kế với chi phí thấp và dễ triển khai, không yêu cầu hạ tầng phức tạp, lý tưởng cho các QTDND có nguồn lực hạn chế.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Câu hỏi 2 - cập nhật text -->
-            <div class="scroll-animate faq__item">
-                <button class="faq__button">
-                    <span>QTDS khác gì so với các hệ thống Core Banking đắt tiền?</span>
-                    <i class="fas fa-chevron-down faq__icon"></i>
-                </button>
-                <div class="faq__content">
-                    <div class="faq__content-inner">
-                        <p>QTDS là giải pháp chuyên biệt, tập trung vào quy trình tín dụng cốt lõi, giúp số hóa từng bước một cách hiệu quả với chi phí thấp, thay vì một hệ thống Core Banking tổng thể, tốn kém và phức tạp.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Câu hỏi 3 - giữ nguyên -->
-            <div class="scroll-animate faq__item">
-                <button class="faq__button">
-                    <span>Làm thế nào QTDS giúp tuân thủ quy định của NHNN?</span>
-                    <i class="fas fa-chevron-down faq__icon"></i>
-                </button>
-                <div class="faq__content">
-                    <div class="faq__content-inner">
-                        <p>Bằng cách tự động hóa việc nhập liệu từ các nguồn chính thức (CIC, OCR giấy tờ), QTDS giảm thiểu sai sót, gian lận, giúp đảm bảo tính toàn vẹn dữ liệu và tuân thủ các yêu cầu quản trị, kiểm soát của NHNN.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Câu hỏi 4 - MỚI -->
-            <div class="scroll-animate faq__item">
-                <button class="faq__button">
-                    <span>QTDS có tích hợp Trí tuệ nhân tạo (AI) không?</span>
-                    <i class="fas fa-chevron-down faq__icon"></i>
-                </button>
-                <div class="faq__content">
-                    <div class="faq__content-inner">
-                        <p>Có, QTDS đã tích hợp AI để tự động trích xuất dữ liệu từ giấy tờ tùy thân và chứng nhận quyền sử dụng đất, giúp tăng tốc độ và độ chính xác trong quy trình thẩm định.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Câu hỏi 5 - MỚI -->
-            <div class="scroll-animate faq__item">
-                <button class="faq__button">
-                    <span>QTDS có hỗ trợ hợp đồng điện tử và chữ ký số không?</span>
-                    <i class="fas fa-chevron-down faq__icon"></i>
-                </button>
-                <div class="faq__content">
-                    <div class="faq__content-inner">
-                        <p>QTDS được xây dựng với kiến trúc sẵn sàng cho tương lai, có thể hỗ trợ hợp đồng điện tử, chữ ký số và phê duyệt online, giúp QTDND tiến tới số hóa toàn diện hơn.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <!-- Podcast Section -->
@@ -1075,20 +941,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-
-            // FAQ Accordion
-            document.querySelectorAll('.faq__button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    button.classList.toggle('faq__button--active');
-
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }
-                });
-            });
 
             // Library Loader
             function initLibrary() {
