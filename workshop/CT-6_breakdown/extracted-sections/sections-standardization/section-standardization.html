@@ -1,0 +1,170 @@
+<!-- Section 3 - Data Standardization -->
+<section id="chuan-hoa-du-lieu" class="section" style="background-color: white;">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="scroll-animate section-header">
+            <span class="section-header__tagline">NGUYÊN NHÂN GỐC RỄ</span>
+            <h2>Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên</h2>
+            <p>Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu</p>
+        </div>
+
+        <!-- Visual Flow -->
+        <div class="data-flow">
+            <div class="scroll-animate data-flow__item">
+                <div class="data-flow__icon" style="background: var(--gradient-primary);">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h4>Dữ liệu thô</h4>
+                <p>Giấy tờ, chứng từ không đồng nhất</p>
+            </div>
+            <div class="scroll-animate data-flow__arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="scroll-animate data-flow__item" style="animation-delay: 0.1s;">
+                <div class="data-flow__icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <h4>Nhập liệu thủ công</h4>
+                <p>Sai sót, thiếu sót, không nhất quán</p>
+            </div>
+            <div class="scroll-animate data-flow__arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="scroll-animate data-flow__item" style="animation-delay: 0.2s;">
+                <div class="data-flow__icon" style="background: linear-gradient(135deg, var(--danger) 0%, #D33B2C 100%);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>Rủi ro hệ thống</h4>
+                <p>Vi phạm, gian lận, kém hiệu quả</p>
+            </div>
+        </div>
+
+        <!-- 3 Columns Grid -->
+        <div class="std-grid">
+            <!-- Column 1: Thực trạng -->
+            <div class="scroll-animate card std-card std-card--problem">
+                <div class="card__header std-card__header">
+                    <div class="card__icon std-card__icon" style="background: var(--gradient-primary);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="card__title">Thực trạng Dữ liệu</h3>
+                </div>
+                <div class="card__body">
+                    <ul class="std-list">
+                        <li class="std-list__item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Các phần mềm đơn lẻ, không tích hợp</span>
+                        </li>
+                        <li class="std-list__item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Dữ liệu tồn tại theo "ốc đảo" riêng biệt</span>
+                        </li>
+                        <li class="std-list__item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Phụ thuộc hoàn toàn vào nhập liệu thủ công</span>
+                        </li>
+                        <li class="std-list__item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Không có quy chuẩn định dạng thống nhất</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 2: Hậu quả -->
+            <div class="scroll-animate card std-card std-card--impact" style="animation-delay: 0.2s;">
+                <div class="card__header std-card__header">
+                    <div class="card__icon std-card__icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card__title">Hậu quả Trực tiếp</h3>
+                </div>
+                <div class="card__body">
+                    <div class="impact-metrics">
+                        <div class="impact-metric">
+                            <div class="impact-metric__icon text-danger">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="impact-metric__content">
+                                <strong>Gian lận dễ dàng</strong>
+                                <p>Lập khống hồ sơ, làm giả chứng từ khó phát hiện</p>
+                            </div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-metric__icon text-warning">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="impact-metric__content">
+                                <strong>Vận hành chậm trễ</strong>
+                                <p>Thời gian xử lý kéo dài do kiểm tra thủ công</p>
+                            </div>
+                        </div>
+                        <div class="impact-metric">
+                            <div class="impact-metric__icon text-purple">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="impact-metric__content">
+                                <strong>Sai sót chồng chất</strong>
+                                <p>Lỗi nhập liệu tích lũy qua từng hồ sơ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Rào cản -->
+            <div class="scroll-animate card std-card std-card--barrier" style="animation-delay: 0.4s;">
+                <div class="card__header std-card__header">
+                    <div class="card__icon std-card__icon" style="background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="card__title">Rào cản Văn hóa</h3>
+                </div>
+                <div class="card__body">
+                    <div class="barrier-insight">
+                        <i class="fas fa-quote-left"></i>
+                        <p>
+                            Quy trình thủ công tạo ra sự <strong>mờ ảo trong quản lý</strong>,
+                            khiến ban lãnh đạo khó có cái nhìn rõ ràng về hoạt động thực tế.
+                        </p>
+                        <p>
+                            Sự mờ ảo này vô tình <strong>bảo vệ những cá nhân</strong> làm việc
+                            kém hiệu quả hoặc có hành vi không minh bạch.
+                        </p>
+                    </div>
+                    <div class="barrier-flow">
+                        <span>Thủ công</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Mờ ảo</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Khó kiểm soát</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insight Box -->
+        <div class="scroll-animate key-insight-box">
+            <div class="key-insight-box__icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="key-insight-box__content">
+                <h4>Nhận định then chốt:</h4>
+                <p>
+                    Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>,
+                    thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý -
+                    đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="scroll-animate" style="text-align: center; margin-top: var(--space-16);">
+            <a href="#giai-phap" class="btn btn--primary">
+                <i class="fas fa-shield-alt"></i>
+                Khám phá Giải pháp QTDS
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>

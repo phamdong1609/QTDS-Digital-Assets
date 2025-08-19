@@ -397,3 +397,27 @@ Dựa vào file code đang mở, hãy thực hiện công việc của một chu
     * Bên trong thẻ `<script>` và tìm các js liên quan đến section này. Bỏ qua nếu không có js riêng cho section này 
 
 Hãy trình bày kết quả thành 3 khối code riêng biệt, có ghi chú rõ ràng cho từng khối. Đảm bảo trích xuất nguyên gốc, không tự ý thay đổi
+
+-----
+Tiếp tục với sections-sections-standardization
+
+Dựa vào file code đang mở, hãy thực hiện công việc của một chuyên gia "phân rã" code.
+
+**Nhiệm vụ:** Trích xuất toàn bộ code liên quan đến phần section hero và tách thành 3 phần riêng biệt (HTML, CSS, JavaScript) để tôi dán vào 3 file tương ứng.
+
+**Yêu cầu chi tiết:**
+
+1.  **HTML (cho file `section-standardization.html`):**
+    * Tìm và lấy toàn bộ khối mã HTML của section này
+
+2.  **CSS (cho file `section-standardization.css`):**
+    * Bên trong thẻ `<style>`
+    * Lấy toàn bộ các quy tắc CSS thuộc về khối đó cho đến hết và các phần khác liên quan trong css đến
+
+3.  **JavaScript (cho file `section-standardizations.js`):**
+    * Bên trong thẻ `<script>` và tìm các js liên quan đến section này. Bỏ qua nếu không có js riêng cho section này 
+
+Hãy trình bày kết quả thành 3 khối code riêng biệt, có ghi chú rõ ràng cho từng khối. Đảm bảo trích xuất nguyên gốc, không tự ý thay đổi 
+
+(*) Ghi chú quan trọng: Phần này trong section-standardization.css ở cuối có 1 cái nên thêm vào toàn cục 
+
