@@ -1,12 +1,18 @@
 /**
  * Section: QTDS Solutions
- * Description: Defines styles for the solutions showcase section, including pillars,
- * process flows, comparisons, and other related components.
- * Version: 1.2 - Smoothed hover animations and removed distracting hover effect.
+ * Description: Defines styles for the solutions showcase section.
+ * Version: 1.3 - Set background to white for alternating color scheme.
  */
 
 /* ==========================================================
-   1. VISUAL & FEATURE BADGES
+   1. BLOCK LEVEL STYLES
+   ========================================================== */
+.qtds-solutions {
+    background-color: white;
+}
+
+/* ==========================================================
+   2. VISUAL & FEATURE BADGES
    ========================================================== */
 .qtds-solutions__visual {
     display: flex;

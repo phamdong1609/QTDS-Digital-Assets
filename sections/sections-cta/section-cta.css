@@ -1,32 +1,32 @@
 /**
  * Section: QTDS Call to Action (CTA)
- * Description: Defines styles for the main call-to-action section, including feature highlights and action buttons.
- * Version: 1.1 - Removed decorative pseudo-element to align with ct-7.html style.
+ * Description: Defines styles for the main call-to-action section.
+ * Version: 1.2 - Set background to white for alternating color scheme.
  */
 
 /* ==========================================================
-   1. BLOCK: QTDS CTA
+   1. BLOCK: QTDS CTA SECTION
    ========================================================== */
+.qtds-cta-section {
+    background-color: white;
+}
+
 .qtds-cta {
     text-align: center;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    /* The .qtds-card-base class in the HTML provides the main card styling */
-    /* (background, border-radius, box-shadow) */
+    /* Add card base styles directly here for consistency */
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-12);
 }
-
-/* * FIX: The ::before pseudo-element was removed.
- * It created a decorative background gradient that was clipped,
- * resulting in a sharp-cornered "tab" effect that broke the card's rounded appearance.
- * Removing it makes the component a clean, consistent card, matching the ct-7 reference.
-*/
 
 /* ==========================================================
    2. ELEMENTS WITHIN QTDS CTA
    ========================================================== */
-
 .qtds-cta__description {
     font-size: var(--text-xl);
     color: var(--gray-600);
