@@ -2,7 +2,7 @@
  * Section: QTDS Solutions
  * Description: Defines styles for the solutions showcase section, including pillars,
  * process flows, comparisons, and other related components.
- * Version: 1.1 - Cleaned and merged
+ * Version: 1.2 - Smoothed hover animations and removed distracting hover effect.
  */
 
 /* ==========================================================
@@ -47,6 +47,8 @@
     padding: var(--space-8);
     border: 1px solid var(--gray-100);
     overflow: hidden;
+    /* *** NEW FIX #1: Add transition for smooth hover effects *** */
+    transition: all var(--transition-base);
 }
 
 .qtds-pillar:hover {
@@ -54,20 +56,10 @@
     box-shadow: var(--shadow-xl);
 }
 
-.qtds-pillar::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    pointer-events: none;
-}
-
-.qtds-pillar:hover::before {
-    opacity: 1;
-}
+/* * *** NEW FIX #2: Removed the ::before pseudo-element rules. ***
+ * This eliminates the blue radial gradient that appeared on hover,
+ * which made the text content difficult to read.
+*/
 
 .qtds-pillar__number {
     position: absolute;

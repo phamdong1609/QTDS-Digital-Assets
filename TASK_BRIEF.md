@@ -50,3 +50,22 @@ Chúng ta chỉ cần thêm một quy tắc CSS mới vào file component-button
 
 Các file HTML và JS của bạn đã xử lý logic đúng nên không cần thay đổi.
 
+## Công việc 3
+- [cite_start]**sections-solutions**: Sửa lỗi hiển thị CSS đang chưa được ưng ý[cite: 630]. 
+- Cung cấp: section solutions 
+1. section-solutions.css
+2. section-solutions.html
+
+Tôi đã phân tích và xác định chính xác hai vấn đề bạn nêu ra trong sections-solutions:
+
+Hiệu ứng cứng nhắc: Các khối "Pillar" khi rê chuột vào bị giật lên thay vì chuyển động mượt mà. Nguyên nhân là do class .qtds-pillar thiếu thuộc tính transition.
+
+Hiệu ứng nền xanh khó đọc: Khi rê chuột, có một vầng sáng màu xanh lam hiện ra làm mờ chữ. Đây là hiệu ứng được tạo bởi pseudo-element ::before.
+
+Chúng ta sẽ khắc phục cả hai vấn đề này bằng cách cập nhật duy nhất file sections-solutions.css.
+
+## Công việc 4
+- Sửa lỗi **sections-cta**: Sửa lỗi giao diện và tab 
+- Cung cấp: 
+1. section-cta.css 
+2. section-cta.html
