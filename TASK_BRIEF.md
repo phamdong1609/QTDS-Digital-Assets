@@ -37,3 +37,16 @@ Kết quả:
 - Giải pháp: Thêm thuộc tính spaceBetween: 30 vào cấu hình Swiper trong file JS.
 
 
+## Công việc 2 
+- Sửa lỗi [cite_start]**sections-library**: Sửa lỗi hiển thị nút "Xem thêm"[cite: 633]. 
+- Cung cấp: section-library.css, section-library.html, section-library.js
+
+- Kết quả: Tôi đã phân tích và xác định chính xác nguyên nhân lỗi như bạn mô tả: Nút "Xem thêm" khi tải sẽ hiện cả chữ và vòng xoay loading.
+
+Lỗi này xảy ra do một quy tắc CSS trong file component-button.css đang "ép" chữ và icon bên trong nút phải luôn có màu, kể cả khi nút đang ở trạng thái loading.
+
+Giải Pháp
+Chúng ta chỉ cần thêm một quy tắc CSS mới vào file component-button.css để "ra lệnh" cho chữ và icon phải ẩn đi (trở nên trong suốt) khi nút có class .loading.
+
+Các file HTML và JS của bạn đã xử lý logic đúng nên không cần thay đổi.
+
