@@ -511,3 +511,20 @@ Hãy trình bày kết quả thành khối code riêng biệt, có ghi chú rõ 
     * Bên trong thẻ `<script>` và tìm các js liên quan đến section này. Bỏ qua nếu không có js riêng cho section này 
 
 Hãy trình bày kết quả thành khối code riêng biệt, có ghi chú rõ ràng cho từng khối. Đảm bảo trích xuất nguyên gốc, không tự ý thay đổi. Ko liệt kê utilities
+
+-----
+## Tiếp tục với sections-library
+
+**Nhiệm vụ:** Trích xuất toàn bộ code liên quan đến phần section hero và tách thành 2 phần riêng biệt ( CSS, JavaScript) để tôi dán vào 2 file tương ứng.
+
+**Yêu cầu chi tiết:**
+
+
+2.  **CSS (cho file `section-library.css`):**
+    * Bên trong thẻ `<style>`
+    * Lấy toàn bộ các quy tắc CSS thuộc về khối đó cho đến hết và các phần khác liên quan trong css đến
+
+3.  **JavaScript (cho file `section-library.js`):**
+    * Bên trong thẻ `<script>` và tìm các js liên quan đến section này. Bỏ qua nếu không có js riêng cho section này 
+
+Hãy trình bày kết quả thành khối code riêng biệt, có ghi chú rõ ràng cho từng khối. Đảm bảo trích xuất nguyên gốc, không tự ý thay đổi. Ko liệt kê utilities

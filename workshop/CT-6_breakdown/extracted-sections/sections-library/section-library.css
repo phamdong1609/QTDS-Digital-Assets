@@ -1,0 +1,40 @@
+/* Library Card Button */
+.article-card .card__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.article-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    text-align: center;
+}
+
+.btn-like {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--secondary);
+    color: white !important;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.article-card:hover .btn-like {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: white !important;
+    text-decoration: none;
+}
+
+.btn-like i {
+    margin-left: var(--space-2);
+    transition: transform var(--transition-base);
+}
+
+.article-card:hover .btn-like i {
+    transform: translateX(4px);
+}
