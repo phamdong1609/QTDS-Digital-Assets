@@ -1,7 +1,7 @@
 /**
  * Section: QTDS Call to Action (CTA)
  * Description: Defines styles for the main call-to-action section, including feature highlights and action buttons.
- * Version: 1.0
+ * Version: 1.1 - Removed decorative pseudo-element to align with ct-7.html style.
  */
 
 /* ==========================================================
@@ -13,20 +13,15 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    /* The .qtds-card-base class in the HTML provides the main card styling */
+    /* (background, border-radius, box-shadow) */
 }
 
-/* Background decoration element */
-.qtds-cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none; /* Thêm để không cản trở việc click */
-}
+/* * FIX: The ::before pseudo-element was removed.
+ * It created a decorative background gradient that was clipped,
+ * resulting in a sharp-cornered "tab" effect that broke the card's rounded appearance.
+ * Removing it makes the component a clean, consistent card, matching the ct-7 reference.
+*/
 
 /* ==========================================================
    2. ELEMENTS WITHIN QTDS CTA
@@ -94,8 +89,6 @@
     margin-top: var(--space-10);
 }
 
-/* Lưu ý: .qtds-cta__actions đã được định nghĩa trong component-button-group.css. 
-   Chúng ta chỉ cần định nghĩa lại các style đặc thù nếu cần. */
 .qtds-cta__actions .qtds-btn--primary {
     transform: scale(1.05);
 }

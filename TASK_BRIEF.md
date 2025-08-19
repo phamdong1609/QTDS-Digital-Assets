@@ -69,3 +69,11 @@ Chúng ta sẽ khắc phục cả hai vấn đề này bằng cách cập nhật
 - Cung cấp: 
 1. section-cta.css 
 2. section-cta.html
+
+Tôi đã phân tích và hiểu rõ vấn đề của sections-cta. Bạn nói đúng, nó không giống với ct-7 vì có một hiệu ứng trang trí ở góc trên bên phải, tạo ra cảm giác như một cái "tab" không được bo góc.
+
+Nguyên nhân là do một quy tắc CSS (.qtds-cta::before) đang tạo ra một vầng sáng trang trí, nhưng nó lại phá vỡ thiết kế thẻ (card) đồng nhất. Để làm cho nó giống với ct-7, chúng ta chỉ cần loại bỏ hiệu ứng trang trí này.
+
+## Công việc 5
+- Công việc phát sinh: làm cho các section màu sắc khác nhau để tạo cảm giác dễ chịu. 
+- Cung cấp đoạn code gốc và yêu cầu tiếp 
