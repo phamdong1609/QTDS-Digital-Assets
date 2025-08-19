@@ -1,5 +1,5 @@
 /* components/component-button/component-button.css */
-/* Version 5 - Final. Replicates the successful logic from ct-7.html. */
+/* Version 6 - Fixed loading state text visibility */
 
 /* === Base Button Styles (Hardened) === */
 [class*="qtds-btn"] {
@@ -29,13 +29,12 @@
 /* === Primary Button (Hardened with child selectors) === */
 [class*="qtds-btn--primary"] {
     background: var(--primary) !important;
-    color: white !important; /* Force color on the <a> tag */
+    color: white !important;
 }
 
-/* THIS IS THE KEY FIX, inspired by ct-7.html */
 [class*="qtds-btn--primary"] span,
 [class*="qtds-btn--primary"] i {
-    color: white !important; /* Force color on span and i tags inside */
+    color: white !important;
 }
 
 [class*="qtds-btn--primary"]:hover {
@@ -64,6 +63,18 @@
     color: transparent !important;
     pointer-events: none !important;
 }
+
+/* * *** NEW FIX STARTS HERE ***
+ * This rule is more specific and forces the inner span and i tags
+ * to become transparent when the parent button has the .loading class,
+ * overriding the general color rules above.
+*/
+[class*="qtds-btn"].loading span,
+[class*="qtds-btn"].loading i {
+    color: transparent !important;
+}
+/* *** NEW FIX ENDS HERE *** */
+
 
 [class*="qtds-btn"].loading::after {
     content: "" !important;

@@ -2,13 +2,14 @@
  * Section: QTDS Featured Posts
  * Description: Handles featured posts carousel by reusing the Article Card component.
  * Dependencies: Swiper.js, component-article-card.js
- * Version: 1.1
+ * Version: 1.2 - Added spaceBetween for better layout
  */
 
 class QTDSFeaturedSection {
     constructor() {
         this.swiper = null;
-        this.featuredSection = document.getElementById('featured-section'); // Sử dụng ID gốc từ HTML
+        // IMPORTANT: IDs must match the final HTML structure (e.g., from index.html)
+        this.featuredSection = document.getElementById('featured-section'); 
         this.featuredWrapper = document.getElementById('featured-post-grid');
     }
 
@@ -37,10 +38,7 @@ class QTDSFeaturedSection {
         this.featuredWrapper.innerHTML = ''; // Clear old content
 
         featuredArticles.forEach(article => {
-            // GỌI ĐẾN "NHÀ MÁY" ARTICLE CARD ĐỂ TẠO SẢN PHẨM
             const cardElement = createQtdsArticleCard(article);
-            
-            // Gắn class riêng cho card trong Swiper nếu cần
             cardElement.classList.add('qtds-featured-card');
 
             const slide = document.createElement('div');
@@ -61,12 +59,17 @@ class QTDSFeaturedSection {
             this.swiper.destroy(true, true);
         }
 
+        // IMPORTANT: The selector '#featured-swiper' must match the ID in the final HTML
         this.swiper = new Swiper('#featured-swiper', {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
             loop: articleCount > 3,
+            
+            // NEW FIX: Adds space between the actual slides after they load.
+            spaceBetween: 30,
+
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,

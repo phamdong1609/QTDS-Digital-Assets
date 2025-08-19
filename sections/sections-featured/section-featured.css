@@ -1,7 +1,7 @@
 /**
  * Section: QTDS Featured Posts
  * Description: Carousel section displaying featured articles with Swiper.js
- * Version: 1.0
+ * Version: 1.1 - Added spacing for skeletons and slides
  */
 
 /* ----- Block: Featured Posts Section ----- */
@@ -16,6 +16,16 @@
     padding-bottom: var(--space-10);
 }
 
+/* * NEW FIX: Add gap for skeleton loaders.
+ * This ensures that even before Swiper.js initializes, the skeleton
+ * cards have proper spacing and don't stick together.
+*/
+.qtds-featured__carousel .swiper-wrapper {
+    display: flex;
+    gap: 30px; /* Adjust this value as needed */
+}
+
+
 /* ----- Featured Cards ----- */
 .qtds-featured-card {
     height: 100%;
@@ -28,12 +38,12 @@
 }
 
 .qtds-featured .swiper-pagination-bullet-active {
-    background: var(--primary); /* Đã bỏ !important */
+    background: var(--primary);
 }
 
 .qtds-featured .swiper-button-next, 
 .qtds-featured .swiper-button-prev {
-    color: var(--primary); /* Đã bỏ !important */
+    color: var(--primary);
 }
 
 /* ----- Responsive Styles ----- */

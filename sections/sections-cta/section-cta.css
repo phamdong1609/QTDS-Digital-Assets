@@ -1,37 +1,32 @@
 /**
  * Section: QTDS Call to Action (CTA)
- * Description: Defines styles for the main call-to-action section, including feature highlights and action buttons.
- * Version: 1.0
+ * Description: Defines styles for the main call-to-action section.
+ * Version: 1.2 - Set background to white for alternating color scheme.
  */
 
 /* ==========================================================
-   1. BLOCK: QTDS CTA
+   1. BLOCK: QTDS CTA SECTION
    ========================================================== */
+.qtds-cta-section {
+    background-color: white;
+}
+
 .qtds-cta {
     text-align: center;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-}
-
-/* Background decoration element */
-.qtds-cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none; /* Thêm để không cản trở việc click */
+    /* Add card base styles directly here for consistency */
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-12);
 }
 
 /* ==========================================================
    2. ELEMENTS WITHIN QTDS CTA
    ========================================================== */
-
 .qtds-cta__description {
     font-size: var(--text-xl);
     color: var(--gray-600);
@@ -94,8 +89,6 @@
     margin-top: var(--space-10);
 }
 
-/* Lưu ý: .qtds-cta__actions đã được định nghĩa trong component-button-group.css. 
-   Chúng ta chỉ cần định nghĩa lại các style đặc thù nếu cần. */
 .qtds-cta__actions .qtds-btn--primary {
     transform: scale(1.05);
 }
