@@ -284,3 +284,41 @@ Kế hoạch này cung cấp một lộ trình chi tiết, từng bước để 
 4. **Tổng hợp và áp dụng** tất cả các kỹ năng Git, GitHub Flow, và các tiêu chuẩn mã hóa đã học vào một dự án thực tế, phức tạp.
 
 Đây là một bước tiến lớn, chuyển bạn từ việc "thực hành các kỹ năng" sang "quản lý một dự án bằng các quy trình chuyên nghiệp". Hãy bắt đầu và biến `CT-6` thành `CT-9`—một tài sản số chất lượng cao, được xây dựng một cách bài bản.
+
+-------
+## Danh Sách Chi Tiết Các Thư Mục Section Cần Tạo
+
+1. sections-navbar: Chứa phần thanh điều hướng (navigation).
+
+2. sections-hero: Chứa phần giới thiệu đầu trang (hero section) có hiệu ứng aurora.
+
+3. sections-challenges: Chứa phần "4 Thách Thức Cốt Lõi" (id="thach-thuc").
+
+4. sections-standardization: Chứa phần "Nền tảng Bị Lãng quên" (id="chuan-hoa-du-lieu").
+
+5. sections-solutions: Chứa phần "Giải pháp QTDS" (id="giai-phap").
+
+6. sections-benefits: Chứa phần "Lợi ích Vượt trội" (id="loi-ich").
+
+7. sections-faq: Chứa phần câu hỏi thường gặp (id="faq").
+
+8. sections-podcast: Chứa phần "Lắng nghe Podcast" (id="video-gioi-thieu").
+
+9. sections-cta: Chứa phần kêu gọi hành động "Sẵn Sàng Chuyển Đổi" (id="san-sang-chuyen-doi").
+
+10. sections-library: Chứa phần "Thư Viện Tri Thức" (id="articles").
+
+11. sections-footer: Chứa phần chân trang (footer).
+
+Công việc của bạn bây giờ là:
+
+Tạo thư mục extracted-sections.
+
+Bên trong nó, tạo 11 thư mục con với các tên chính xác như danh sách trên.
+
+Khi xong, báo cho tôi biết nhé.
+
+## Kết quả công việc 
+1. Tạo các thư mục theo hướng dẫn ở trên: có tiền cố sections (s) để nhận biết
+
+2. Sau đó, tạo file trong mỗi thư mục là html, css, js: section-... (không có s)
