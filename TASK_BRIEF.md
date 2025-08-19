@@ -77,3 +77,16 @@ Nguyên nhân là do một quy tắc CSS (.qtds-cta::before) đang tạo ra mộ
 ## Công việc 5
 - Công việc phát sinh: làm cho các section màu sắc khác nhau để tạo cảm giác dễ chịu. 
 - Cung cấp đoạn code gốc và yêu cầu tiếp 
+
+Bạn nói đúng, có một vài chỗ chúng ta cần dọn dẹp để các file CSS mới mà chúng ta vừa sửa có thể hoạt động chính xác. Cụ thể là các thuộc tính style="..." nằm trực tiếp trên các thẻ <section>. Giờ đây, màu nền đã được định nghĩa trong các file CSS riêng, nên các thuộc tính style này không còn cần thiết nữa.
+
+Tôi đã giúp bạn dọn dẹp lại file index.html cho gọn gàng. Bạn hãy thay thế toàn bộ nội dung file cũ bằng phiên bản đã được tinh chỉnh dưới đây nhé.
+
+## Công việc 6
+- Vấn đề: phát sinh lỗi ở section-solutions
+1. Phần hiển thị hình ảnh bị phá cấu trúc - hình ảnh đang hiển thị rất to. 
+2. Button không còn hiển thị đúng nữa - bị di chuyển sát lên tab 
+
+Nguyên nhân của cả hai lỗi này là do khi chúng ta dọn dẹp code bằng cách xóa các thuộc tính style="..." ra khỏi HTML (một việc làm rất tốt), chúng ta đã quên không chuyển các quy tắc định dạng đó vào file sections-solutions.css.
+
+Dưới đây là phiên bản CSS đã được bổ sung lại các quy tắc bị thiếu để khắc phục triệt để vấn đề.
