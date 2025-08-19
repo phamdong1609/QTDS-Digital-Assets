@@ -1,0 +1,289 @@
+/* ----- Challenges Section ----- */
+.challenges__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+}
+
+@media (max-width: 1024px) {
+    .challenges__stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .challenges__stats {
+        gap: 1rem;
+    }
+}
+
+.stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex; /* Thêm lại flexbox */
+    flex-direction: column; /* Căn nội dung theo chiều dọc */
+    justify-content: center; /* Căn giữa nội dung */
+    height: 100%; /* Đảm bảo các item chiếm toàn bộ chiều cao của grid cell */
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+}
+
+.stat-item__value {
+    font-size: var(--text-4xl); /* Giảm kích thước font */
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.stat-item__label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em; /* Đảm bảo không gian cho 2 dòng */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.challenges__grid {
+    display: grid;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .challenges__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Highlight Box */
+.challenges__highlight-box {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto var(--space-8);
+}
+
+.challenges__highlight-box * {
+    color: white;
+}
+
+.challenges__highlight-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.challenges__highlight-icon {
+    margin-right: var(--space-3);
+}
+
+.challenges__highlight-text {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+}
+
+/* Challenge Cards - Update existing */
+.challenges__card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    border: 1px solid var(--gray-100);
+    display: flex;
+    flex-direction: column;
+}
+
+.challenges__card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.challenges__card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--gray-50);
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.challenges__card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+    color: white;
+    flex-shrink: 0;
+}
+
+/* Icon backgrounds for each challenge */
+.challenges__card--1 .challenges__card-icon { background: var(--gradient-primary); }
+.challenges__card--2 .challenges__card-icon { background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%); }
+.challenges__card--3 .challenges__card-icon { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+.challenges__card--4 .challenges__card-icon { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); }
+
+.challenges__card-title {
+    font-size: var(--text-2xl);
+    margin: 0;
+}
+
+.challenges__card-tag {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gray-700);
+}
+
+.challenges__card-body {
+    padding: var(--space-8);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.challenges__card-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+}
+
+.challenges__card-list {
+    list-style: none;
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    margin-bottom: var(--space-6);
+}
+
+.challenges__card-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.challenges__card-list i {
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+    color: var(--primary);
+}
+
+.challenges__card-insight {
+    margin-top: auto;
+    padding: var(--space-4);
+    background-color: var(--gray-100);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+}
+
+/* Cost Comparison */
+.challenges__cost-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.challenges__cost-item {
+    text-align: center;
+    padding: var(--space-3);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+.challenges__cost-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+}
+
+.challenges__cost-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    display: block;
+}
+
+/* Legal Requirements */
+.challenges__legal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+}
+
+.challenges__legal-text {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin-bottom: var(--space-4);
+}
+
+.challenges__deadline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: #FEF3C7;
+    border-radius: var(--radius-lg);
+    color: #92400E;
+    font-size: var(--text-base);
+    font-weight: 500;
+}
+
+.challenges__deadline i {
+    color: #F59E0B;
+    font-size: var(--text-xl);
+}
+
+/* Text color utilities (if not already defined) */
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--accent); }
+.text-purple { color: var(--purple); }
+.text-success { color: var(--secondary); }
+.text-primary { color: var(--primary); }
+
+/* Mobile specific adjustments for Challenges section */
+@media (max-width: 768px) {
+    /* Adjust grid layouts */
+    .challenges__stats,
+    .challenges__grid {
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Fix stat items */
+    .stat-item__value {
+        font-size: var(--text-4xl);
+    }
+}
