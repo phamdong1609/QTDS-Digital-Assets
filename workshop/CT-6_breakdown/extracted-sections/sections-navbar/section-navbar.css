@@ -1,5 +1,13 @@
-/* ----- Navigation ----- */
-.navbar {
+/**
+ * Section: QTDS Navbar
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-navbar.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS NAVBAR
+   ========================================================================== */
+.qtds-navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,52 +19,52 @@
     box-shadow: var(--shadow-sm);
 }
 
-.navbar--scrolled {
+.qtds-navbar--scrolled {
     box-shadow: var(--shadow-md);
 }
 
-.navbar__content {
+.qtds-navbar__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 72px;
 }
 
-.navbar__brand {
+.qtds-navbar__brand {
     display: flex;
     align-items: center;
     gap: var(--space-3);
     text-decoration: none;
 }
 
-.navbar__logo {
+.qtds-navbar__logo {
     height: 40px;
 }
 
-.navbar__brand-name {
+.qtds-navbar__brand-name {
     font-size: var(--text-2xl);
     font-weight: 700;
     color: var(--primary);
 }
 
-.navbar__links {
+.qtds-navbar__links {
     display: flex;
     align-items: center;
     gap: var(--space-10);
 }
 
-.navbar__link {
+.qtds-navbar__link {
     color: var(--gray-700);
     text-decoration: none;
     font-weight: 500;
     transition: color var(--transition-base);
 }
 
-.navbar__link:hover {
+.qtds-navbar__link:hover {
     color: var(--primary);
 }
 
-.navbar__mobile-btn {
+.qtds-navbar__mobile-btn {
     display: none;
     background: none;
     border: none;
@@ -65,21 +73,20 @@
     cursor: pointer;
 }
 
-.navbar__mobile-menu {
+.qtds-navbar__mobile-menu {
     display: none;
     background: white;
     border-top: 1px solid var(--gray-200);
-    /* Fix mobile menu overflow */
     max-height: calc(100vh - 72px);
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.navbar__mobile-menu--active {
+.qtds-navbar__mobile-menu--active {
     display: block;
 }
 
-.navbar__mobile-link {
+.qtds-navbar__mobile-link {
     display: block;
     padding: var(--space-4);
     text-decoration: none;
@@ -88,12 +95,14 @@
     border-bottom: 1px solid var(--gray-100);
 }
 
-/* Responsive for Navbar */
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
 @media (max-width: 1024px) {
-    .navbar__links {
+    .qtds-navbar__links {
         display: none;
     }
-    .navbar__mobile-btn {
+    .qtds-navbar__mobile-btn {
         display: block;
     }
 }

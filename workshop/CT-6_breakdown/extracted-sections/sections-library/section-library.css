@@ -1,17 +1,27 @@
-/* Library Card Button */
-.article-card .card__body {
+/**
+ * Section: QTDS Library
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS for the article cards within the library section.
+ */
+
+/* ==========================================================================
+   COMPONENT: QTDS ARTICLE CARD (within Library)
+   ========================================================================== */
+
+/* This ensures the card body is a flex container, allowing the CTA to be pushed to the bottom */
+.qtds-article-card .qtds-card__body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.article-card__cta {
+.qtds-article-card__cta {
     margin-top: auto;
     padding-top: var(--space-4);
     text-align: center;
 }
 
-.btn-like {
+.qtds-btn-like {
     display: inline-block;
     padding: var(--space-2) var(--space-4);
     background-color: var(--secondary);
@@ -22,7 +32,7 @@
     transition: all var(--transition-base);
 }
 
-.article-card:hover .btn-like {
+.qtds-article-card:hover .qtds-btn-like {
     background-color: var(--secondary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -30,11 +40,11 @@
     text-decoration: none;
 }
 
-.btn-like i {
+.qtds-btn-like i {
     margin-left: var(--space-2);
     transition: transform var(--transition-base);
 }
 
-.article-card:hover .btn-like i {
+.qtds-article-card:hover .qtds-btn-like i {
     transform: translateX(4px);
 }

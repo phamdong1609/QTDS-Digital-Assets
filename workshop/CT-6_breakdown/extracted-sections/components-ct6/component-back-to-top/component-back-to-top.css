@@ -1,27 +1,36 @@
-#backToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-full);
-            font-size: var(--text-xl);
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all var(--transition-base);
-        }
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.0 (Standardized)
+ * Changes:
+ * - Converted from ID (#backToTopBtn) to a reusable class (.qtds-back-to-top).
+ * - Changed state class '.show' to a BEM modifier '.qtds-back-to-top--show'.
+ */
 
-        #backToTopBtn.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+.qtds-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xl);
+    text-decoration: none;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+}
+
+.qtds-back-to-top--show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}

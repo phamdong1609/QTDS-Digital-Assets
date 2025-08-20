@@ -1,54 +1,65 @@
-/* ----- FAQ Section ----- */
-        .faq {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/**
+ * Section: QTDS FAQ
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-faq.html.
+ */
 
-        .faq__item {
-            background: white;
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            margin-bottom: var(--space-4);
-        }
+/* ==========================================================================
+   BLOCK: QTDS FAQ
+   ========================================================================== */
 
-        .faq__button {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-6);
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: var(--text-xl);
-            font-weight: 600;
-            cursor: pointer;
-        }
+.qtds-faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        .faq__icon {
-            transition: transform var(--transition-base);
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
+.qtds-faq__item {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-4);
+}
 
-        .faq__button--active .faq__icon {
-            transform: rotate(180deg);
-        }
+.qtds-faq__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    cursor: pointer;
+}
 
-        .faq__content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
+.qtds-faq__icon {
+    transition: transform var(--transition-base);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
 
-        .faq__content-inner {
-            padding: 0 var(--space-6) var(--space-6);
-        }
+.qtds-faq__button--active .qtds-faq__icon {
+    transform: rotate(180deg);
+}
 
-/* Mobile responsive for FAQ */
+.qtds-faq__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.qtds-faq__content-inner {
+    padding: 0 var(--space-6) var(--space-6);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
-    /* Fix FAQ button text */
-    .faq__button {
+    .qtds-faq__button {
         font-size: var(--text-lg);
         padding: var(--space-4);
     }
-}        
+}
