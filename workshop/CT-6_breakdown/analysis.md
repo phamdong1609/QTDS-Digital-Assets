@@ -614,3 +614,32 @@ Xong, thêm các dòng này sau title
 
 -----
 ## Chuẩn hóa section hero 
+
+## Đã làm tới section standardization 
+
+- /* Utility Classes */
+.text-danger {
+    color: var(--danger);
+}
+
+.text-warning {
+    color: var(--accent);
+}
+
+.text-purple {
+    color: var(--purple);
+}
+
+.text-success {
+    color: var(--secondary);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+/* nhớ thêm phần này vào toàn cục */
+
+-----
+
+
+
