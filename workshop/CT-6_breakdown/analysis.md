@@ -528,3 +528,11 @@ Hãy trình bày kết quả thành khối code riêng biệt, có ghi chú rõ 
     * Bên trong thẻ `<script>` và tìm các js liên quan đến section này. Bỏ qua nếu không có js riêng cho section này 
 
 Hãy trình bày kết quả thành khối code riêng biệt, có ghi chú rõ ràng cho từng khối. Đảm bảo trích xuất nguyên gốc, không tự ý thay đổi. Ko liệt kê utilities
+
+-----
+## Kiểm tra lại navbar 
+
+Ngày cập nhật: @20 tháng 8, 2025 12:11  
+
+- Hỏi Notion AI về đoạn code navbar xem đúng chưa? 
+
