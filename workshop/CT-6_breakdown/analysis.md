@@ -588,3 +588,16 @@ Thêm JS (vào cuối <body>):
 <script src="components-ct6/component-back-to-top/component-back-to-top.js"></script>
 
 Cách làm này đảm bảo chúng ta có thể thử nghiệm và hoàn thiện component này trong một môi trường an toàn trước khi chính thức công nhận nó là một phần của hệ thống.
+
+## Tách css, icon 
+
+. Xử lý Fonts và Icons
+Quyết định: Đây là các file "include" (dùng để nhúng), chúng ta sẽ tạo một thư mục partials "nháp".
+
+Hành động:
+
+Tạo thư mục: Bên trong workshop/CT-6_breakdown/extracted-sections/, hãy tạo một thư mục mới tên là partials-ct6/.
+
+Tạo file: Bên trong partials-ct6/, tạo file head-includes.html.
+
+Di Chuyển Code: Cắt toàn bộ các thẻ <link> dùng để nạp Fonts và Font Awesome từ file ct-6.html gốc và dán chúng vào file partials-ct6/head-includes.html.
