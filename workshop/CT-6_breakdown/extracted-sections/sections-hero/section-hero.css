@@ -1,9 +1,21 @@
+/**
+ * Section: QTDS Hero
+ * Description: Defines styles for the main hero section, standardized with QTDS BEM convention.
+ * Version: 2.1 (Corrected)
+ * Changes:
+ * - Re-included standardized utility classes (.qtds-scroll-animate, .qtds-text-gradient) to maintain component integrity.
+ * - Applied 'qtds-' prefix to all classes.
+ * - Renamed '.hero' to '.qtds-hero' (Block).
+ * - Renamed all child elements to follow BEM (e.g., '.hero__content' to '.qtds-hero__content').
+ * - Renamed '.hero-bg' to '.qtds-hero__bg' for better BEM consistency.
+ * - Renamed animation keyframe 'float' to 'qtds-hero-float' to avoid global conflicts.
+ */
+
 /* ==========================================================================
-   HERO SECTION STYLES - COMPLETE
+   BLOCK: QTDS HERO
    ========================================================================== */
 
-/* ----- Hero Section Base ----- */
-.hero {
+.qtds-hero {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -15,22 +27,18 @@
     padding-top: var(--space-20);
 }
 
-/* Remove or modify animations that might cause overflow */
-.data-flow-grid {
-    display: none; /* Temporarily disable these elements */
-}
+/* --- ELEMENTS --- */
 
-.hero__content {
+.qtds-hero__content {
     position: relative;
     z-index: 1;
     text-align: center;
     max-width: 1000px;
-    /* Prevent content overflow */
     width: 100%;
     padding: 0 var(--space-4);
 }
 
-.hero__badge {
+.qtds-hero__badge {
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
@@ -42,61 +50,39 @@
     backdrop-filter: blur(10px);
 }
 
-.hero__title {
+.qtds-hero__title {
     color: white;
     margin-bottom: var(--space-6);
 }
 
-.hero__subtitle {
-    font-size: 1.875rem !important; /* 30px - giảm từ 56px */
+.qtds-hero__subtitle {
+    font-size: 1.875rem; /* 30px */
     font-weight: 600;
     color: #E2E8F0;
     margin-bottom: var(--space-6);
 }
 
-.hero__description {
+.qtds-hero__description {
     font-size: var(--text-xl);
     color: #94A3B8;
     max-width: 800px;
     margin: 0 auto var(--space-10);
 }
 
-.hero__actions {
+.qtds-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
     justify-content: center;
 }
 
-/* Mobile-specific fixes for hero - PHẦN BẠN HỎI */
-@media (max-width: 768px) {
-    .hero__actions {
-        flex-direction: column;
-        width: 100%;
-        padding: 0 var(--space-4);
-    }
-
-    .hero__actions .btn {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-    }
+/* Background Aurora Effect (Desktop Only) */
+.qtds-hero__bg {
+    display: none; /* Hidden by default, enabled via media query */
 }
-
-/* Text gradient utility class */
-.text-gradient {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ==========================================================================
-   HERO AURORA EFFECT (Desktop only)
-   ========================================================================== */
 
 @media (min-width: 1024px) {
-    .hero-bg {
+    .qtds-hero__bg {
         display: block;
         position: absolute;
         top: 0;
@@ -107,17 +93,17 @@
         z-index: 0;
     }
 
-    .hero-bg::before,
-    .hero-bg::after {
+    .qtds-hero__bg::before,
+    .qtds-hero__bg::after {
         content: '';
         position: absolute;
         border-radius: 50%;
         filter: blur(90px);
         opacity: 0.8;
-        animation: float 25s ease-in-out infinite;
+        animation: qtds-hero-float 25s ease-in-out infinite;
     }
 
-    .hero-bg::before {
+    .qtds-hero__bg::before {
         width: 500px;
         height: 500px;
         background: rgba(26, 115, 232, 0.25);
@@ -126,7 +112,7 @@
         animation-delay: 0s;
     }
 
-    .hero-bg::after {
+    .qtds-hero__bg::after {
         width: 700px;
         height: 700px;
         background: rgba(52, 168, 83, 0.15);
@@ -134,73 +120,88 @@
         left: -200px;
         animation-delay: 12s;
     }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0) translateX(0);
-        }
-        50% {
-            transform: translateY(-50px) translateX(30px) scale(1.1);
-        }
-    }
 }
 
 /* ==========================================================================
-   ADDITIONAL MOBILE RESPONSIVE STYLES
+   UTILITIES USED WITHIN HERO
    ========================================================================== */
 
-@media (max-width: 768px) {
-    /* Fix hero content on mobile */
-    .hero__content {
-        padding: 0 var(--space-3);
-    }
-
-    /* Fix text sizes to prevent overflow */
-    .hero__title {
-        font-size: var(--text-4xl);
-        word-wrap: break-word;
-    }
-
-    .hero__subtitle {
-        font-size: var(--text-2xl);
-        word-wrap: break-word;
-    }
-
-    .hero__description {
-        font-size: var(--text-lg);
-        padding: 0 var(--space-2);
-    }
+/* Standardized Text gradient utility class */
+.qtds-text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Extra small devices */
-@media (max-width: 480px) {
-    .hero__title {
-        font-size: var(--text-3xl);
-    }
-
-    .hero__subtitle {
-        font-size: 1.375rem !important; /* 22px mobile */
-    }
-}
-
-/* ==========================================================================
-   SCROLL ANIMATION CLASSES
-   ========================================================================== */
-
-.scroll-animate {
+/* Standardized Scroll Animation Classes */
+.qtds-scroll-animate {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.scroll-animate.active {
+.qtds-scroll-animate.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Reduce animation distance on mobile */
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes qtds-hero-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-50px) translateX(30px) scale(1.1);
+    }
+}
+
 @media (max-width: 768px) {
-    .scroll-animate {
+    .qtds-hero__actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-4);
+    }
+
+    .qtds-hero__actions .qtds-btn {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .qtds-hero__content {
+        padding: 0 var(--space-3);
+    }
+
+    .qtds-hero__title {
+        font-size: var(--text-4xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__subtitle {
+        font-size: var(--text-2xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__description {
+        font-size: var(--text-lg);
+        padding: 0 var(--space-2);
+    }
+    
+    .qtds-scroll-animate {
         transform: translateY(10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-hero__title {
+        font-size: var(--text-3xl);
+    }
+
+    .qtds-hero__subtitle {
+        font-size: 1.375rem; /* 22px mobile */
     }
 }
