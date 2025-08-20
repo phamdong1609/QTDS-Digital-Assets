@@ -536,3 +536,55 @@ Ngày cập nhật: @20 tháng 8, 2025 12:11
 
 - Hỏi Notion AI về đoạn code navbar xem đúng chưa? 
 
+Ok, đúng rồi 
+
+------
+## Tạo các file mới và nối tệp vào index-ct6.html 
+
+Tạo các tệp _global-ct6.css, _main-ct6.js và nối các file html lẻ vào trong index-ct6.html 
+
+Đã commit và sync lên 
+
+----- 
+## Tạo các linh kiện (component mới)
+
+Kế Hoạch Hành Động
+Hãy thực hiện chính xác theo ý tưởng của bạn:
+
+Tạo thư mục "linh kiện nháp":
+
+Bên trong workshop/CT-6_breakdown/extracted-sections/, hãy tạo một thư mục mới tên là components-ct6/.
+
+Bên trong components-ct6/, tạo tiếp thư mục component-back-to-top/.
+Cấu trúc sẽ là: extracted-sections/components-ct6/component-back-to-top/
+
+Tạo 3 file linh kiện:
+Bên trong thư mục component-back-to-top/ vừa tạo, hãy tạo 3 file:
+
+component-back-to-top.html
+
+component-back-to-top.css
+
+component-back-to-top.js
+
+Di Chuyển Code (Cắt & Dán):
+
+HTML: Cắt thẻ <a href="#" id="backToTopBtn" ...></a> từ file index-ct6.html và dán vào component-back-to-top.html.
+
+CSS: Cắt toàn bộ khối /* BACK TO TOP BUTTON */ từ file _global-ct6.css và dán vào component-back-to-top.css.
+
+JS: Cắt toàn bộ khối // Back to Top từ file _main-ct6.js và dán vào component-back-to-top.js.
+
+Cập Nhật index-ct6.html:
+Cuối cùng, cập nhật lại file index-ct6.html để nạp linh kiện mới này vào:
+
+Thêm CSS:
+<link rel="stylesheet" href="components-ct6/component-back-to-top/component-back-to-top.css">
+
+Thêm HTML (dán lại vào cuối <body>, trước thẻ script):
+<a href="#" id="backToTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></a>
+
+Thêm JS (vào cuối <body>):
+<script src="components-ct6/component-back-to-top/component-back-to-top.js"></script>
+
+Cách làm này đảm bảo chúng ta có thể thử nghiệm và hoàn thiện component này trong một môi trường an toàn trước khi chính thức công nhận nó là một phần của hệ thống.
