@@ -601,3 +601,7 @@ Tạo thư mục: Bên trong workshop/CT-6_breakdown/extracted-sections/, hãy t
 Tạo file: Bên trong partials-ct6/, tạo file head-includes.html.
 
 Di Chuyển Code: Cắt toàn bộ các thẻ <link> dùng để nạp Fonts và Font Awesome từ file ct-6.html gốc và dán chúng vào file partials-ct6/head-includes.html.
+
+-----
+## Chỉnh sửa lại file index-ct6 hoàn chỉnh 
+
