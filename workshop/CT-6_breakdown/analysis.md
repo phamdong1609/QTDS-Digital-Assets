@@ -739,3 +739,11 @@ CSS selector sử dụng .qtds-back-to-top.show là chính
 JavaScript chỉ thêm/xóa class show
 Tránh duplicate code xử lý back-to-top trong nhiều file
 Vấn đề chính là sự không đồng nhất giữa tên class được thêm bởi JS (qtds-back-to-top--show) và class được style trong CSS (.show). Sau khi sửa, button sẽ hoạt động bình thường trên LadiPage.
+
+------
+## Cập nhật các file không muốn update vào trong .gitignore 
+
+/ladipage-build.html
+/ct9-ladipage-build.html
+/ct-7.html
+/CT-7_20250816.html 
