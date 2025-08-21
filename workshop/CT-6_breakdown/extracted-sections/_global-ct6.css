@@ -1,7 +1,7 @@
 /**
  * File: _global-ct6.css (Standardized)
  * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
- * Version: 2.1 (Corrected)
+ * Version: 2.1 (Corrected & Finalized)
  * Changes:
  * - Standardized all utility and component classes with the 'qtds-' prefix.
  * - Re-included the missing '.data-flow__item' rule inside the mobile media query.
@@ -9,7 +9,7 @@
  */
 
 /* ==========================================================================
-   1. CSS VARIABLES & THEME (No changes needed here)
+   1. CSS VARIABLES & THEME
    ========================================================================== */
 :root {
     /* Colors */
@@ -73,7 +73,7 @@
 }
 
 /* ==========================================================================
-   2. RESET & BASE STYLES (No class changes needed here)
+   2. RESET & BASE STYLES
    ========================================================================== */
 *, *::before, *::after {
     margin: 0;
@@ -278,7 +278,6 @@ p:last-child {
         max-width: 100%;
     }
     
-    /* FIX: Re-included the missing rule from original file */
     .qtds-data-flow__item {
         width: 100%;
         max-width: 200px;
