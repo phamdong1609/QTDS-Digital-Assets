@@ -728,3 +728,14 @@ npm error enoent This is related to npm not being able to find a file.
 npm error enoent
 npm error A complete log of this run can be found in: C:\Users\Adminstrator\AppData\Local\npm-cache\_logs\2025-08-21T08_55_49_501Z-debug-0.log
 
+------
+## Sửa lỗi back to top 
+
+- Dùng Opus 4 để sửa lỗi 
+
+Tóm tắt sửa đổi:
+Thống nhất sử dụng class .show thay vì .qtds-back-to-top--show
+CSS selector sử dụng .qtds-back-to-top.show là chính
+JavaScript chỉ thêm/xóa class show
+Tránh duplicate code xử lý back-to-top trong nhiều file
+Vấn đề chính là sự không đồng nhất giữa tên class được thêm bởi JS (qtds-back-to-top--show) và class được style trong CSS (.show). Sau khi sửa, button sẽ hoạt động bình thường trên LadiPage.

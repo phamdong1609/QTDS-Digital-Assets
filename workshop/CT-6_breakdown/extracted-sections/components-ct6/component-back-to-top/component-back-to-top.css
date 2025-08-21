@@ -7,7 +7,8 @@
  * - This ensures maximum compatibility with the LadiPage environment.
  */
 
-[class*="qtds-back-to-top"] {
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
     position: fixed !important;
     bottom: 30px !important;
     right: 30px !important;
@@ -18,10 +19,10 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: var(--radius-full) !important;
-    font-size: var(--text-xl) !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
     text-decoration: none !important;
-    box-shadow: var(--shadow-lg) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
     z-index: 10000 !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -31,18 +32,26 @@
     cursor: pointer !important;
 }
 
-[class*="qtds-back-to-top"] i {
+.qtds-back-to-top i {
     color: white !important;
 }
 
-/* Show state - using simple '.show' class like in CT-7 */
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
 [class*="qtds-back-to-top"].show {
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) !important;
 }
 
-[class*="qtds-back-to-top"]:hover {
-    background: var(--primary-dark) !important;
-    transform: translateY(-3px) !important;
-}

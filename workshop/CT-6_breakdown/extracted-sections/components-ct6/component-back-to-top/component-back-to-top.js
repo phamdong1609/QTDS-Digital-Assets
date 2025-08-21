@@ -6,17 +6,23 @@
  */
 
 // Find the button using its new standardized class name
+// Back To Top Component - Fixed version
 const backToTopBtn = document.querySelector('.qtds-back-to-top');
 
 if (backToTopBtn) {
     window.addEventListener('scroll', () => {
-        // Check the scroll position
+        // Sử dụng class 'show' thay vì BEM modifier
         if (window.scrollY > 400) {
-            // Add the BEM modifier class to show the button
-            backToTopBtn.classList.add('qtds-back-to-top--show');
+            backToTopBtn.classList.add('show');
         } else {
-            // Remove the BEM modifier class to hide the button
-            backToTopBtn.classList.remove('qtds-back-to-top--show');
+            backToTopBtn.classList.remove('show');
         }
     });
+
+    // Thêm sự kiện click
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
+
