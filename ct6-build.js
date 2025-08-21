@@ -1,15 +1,33 @@
-// ct6-build.js - Version 2.4 (Corrected All Directory Paths)
-// This script automates combining standardized files into a single HTML file for LadiPage.
-// This version uses a more robust method for injecting CSS and JS.
+// ct6-build.js - Version 2.5 (Diagnostic Mode)
+// This version will first list the directory structure to help debug path issues.
 
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Bắt đầu quá trình build cho workshop...');
+console.log('🚀 Bắt đầu quá trình build cho workshop (Chế độ Chẩn đoán)...');
 
 // Define paths
 const workshopPath = path.join(__dirname, 'workshop', 'CT-6_breakdown', 'extracted-sections');
 const outputPath = path.join(__dirname, 'ct6-ladipage-build.html');
+
+// ===== DIAGNOSTIC FUNCTION =====
+function listDirectoryStructure(startPath) {
+    console.log('\n🔍 Bắt đầu quét cấu trúc thư mục từ:', startPath);
+    if (!fs.existsSync(startPath)) {
+        console.error('❌ LỖI NGHIÊM TRỌNG: Không tìm thấy thư mục workshop:', startPath);
+        return;
+    }
+    const files = fs.readdirSync(startPath);
+    files.forEach(file => {
+        console.log(`  - ${file}`);
+    });
+    console.log('🔍 Kết thúc quét.\n');
+}
+// ===== END DIAGNOSTIC FUNCTION =====
+
+// Run diagnostic first
+listDirectoryStructure(workshopPath);
+
 
 // Helper to read files
 const readFileContent = (filePath) => {
@@ -18,7 +36,7 @@ const readFileContent = (filePath) => {
         if (fs.existsSync(fullPath)) {
             return fs.readFileSync(fullPath, 'utf8');
         }
-        console.warn(`   ⚠️ Cảnh báo: Không tìm thấy file ${filePath}`);
+        console.warn(`   ⚠️ Cảnh báo: Không tìm thấy file tại đường dẫn: ${fullPath}`);
         return '';
     } catch (error) {
         console.error(`❌ Lỗi khi đọc file: ${filePath}`, error);
@@ -34,7 +52,6 @@ try {
     // 2. Read all HTML partials
     const partials = {
         '{{HEAD_CONTENT}}': readFileContent('partials-ct6/head-includes.html'),
-        // --- FIX: Corrected all directory names to plural 'sections-' ---
         '{{NAVBAR_CONTENT}}': readFileContent('sections-navbar/section-navbar.html'),
         '{{HERO_CONTENT}}': readFileContent('sections-hero/section-hero.html'),
         '{{CHALLENGES_CONTENT}}': readFileContent('sections-challenges/section-challenges.html'),
@@ -59,7 +76,6 @@ try {
     console.log('2. Gom tất cả các file CSS...');
     const cssContents = [
         readFileContent('_global-ct6.css'),
-        // --- FIX: Corrected all directory names to plural 'sections-' ---
         readFileContent('sections-navbar/section-navbar.css'),
         readFileContent('sections-hero/section-hero.css'),
         readFileContent('sections-challenges/section-challenges.css'),
