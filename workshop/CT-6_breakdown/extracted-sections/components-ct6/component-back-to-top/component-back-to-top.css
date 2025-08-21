@@ -1,36 +1,48 @@
 /**
  * Component: QTDS Back To Top
  * Description: Defines styles for the back-to-top button.
- * Version: 1.0 (Standardized)
+ * Version: 1.4 (Aligned with CT-7 working solution)
  * Changes:
- * - Converted from ID (#backToTopBtn) to a reusable class (.qtds-back-to-top).
- * - Changed state class '.show' to a BEM modifier '.qtds-back-to-top--show'.
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
  */
 
-.qtds-back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    background: var(--primary);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-full);
-    font-size: var(--text-xl);
-    text-decoration: none;
-    box-shadow: var(--shadow-lg);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all var(--transition-base);
+[class*="qtds-back-to-top"] {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: var(--radius-full) !important;
+    font-size: var(--text-xl) !important;
+    text-decoration: none !important;
+    box-shadow: var(--shadow-lg) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
 }
 
-.qtds-back-to-top--show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+[class*="qtds-back-to-top"] i {
+    color: white !important;
+}
+
+/* Show state - using simple '.show' class like in CT-7 */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+[class*="qtds-back-to-top"]:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
 }

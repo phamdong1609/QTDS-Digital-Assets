@@ -1,27 +1,21 @@
 /**
  * File: _main-ct6.js (Standardized & Assembled)
- * Description: Main JavaScript file for the CT-6 workshop page.
- * Version: 2.0
+ * Version: 2.1 (Aligned with CT-7)
  * Changes:
- * - Combined all individual JS files (navbar, faq, library, back-to-top, scroll-animate) into one main file.
- * - Standardized all class selectors and toggled classes to use the 'qtds-' prefix.
- * - Wrapped all functionalities in a DOMContentLoaded event to ensure elements are available.
+ * - Updated Back To Top functionality to use a simple '.show' class for LadiPage compatibility.
  */
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== GLOBAL: SCROLL ANIMATIONS =====
-    // This observer is used by multiple components.
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // The 'active' class is a generic state, not component-specific, so it doesn't need a prefix.
                 entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
-    // Initial observation for elements present on page load
     document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
 
     // ===== NAVBAR FUNCTIONALITY =====
@@ -30,18 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
 
-        // Scroll Effect
         if (navbar) {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('qtds-navbar--scrolled');
-                } else {
-                    navbar.classList.remove('qtds-navbar--scrolled');
-                }
+                navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
             });
         }
 
-        // Mobile Menu Toggle
         if (mobileMenuBtn && mobileMenu) {
             const menuIcon = mobileMenuBtn.querySelector('i');
             mobileMenuBtn.addEventListener('click', () => {
@@ -52,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Close mobile menu when a link is clicked
             document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
@@ -127,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </a>`;
             }).join('');
-            // After rendering, find the new elements and observe them for scroll animation
             document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
         }
 
@@ -135,16 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initLibrary();
 
-    // ===== BACK TO TOP FUNCTIONALITY =====
+    // ===== BACK TO TOP FUNCTIONALITY (Aligned with CT-7) =====
     function initBackToTop() {
         const backToTopBtn = document.querySelector('.qtds-back-to-top');
         if (backToTopBtn) {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('qtds-back-to-top--show');
-                } else {
-                    backToTopBtn.classList.remove('qtds-back-to-top--show');
-                }
+                // Using simple '.show' class for LadiPage compatibility
+                backToTopBtn.classList.toggle('show', window.scrollY > 400);
+            });
+            // Add click event for smooth scroll
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
     }
