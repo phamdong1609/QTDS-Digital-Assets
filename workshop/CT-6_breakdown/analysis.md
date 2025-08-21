@@ -674,3 +674,57 @@ File section-library.css hiện tại chỉ chứa style cho các thành phần 
 
 Sau khi bạn cập nhật file CSS này, section thư viện sẽ hiển thị đúng với bố cục dạng lưới như mong đợi.
 
+------
+## Tạo một tự động hóa nối các file thành một file html hoàn chỉnh để chúng lên ladipage 
+
+Công việc: 
+
+1. Tạo 1 file ct6-ladipage-build.html 
+- Tệp này sẽ không public mà chỉ để nối lại thành 1 html thuần đầy đủ css, html, js để nhúng lên ladipage 
+
+2. Nghiên cứu tạo một tự động hóa để kết nối trong tệp này 
+
+Kế hoạch công việc: 
+
+Kế hoạch Tinh Chỉnh (Chính xác 100%)
+Tạo file ct6-build.js:
+
+Đúng như bạn nói, hãy tạo file này ở thư mục gốc của dự án (PD-Digital-Assets-workshop-TASK399-deconstruct-ct6).
+
+Copy toàn bộ code từ Canvas "build.js (Automation Script)" vào file này.
+
+Cập nhật index-ct6.html thành "Khuôn Mẫu":
+
+Mở file workshop/CT-6_breakdown/extracted-sections/index-ct6.html.
+
+Xóa hết nội dung cũ và dán nội dung từ Canvas "index-ct6.html (Template for Build)" vào. File này sẽ trở thành cái khuôn để "cỗ máy" của chúng ta lắp ráp.
+
+Cập nhật package.json (Quan trọng):
+
+Mở file package.json và thêm một lệnh mới tên là "build:workshop" như sau. Việc này giúp chúng ta có một lệnh riêng cho "xưởng" mà không ảnh hưởng đến lệnh build chính của bạn.
+
+JSON
+
+"scripts": {
+  "build": "node build.js",
+  "build:workshop": "node ct6-build.js"
+},
+Chạy lệnh Build của "Xưởng":
+
+Mở terminal và chạy lệnh: npm run build:workshop
+
+Lệnh này sẽ tự động tạo ra file ct6-ladipage-build.html cho bạn. Bạn không cần tạo file này thủ công.
+
+Kế hoạch này đảm bảo chúng ta làm việc hoàn toàn độc lập trong "xưởng" mà không có bất kỳ rủi ro nào ảnh hưởng đến nhánh main.
+
+Báo lỗi: 
+D:\Visual Studio Code\PD_Digital_Assets_20250816>npm run build:workshop
+npm error code ENOENT
+npm error syscall open
+npm error path D:\package.json
+npm error errno -4058
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open 'D:\package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\Adminstrator\AppData\Local\npm-cache\_logs\2025-08-21T08_55_49_501Z-debug-0.log
+
