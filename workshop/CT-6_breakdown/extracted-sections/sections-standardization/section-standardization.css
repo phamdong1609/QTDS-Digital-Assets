@@ -1,5 +1,16 @@
-/* ----- Data Standardization Section ----- */
-.data-flow {
+/**
+ * Section: QTDS Standardization
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-standardization.html.
+ * All original rules and structures are preserved.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS STANDARDIZATION
+   ========================================================================== */
+
+/* ----- Data Flow Element ----- */
+.qtds-standardization__data-flow {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,20 +20,19 @@
 }
 
 @media (min-width: 768px) {
-    .data-flow {
+    .qtds-standardization__data-flow {
         flex-direction: row;
         justify-content: center;
         gap: var(--space-4);
     }
 }
 
-.data-flow__item {
+.qtds-standardization__data-flow-item {
     text-align: center;
-    /* Prevent overflow */
     max-width: 100%;
 }
 
-.data-flow__icon {
+.qtds-standardization__data-flow-icon {
     width: 96px;
     height: 96px;
     margin: 0 auto var(--space-4);
@@ -35,34 +45,36 @@
     box-shadow: var(--shadow-lg);
 }
 
-.data-flow__arrow {
+.qtds-standardization__data-flow-arrow {
     font-size: var(--text-4xl);
     color: var(--gray-200);
 }
 
 @media (max-width: 767px) {
-    .data-flow__arrow i {
+    .qtds-standardization__data-flow-arrow i {
         transform: rotate(90deg);
     }
 }
 
-/* ----- Section Standardization ----- */
-.std-grid {
+/* ----- Grid & Cards within Standardization Section ----- */
+.qtds-standardization__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: var(--space-8);
     margin-top: var(--space-16);
 }
 
-.std-card__header {
+.qtds-standardization__card-header {
+    /* This class is for specific overrides on top of .qtds-card__header if needed */
     background-color: var(--gray-50);
 }
 
-.std-list {
+.qtds-standardization__list {
     list-style: none;
+    padding: 0;
 }
 
-.std-list__item {
+.qtds-standardization__list-item {
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);
@@ -72,30 +84,30 @@
     line-height: 1.6;
 }
 
-.std-list__item:last-child {
+.qtds-standardization__list-item:last-child {
     margin-bottom: 0;
 }
 
-.std-list__item i {
+.qtds-standardization__list-item i {
     margin-top: 8px;
     font-size: var(--text-base);
     flex-shrink: 0;
 }
 
 /* Impact Metrics */
-.impact-metrics {
+.qtds-standardization__impact-metrics {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
 }
 
-.impact-metric {
+.qtds-standardization__impact-metric {
     display: flex;
     gap: var(--space-4);
     align-items: flex-start;
 }
 
-.impact-metric__icon {
+.qtds-standardization__impact-metric-icon {
     width: 40px;
     height: 40px;
     background: var(--gray-50);
@@ -107,14 +119,14 @@
     flex-shrink: 0;
 }
 
-.impact-metric__content strong {
+.qtds-standardization__impact-metric-content strong {
     display: block;
     font-size: var(--text-lg);
     color: var(--gray-900);
     margin-bottom: var(--space-2);
 }
 
-.impact-metric__content p {
+.qtds-standardization__impact-metric-content p {
     font-size: var(--text-base);
     color: var(--gray-600);
     margin: 0;
@@ -122,7 +134,7 @@
 }
 
 /* Barrier Insight */
-.barrier-insight {
+.qtds-standardization__barrier-insight {
     background: var(--gray-50);
     padding: var(--space-6);
     border-radius: var(--radius-lg);
@@ -130,7 +142,7 @@
     margin-bottom: var(--space-6);
 }
 
-.barrier-insight i {
+.qtds-standardization__barrier-insight i {
     position: absolute;
     top: var(--space-4);
     left: var(--space-4);
@@ -139,7 +151,7 @@
     opacity: 0.2;
 }
 
-.barrier-insight p {
+.qtds-standardization__barrier-insight p {
     font-size: var(--text-base);
     color: var(--gray-700);
     line-height: 1.6;
@@ -147,12 +159,12 @@
     padding-left: var(--space-10);
 }
 
-.barrier-insight p:last-child {
+.qtds-standardization__barrier-insight p:last-child {
     margin-bottom: 0;
 }
 
 /* Barrier Flow */
-.barrier-flow {
+.qtds-standardization__barrier-flow {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -165,12 +177,12 @@
     gap: var(--space-2);
 }
 
-.barrier-flow i {
+.qtds-standardization__barrier-flow i {
     color: var(--gray-700);
 }
 
 /* Key Insight Box */
-.key-insight-box {
+.qtds-standardization__key-insight-box {
     background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
     border: 2px solid #FFB74D;
     border-radius: var(--radius-2xl);
@@ -182,7 +194,7 @@
     margin-top: var(--space-16);
 }
 
-.key-insight-box__icon {
+.qtds-standardization__key-insight-box-icon {
     width: 56px;
     height: 56px;
     background: #FF9800;
@@ -195,73 +207,52 @@
     flex-shrink: 0;
 }
 
-.key-insight-box__content h4 {
+.qtds-standardization__key-insight-box-content h4 {
     font-size: var(--text-xl);
     color: var(--gray-900);
     margin-bottom: var(--space-3);
 }
 
-.key-insight-box__content p {
+.qtds-standardization__key-insight-box-content p {
     font-size: var(--text-lg);
     color: var(--gray-700);
     line-height: 1.6;
     margin: 0;
 }
 
-.key-insight-box__content strong {
+.qtds-standardization__key-insight-box-content strong {
     color: #E65100;
     font-weight: 600;
 }
 
-/* Responsive */
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
 @media (max-width: 768px) {
-    .std-grid {
+    .qtds-standardization__grid {
         grid-template-columns: 1fr;
         gap: var(--space-6);
     }
 
-    .key-insight-box {
+    .qtds-standardization__key-insight-box {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
 
-    .barrier-flow {
+    .qtds-standardization__barrier-flow {
         flex-direction: column;
         gap: var(--space-3);
     }
 
-    .barrier-flow i {
+    .qtds-standardization__barrier-flow i {
         transform: rotate(90deg);
     }
 }
 
-/* Extra small devices */
 @media (max-width: 480px) {
-    .std-grid {
+    .qtds-standardization__grid {
         grid-template-columns: 1fr;
         gap: var(--space-6);
     }
 }
-
-/* Utility Classes */
-.text-danger {
-    color: var(--danger);
-}
-
-.text-warning {
-    color: var(--accent);
-}
-
-.text-purple {
-    color: var(--purple);
-}
-
-.text-success {
-    color: var(--secondary);
-}
-
-.text-primary {
-    color: var(--primary);
-}
-/* nhớ thêm phần này vào toàn cục */

@@ -640,6 +640,37 @@ Xong, thêm các dòng này sau title
 /* nhớ thêm phần này vào toàn cục */
 
 -----
+## Tiếp tục chuẩn hóa CT-6 
+
+- Cung cấp file ct-6 đang dùng để chuẩn hóa 
+
+- Sửa các phần sau: 
+
+1. sections-challenges 
+
+- Phần này sẽ cần chỉnh lại màu sắc của 
+
+<!-- Stats Overview --> 
+
+Cách làm: - Thêm màu vào cuối _global-ct6.css 
+
+2. sections-standardization
+
+- Phần này chưa có css do quên chuẩn hóa. 
+
+- Ngoài ra thì cũng do đặt sai tên nữa nhé. 
 
 
+3. sections-podcast 
+- Phần này chưa copy html chuẩn vào trong ct-6_index.html 
+
+4. sections-library 
+
+Vấn đề không hiển thị đúng nằm ở file CSS của bạn bị thiếu.
+
+File section-library.css hiện tại chỉ chứa style cho các thành phần bên trong card bài viết (như nút "Xem chi tiết"). Nó hoàn toàn thiếu các quy tắc CSS quan trọng để tạo ra bố cục dạng lưới (display: grid) cho chính các card đó.
+
+Để khắc phục, bạn hãy thay thế toàn bộ nội dung file sections/sections-library/section-library.css bằng đoạn code đã được bổ sung và hoàn thiện dưới đây.
+
+Sau khi bạn cập nhật file CSS này, section thư viện sẽ hiển thị đúng với bố cục dạng lưới như mong đợi.
 

@@ -1,18 +1,85 @@
 /**
  * Section: QTDS Library
- * Version: 1.0 (Standardized)
- * Description: Standardized CSS for the article cards within the library section.
+ * Version: 1.1 (Completed)
+ * Description: Standardized and completed CSS for the library section, 
+ * including the grid layout and individual article card styles.
  */
+
+/* ==========================================================================
+   BLOCK: QTDS LIBRARY GRID LAYOUT
+   ========================================================================== */
+
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+@media (max-width: 480px) {
+    .qtds-library__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
 
 /* ==========================================================================
    COMPONENT: QTDS ARTICLE CARD (within Library)
    ========================================================================== */
 
-/* This ensures the card body is a flex container, allowing the CTA to be pushed to the bottom */
+.qtds-article-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.qtds-article-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.qtds-article-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-article-card__image {
+    transform: scale(1.05);
+}
+
+.qtds-article-card__tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: var(--text-sm); /* Adjusted for better fit */
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+    margin-right: var(--space-2);
+}
+
+.qtds-article-card__title {
+    font-size: var(--text-xl); /* Adjusted for consistency */
+}
+
 .qtds-article-card .qtds-card__body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.qtds-article-card__description {
+    font-size: var(--text-base); /* Adjusted for better readability */
+    color: var(--gray-600);
 }
 
 .qtds-article-card__cta {

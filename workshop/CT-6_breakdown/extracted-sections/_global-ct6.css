@@ -295,3 +295,24 @@ p:last-child {
         font-size: var(--text-3xl);
     }
 }
+
+/**
+ * Utility: Text Colors
+ * Description: Defines color utility classes used across multiple sections.
+ */
+
+.text-danger { 
+    color: var(--danger); 
+}
+.text-warning { 
+    color: var(--accent); 
+}
+.text-purple { 
+    color: var(--purple); 
+}
+.text-success { 
+    color: var(--secondary); 
+}
+.text-primary { 
+    color: var(--primary); 
+} 
