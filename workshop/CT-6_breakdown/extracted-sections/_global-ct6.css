@@ -1,0 +1,318 @@
+/**
+ * File: _global-ct6.css (Standardized)
+ * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
+ * Version: 2.1 (Corrected & Finalized)
+ * Changes:
+ * - Standardized all utility and component classes with the 'qtds-' prefix.
+ * - Re-included the missing '.data-flow__item' rule inside the mobile media query.
+ * - Maintained all original styles, variables, and media queries.
+ */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME
+   ========================================================================== */
+:root {
+    /* Colors */
+    --primary: #1A73E8;
+    --primary-dark: #1557B0;
+    --secondary: #34A853;
+    --secondary-dark: #2E7D32;
+    --accent: #FBBC04;
+    --danger: #EA4335;
+    --purple: #9C27B0;
+    
+    /* Grays */
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E8EAED;
+    --gray-600: #80868B;
+    --gray-700: #5F6368;
+    --gray-800: #3C4043;
+    --gray-900: #202124;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+    --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+    
+    /* Spacing */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem;   /* 48px */
+    --space-16: 4rem;   /* 64px */
+    --space-20: 5rem;   /* 80px */
+
+    /* Typography - Fluid Sizes */
+    --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+    --text-sm: clamp(1rem, 2vw, 1.125rem);
+    --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+    --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+    --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+    --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+    --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+    --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+    --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-base: 300ms ease;
+    
+    /* Border Radius */
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main, section {
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+    margin-bottom: var(--space-6);
+    color: var(--gray-700);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   3. LAYOUT & UTILITIES (Standardized)
+   ========================================================================== */
+.qtds-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.qtds-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+}
+
+.qtds-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-section-header__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-section-header p {
+    font-size: var(--text-xl);
+}
+
+/* ==========================================================================
+   4. COMPONENTS (Standardized)
+   ========================================================================== */
+
+/* Button Component */
+.qtds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: 2px solid transparent;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.qtds-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-btn--primary {
+    background: var(--primary);
+    color: white;
+}
+
+.qtds-btn--primary:hover {
+    background: var(--primary-dark);
+}
+
+.qtds-btn--secondary {
+    background: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.qtds-btn--secondary:hover {
+    background: var(--gray-100);
+}
+
+/* Card Component */
+.qtds-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    height: 100%;
+}
+
+.qtds-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.qtds-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+}
+
+.qtds-card__title {
+    font-size: var(--text-2xl);
+    margin: 0;
+}
+
+.qtds-card__body {
+    padding: var(--space-8);
+}
+
+/* ==========================================================================
+   7. MOBILE OVERFLOW FIXES & RESPONSIVE (Standardized)
+   ========================================================================== */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    .qtds-container {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+
+    .qtds-section {
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .qtds-btn {
+        max-width: calc(100vw - var(--space-6));
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+    }
+
+    .qtds-card {
+        max-width: 100%;
+    }
+    
+    .qtds-data-flow__item {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-2xl); }
+    h4 { font-size: var(--text-xl); }
+    body { font-size: var(--text-base); }
+}
+
+@media (max-width: 480px) {
+    .qtds-section-header h2 {
+        font-size: var(--text-3xl);
+    }
+}
+
+/**
+ * Utility: Text Colors
+ * Description: Defines color utility classes used across multiple sections.
+ */
+
+.text-danger { 
+    color: var(--danger); 
+}
+.text-warning { 
+    color: var(--accent); 
+}
+.text-purple { 
+    color: var(--purple); 
+}
+.text-success { 
+    color: var(--secondary); 
+}
+.text-primary { 
+    color: var(--primary); 
+} 

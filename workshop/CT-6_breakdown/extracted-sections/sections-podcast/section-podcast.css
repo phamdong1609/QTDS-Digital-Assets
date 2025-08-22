@@ -1,0 +1,118 @@
+/**
+ * Section: QTDS Podcast
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-podcast.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS PODCAST CARD
+   ========================================================================== */
+.qtds-podcast-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.qtds-podcast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-podcast-card__icon-wrapper {
+    flex-shrink: 0;
+}
+
+.qtds-podcast-card__icon {
+    width: 120px;
+    height: 120px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-5xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.qtds-podcast-card__icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    animation: qtds-podcast-pulse 2s ease-in-out infinite;
+}
+
+@keyframes qtds-podcast-pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.qtds-podcast-card__content {
+    flex: 1;
+}
+
+.qtds-podcast-card__title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    color: var(--gray-900);
+}
+
+.qtds-podcast-card__description {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.qtds-podcast-card__player {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-podcast-card__player iframe {
+    display: block;
+    border-radius: var(--radius-lg);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .qtds-podcast-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-6);
+        gap: var(--space-6);
+    }
+
+    .qtds-podcast-card__icon {
+        width: 100px;
+        height: 100px;
+        font-size: var(--text-4xl);
+    }
+
+    .qtds-podcast-card__title {
+        font-size: var(--text-xl);
+    }
+
+    .qtds-podcast-card__description {
+        font-size: var(--text-base);
+    }
+}

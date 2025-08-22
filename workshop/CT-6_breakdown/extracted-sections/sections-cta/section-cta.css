@@ -1,0 +1,193 @@
+/**
+ * Section: QTDS CTA
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-cta.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS CTA
+   ========================================================================== */
+.qtds-cta {
+    background: white;
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-12);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decoration */
+.qtds-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.qtds-cta__description {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    max-width: 800px;
+    margin: 0 auto var(--space-10);
+    line-height: 1.6;
+}
+
+/* Features Grid */
+.qtds-cta__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Feature Item */
+.qtds-cta__feature {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-cta__feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-cta__feature--primary {
+    border-color: var(--primary);
+}
+.qtds-cta__feature--primary .qtds-cta__feature-icon {
+    color: var(--primary);
+}
+
+.qtds-cta__feature--secondary {
+    border-color: var(--secondary);
+}
+.qtds-cta__feature--secondary .qtds-cta__feature-icon {
+    color: var(--secondary);
+}
+
+.qtds-cta__feature--accent {
+    border-color: var(--accent);
+}
+.qtds-cta__feature--accent .qtds-cta__feature-icon {
+    color: var(--accent);
+}
+
+.qtds-cta__feature--purple {
+    border-color: var(--purple);
+}
+.qtds-cta__feature--purple .qtds-cta__feature-icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-cta__feature-icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-cta__feature-title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-cta__feature-text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Action Buttons */
+.qtds-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    align-items: center;
+}
+
+.qtds-cta__btn--primary {
+    transform: scale(1.05);
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-8);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .qtds-cta {
+        padding: var(--space-8);
+    }
+
+    .qtds-cta__description {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-8);
+    }
+
+    .qtds-cta__features {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .qtds-cta__feature {
+        padding: var(--space-4);
+    }
+
+    .qtds-cta__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .qtds-cta__actions .qtds-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .qtds-cta__btn--primary {
+        transform: scale(1);
+    }
+}
+
+/* Override LadiPage CSS (Standardized) */
+[class*="qtds-btn--primary"] {
+    background: #1A73E8 !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+[class*="qtds-btn--secondary"] {
+    background: white !important;
+    color: #1A73E8 !important;
+    border: 2px solid #1A73E8 !important;
+}
+
+/* Hover states (Standardized) */
+[class*="qtds-btn--primary"]:hover {
+    background: #1557B0 !important;
+    color: white !important;
+}
+
+[class*="qtds-btn--secondary"]:hover {
+    background: #F1F3F4 !important;
+    color: #1A73E8 !important;
+}

@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js"
+    "build": "node build.js", 
+    "build:workshop": "node ct6-build.js"
   },
   "repository": {
     "type": "git",
@@ -26,3 +27,5 @@
     "node-html-parser": "^7.0.1"
   }
 }
+
+

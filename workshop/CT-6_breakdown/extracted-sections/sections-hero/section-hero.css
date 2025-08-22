@@ -1,0 +1,207 @@
+/**
+ * Section: QTDS Hero
+ * Description: Defines styles for the main hero section, standardized with QTDS BEM convention.
+ * Version: 2.1 (Corrected)
+ * Changes:
+ * - Re-included standardized utility classes (.qtds-scroll-animate, .qtds-text-gradient) to maintain component integrity.
+ * - Applied 'qtds-' prefix to all classes.
+ * - Renamed '.hero' to '.qtds-hero' (Block).
+ * - Renamed all child elements to follow BEM (e.g., '.hero__content' to '.qtds-hero__content').
+ * - Renamed '.hero-bg' to '.qtds-hero__bg' for better BEM consistency.
+ * - Renamed animation keyframe 'float' to 'qtds-hero-float' to avoid global conflicts.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS HERO
+   ========================================================================== */
+
+.qtds-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-hero);
+    color: white;
+    overflow: hidden;
+    padding-top: var(--space-20);
+}
+
+/* --- ELEMENTS --- */
+
+.qtds-hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 var(--space-4);
+}
+
+.qtds-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    backdrop-filter: blur(10px);
+}
+
+.qtds-hero__title {
+    color: white;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-hero__subtitle {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    color: #E2E8F0;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-hero__description {
+    font-size: var(--text-xl);
+    color: #94A3B8;
+    max-width: 800px;
+    margin: 0 auto var(--space-10);
+}
+
+.qtds-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+}
+
+/* Background Aurora Effect (Desktop Only) */
+.qtds-hero__bg {
+    display: none; /* Hidden by default, enabled via media query */
+}
+
+@media (min-width: 1024px) {
+    .qtds-hero__bg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .qtds-hero__bg::before,
+    .qtds-hero__bg::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.8;
+        animation: qtds-hero-float 25s ease-in-out infinite;
+    }
+
+    .qtds-hero__bg::before {
+        width: 500px;
+        height: 500px;
+        background: rgba(26, 115, 232, 0.25);
+        top: -150px;
+        right: -150px;
+        animation-delay: 0s;
+    }
+
+    .qtds-hero__bg::after {
+        width: 700px;
+        height: 700px;
+        background: rgba(52, 168, 83, 0.15);
+        bottom: -250px;
+        left: -200px;
+        animation-delay: 12s;
+    }
+}
+
+/* ==========================================================================
+   UTILITIES USED WITHIN HERO
+   ========================================================================== */
+
+/* Standardized Text gradient utility class */
+.qtds-text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Standardized Scroll Animation Classes */
+.qtds-scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.qtds-scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes qtds-hero-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-50px) translateX(30px) scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .qtds-hero__actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-4);
+    }
+
+    .qtds-hero__actions .qtds-btn {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .qtds-hero__content {
+        padding: 0 var(--space-3);
+    }
+
+    .qtds-hero__title {
+        font-size: var(--text-4xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__subtitle {
+        font-size: var(--text-2xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__description {
+        font-size: var(--text-lg);
+        padding: 0 var(--space-2);
+    }
+    
+    .qtds-scroll-animate {
+        transform: translateY(10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-hero__title {
+        font-size: var(--text-3xl);
+    }
+
+    .qtds-hero__subtitle {
+        font-size: 1.375rem; /* 22px mobile */
+    }
+}

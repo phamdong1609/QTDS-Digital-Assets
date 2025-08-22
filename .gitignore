@@ -143,6 +143,9 @@ vite.config.ts.timestamp-*
 
 # Build output
 /ladipage-build.html
+/ct9-ladipage-build.html
+/ct-7.html
+/CT-7_20250816.html 
 
 # Logs
 npm-debug.log*
@@ -152,3 +155,4 @@ yarn-error.log*
 # OS generated files
 .DS_Store
 Thumbs.db
+

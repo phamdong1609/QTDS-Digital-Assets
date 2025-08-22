@@ -1,0 +1,55 @@
+/**
+ * Section: QTDS Footer
+ * Description: Defines styles for the main site footer.
+ * Version: 1.0 (Adopted from main branch)
+ */
+
+/* ----- Block: Footer Section ----- */
+.qtds-footer {
+    background: var(--gray-900);
+    color: var(--gray-600);
+    padding: var(--space-12) 0;
+}
+
+/* ----- Elements within Footer ----- */
+.qtds-footer__content {
+    text-align: center;
+}
+
+.qtds-footer__logo {
+    height: 120px;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-footer__tagline {
+    color: var(--gray-600);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-footer__tagline strong {
+    color: white;
+}
+
+.qtds-footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-footer__social-link {
+    color: var(--gray-600);
+    font-size: var(--text-2xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-footer__social-link:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.qtds-footer__copyright {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+}

@@ -1,0 +1,361 @@
+/**
+ * Section: QTDS Solutions
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of standardized-solutions-html-v1.
+ * All original rules and structures are preserved.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS SOLUTIONS
+   ========================================================================== */
+
+.qtds-solutions__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--space-12);
+}
+
+.qtds-solutions__device {
+    position: relative;
+}
+
+.qtds-solutions__features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Note: .qtds-feature-badge is a global component, its styles should be in a component file */
+.qtds-feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-feature-badge i {
+    color: var(--primary);
+}
+
+/* Pillars */
+.qtds-solutions__pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+}
+
+.qtds-solutions__pillar {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    border: 1px solid var(--gray-100);
+}
+
+.qtds-solutions__pillar:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-solutions__pillar-number {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-size: var(--text-5xl);
+    font-weight: 900;
+    color: var(--gray-100);
+}
+
+.qtds-solutions__pillar-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__pillar-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-solutions__pillar-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-solutions__pillar-content p {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__benefit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Tech Features */
+.qtds-solutions__tech-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.qtds-solutions__tech-features-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.qtds-solutions__tech-features-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.qtds-solutions__tech-features-content strong {
+    display: block;
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+}
+
+.qtds-solutions__tech-features-content p {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin: 0;
+}
+
+/* Comparison */
+.qtds-solutions__comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-xl);
+}
+
+.qtds-solutions__comparison-item {
+    flex: 1;
+    text-align: center;
+}
+
+.qtds-solutions__comparison-item--highlight {
+    background: white;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-solutions__comparison-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__comparison-value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__comparison-note {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.qtds-solutions__comparison-divider {
+    font-weight: 700;
+    color: var(--gray-400);
+}
+
+/* Process Flow */
+.qtds-solutions__process-section {
+    margin-top: var(--space-16);
+}
+
+.qtds-solutions__process-title {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.qtds-solutions__process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+.qtds-solutions__process-step {
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+}
+
+.qtds-solutions__process-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-3);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-solutions__process-step h4 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__process-step p {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin: 0;
+}
+
+.qtds-solutions__process-arrow {
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+}
+
+/* Benefits Highlight */
+.qtds-solutions__benefits-highlight {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border: 2px solid #1976D2;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    margin-top: var(--space-8);
+}
+
+.qtds-solutions__benefits-highlight-icon {
+    width: 64px;
+    height: 64px;
+    background: #1976D2;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    flex-shrink: 0;
+}
+
+.qtds-solutions__benefits-highlight-content h4 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-3);
+}
+
+.qtds-solutions__benefits-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+}
+
+.qtds-solutions__benefits-item i {
+    color: #1976D2;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .qtds-solutions__visual {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .qtds-solutions__pillars {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .qtds-feature-badge {
+        font-size: var(--text-sm);
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .qtds-solutions__process-flow {
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .qtds-solutions__process-arrow {
+        transform: rotate(90deg);
+    }
+
+    .qtds-solutions__comparison {
+        flex-direction: column;
+    }
+
+    .qtds-solutions__comparison-divider {
+        margin: var(--space-4) 0;
+        font-size: var(--text-2xl);
+    }
+
+    .qtds-solutions__benefits-highlight {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .qtds-solutions__benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qtds-solutions__benefits-item {
+        text-align: left;
+    }
+}

@@ -1,0 +1,108 @@
+/**
+ * Section: QTDS Navbar
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-navbar.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS NAVBAR
+   ========================================================================== */
+.qtds-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: box-shadow var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-navbar--scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-navbar__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.qtds-navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+}
+
+.qtds-navbar__logo {
+    height: 40px;
+}
+
+.qtds-navbar__brand-name {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.qtds-navbar__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+}
+
+.qtds-navbar__link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-base);
+}
+
+.qtds-navbar__link:hover {
+    color: var(--primary);
+}
+
+.qtds-navbar__mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: var(--text-2xl);
+    color: var(--gray-700);
+    cursor: pointer;
+}
+
+.qtds-navbar__mobile-menu {
+    display: none;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.qtds-navbar__mobile-menu--active {
+    display: block;
+}
+
+.qtds-navbar__mobile-link {
+    display: block;
+    padding: var(--space-4);
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: 500;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .qtds-navbar__links {
+        display: none;
+    }
+    .qtds-navbar__mobile-btn {
+        display: block;
+    }
+}

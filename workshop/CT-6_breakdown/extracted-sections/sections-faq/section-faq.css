@@ -1,0 +1,65 @@
+/**
+ * Section: QTDS FAQ
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-faq.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS FAQ
+   ========================================================================== */
+
+.qtds-faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qtds-faq__item {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-faq__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qtds-faq__icon {
+    transition: transform var(--transition-base);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.qtds-faq__button--active .qtds-faq__icon {
+    transform: rotate(180deg);
+}
+
+.qtds-faq__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.qtds-faq__content-inner {
+    padding: 0 var(--space-6) var(--space-6);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-faq__button {
+        font-size: var(--text-lg);
+        padding: var(--space-4);
+    }
+}

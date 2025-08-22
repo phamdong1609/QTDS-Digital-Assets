@@ -1,0 +1,57 @@
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
