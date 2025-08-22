@@ -1,89 +1,114 @@
 // Import các module cần thiết của Node.js
-const fs = require('fs'); // Module để làm việc với hệ thống file
-const path = require('path'); // Module để làm việc với đường dẫn file
-const fileinclude = require('gulp-file-include'); // Module chính để lắp ráp file
-const { pipeline } = require('stream/promises'); // Module mới để xử lý stream an toàn và hiện đại
+const fs = require('fs');
+const path = require('path');
+const posthtml = require('posthtml');
+const include = require('posthtml-include');
 
 // Định nghĩa các đường dẫn quan trọng
-const templatesDir = path.join(__dirname, 'template'); // Thư mục chứa các "bản vẽ"
-const distDir = path.join(__dirname, 'dist'); // Thư mục chứa "sản phẩm hoàn thiện"
-const libraryDir = path.join(__dirname, 'library'); // Thư mục chứa "thư viện linh kiện"
+const templatesDir = path.join(__dirname, 'template');
+const distDir = path.join(__dirname, 'dist');
+const rootDir = __dirname; // Thư mục gốc của dự án
 
 /**
- * Hàm lắp ráp một file HTML duy nhất.
- * Đây là một "công nhân" chuyên biệt, nhận một bản vẽ và lắp ráp nó.
- * @param {string} sourcePath - Đường dẫn đến file "bản vẽ" (ví dụ: template/ct8-index.html)
- * @param {string} destPath - Đường dẫn đến file "sản phẩm" (ví dụ: dist/ct8-dist.html)
+ * Hàm lắp ráp một file HTML duy nhất, bao gồm cả CSS và JS.
+ * @param {string} templateFile - Tên file template (ví dụ: 'ct9-index.html')
  */
-async function buildSingleFile(sourcePath, destPath) {
-    console.log(`Bắt đầu xử lý: ${path.basename(sourcePath)}`);
+async function buildSinglePage(templateFile) {
+    const sourcePath = path.join(templatesDir, templateFile);
+    const outputHtmlName = templateFile.replace('-index.html', '-dist.html');
+    const destPath = path.join(distDir, outputHtmlName);
+
+    console.log(`\n--- Bắt đầu xử lý: ${templateFile} ---`);
     try {
-        // Sử dụng pipeline để đảm bảo "dây chuyền lắp ráp" chạy đúng thứ tự và an toàn
-        // 1. Đọc "bản vẽ"
-        // 2. Lắp ráp các linh kiện
-        // 3. Ghi ra sản phẩm hoàn thiện
-        await pipeline(
-            fs.createReadStream(sourcePath),
-            fileinclude({
-                prefix: '@@',
-                basepath: libraryDir, // Cho phép @@include tìm file từ thư mục /library
-                context: {}
-            }),
-            fs.createWriteStream(destPath)
-        );
-        console.log(`✅ Đã lắp ráp thành công: ${path.basename(destPath)}`);
-        return { status: 'fulfilled', file: path.basename(sourcePath) };
+        const htmlContent = fs.readFileSync(sourcePath, 'utf8');
+        const includeRegex = /<include src="([^"]+)"/g;
+        let match;
+
+        // === 1. TỔNG HỢP CSS ===
+        console.log(`   - Đang tổng hợp các file CSS...`);
+        const cssContents = [];
+        const themeFileName = templateFile.replace('-index.html', '-theme.css');
+        const themePath = path.join(rootDir, 'core', 'styles', themeFileName);
+        
+        if (fs.existsSync(themePath)) {
+            cssContents.push(fs.readFileSync(themePath, 'utf8'));
+        }
+
+        while ((match = includeRegex.exec(htmlContent)) !== null) {
+            const cssPath = path.join(rootDir, match[1].replace('.html', '.css'));
+            if (fs.existsSync(cssPath)) {
+                cssContents.push(fs.readFileSync(cssPath, 'utf8'));
+            }
+        }
+        const finalCss = cssContents.join('\n\n');
+        console.log(`   ✅ Đã tổng hợp xong CSS.`);
+
+        // === 2. TỔNG HỢP JAVASCRIPT ===
+        console.log(`   - Đang tổng hợp các file JS...`);
+        const jsContents = [];
+        const initFileName = templateFile.replace('-index.html', '-init.js');
+        const initPath = path.join(rootDir, 'core', 'scripts', initFileName);
+
+        if (fs.existsSync(initPath)) {
+            jsContents.push(fs.readFileSync(initPath, 'utf8'));
+        }
+
+        includeRegex.lastIndex = 0; 
+        while ((match = includeRegex.exec(htmlContent)) !== null) {
+            const jsPath = path.join(rootDir, match[1].replace('.html', '.js'));
+            if (fs.existsSync(jsPath)) {
+                jsContents.push(fs.readFileSync(jsPath, 'utf8'));
+            }
+        }
+        const finalJs = jsContents.join(';\n\n');
+        console.log(`   ✅ Đã tổng hợp xong JS.`);
+
+        // === 3. LẮP RÁP HTML VÀ NHÚNG CSS/JS ===
+        console.log(`   - Đang lắp ráp và đóng gói HTML...`);
+        const result = await posthtml([include({ root: rootDir })]).process(htmlContent);
+        
+        // Thay thế các placeholder bằng nội dung thực tế
+        let finalHtml = result.html;
+        finalHtml = finalHtml.replace('<!-- {{INLINE_CSS}} -->', `<style>\n${finalCss}\n</style>`);
+        finalHtml = finalHtml.replace('<!-- {{INLINE_JS}} -->', `<script>\n${finalJs}\n</script>`);
+
+        fs.writeFileSync(destPath, finalHtml);
+        console.log(`   ✅ Đã tạo file hoàn chỉnh: ${outputHtmlName}`);
+
+        return { status: 'fulfilled', file: templateFile };
+
     } catch (error) {
-        // Nếu có lỗi, báo cáo chính xác file nào bị lỗi và không làm sập toàn bộ nhà máy
-        console.error(`❌ Lỗi khi xử lý file ${path.basename(sourcePath)}:`, error.message);
-        return { status: 'rejected', file: path.basename(sourcePath), reason: error.message };
+        console.error(`❌ Lỗi khi xử lý file ${templateFile}:`, error.message);
+        return { status: 'rejected', file: templateFile, reason: error.message };
     }
 }
 
 /**
- * Hàm chính, đóng vai trò "quản đốc nhà máy".
- * Quản đốc sẽ tìm tất cả các bản vẽ và giao việc cho từng "công nhân".
+ * Hàm chính, "quản đốc nhà máy".
  */
 async function buildAllPages() {
-    console.log('--- Bắt đầu quá trình build tự động ---');
+    console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT TỰ ĐỘNG ---');
     try {
-        // --- Bước 1: Đảm bảo thư mục /dist tồn tại ---
         if (!fs.existsSync(distDir)) {
             fs.mkdirSync(distDir, { recursive: true });
-            console.log('Đã tạo thư mục /dist.');
         }
 
-        // --- Bước 2: Đọc tất cả các "bản vẽ" từ thư mục /templates ---
         const templateFiles = fs.readdirSync(templatesDir).filter(file =>
-            file.endsWith('.html') && !fs.statSync(path.join(templatesDir, file)).isDirectory()
+            file.endsWith('-index.html')
         );
 
         if (templateFiles.length === 0) {
             console.log('Không tìm thấy file template nào trong thư mục /template.');
             return;
         }
-        console.log(`\nĐã tìm thấy ${templateFiles.length} file template để xử lý.`);
 
-        // --- Bước 3: Giao việc cho các "công nhân" xử lý song song ---
-        const buildPromises = templateFiles.map(file => {
-            const sourcePath = path.join(templatesDir, file);
-            // Tạo tên file đầu ra, ví dụ: ct8-index.html -> ct8-dist.html
-            const outputFileName = file.replace('-index.html', '-dist.html');
-            const destPath = path.join(distDir, outputFileName);
-            return buildSingleFile(sourcePath, destPath);
-        });
+        const results = await Promise.all(templateFiles.map(buildSinglePage));
 
-        // Chờ tất cả các công nhân hoàn thành công việc
-        const results = await Promise.all(buildPromises);
-
-        // --- Bước 4: Báo cáo kết quả cuối cùng ---
         const successCount = results.filter(r => r.status === 'fulfilled').length;
-        const failureCount = results.length - successCount;
-
-        console.log('\n--- Báo cáo kết quả ---');
+        console.log('\n--- BÁO CÁO KẾT QUẢ ---');
         console.log(`Thành công: ${successCount}/${results.length}`);
-        if (failureCount > 0) {
-            console.log(`Thất bại: ${failureCount}/${results.length}`);
+        if (successCount < results.length) {
+            console.log(`Thất bại: ${results.length - successCount}/${results.length}`);
         }
         console.log('🎉 Quá trình build đã hoàn tất! 🎉');
 
@@ -92,5 +117,4 @@ async function buildAllPages() {
     }
 }
 
-// Khởi động "nhà máy"
 buildAllPages();

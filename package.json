@@ -23,7 +23,8 @@
   "homepage": "https://github.com/phamdong1609/PD-Digital-Assets#readme",
   "dependencies": {},
   "devDependencies": {
-    "gulp-file-include": "^2.3.0"
+    "posthtml": "^0.16.6",
+    "posthtml-include": "^1.7.4"
   },
   "engines": {
     "node": ">=15.0.0"
