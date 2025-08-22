@@ -1,98 +1,69 @@
-// build.js - Version 3: Full JS Bundling
+// Import các module cần thiết của Node.js
+const fs = require('fs'); // Module để làm việc với hệ thống file
+const path = require('path'); // Module để làm việc với đường dẫn file
+const fileinclude = require('gulp-file-include'); // Module chính để lắp ráp file
 
-const fs = require('fs-extra');
-const path = require('path');
-const { parse } = require('node-html-parser');
+// Định nghĩa các đường dẫn quan trọng
+const templatesDir = path.join(__dirname, 'template'); // Thư mục chứa các "bản vẽ"
+const distDir = path.join(__dirname, 'dist'); // Thư mục chứa "sản phẩm hoàn thiện"
+const libraryDir = path.join(__dirname, 'library'); // Thư mục chứa "thư viện linh kiện"
 
-async function build() {
+// Hàm chính để thực hiện việc lắp ráp
+async function buildPages() {
     try {
-        console.log('🚀 Bắt đầu quá trình build v3...');
-
-        const indexPath = path.join(__dirname, 'index.html');
-        console.log(`1. Đọc file index.html từ: ${indexPath}`);
-        if (!await fs.pathExists(indexPath)) {
-            throw new Error('Lỗi nghiêm trọng: Không tìm thấy file index.html ở thư mục gốc!');
-        }
-        const indexHtmlContent = await fs.readFile(indexPath, 'utf8');
-
-        console.log('2. Phân tích cú pháp HTML...');
-        const root = parse(indexHtmlContent);
-
-        const includeElements = root.querySelectorAll('[data-include]');
-        console.log(`3. Tìm thấy ${includeElements.length} thành phần HTML cần nhúng.`);
-        for (const element of includeElements) {
-            const fileToInclude = element.getAttribute('data-include');
-            const filePath = path.join(__dirname, fileToInclude);
-            console.log(`   -> Đang xử lý HTML: ${fileToInclude}`);
-
-            if (await fs.pathExists(filePath)) {
-                const content = await fs.readFile(filePath, 'utf8');
-                element.replaceWith(content);
-            } else {
-                console.warn(`   ⚠️ Cảnh báo: Bỏ qua vì không tìm thấy file ${fileToInclude}`);
-            }
-        }
-        
-        const cssLinks = root.querySelectorAll('link[rel="stylesheet"]');
-        let allCssContent = '';
-        console.log(`4. Tìm thấy ${cssLinks.length} file CSS cần gom.`);
-        for (const link of cssLinks) {
-            const cssHref = link.getAttribute('href');
-            const cssPath = path.join(__dirname, cssHref);
-             console.log(`   -> Đang xử lý CSS: ${cssHref}`);
-
-            if (await fs.pathExists(cssPath)) {
-                const cssContent = await fs.readFile(cssPath, 'utf8');
-                allCssContent += `\n/* === Bắt đầu ${cssHref} === */\n${cssContent}\n/* === Kết thúc ${cssHref} === */\n`;
-                link.remove();
-            } else {
-                 console.warn(`   ⚠️ Cảnh báo: Bỏ qua vì không tìm thấy file ${cssHref}`);
-            }
-        }
-        
-        if (allCssContent) {
-            console.log('5. Nhúng toàn bộ CSS vào trong thẻ <style>...');
-            const head = root.querySelector('head');
-            head.insertAdjacentHTML('beforeend', `<style>${allCssContent}</style>`);
+        // --- Bước 1: Đảm bảo thư mục /dist tồn tại ---
+        if (!fs.existsSync(distDir)) {
+            fs.mkdirSync(distDir, { recursive: true });
+            console.log('Đã tạo thư mục /dist.');
         }
 
-        // *** NÂNG CẤP MỚI BẮT ĐẦU TỪ ĐÂY ***
-        console.log('6. Tìm và nhúng các file JavaScript cục bộ...');
-        const scriptTags = root.querySelectorAll('script[src]');
-        for (const scriptTag of scriptTags) {
-            const src = scriptTag.getAttribute('src');
-            // Chỉ xử lý các file script cục bộ, bỏ qua các link bên ngoài (http, https)
-            if (src && !src.startsWith('http')) {
-                const scriptPath = path.join(__dirname, src);
-                console.log(`   -> Đang xử lý JS: ${src}`);
-                if (await fs.pathExists(scriptPath)) {
-                    const scriptContent = await fs.readFile(scriptPath, 'utf8');
-                    scriptTag.removeAttribute('src'); // Bỏ thuộc tính src
-                    scriptTag.set_content(scriptContent); // Nhúng code vào thẳng thẻ script
-                } else {
-                    console.warn(`   ⚠️ Cảnh báo: Bỏ qua vì không tìm thấy file script ${src}`);
-                }
-            }
+        // --- Bước 2: Đọc tất cả các "bản vẽ" từ thư mục /templates ---
+        const templateFiles = fs.readdirSync(templatesDir).filter(file => 
+            file.endsWith('.html') && !fs.statSync(path.join(templatesDir, file)).isDirectory()
+        );
+
+        if (templateFiles.length === 0) {
+            console.log('Không tìm thấy file template nào trong thư mục /template.');
+            return;
         }
 
-        console.log('7. Dọn dẹp các script không cần thiết...');
-        const mainScript = root.querySelector('script[src="main.js"]');
-        if (mainScript) {
-            // Script main.js có thể đã được xử lý ở trên, bước này để đảm bảo
-            mainScript.remove();
-            console.log('   -> Đã xóa script main.js.');
+        console.log(`Đã tìm thấy ${templateFiles.length} file template:`, templateFiles);
+
+        // --- Bước 3: Lắp ráp từng "bản vẽ" ---
+        for (const file of templateFiles) {
+            const sourcePath = path.join(templatesDir, file);
+            
+            // Tạo tên file đầu ra, ví dụ: ct8-index.html -> ct8-dist.html
+            const outputFileName = file.replace('-index.html', '-dist.html');
+            const destPath = path.join(distDir, outputFileName);
+
+            console.log(`Đang xử lý: ${file} -> ${outputFileName}`);
+
+            // Sử dụng gulp-file-include để lắp ráp
+            await new Promise((resolve, reject) => {
+                fileinclude({
+                    prefix: '@@',
+                    basepath: libraryDir, // Cho phép @@include tìm file từ thư mục /library
+                    context: {
+                        // Nơi bạn có thể truyền biến vào file HTML nếu cần
+                    }
+                })
+                .on('error', reject)
+                .pipe(fs.createReadStream(sourcePath))
+                .pipe(fs.createWriteStream(destPath))
+                .on('finish', resolve)
+                .on('error', reject);
+            });
+
+            console.log(`✅ Đã lắp ráp thành công: ${outputFileName}`);
         }
 
-        const buildPath = path.join(__dirname, 'ladipage-build.html');
-        console.log(`8. Ghi kết quả cuối cùng ra file: ${buildPath}`);
-        await fs.writeFile(buildPath, root.toString());
-
-        console.log('\n🎉 Build thành công! File "ladipage-build.html" đã được nâng cấp với đầy đủ JavaScript.');
+        console.log('\n🎉 Quá trình build đã hoàn tất!');
 
     } catch (error) {
-        console.error('\n❌ Đã có lỗi xảy ra trong quá trình build:');
-        console.error(error.message);
+        console.error('❌ Đã xảy ra lỗi trong quá trình build:', error);
     }
 }
 
-build();
+// Chạy hàm lắp ráp
+buildPages();
