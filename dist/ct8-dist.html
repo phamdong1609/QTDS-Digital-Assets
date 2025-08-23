@@ -1,4 +1,631 @@
-<!DOCTYPE html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // =================================================================
+    // GLOBAL CONFIGURATIONS
+    // =================================================================
+    const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
+    const ARTICLES_PER_PAGE = 9;
+
+    // State variables
+    let currentPage = 1;
+    let displayedArticlesCount = 0;
+    let currentFilter = 'Tất cả';
+    let searchTerm = '';
+    let featuredSwiper = null;
+    let isLoading = false;
+    let isInitialLoad = true;
+    let hasMoreArticles = true; // Reliable state for pagination
+
+    // UI elements
+    const ui = {
+        filters: document.getElementById('library-filters'),
+        grid: document.getElementById('library-grid'),
+        loader: document.getElementById('library-loader'),
+        empty: document.getElementById('library-empty'),
+        loadMoreBtn: document.getElementById('load-more-btn'),
+        loadMoreContainer: document.getElementById('load-more-container'),
+        searchInput: document.getElementById('search-input'),
+        featuredSection: document.getElementById('featured-section'),
+        featuredWrapper: document.getElementById('featured-post-grid'),
+    };
+
+    // =================================================================
+    // SKELETON LOADER
+    // =================================================================
+    function renderSkeletonLoader(container, count) {
+        if (!container) return;
+        container.innerHTML = ''; // Clear existing content
+        const skeletonHTML = `
+            <div class="skeleton-card">
+                <div class="skeleton skeleton-card__image"></div>
+                <div class="skeleton-card__body">
+                    <div class="skeleton skeleton-card__tag"></div>
+                    <div class="skeleton skeleton-card__title"></div>
+                    <div class="skeleton skeleton-card__description"></div>
+                </div>
+            </div>
+        `;
+        for (let i = 0; i < count; i++) {
+            if (container.classList.contains('swiper-wrapper')) {
+                container.innerHTML += `<div class="swiper-slide">${skeletonHTML}</div>`;
+            } else {
+                container.innerHTML += skeletonHTML;
+            }
+        }
+    }
+
+    // =================================================================
+    // NAVIGATION & UI INTERACTIONS
+    // =================================================================
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+            if (menuIcon) {
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            }
+        });
+
+        document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                if (menuIcon) {
+                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.remove('fa-times');
+                }
+            });
+        });
+    }
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('qtds-navbar--scrolled');
+            } else {
+                navbar.classList.remove('qtds-navbar--scrolled');
+            }
+        });
+    }
+
+    // Back to Top Button
+    const backToTopBtn = document.querySelector('.qtds-back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
+
+    // =================================================================
+    // LIBRARY FUNCTIONALITY
+    // =================================================================
+
+    async function loadArticles(isLoadMore = false) {
+        if (isLoading || !hasMoreArticles && isLoadMore) return;
+        isLoading = true;
+
+        if (isLoadMore) {
+            ui.loadMoreBtn.classList.add('loading');
+        } else {
+            currentPage = 1;
+            displayedArticlesCount = 0;
+            hasMoreArticles = true; // Reset for new filter/search
+            if (isInitialLoad) {
+                renderSkeletonLoader(ui.featuredWrapper, 3);
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
+            } else {
+                renderSkeletonLoader(ui.grid, ARTICLES_PER_PAGE);
+            }
+        }
+
+        if (ui.empty) ui.empty.style.display = 'none';
+
+        const params = new URLSearchParams({ page: currentPage, limit: ARTICLES_PER_PAGE, filter: currentFilter, search: searchTerm });
+
+        try {
+            const response = await fetch(`${API_URL}?${params.toString()}`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
+            if (data.error) throw new Error(data.message);
+
+            if (currentPage === 1) {
+                if (ui.grid) ui.grid.innerHTML = '';
+                if (isInitialLoad && ui.featuredWrapper) ui.featuredWrapper.innerHTML = '';
+            }
+
+            if (isInitialLoad && data.metadata) {
+                renderFilters(data.metadata.categories || []);
+                renderFeaturedPosts(data.metadata.featured || []);
+                isInitialLoad = false;
+            }
+
+            const returnedArticles = data.articles || [];
+            const numReturned = returnedArticles.length;
+
+            if (numReturned < ARTICLES_PER_PAGE) {
+                hasMoreArticles = false; // Reached the end
+            }
+
+            renderArticles(returnedArticles);
+            displayedArticlesCount += numReturned;
+            updateUiState();
+
+        } catch (error) {
+            console.error("Error loading articles:", error);
+            if (ui.grid) ui.grid.innerHTML = '';
+            if (ui.empty) {
+                ui.empty.textContent = "Đã có lỗi xảy ra khi tải dữ liệu. Vui lòng thử lại sau.";
+                ui.empty.style.display = 'block';
+            }
+        } finally {
+            isLoading = false;
+            if (ui.loader) ui.loader.style.display = 'none';
+            if (ui.loadMoreBtn) ui.loadMoreBtn.classList.remove('loading');
+        }
+    }
+
+    function renderArticles(articles) {
+        if (!ui.grid) return;
+        const fragment = document.createDocumentFragment();
+        articles.forEach((article, index) => {
+            const cardElement = createArticleCard(article, index);
+            fragment.appendChild(cardElement);
+        });
+        ui.grid.appendChild(fragment);
+        document.querySelectorAll('.qtds-article-card:not(.active)').forEach(el => observer.observe(el));
+    }
+
+    function createArticleCard(article, index) {
+        const card = document.createElement('a');
+        card.href = article.landing_page_url;
+        card.className = "qtds-article-card qtds-scroll-animate";
+        card.style.animationDelay = `${index * 50}ms`;
+        const tags = String(article.category_tags || '').split(',').map(tag => tag.trim()).filter(Boolean);
+
+        card.innerHTML = `
+            <div class="qtds-article-card__image-wrapper">
+                <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy" onload="this.classList.add('loaded')">
+            </div>
+            <div class="qtds-article-card__body">
+                <div class="qtds-article-card__tags">
+                    ${tags.map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('')}
+                </div>
+                <h3 class="qtds-article-card__title">${article.title}</h3>
+                <p class="qtds-article-card__description">${article.short_description}</p>
+                <div class="qtds-article-card__action">
+                    Xem chi tiết <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        `;
+        return card;
+    }
+
+    function renderFilters(categories) {
+        if (!categories || categories.length === 0 || !ui.filters) return;
+
+        const categoryIcons = {
+            'Tất cả': 'fa-solid fa-border-all',
+            'Chuyển đổi số': 'fa-solid fa-robot',
+            'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
+            'Công nghệ': 'fa-solid fa-microchip',
+            'Case Study': 'fa-solid fa-book-open',
+        };
+
+        const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
+
+        ui.filters.innerHTML = allCategories.map(cat => {
+            const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
+            const isActive = cat === currentFilter;
+            return `
+                <button class="filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
+                    <i class="${iconClass}"></i>
+                    <span>${cat}</span>
+                </button>
+            `;
+        }).join('');
+
+        ui.filters.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (isLoading) return;
+
+                ui.filters.querySelector('.active')?.classList.remove('active');
+                this.classList.add('active');
+                
+                currentFilter = this.dataset.category;
+                loadArticles(false);
+            });
+        });
+    }
+
+    function renderFeaturedPosts(featuredArticles) {
+        if (!featuredArticles || featuredArticles.length === 0 || !ui.featuredSection) {
+            if (ui.featuredSection) ui.featuredSection.classList.add('qtds-hidden');
+            return;
+        }
+        ui.featuredSection.classList.remove('qtds-hidden');
+        if (ui.featuredWrapper) ui.featuredWrapper.innerHTML = '';
+
+        featuredArticles.forEach(article => {
+            const featuredCard = createArticleCard(article, 0);
+            featuredCard.className = "qtds-featured-card qtds-article-card"; // Ensure correct classes
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            slide.appendChild(featuredCard);
+            if (ui.featuredWrapper) ui.featuredWrapper.appendChild(slide);
+        });
+
+        if (featuredSwiper) featuredSwiper.destroy(true, true);
+        featuredSwiper = new Swiper('#featured-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            loop: featuredArticles.length > 3,
+            autoplay: { 
+                delay: 5000, 
+                disableOnInteraction: false 
+            },
+            slidesPerView: 'auto', // Use 'auto' for responsive widths
+            coverflowEffect: {
+                rotate: 30,       // Less rotation
+                stretch: 0,
+                depth: 150,       // More depth
+                modifier: 1,
+                slideShadows: false,  // Cleaner look without shadows
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+
+    function updateUiState() {
+        // Handle Load More button visibility
+        if (ui.loadMoreContainer) {
+            if (hasMoreArticles) {
+                ui.loadMoreContainer.classList.remove('qtds-hidden');
+                ui.loadMoreBtn.classList.remove('qtds-hidden');
+            } else {
+                ui.loadMoreContainer.classList.add('qtds-hidden');
+            }
+        }
+
+        // Handle Empty state message
+        if (ui.empty) {
+            if (displayedArticlesCount === 0 && !isLoading) {
+                ui.empty.textContent = "Không tìm thấy bài viết nào phù hợp với tiêu chí của bạn.";
+                ui.empty.style.display = 'block';
+            } else {
+                ui.empty.style.display = 'none';
+            }
+        }
+    }
+
+    // Event Listeners
+    let searchTimeout;
+    if (ui.searchInput) {
+        ui.searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchTerm = e.target.value.trim();
+                loadArticles(false);
+            }, 500);
+        });
+    }
+
+    if (ui.loadMoreBtn) {
+        ui.loadMoreBtn.addEventListener('click', () => {
+            if (!isLoading) {
+                currentPage++;
+                loadArticles(true);
+            }
+        });
+    }
+
+    // Re-introduce the IntersectionObserver with the correct logic
+    const infiniteScrollObserver = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !isLoading && hasMoreArticles) {
+            currentPage++;
+            loadArticles(true);
+        }
+    }, { rootMargin: '0px 0px 400px 0px' });
+
+    if (ui.loadMoreContainer) {
+        infiniteScrollObserver.observe(ui.loadMoreContainer);
+    }
+
+    // Initialize Library
+    if (ui.grid && ui.loader) {
+        loadArticles();
+    } else {
+        // console.warn("Thư viện không thể khởi tạo: Thiếu các phần tử HTML cần thiết.");
+    }
+});
+</script><style>
+/**
+ * File: global-styles.css
+ * Description: Defines the foundational styles for the QTDS Design System,
+ * including CSS variables, resets, base typography, layout classes, and utilities.
+ * Version: 1.0
+ */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME
+   ========================================================================== */
+:root {
+    /* Colors */
+    --primary: #1A73E8;
+    --primary-dark: #1557B0;
+    --secondary: #34A853;
+    --secondary-dark: #2E7D32;
+    --accent: #FBBC04;
+    --danger: #EA4335;
+    --purple: #9C27B0;
+    
+    /* Grays */
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E8EAED;
+    --gray-600: #80868B;
+    --gray-700: #5F6368;
+    --gray-800: #3C4043;
+    --gray-900: #202124;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+    --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+    
+    /* Spacing */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem;   /* 48px */
+    --space-16: 4rem;   /* 64px */
+    --space-20: 5rem;   /* 80px */
+
+    /* Typography - Fluid Sizes */
+    --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+    --text-sm: clamp(1rem, 2vw, 1.125rem);
+    --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+    --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+    --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+    --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+    --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+    --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+    --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-base: 300ms ease;
+    
+    /* Border Radius */
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevents horizontal scroll on the body */
+}
+
+main {
+    overflow-x: hidden; /* Prevents horizontal scroll from main content */
+}
+
+h1, h2, h3, h4 {
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+    margin-bottom: var(--space-6);
+    color: var(--gray-700);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   3. LAYOUT & UTILITIES (Standardized)
+   ========================================================================== */
+.qtds-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.qtds-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+    overflow-x: hidden; /* Prevents horizontal scroll on sections */
+}
+
+.qtds-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-section-header__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-section-header__description {
+    font-size: var(--text-xl);
+}
+
+.qtds-text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.qtds-text-danger {
+    color: var(--danger);
+}
+
+.qtds-text-success {
+    color: var(--secondary);
+}
+
+.qtds-hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 768px) {
+    html, body {
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    .qtds-container {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+    
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-2xl); }
+    h4 { font-size: var(--text-xl); }
+    body { font-size: var(--text-base); }
+}
+
+/* ==========================================================================
+   6. ANIMATIONS & HELPERS (Standardized)
+   ========================================================================== */
+.qtds-scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.qtds-scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Note: Changed from ID to a class for reusability */
+.qtds-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xl);
+    text-decoration: none;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+}
+
+.qtds-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   7. MOBILE OVERFLOW FIXES (Standardized)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Note: This rule should be applied to the already standardized class */
+    .qtds-section-header h2 {
+        font-size: var(--text-3xl);
+    }
+}
+
+</style><!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">

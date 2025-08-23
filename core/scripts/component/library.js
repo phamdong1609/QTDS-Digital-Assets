@@ -1,19 +1,18 @@
 /**
- * Section: QTDS Library (Standardized JS)
- * Version: 1.0
- * Description: This script handles fetching and displaying a limited number of articles.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- 
-
-// Note: This is the simplified script from the CT-6 breakdown.
-// The IntersectionObserver is assumed to be initialized in a global script (_main-ct6.js).
-function initQTDSLibrary() {
+ * Module: Library Loader
+ * Description: Fetches and renders articles from an API.
+ * @param {IntersectionObserver} observer - The global observer for scroll animations.
+ */
+export function initLibrary(observer) {
     const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
     const ARTICLES_TO_SHOW = 6;
     const gridContainer = document.getElementById('library-grid');
     const loader = document.getElementById('library-loader');
 
-    if (!gridContainer || !loader) return;
+    if (!gridContainer || !loader) {
+        console.warn("Library section not found, skipping initialization.");
+        return;
+    }
 
     async function fetchArticles() {
         try {
@@ -25,6 +24,7 @@ function initQTDSLibrary() {
                 renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
             }
         } catch (error) {
+            console.error("Library fetch error:", error);
             loader.textContent = "Không thể tải thư viện.";
         } finally {
             if (gridContainer.innerHTML !== '') loader.style.display = 'none';
@@ -35,8 +35,6 @@ function initQTDSLibrary() {
         gridContainer.innerHTML = articles.map(article => {
             const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
                 .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
-            
-            // All classes in this template literal are now standardized with 'qtds-'
             return `
                 <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
                     <div class="qtds-article-card__image-wrapper">
@@ -52,19 +50,9 @@ function initQTDSLibrary() {
                     </div>
                 </a>`;
         }).join('');
-
-        // Assuming a global 'observer' is available from _main-ct6.js
-        // This will need to be updated when we standardize the main script.
-        if (typeof observer !== 'undefined') {
-             document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
-        }
+        // Tell the global observer to watch the new cards
+        document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
     }
 
     fetchArticles();
 }
-
-// Ensure this is called after the DOM is loaded.
-// If you have a global script, this call might be moved there.
-document.addEventListener('DOMContentLoaded', () => {
-    initQTDSLibrary();
-});
