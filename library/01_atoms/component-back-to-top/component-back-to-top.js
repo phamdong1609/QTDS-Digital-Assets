@@ -1,27 +1,17 @@
-/**
- * Component: QTDS Back To Top (Standardized JS)
- * Version: 1.0
- * Description: This script handles the show/hide functionality for the back-to-top button.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-// Find the button using its new standardized class name
-// Back To Top Component - Fixed version
-const backToTopBtn = document.querySelector('.qtds-back-to-top');
-
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        // Sử dụng class 'show' thay vì BEM modifier
-        if (window.scrollY > 400) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
+    /**
+     * Module: Back To Top Button
+     * Description: Handles the show/hide and smooth scroll functionality.
+     */
+    export function initBackToTop() {
+        const backToTopBtn = document.querySelector('.qtds-back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                backToTopBtn.classList.toggle('show', window.scrollY > 400);
+            });
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
-    });
-
-    // Thêm sự kiện click
-    backToTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
+    }
+    
