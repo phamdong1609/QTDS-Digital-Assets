@@ -33,8 +33,7 @@ async function buildSinglePage(templateFile) {
         // === 1. TỔNG HỢP CSS ===
         console.log(`   - Đang tổng hợp các file CSS...`);
         const cssContents = [];
-        const themeFileName = templateFile.replace('-index.html', '-theme.css');
-        const themePath = path.join(rootDir, 'core', 'styles', themeFileName);
+        const themePath = path.join(rootDir, 'core', 'styles', 'theme.css');
         
         if (fs.existsSync(themePath)) {
             cssContents.push(fs.readFileSync(themePath, 'utf8'));
