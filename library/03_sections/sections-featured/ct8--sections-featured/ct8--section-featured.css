@@ -1,42 +1,47 @@
 /**
- * Section: QTDS Featured Posts
+ * Section: QTDS Featured Posts (CT8 Version)
  * Description: Carousel section displaying featured articles with Swiper.js
- * Version: 1.1 - Added spacing for skeletons and slides
+ * Version: 2.0 - Standardized for CT8 Refactor
  */
 
-/* ----- Block: Featured Posts Section ----- */
+/* ==========================================================================
+   1. BLOCK & LAYOUT
+   ========================================================================== */
+
 .qtds-featured {
     background-color: white;
 }
 
-/* ----- Elements within Featured Section ----- */
 .qtds-featured__carousel {
     width: 100%;
     padding-top: var(--space-10);
     padding-bottom: var(--space-10);
 }
 
-/* * NEW FIX: Add gap for skeleton loaders.
- * This ensures that even before Swiper.js initializes, the skeleton
- * cards have proper spacing and don't stick together.
+/* * CHÚ Ý: Đã xóa thuộc tính 'gap' khỏi đây. 
+ * Việc tạo khoảng cách giữa các slide nên được quản lý bởi tham số 
+ * 'spaceBetween' trong file JavaScript (ct8-init.js) để đảm bảo tính nhất quán.
 */
 .qtds-featured__carousel .swiper-wrapper {
     display: flex;
-    gap: 30px; /* Adjust this value as needed */
 }
 
+/* ==========================================================================
+   2. SWIPER CUSTOMIZATION
+   ========================================================================== */
 
-/* ----- Featured Cards ----- */
-.qtds-featured-card {
-    height: 100%;
-}
-
-/* ----- Swiper Overrides (Tăng độ ưu tiên) ----- */
+/* Kích thước của mỗi slide trong carousel */
 .qtds-featured .swiper-slide {
     width: 350px;
-    height: auto;
+    height: auto; /* Cho phép chiều cao tự động điều chỉnh theo nội dung card */
 }
 
+/* Định dạng cho card bài viết bên trong section này */
+.qtds-featured .qtds-article-card {
+    height: 100%; /* Đảm bảo các card có chiều cao bằng nhau */
+}
+
+/* Màu sắc cho các nút điều khiển của Swiper */
 .qtds-featured .swiper-pagination-bullet-active {
     background: var(--primary);
 }
@@ -46,7 +51,11 @@
     color: var(--primary);
 }
 
-/* ----- Responsive Styles ----- */
+/* ==========================================================================
+   3. RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Tablet */
 @media (max-width: 768px) {
     .qtds-featured__carousel {
         padding-top: var(--space-8);
@@ -58,13 +67,15 @@
     }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
     .qtds-featured .swiper-slide {
         width: 280px;
     }
     
+    /* Ẩn nút qua lại trên màn hình nhỏ để tiết kiệm không gian */
     .qtds-featured .swiper-button-next,
     .qtds-featured .swiper-button-prev {
-        display: none; /* Hide navigation arrows on very small screens */
+        display: none;
     }
 }
