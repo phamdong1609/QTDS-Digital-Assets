@@ -1,147 +1,103 @@
-// Import các module cần thiết của Node.js
 const fs = require('fs');
 const path = require('path');
 const posthtml = require('posthtml');
 const include = require('posthtml-include');
 
-// Định nghĩa các đường dẫn quan trọng
-const templatesDir = path.join(__dirname, 'template');
-const distDir = path.join(__dirname, 'dist');
-const rootDir = __dirname; // Thư mục gốc của dự án
+const rootDir = __dirname;
+const templatesDir = path.join(rootDir, 'template');
+const distDir = path.join(rootDir, 'dist');
+const libraryDir = path.join(rootDir, 'library');
+const coreDir = path.join(rootDir, 'core');
 
 /**
- * Hàm lắp ráp một file HTML duy nhất, bao gồm cả CSS và JS.
- * @param {string} templateFile - Tên file template (ví dụ: 'ct9-index.html')
+ * Hàm quét đệ quy để tìm tất cả các file CSS trong thư mục library
+ * @returns {string[]} Một mảng chứa nội dung của tất cả các file CSS
  */
-async function buildSinglePage(templateFile) {
-    const sourcePath = path.join(templatesDir, templateFile);
-    const outputHtmlName = templateFile.replace('-index.html', '-dist.html');
-    const destPath = path.join(distDir, outputHtmlName);
+function getAllLibraryCss() {
+    console.log('   - Quét toàn bộ kho linh kiện CSS...');
+    const cssContents = [];
+    const readFilesRecursively = (dir) => {
+        const files = fs.readdirSync(dir);
+        files.forEach(file => {
+            const fullPath = path.join(dir, file);
+            if (fs.statSync(fullPath).isDirectory()) {
+                readFilesRecursively(fullPath);
+            } else if (path.extname(file) === '.css') {
+                cssContents.push(fs.readFileSync(fullPath, 'utf8'));
+            }
+        });
+    };
+    readFilesRecursively(libraryDir);
+    console.log(`   ✅ Đã tìm thấy và nạp ${cssContents.length} file CSS từ library.`);
+    return cssContents;
+}
 
-    console.log(`\n--- Bắt đầu xử lý: ${templateFile} ---`);
+// Tối ưu: Chỉ quét library một lần và lưu kết quả
+const allLibraryCssContents = getAllLibraryCss();
+
+async function buildSinglePage(templateFile) {
+    const hubName = path.basename(templateFile, '-index.html'); // => "ct8", "ct9"
+    const sourcePath = path.join(templatesDir, templateFile);
+    const destPath = path.join(distDir, `${hubName}-dist.html`);
+
+    console.log(`\n--- Bắt đầu xử lý: ${hubName} ---`);
     try {
         const htmlContent = fs.readFileSync(sourcePath, 'utf8');
-        
-        const includePaths = [];
-        const includeRegex = /<include src="([^"]+)"/g;
-        let match;
-        includeRegex.lastIndex = 0; 
-        while ((match = includeRegex.exec(htmlContent)) !== null) {
-            includePaths.push(match[1]);
-        }
 
-        // === 1. TỔNG HỢP CSS ===
-        console.log(`   - Đang tổng hợp các file CSS...`);
+        // === 1. TỔNG HỢP CSS THÔNG MINH ===
         const cssContents = [];
-        const themePath = path.join(rootDir, 'core', 'styles', 'theme.css');
-        
+
+        // 1.1 Nạp theme.css lõi
+        const themePath = path.join(coreDir, 'styles', 'theme.css');
         if (fs.existsSync(themePath)) {
             cssContents.push(fs.readFileSync(themePath, 'utf8'));
         }
 
-        includePaths.forEach(includePath => {
-            const cssPath = path.join(rootDir, includePath.replace('.html', '.css'));
-            if (fs.existsSync(cssPath)) {
-                cssContents.push(fs.readFileSync(cssPath, 'utf8'));
-            }
-        });
+        // 1.2 Nạp TẤT CẢ CSS từ kho library
+        cssContents.push(...allLibraryCssContents);
+        
         const finalCss = cssContents.join('\n\n');
-        console.log(`   ✅ Đã tổng hợp xong CSS.`);
+        console.log('   ✅ Đã tổng hợp CSS thành công.');
 
-        // === 2. ĐÓNG GÓI JAVASCRIPT MODULES (LOGIC NÂNG CẤP) ===
-        console.log(`   - Đang đóng gói các module JS...`);
-        const initFileName = templateFile.replace('-index.html', '-init.js');
-        const initPath = path.join(rootDir, 'core', 'scripts', initFileName);
-        
+        // === 2. ĐÓNG GÓI JAVASCRIPT ===
+        console.log(`   - Tìm và đóng gói JS cho ${hubName}...`);
+        const initPath = path.join(coreDir, 'scripts', `${hubName}-init.js`);
         let finalJs = '';
+
         if (fs.existsSync(initPath)) {
-            const initContent = fs.readFileSync(initPath, 'utf8');
-            const importRegex = /import\s*{[^}]*}\s*from\s*['"](.+\.js)['"];/g;
-            
-            let bundledComponentJs = '';
-            let mainScriptContent = initContent;
-
-            let importMatch;
-            importRegex.lastIndex = 0;
-            while ((importMatch = importRegex.exec(initContent)) !== null) {
-                const moduleRelativePath = importMatch[1];
-                const moduleFullPath = path.resolve(path.dirname(initPath), moduleRelativePath);
-                
-                if (fs.existsSync(moduleFullPath)) {
-                    console.log(`     -> Đang đọc module: ${path.basename(moduleFullPath)}`);
-                    let componentContent = fs.readFileSync(moduleFullPath, 'utf8');
-                    // Xóa từ khóa 'export' để biến nó thành hàm thông thường, an toàn hơn
-                    componentContent = componentContent.replace(/export\s+function/g, 'function');
-                    bundledComponentJs += componentContent + '\n\n';
-                } else {
-                    console.warn(`     -> ⚠️ Cảnh báo: Không tìm thấy module tại: ${moduleFullPath}`);
-                }
-            }
-            
-            // Xóa tất cả các dòng import khỏi file init
-            mainScriptContent = mainScriptContent.replace(importRegex, '');
-
-            // Nối các module đã được xử lý vào trước, sau đó đến file init
-            finalJs = bundledComponentJs + mainScriptContent;
-            console.log(`   ✅ Đã đóng gói xong JS.`);
+            finalJs = fs.readFileSync(initPath, 'utf8');
+             console.log(`   ✅ Đã nạp ${hubName}-init.js`);
         } else {
-            console.log(`   -> Không tìm thấy file init cho ${templateFile}. Bỏ qua JS.`);
+            console.log(`   -> Không tìm thấy file init cho ${hubName}. Bỏ qua JS.`);
         }
-
-        // === 3. LẮP RÁP HTML ===
-        console.log(`   - Đang lắp ráp và đóng gói HTML...`);
         
+        // === 3. LẮP RÁP HTML ===
+        console.log('   - Đang lắp ráp và đóng gói HTML...');
         let intermediateHtml = htmlContent
-            .replace('<!-- INJECT_CSS_PLACEHOLDER -->', `<style>\n${finalCss}\n</style>`)
-            .replace('<!-- INJECT_JS_PLACEHOLDER -->', `<script>\n${finalJs}\n</script>`);
+            .replace('', `<style>\n${finalCss}\n</style>`)
+            .replace('', `<script>\n${finalJs}\n</script>`);
 
         const result = await posthtml([include({ root: rootDir })]).process(intermediateHtml);
-        
-        const finalHtml = result.html;
-
-        fs.writeFileSync(destPath, finalHtml);
-        console.log(`   ✅ Đã tạo file hoàn chỉnh: ${outputHtmlName}`);
-
-        return { status: 'fulfilled', file: templateFile };
+        fs.writeFileSync(destPath, result.html);
+        console.log(`   🎉 Đã tạo file hoàn chỉnh: ${path.basename(destPath)}`);
 
     } catch (error) {
-        console.error(`❌ Lỗi khi xử lý file ${templateFile}:`, error.message);
-        return { status: 'rejected', file: templateFile, reason: error.message };
+        console.error(`❌ Lỗi khi xử lý file ${templateFile}:`, error);
     }
 }
 
-/**
- * Hàm chính, "quản đốc nhà máy".
- */
-async function buildAllPages() {
+async function buildAll() {
     console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT TỰ ĐỘNG ---');
-    try {
-        if (!fs.existsSync(distDir)) {
-            fs.mkdirSync(distDir, { recursive: true });
-        }
-
-        const templateFiles = fs.readdirSync(templatesDir).filter(file =>
-            file.endsWith('-index.html')
-        );
-
-        if (templateFiles.length === 0) {
-            console.log('Không tìm thấy file template nào trong thư mục /template.');
-            return;
-        }
-
-        const results = await Promise.all(templateFiles.map(buildSinglePage));
-
-        const successCount = results.filter(r => r.status === 'fulfilled').length;
-        console.log('\n--- BÁO CÁO KẾT QUẢ ---');
-        console.log(`Thành công: ${successCount}/${results.length}`);
-        if (successCount < results.length) {
-            console.log(`Thất bại: ${results.length - successCount}/${results.length}`);
-        }
-        console.log('🎉 Quá trình build đã hoàn tất! 🎉');
-
-    } catch (error) {
-        console.error('❌ Đã xảy ra lỗi nghiêm trọng trong nhà máy:', error);
+    if (!fs.existsSync(distDir)) {
+        fs.mkdirSync(distDir, { recursive: true });
     }
+    const templateFiles = fs.readdirSync(templatesDir).filter(file => file.endsWith('-index.html'));
+    
+    for (const file of templateFiles) {
+        await buildSinglePage(file);
+    }
+    
+    console.log('\n--- BÁO CÁO: Quá trình build đã hoàn tất! ---');
 }
 
-buildAllPages();
+buildAll();
