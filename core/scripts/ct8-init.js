@@ -229,41 +229,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderFilters(categories) {
-        if (!categories || categories.length === 0 || !ui.filters) return;
+    if (!categories || categories.length === 0 || !ui.filters) return;
 
-        const categoryIcons = {
-            'Tất cả': 'fa-solid fa-border-all',
-            'Chuyển đổi số': 'fa-solid fa-robot',
-            'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
-            'Công nghệ': 'fa-solid fa-microchip',
-            'Case Study': 'fa-solid fa-book-open',
-        };
+    const categoryIcons = {
+        'Tất cả': 'fa-solid fa-border-all',
+        'Chuyển đổi số': 'fa-solid fa-robot',
+        'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
+        'Công nghệ': 'fa-solid fa-microchip',
+        'Case Study': 'fa-solid fa-book-open',
+    };
 
-        const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
+    const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
 
-        ui.filters.innerHTML = allCategories.map(cat => {
-            const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
-            const isActive = cat === currentFilter;
-            return `
-                <button class="filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
-                    <i class="${iconClass}"></i>
-                    <span>${cat}</span>
-                </button>
-            `;
-        }).join('');
+    ui.filters.innerHTML = allCategories.map(cat => {
+        const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
+        const isActive = cat === currentFilter;
+        return `
+            <button class="qtds-library__filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
+                <i class="${iconClass}"></i>
+                <span>${cat}</span>
+            </button>
+        `;
+    }).join('');
 
-        ui.filters.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (isLoading) return;
+    // Dòng này đã được cập nhật
+    ui.filters.querySelectorAll('.qtds-library__filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (isLoading) return;
 
-                ui.filters.querySelector('.active')?.classList.remove('active');
-                this.classList.add('active');
-                
-                currentFilter = this.dataset.category;
-                loadArticles(false);
-            });
+            ui.filters.querySelector('.active')?.classList.remove('active');
+            this.classList.add('active');
+            
+            currentFilter = this.dataset.category;
+            loadArticles(false);
         });
-    }
+    });
+}
 
     function renderFeaturedPosts(featuredArticles) {
         if (!featuredArticles || featuredArticles.length === 0 || !ui.featuredSection) {

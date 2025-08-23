@@ -1,15 +1,25 @@
 /**
- * Section: QTDS Library
+ * Section: QTDS Library (CT8 Version)
  * Description: Defines styles for the main library section, including toolbar, filters, and grid.
- * Version: 1.1
+ * Version: 2.0 - Standardized for CT8 Refactor
  */
 
-/* ----- Block: Library Section ----- */
+/* ==========================================================================
+   1. BLOCK & LAYOUT
+   ========================================================================== */
 .qtds-library {
     background-color: var(--gray-50);
 }
 
-/* ----- Toolbar Elements ----- */
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+/* ==========================================================================
+   2. TOOLBAR & SEARCH
+   ========================================================================== */
 .qtds-library__toolbar {
     max-width: 800px;
     margin: 0 auto var(--space-12);
@@ -47,6 +57,9 @@
     font-size: var(--text-xl);
 }
 
+/* ==========================================================================
+   3. FILTER BUTTONS
+   ========================================================================== */
 .qtds-library__filter-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -65,8 +78,8 @@
     padding-bottom: var(--space-2);
 }
 
-/* ----- Filter Buttons ----- */
-.filter-btn {
+/* CHÚ Ý: Đã đổi tên class từ .filter-btn thành .qtds-library__filter-btn */
+.qtds-library__filter-btn {
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
@@ -83,27 +96,22 @@
     flex-shrink: 0;
 }
 
-.filter-btn:hover {
+.qtds-library__filter-btn:hover {
     background-color: var(--gray-100);
     color: var(--primary);
     transform: translateY(-2px);
 }
 
-.filter-btn.active {
+.qtds-library__filter-btn.active {
     background-color: var(--primary);
     color: white;
     border-color: var(--primary);
     box-shadow: var(--shadow-md);
 }
 
-/* ----- Grid & Cards ----- */
-.qtds-library__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: var(--space-8);
-}
-
-/* ----- States (Loading, Empty) ----- */
+/* ==========================================================================
+   4. STATES (LOADING, EMPTY) & LOAD MORE
+   ========================================================================== */
 .qtds-library__state-container {
     text-align: center;
     padding: var(--space-12) 0;
@@ -128,13 +136,14 @@
     border: 2px dashed var(--gray-200);
 }
 
-/* ----- Load More Button ----- */
 .qtds-library__load-more-container {
     text-align: center;
     margin-top: var(--space-12);
 }
 
-/* ----- Responsive Styles ----- */
+/* ==========================================================================
+   5. RESPONSIVE STYLES
+   ========================================================================== */
 @media (min-width: 768px) {
     .qtds-library__filters {
         justify-content: center;
