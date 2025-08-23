@@ -22,7 +22,6 @@ async function buildSinglePage(templateFile) {
     try {
         const htmlContent = fs.readFileSync(sourcePath, 'utf8');
         
-        // Trích xuất tất cả các đường dẫn từ thẻ <include>
         const includePaths = [];
         const includeRegex = /<include src="([^"]+)"/g;
         let match;
@@ -37,12 +36,10 @@ async function buildSinglePage(templateFile) {
         const themeFileName = templateFile.replace('-index.html', '-theme.css');
         const themePath = path.join(rootDir, 'core', 'styles', themeFileName);
         
-        // Thêm file theme chung trước
         if (fs.existsSync(themePath)) {
             cssContents.push(fs.readFileSync(themePath, 'utf8'));
         }
 
-        // Thêm CSS của từng section/component
         includePaths.forEach(includePath => {
             const cssPath = path.join(rootDir, includePath.replace('.html', '.css'));
             if (fs.existsSync(cssPath)) {
@@ -52,51 +49,57 @@ async function buildSinglePage(templateFile) {
         const finalCss = cssContents.join('\n\n');
         console.log(`   ✅ Đã tổng hợp xong CSS.`);
 
-        // === 2. TỔNG HỢP JAVASCRIPT (LOGIC ĐÃ SỬA) ===
-        console.log(`   - Đang tổng hợp các file JS...`);
-        const jsContents = [];
+        // === 2. ĐÓNG GÓI JAVASCRIPT MODULES (LOGIC NÂNG CẤP) ===
+        console.log(`   - Đang đóng gói các module JS...`);
         const initFileName = templateFile.replace('-index.html', '-init.js');
         const initPath = path.join(rootDir, 'core', 'scripts', initFileName);
-
-        // Bước 1: Luôn thu thập JS từ các component/section lẻ trước để định nghĩa hàm
-        console.log(`   -> Thu thập JS từ các component...`);
-        includePaths.forEach(includePath => {
-            const jsPath = path.join(rootDir, includePath.replace('.html', '.js'));
-            if (fs.existsSync(jsPath)) {
-                let content = fs.readFileSync(jsPath, 'utf8');
-                 // Xóa các dòng import/export để tránh lỗi cú pháp khi gộp file
-                content = content.replace(/^(import|export).*/gm, '');
-                jsContents.push(content);
-            }
-        });
-
-        // Bước 2: Nếu có file init, thêm nó vào CUỐI CÙNG để gọi các hàm đã được định nghĩa
-        if (fs.existsSync(initPath)) {
-            console.log(`   -> Đã tìm thấy file init chính: ${initFileName}. Sẽ thêm vào cuối.`);
-            let initContent = fs.readFileSync(initPath, 'utf8');
-            // Xóa các dòng import/export khỏi file init
-            initContent = initContent.replace(/^(import|export).*/gm, '');
-            jsContents.push(initContent);
-        }
         
-        const finalJs = jsContents.join(';\n\n');
-        console.log(`   ✅ Đã tổng hợp xong JS.`);
+        let finalJs = '';
+        if (fs.existsSync(initPath)) {
+            const initContent = fs.readFileSync(initPath, 'utf8');
+            const importRegex = /import\s*{[^}]*}\s*from\s*['"](.+\.js)['"];/g;
+            
+            let bundledComponentJs = '';
+            let mainScriptContent = initContent;
 
+            let importMatch;
+            importRegex.lastIndex = 0;
+            while ((importMatch = importRegex.exec(initContent)) !== null) {
+                const moduleRelativePath = importMatch[1];
+                const moduleFullPath = path.resolve(path.dirname(initPath), moduleRelativePath);
+                
+                if (fs.existsSync(moduleFullPath)) {
+                    console.log(`     -> Đang đọc module: ${path.basename(moduleFullPath)}`);
+                    let componentContent = fs.readFileSync(moduleFullPath, 'utf8');
+                    // Xóa từ khóa 'export' để biến nó thành hàm thông thường, an toàn hơn
+                    componentContent = componentContent.replace(/export\s+function/g, 'function');
+                    bundledComponentJs += componentContent + '\n\n';
+                } else {
+                    console.warn(`     -> ⚠️ Cảnh báo: Không tìm thấy module tại: ${moduleFullPath}`);
+                }
+            }
+            
+            // Xóa tất cả các dòng import khỏi file init
+            mainScriptContent = mainScriptContent.replace(importRegex, '');
+
+            // Nối các module đã được xử lý vào trước, sau đó đến file init
+            finalJs = bundledComponentJs + mainScriptContent;
+            console.log(`   ✅ Đã đóng gói xong JS.`);
+        } else {
+            console.log(`   -> Không tìm thấy file init cho ${templateFile}. Bỏ qua JS.`);
+        }
 
         // === 3. LẮP RÁP HTML ===
         console.log(`   - Đang lắp ráp và đóng gói HTML...`);
         
-        // Chèn CSS và JS vào các vị trí giữ chỗ
         let intermediateHtml = htmlContent
             .replace('<!-- INJECT_CSS_PLACEHOLDER -->', `<style>\n${finalCss}\n</style>`)
             .replace('<!-- INJECT_JS_PLACEHOLDER -->', `<script>\n${finalJs}\n</script>`);
 
-        // Xử lý các thẻ <include> để gộp nội dung HTML
         const result = await posthtml([include({ root: rootDir })]).process(intermediateHtml);
         
         const finalHtml = result.html;
 
-        // Ghi file kết quả ra thư mục /dist
         fs.writeFileSync(destPath, finalHtml);
         console.log(`   ✅ Đã tạo file hoàn chỉnh: ${outputHtmlName}`);
 
@@ -109,17 +112,15 @@ async function buildSinglePage(templateFile) {
 }
 
 /**
- * Hàm chính, điều phối toàn bộ quá trình build.
+ * Hàm chính, "quản đốc nhà máy".
  */
 async function buildAllPages() {
     console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT TỰ ĐỘNG ---');
     try {
-        // Tạo thư mục /dist nếu chưa có
         if (!fs.existsSync(distDir)) {
             fs.mkdirSync(distDir, { recursive: true });
         }
 
-        // Tìm tất cả các file template cần build
         const templateFiles = fs.readdirSync(templatesDir).filter(file =>
             file.endsWith('-index.html')
         );
@@ -129,10 +130,8 @@ async function buildAllPages() {
             return;
         }
 
-        // Chạy build cho tất cả các file song song
         const results = await Promise.all(templateFiles.map(buildSinglePage));
 
-        // Báo cáo kết quả
         const successCount = results.filter(r => r.status === 'fulfilled').length;
         console.log('\n--- BÁO CÁO KẾT QUẢ ---');
         console.log(`Thành công: ${successCount}/${results.length}`);
@@ -146,5 +145,4 @@ async function buildAllPages() {
     }
 }
 
-// Bắt đầu chạy "nhà máy"
 buildAllPages();
