@@ -74,8 +74,8 @@ async function buildSinglePage(templateFile) {
         // === 3. LẮP RÁP HTML ===
         console.log('   - Đang lắp ráp và đóng gói HTML...');
         let intermediateHtml = htmlContent
-            .replace('', `<style>\n${finalCss}\n</style>`)
-            .replace('', `<script>\n${finalJs}\n</script>`);
+            .replace('<!-- INJECT_CSS_PLACEHOLDER -->', `<style>\n${finalCss}\n</style>`)
+            .replace('<!-- INJECT_JS_PLACEHOLDER -->', `<script>\n${finalJs}\n</script>`);
 
         const result = await posthtml([include({ root: rootDir })]).process(intermediateHtml);
         fs.writeFileSync(destPath, result.html);
