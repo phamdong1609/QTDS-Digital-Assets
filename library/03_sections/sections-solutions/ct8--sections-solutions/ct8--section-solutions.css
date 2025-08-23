@@ -1,51 +1,57 @@
 /**
- * Section: QTDS Solutions
- * Description: Defines styles for the solutions showcase section.
- * Version: 1.4 - Added missing styles for device image and CTA button container.
+ * Section: QTDS Solutions (CT8 Version)
+ * Version: 2.0 - Standardized for CT8 Refactor
+ * Description: CSS has been refactored to use variables and conventions from theme.css.
  */
 
 /* ==========================================================
-   1. BLOCK LEVEL STYLES
-   ========================================================== */
-.qtds-solutions {
-    background-color: white;
-}
-
-/* ==========================================================
-   2. VISUAL & FEATURE BADGES
+   1. VISUAL & FEATURE BADGES
    ========================================================== */
 .qtds-solutions__visual {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
-    padding: 3rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    gap: var(--space-8);
+    padding: var(--space-12);
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-200) 100%);
     border-radius: var(--radius-2xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
 }
 
-.qtds-solutions__device {
-    position: relative;
-}
-
-/* *** NEW FIX #1: Added styles for the device image *** */
-/* This controls the image size, preventing it from breaking the layout. */
 .qtds-solutions__device-img {
     width: 250px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 1.5rem; /* 24px */
     box-shadow: var(--shadow-xl);
 }
 
 .qtds-solutions__features {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
+/* Note: .qtds-feature-badge is a shared component style, assuming it exists in theme.css */
+.qtds-feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-feature-badge i {
+    color: var(--primary);
+}
+
+
 /* ==========================================================
-   3. PILLARS
+   2. PILLARS
    ========================================================== */
 .qtds-pillars {
     display: grid;
@@ -57,9 +63,11 @@
 .qtds-pillar {
     position: relative;
     padding: var(--space-8);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
     border: 1px solid var(--gray-100);
-    overflow: hidden;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .qtds-pillar:hover {
@@ -74,6 +82,12 @@
     font-size: var(--text-5xl);
     font-weight: 900;
     color: var(--gray-100);
+    z-index: 0;
+}
+
+.qtds-pillar__icon, .qtds-pillar__title, .qtds-pillar__subtitle, .qtds-pillar__content, .qtds-tech-features, .qtds-comparison {
+    position: relative;
+    z-index: 1;
 }
 
 .qtds-pillar__icon {
@@ -100,10 +114,10 @@
     margin-bottom: var(--space-6);
 }
 
+
 /* ==========================================================
-   4. SUB-COMPONENTS & ELEMENTS
+   3. SUB-COMPONENTS (Tech Features, Comparison, etc.)
    ========================================================== */
-/* ... (other sub-components like benefit-tag, tech-features, comparison remain the same) ... */
 .qtds-benefit-tag {
     display: inline-flex;
     align-items: center;
@@ -198,8 +212,9 @@
     font-weight: 700;
     color: var(--gray-400);
 }
+
 /* ==========================================================
-   5. PROCESS FLOW
+   4. PROCESS FLOW
    ========================================================== */
 .qtds-process-section {
     margin-top: var(--space-16);
@@ -215,12 +230,14 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-4);
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .qtds-process-flow__step {
     text-align: center;
     flex: 1;
-    max-width: 160px;
+    min-width: 150px;
+    max-width: 180px;
 }
 
 .qtds-process-flow__icon {
@@ -244,23 +261,22 @@
 }
 
 /* ==========================================================
-   6. BENEFITS HIGHLIGHT
+   5. BENEFITS HIGHLIGHT & CTA
    ========================================================== */
 .qtds-benefits-highlight {
     background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-    border: 2px solid #1976D2;
     border-radius: var(--radius-2xl);
     padding: var(--space-8);
     display: flex;
     gap: var(--space-6);
     align-items: flex-start;
-    margin-top: var(--space-8);
+    margin-top: var(--space-16);
 }
 
 .qtds-benefits-highlight__icon {
     width: 64px;
     height: 64px;
-    background: #1976D2;
+    background: var(--primary);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -268,12 +284,11 @@
     color: white;
     font-size: var(--text-3xl);
     flex-shrink: 0;
-    position: relative;
 }
 
 .qtds-benefits-highlight__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-3);
 }
 
@@ -283,131 +298,44 @@
     gap: var(--space-3);
 }
 
-/* *** NEW FIX #2: Added styles for the section's CTA button container *** */
-/* This centers the button and adds top margin to push it down. */
+.qtds-benefits-highlight__item i {
+    color: var(--primary);
+}
+
 .qtds-solutions__cta {
     text-align: center;
     margin-top: var(--space-12);
 }
 
-.qtds-solutions__cta .qtds-btn {
-    font-size: var(--text-xl);
-    padding: var(--space-4) var(--space-10);
-}
-
-
 /* ==========================================================
-   7. RESPONSIVE STYLES
+   6. RESPONSIVE STYLES
    ========================================================== */
-/* Tablet (1024px and below) */
-@media (max-width: 1024px) {
-    .qtds-pillars,
-    .qtds-benefits-highlight__grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .qtds-solutions__visual {
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-6);
+    }
+    
+    .qtds-process-flow {
         gap: var(--space-6);
     }
 
-    .qtds-process-flow {
-        overflow-x: auto;
-        padding-bottom: var(--space-4);
-        justify-content: flex-start;
+    .qtds-process-flow__arrow {
+        display: none; /* Hide arrows on mobile and let items stack */
     }
 
+    .qtds-comparison {
+        flex-direction: column;
+    }
+    
+    .qtds-comparison__divider {
+        margin: var(--space-3) 0;
+    }
+    
     .qtds-benefits-highlight {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
-
-    .qtds-benefits-highlight__icon {
-        margin: 0 auto;
-    }
-}
-
-/* Mobile (768px and below) */
-@media (max-width: 768px) {
-    .qtds-solutions__visual,
-    .qtds-comparison,
-    .qtds-process-flow {
-        flex-direction: column;
-    }
-
-    .qtds-solutions__visual {
-        gap: 2rem;
-        padding: 2rem;
-    }
-    
-    .qtds-process-flow {
-        gap: var(--space-6);
-        overflow-x: visible;
-    }
-
-    .qtds-process-flow__arrow {
-        transform: rotate(90deg);
-    }
-
-    .qtds-comparison__item {
-        width: 100%;
-    }
-    
-    .qtds-comparison__divider {
-        margin: var(--space-3) 0;
-        font-size: var(--text-xl);
-    }
-    
-    .qtds-pillar {
-        padding: var(--space-6);
-    }
-
-    .qtds-benefits-highlight__item {
-        text-align: left;
-    }
-}
-
-/* Small Mobile (480px and below) */
-@media (max-width: 480px) {
-    .qtds-tech-features__item {
-        flex-direction: column;
-        text-align: center;
-    }
-    .qtds-tech-features__icon {
-        margin: 0 auto;
-    }
-}
-
-/* ==========================================================
-   8. ANIMATIONS
-   ========================================================== */
-.qtds-process-flow__step {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.qtds-process-flow__step:nth-child(1) { animation-delay: 0.1s; }
-.qtds-process-flow__step:nth-child(3) { animation-delay: 0.2s; }
-.qtds-process-flow__step:nth-child(5) { animation-delay: 0.3s; }
-.qtds-process-flow__step:nth-child(7) { animation-delay: 0.4s; }
-
-.qtds-benefits-highlight__icon::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 100%; height: 100%;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
 }

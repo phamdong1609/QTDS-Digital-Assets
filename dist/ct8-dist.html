@@ -637,17 +637,27 @@ p:last-child {
 
 
 /**
- * Section: QTDS Library
+ * Section: QTDS Library (CT8 Version)
  * Description: Defines styles for the main library section, including toolbar, filters, and grid.
- * Version: 1.1
+ * Version: 2.1 - Sửa lỗi CSS và đồng bộ với HTML chuẩn hóa.
  */
 
-/* ----- Block: Library Section ----- */
+/* ==========================================================================
+   1. BLOCK & LAYOUT
+   ========================================================================== */
 .qtds-library {
     background-color: var(--gray-50);
 }
 
-/* ----- Toolbar Elements ----- */
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+/* ==========================================================================
+   2. TOOLBAR & SEARCH
+   ========================================================================== */
 .qtds-library__toolbar {
     max-width: 800px;
     margin: 0 auto var(--space-12);
@@ -685,6 +695,9 @@ p:last-child {
     font-size: var(--text-xl);
 }
 
+/* ==========================================================================
+   3. FILTER BUTTONS
+   ========================================================================== */
 .qtds-library__filter-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -703,8 +716,7 @@ p:last-child {
     padding-bottom: var(--space-2);
 }
 
-/* ----- Filter Buttons ----- */
-.filter-btn {
+.qtds-library__filter-btn {
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
@@ -721,27 +733,22 @@ p:last-child {
     flex-shrink: 0;
 }
 
-.filter-btn:hover {
+.qtds-library__filter-btn:hover {
     background-color: var(--gray-100);
     color: var(--primary);
     transform: translateY(-2px);
 }
 
-.filter-btn.active {
+.qtds-library__filter-btn.active {
     background-color: var(--primary);
     color: white;
     border-color: var(--primary);
     box-shadow: var(--shadow-md);
 }
 
-/* ----- Grid & Cards ----- */
-.qtds-library__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: var(--space-8);
-}
-
-/* ----- States (Loading, Empty) ----- */
+/* ==========================================================================
+   4. STATES (LOADING, EMPTY) & LOAD MORE
+   ========================================================================== */
 .qtds-library__state-container {
     text-align: center;
     padding: var(--space-12) 0;
@@ -766,13 +773,14 @@ p:last-child {
     border: 2px dashed var(--gray-200);
 }
 
-/* ----- Load More Button ----- */
 .qtds-library__load-more-container {
     text-align: center;
     margin-top: var(--space-12);
 }
 
-/* ----- Responsive Styles ----- */
+/* ==========================================================================
+   5. RESPONSIVE STYLES
+   ========================================================================== */
 @media (min-width: 768px) {
     .qtds-library__filters {
         justify-content: center;
@@ -793,54 +801,61 @@ p:last-child {
     }
 }
 
+
 /**
- * Section: QTDS Solutions
- * Description: Defines styles for the solutions showcase section.
- * Version: 1.4 - Added missing styles for device image and CTA button container.
+ * Section: QTDS Solutions (CT8 Version)
+ * Version: 2.0 - Standardized for CT8 Refactor
+ * Description: CSS has been refactored to use variables and conventions from theme.css.
  */
 
 /* ==========================================================
-   1. BLOCK LEVEL STYLES
-   ========================================================== */
-.qtds-solutions {
-    background-color: white;
-}
-
-/* ==========================================================
-   2. VISUAL & FEATURE BADGES
+   1. VISUAL & FEATURE BADGES
    ========================================================== */
 .qtds-solutions__visual {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
-    padding: 3rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    gap: var(--space-8);
+    padding: var(--space-12);
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-200) 100%);
     border-radius: var(--radius-2xl);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
 }
 
-.qtds-solutions__device {
-    position: relative;
-}
-
-/* *** NEW FIX #1: Added styles for the device image *** */
-/* This controls the image size, preventing it from breaking the layout. */
 .qtds-solutions__device-img {
     width: 250px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 1.5rem; /* 24px */
     box-shadow: var(--shadow-xl);
 }
 
 .qtds-solutions__features {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
+/* Note: .qtds-feature-badge is a shared component style, assuming it exists in theme.css */
+.qtds-feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-feature-badge i {
+    color: var(--primary);
+}
+
+
 /* ==========================================================
-   3. PILLARS
+   2. PILLARS
    ========================================================== */
 .qtds-pillars {
     display: grid;
@@ -852,9 +867,11 @@ p:last-child {
 .qtds-pillar {
     position: relative;
     padding: var(--space-8);
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
     border: 1px solid var(--gray-100);
-    overflow: hidden;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .qtds-pillar:hover {
@@ -869,6 +886,12 @@ p:last-child {
     font-size: var(--text-5xl);
     font-weight: 900;
     color: var(--gray-100);
+    z-index: 0;
+}
+
+.qtds-pillar__icon, .qtds-pillar__title, .qtds-pillar__subtitle, .qtds-pillar__content, .qtds-tech-features, .qtds-comparison {
+    position: relative;
+    z-index: 1;
 }
 
 .qtds-pillar__icon {
@@ -895,10 +918,10 @@ p:last-child {
     margin-bottom: var(--space-6);
 }
 
+
 /* ==========================================================
-   4. SUB-COMPONENTS & ELEMENTS
+   3. SUB-COMPONENTS (Tech Features, Comparison, etc.)
    ========================================================== */
-/* ... (other sub-components like benefit-tag, tech-features, comparison remain the same) ... */
 .qtds-benefit-tag {
     display: inline-flex;
     align-items: center;
@@ -993,8 +1016,9 @@ p:last-child {
     font-weight: 700;
     color: var(--gray-400);
 }
+
 /* ==========================================================
-   5. PROCESS FLOW
+   4. PROCESS FLOW
    ========================================================== */
 .qtds-process-section {
     margin-top: var(--space-16);
@@ -1010,12 +1034,14 @@ p:last-child {
     align-items: center;
     justify-content: center;
     gap: var(--space-4);
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .qtds-process-flow__step {
     text-align: center;
     flex: 1;
-    max-width: 160px;
+    min-width: 150px;
+    max-width: 180px;
 }
 
 .qtds-process-flow__icon {
@@ -1039,23 +1065,22 @@ p:last-child {
 }
 
 /* ==========================================================
-   6. BENEFITS HIGHLIGHT
+   5. BENEFITS HIGHLIGHT & CTA
    ========================================================== */
 .qtds-benefits-highlight {
     background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-    border: 2px solid #1976D2;
     border-radius: var(--radius-2xl);
     padding: var(--space-8);
     display: flex;
     gap: var(--space-6);
     align-items: flex-start;
-    margin-top: var(--space-8);
+    margin-top: var(--space-16);
 }
 
 .qtds-benefits-highlight__icon {
     width: 64px;
     height: 64px;
-    background: #1976D2;
+    background: var(--primary);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -1063,12 +1088,11 @@ p:last-child {
     color: white;
     font-size: var(--text-3xl);
     flex-shrink: 0;
-    position: relative;
 }
 
 .qtds-benefits-highlight__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-3);
 }
 
@@ -1078,133 +1102,46 @@ p:last-child {
     gap: var(--space-3);
 }
 
-/* *** NEW FIX #2: Added styles for the section's CTA button container *** */
-/* This centers the button and adds top margin to push it down. */
+.qtds-benefits-highlight__item i {
+    color: var(--primary);
+}
+
 .qtds-solutions__cta {
     text-align: center;
     margin-top: var(--space-12);
 }
 
-.qtds-solutions__cta .qtds-btn {
-    font-size: var(--text-xl);
-    padding: var(--space-4) var(--space-10);
-}
-
-
 /* ==========================================================
-   7. RESPONSIVE STYLES
+   6. RESPONSIVE STYLES
    ========================================================== */
-/* Tablet (1024px and below) */
-@media (max-width: 1024px) {
-    .qtds-pillars,
-    .qtds-benefits-highlight__grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .qtds-solutions__visual {
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-6);
+    }
+    
+    .qtds-process-flow {
         gap: var(--space-6);
     }
 
-    .qtds-process-flow {
-        overflow-x: auto;
-        padding-bottom: var(--space-4);
-        justify-content: flex-start;
+    .qtds-process-flow__arrow {
+        display: none; /* Hide arrows on mobile and let items stack */
     }
 
+    .qtds-comparison {
+        flex-direction: column;
+    }
+    
+    .qtds-comparison__divider {
+        margin: var(--space-3) 0;
+    }
+    
     .qtds-benefits-highlight {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
-
-    .qtds-benefits-highlight__icon {
-        margin: 0 auto;
-    }
-}
-
-/* Mobile (768px and below) */
-@media (max-width: 768px) {
-    .qtds-solutions__visual,
-    .qtds-comparison,
-    .qtds-process-flow {
-        flex-direction: column;
-    }
-
-    .qtds-solutions__visual {
-        gap: 2rem;
-        padding: 2rem;
-    }
-    
-    .qtds-process-flow {
-        gap: var(--space-6);
-        overflow-x: visible;
-    }
-
-    .qtds-process-flow__arrow {
-        transform: rotate(90deg);
-    }
-
-    .qtds-comparison__item {
-        width: 100%;
-    }
-    
-    .qtds-comparison__divider {
-        margin: var(--space-3) 0;
-        font-size: var(--text-xl);
-    }
-    
-    .qtds-pillar {
-        padding: var(--space-6);
-    }
-
-    .qtds-benefits-highlight__item {
-        text-align: left;
-    }
-}
-
-/* Small Mobile (480px and below) */
-@media (max-width: 480px) {
-    .qtds-tech-features__item {
-        flex-direction: column;
-        text-align: center;
-    }
-    .qtds-tech-features__icon {
-        margin: 0 auto;
-    }
-}
-
-/* ==========================================================
-   8. ANIMATIONS
-   ========================================================== */
-.qtds-process-flow__step {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.qtds-process-flow__step:nth-child(1) { animation-delay: 0.1s; }
-.qtds-process-flow__step:nth-child(3) { animation-delay: 0.2s; }
-.qtds-process-flow__step:nth-child(5) { animation-delay: 0.3s; }
-.qtds-process-flow__step:nth-child(7) { animation-delay: 0.4s; }
-
-.qtds-benefits-highlight__icon::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 100%; height: 100%;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
 }
 
 
@@ -1580,15 +1517,20 @@ p:last-child {
 
 
         <!-- Library Section -->
-        <!-- Library Section -->
-<section id="library-section" class="section qtds-library">
-    <div class="container">
-        <div class="scroll-animate qtds-section-header">
+        <!-- 
+  Section: QTDS Library (CT8) - Version chuẩn hóa
+  Description: Section Thư viện với thanh tìm kiếm và bộ lọc.
+-->
+<section id="library-section" class="qtds-section qtds-library">
+    <div class="qtds-container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
-            <h2>Khám Phá <span class="text-gradient">Thư Viện QTDS</span></h2>
+            <h2>Khám Phá <span class="qtds-text-gradient">Thư Viện QTDS</span></h2>
             <p>Hơn 100+ bài viết chuyên sâu về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ tiên tiến</p>
         </div>
 
+        <!-- Toolbar -->
         <div class="qtds-library__toolbar">
             <div class="qtds-library__search-wrapper">
                 <input type="text" class="qtds-library__search-input" id="search-input" placeholder="Tìm kiếm bài viết, chủ đề..." aria-label="Tìm kiếm bài viết">
@@ -1596,28 +1538,34 @@ p:last-child {
             </div>
             <div class="qtds-library__filter-container">
                 <div id="library-filters" class="qtds-library__filters" role="group" aria-label="Lọc theo danh mục">
-                    </div>
+                    <!-- Filter buttons will be dynamically inserted here -->
+                </div>
             </div>
         </div>
 
+        <!-- Grid to render articles -->
         <div id="library-grid" class="qtds-library__grid">
-            </div>
+            <!-- Articles will be generated here by JavaScript -->
+        </div>
 
+        <!-- States: Loader & Empty Message -->
         <div class="qtds-library__state-container">
             <div id="library-loader" class="qtds-library__loader" aria-live="polite">
                 <span>Đang tải thư viện...</span>
-                </div>
+            </div>
             <div id="library-empty" class="qtds-library__empty" role="status"></div>
         </div>
 
+        <!-- Load More Button -->
         <div class="qtds-library__load-more-container" id="load-more-container">
-            <button id="load-more-btn" class="qtds-btn qtds-btn--primary hidden">
+            <button id="load-more-btn" class="qtds-btn qtds-btn--primary qtds-hidden">
                 <i class="fa-solid fa-plus"></i>
                 <span>Xem thêm</span>
             </button>
         </div>
     </div>
 </section>
+
 
         <!-- Solutions Section -->
         <!-- 
@@ -1807,6 +1755,7 @@ p:last-child {
 
 
         <!-- Podcast Section -->
+        <!-- Đã sửa đường dẫn file -->
         <!-- Podcast Section -->
 <section id="podcast" class="section qtds-podcast-section">
     <div class="container">
@@ -2184,41 +2133,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderFilters(categories) {
-        if (!categories || categories.length === 0 || !ui.filters) return;
+    if (!categories || categories.length === 0 || !ui.filters) return;
 
-        const categoryIcons = {
-            'Tất cả': 'fa-solid fa-border-all',
-            'Chuyển đổi số': 'fa-solid fa-robot',
-            'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
-            'Công nghệ': 'fa-solid fa-microchip',
-            'Case Study': 'fa-solid fa-book-open',
-        };
+    const categoryIcons = {
+        'Tất cả': 'fa-solid fa-border-all',
+        'Chuyển đổi số': 'fa-solid fa-robot',
+        'Quản trị tín dụng': 'fa-solid fa-hand-holding-dollar',
+        'Công nghệ': 'fa-solid fa-microchip',
+        'Case Study': 'fa-solid fa-book-open',
+    };
 
-        const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
+    const allCategories = ['Tất cả', ...categories.filter(c => c !== 'Tất cả')];
 
-        ui.filters.innerHTML = allCategories.map(cat => {
-            const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
-            const isActive = cat === currentFilter;
-            return `
-                <button class="filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
-                    <i class="${iconClass}"></i>
-                    <span>${cat}</span>
-                </button>
-            `;
-        }).join('');
+    ui.filters.innerHTML = allCategories.map(cat => {
+        const iconClass = categoryIcons[cat] || 'fa-solid fa-tag';
+        const isActive = cat === currentFilter;
+        return `
+            <button class="qtds-library__filter-btn ${isActive ? 'active' : ''}" data-category="${cat}" aria-pressed="${isActive}">
+                <i class="${iconClass}"></i>
+                <span>${cat}</span>
+            </button>
+        `;
+    }).join('');
 
-        ui.filters.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (isLoading) return;
+    // Dòng này đã được cập nhật
+    ui.filters.querySelectorAll('.qtds-library__filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (isLoading) return;
 
-                ui.filters.querySelector('.active')?.classList.remove('active');
-                this.classList.add('active');
-                
-                currentFilter = this.dataset.category;
-                loadArticles(false);
-            });
+            ui.filters.querySelector('.active')?.classList.remove('active');
+            this.classList.add('active');
+            
+            currentFilter = this.dataset.category;
+            loadArticles(false);
         });
-    }
+    });
+}
 
     function renderFeaturedPosts(featuredArticles) {
         if (!featuredArticles || featuredArticles.length === 0 || !ui.featuredSection) {

@@ -1,7 +1,7 @@
 /**
  * Section: QTDS Library (CT8 Version)
  * Description: Defines styles for the main library section, including toolbar, filters, and grid.
- * Version: 2.0 - Standardized for CT8 Refactor
+ * Version: 2.1 - Sửa lỗi CSS và đồng bộ với HTML chuẩn hóa.
  */
 
 /* ==========================================================================
@@ -78,7 +78,6 @@
     padding-bottom: var(--space-2);
 }
 
-/* CHÚ Ý: Đã đổi tên class từ .filter-btn thành .qtds-library__filter-btn */
 .qtds-library__filter-btn {
     display: inline-flex;
     align-items: center;
