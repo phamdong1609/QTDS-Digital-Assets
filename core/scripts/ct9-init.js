@@ -1,13 +1,19 @@
 /**
  * File: ct9-init.js (Master Initialization Script for CT9)
- * Version: 3.0 (Unified)
- * Description: This is the single source of truth for initializing all JavaScript functionality on the CT9 page.
- * It handles scroll animations, navbar, FAQ, library loading, and back-to-top button.
+ * Version: 4.1 (Path Fixed)
+ * Description: This is the central controller that imports and initializes all component modules.
  */
+
+// --- MODULE IMPORTS (Corrected Paths) ---
+import { initBackToTop } from './component/backToTop.js';
+import { initFaq } from './component/faq.js';
+import { initNavbar } from './component/navbar.js';
+import { initLibrary } from './component/library.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== 1. GLOBAL: SCROLL ANIMATIONS =====
-    // This observer is defined once and used by all other functions.
+    // This observer is defined once and passed to modules that need it.
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -17,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    // Initial observation run
+    // Initial observation run for elements present on page load.
     document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
 
 
     // ===== INITIALIZE ALL MODULES =====
     initNavbar();
     initFaq();
-    initLibrary();
+    initLibrary(observer); // Pass the observer to the library module
     initBackToTop();
 
 });

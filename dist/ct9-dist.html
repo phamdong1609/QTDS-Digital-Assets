@@ -1,333 +1,25 @@
-<script>
-/**
- * File: ct9-init.js (Master Initialization Script for CT9)
- * Version: 3.0 (Unified)
- * Description: This is the single source of truth for initializing all JavaScript functionality on the CT9 page.
- * It handles scroll animations, navbar, FAQ, library loading, and back-to-top button.
- */
-document.addEventListener('DOMContentLoaded', () => {
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    // ===== 1. GLOBAL: SCROLL ANIMATIONS =====
-    // This observer is defined once and used by all other functions.
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Initial observation run
-    document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
-
-    // ===== 2. NAVBAR FUNCTIONALITY =====
-    function initNavbar() {
-        const navbar = document.getElementById('navbar');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        if (navbar) {
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
-            });
-        }
-
-        if (mobileMenuBtn && mobileMenu) {
-            const menuIcon = mobileMenuBtn.querySelector('i');
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
-                if (menuIcon) {
-                    menuIcon.classList.toggle('fa-bars');
-                    menuIcon.classList.toggle('fa-times');
-                }
-            });
-
-            document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
-                    if (menuIcon) {
-                        menuIcon.classList.add('fa-bars');
-                        menuIcon.classList.remove('fa-times');
-                    }
-                });
-            });
-        }
-    }
-
-    // ===== 3. FAQ ACCORDION FUNCTIONALITY =====
-    function initFaq() {
-        document.querySelectorAll('.qtds-faq__button').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                button.classList.toggle('qtds-faq__button--active');
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        });
-    }
-
-    // ===== 4. LIBRARY LOADER FUNCTIONALITY (UNIFIED) =====
-    function initLibrary() {
-        const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
-        const ARTICLES_TO_SHOW = 6;
-        const gridContainer = document.getElementById('library-grid');
-        const loader = document.getElementById('library-loader');
-
-        if (!gridContainer || !loader) {
-            console.warn("Library section not found, skipping initialization.");
-            return;
-        }
-
-        async function fetchArticles() {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                if (data && data.articles) {
-                    const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
-                    renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
-                }
-            } catch (error) {
-                console.error("Library fetch error:", error);
-                loader.textContent = "Không thể tải thư viện.";
-            } finally {
-                if (gridContainer.innerHTML !== '') loader.style.display = 'none';
-            }
-        }
-
-        function renderArticles(articles) {
-            gridContainer.innerHTML = articles.map(article => {
-                const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
-                    .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
-                return `
-                    <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
-                        <div class="qtds-article-card__image-wrapper">
-                            <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
-                        </div>
-                        <div class="qtds-card__body">
-                            <div>${tagsHTML}</div>
-                            <h4 class="qtds-article-card__title">${article.title}</h4>
-                            <p class="qtds-article-card__description">${article.short_description}</p>
-                            <div class="qtds-article-card__cta">
-                                <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                    </a>`;
-            }).join('');
-            // Tell the global observer to watch the new cards
-            document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
-        }
-
-        fetchArticles();
-    }
-
-    // ===== 5. BACK TO TOP FUNCTIONALITY =====
-    function initBackToTop() {
-        const backToTopBtn = document.querySelector('.qtds-back-to-top');
-        if (backToTopBtn) {
-            window.addEventListener('scroll', () => {
-                backToTopBtn.classList.toggle('show', window.scrollY > 400);
-            });
-            backToTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    }
-
-    // ===== INITIALIZE ALL MODULES =====
-    initNavbar();
-    initFaq();
-    initLibrary();
-    initBackToTop();
-
-});;
-
-/**
- * Section: QTDS Navbar (Standardized JS)
- * Version: 1.0
- * Description: This script handles the mobile menu toggle and scroll effects for the navbar.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    // ===== NAVBAR FUNCTIONALITY =====
-
-    // --- Mobile Menu Toggle ---
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+    <!-- Phần Head chung -->
+        <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    // Check if elements exist before adding listeners
-    if (mobileMenuBtn && mobileMenu) {
-        const menuIcon = mobileMenuBtn.querySelector('i');
+<!-- External CSS & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
-        // Toggle mobile menu when button is clicked
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
-            if (menuIcon) {
-                menuIcon.classList.toggle('fa-bars');
-                menuIcon.classList.toggle('fa-times');
-            }
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
-                if (menuIcon) {
-                    menuIcon.classList.add('fa-bars');
-                    menuIcon.classList.remove('fa-times');
-                }
-            });
-        });
-    }
-
-    // --- Navbar Scroll Effect ---
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('qtds-navbar--scrolled');
-            } else {
-                navbar.classList.remove('qtds-navbar--scrolled');
-            }
-        });
-    }
-});
-;
-
-/**
- * Section: QTDS FAQ (Standardized JS)
- * Version: 1.0
- * Description: This script handles the accordion functionality for the FAQ section.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-// Select all buttons with the new standardized class
-document.querySelectorAll('.qtds-faq__button').forEach(button => {
-    button.addEventListener('click', () => {
-        // Find the corresponding content panel
-        const content = button.nextElementSibling;
-
-        // Toggle the active state class on the button
-        button.classList.toggle('qtds-faq__button--active');
-
-        // Check if the content panel is open or closed and toggle its max-height
-        if (content.style.maxHeight) {
-            // If it's open, close it
-            content.style.maxHeight = null;
-        } else {
-            // If it's closed, open it by setting max-height to its scroll height
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
-});
-;
-
-/**
- * Section: QTDS Library (Standardized JS)
- * Version: 1.0
- * Description: This script handles fetching and displaying a limited number of articles.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- 
-
-// Note: This is the simplified script from the CT-6 breakdown.
-// The IntersectionObserver is assumed to be initialized in a global script (_main-ct6.js).
-function initQTDSLibrary() {
-    const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
-    const ARTICLES_TO_SHOW = 6;
-    const gridContainer = document.getElementById('library-grid');
-    const loader = document.getElementById('library-loader');
-
-    if (!gridContainer || !loader) return;
-
-    async function fetchArticles() {
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            if (data && data.articles) {
-                const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
-                renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
-            }
-        } catch (error) {
-            loader.textContent = "Không thể tải thư viện.";
-        } finally {
-            if (gridContainer.innerHTML !== '') loader.style.display = 'none';
-        }
-    }
-
-    function renderArticles(articles) {
-        gridContainer.innerHTML = articles.map(article => {
-            const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
-                .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
-            
-            // All classes in this template literal are now standardized with 'qtds-'
-            return `
-                <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
-                    <div class="qtds-article-card__image-wrapper">
-                        <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
-                    </div>
-                    <div class="qtds-card__body">
-                        <div>${tagsHTML}</div>
-                        <h4 class="qtds-article-card__title">${article.title}</h4>
-                        <p class="qtds-article-card__description">${article.short_description}</p>
-                        <div class="qtds-article-card__cta">
-                            <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>`;
-        }).join('');
-
-        // Assuming a global 'observer' is available from _main-ct6.js
-        // This will need to be updated when we standardize the main script.
-        if (typeof observer !== 'undefined') {
-             document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
-        }
-    }
-
-    fetchArticles();
-}
-
-// Ensure this is called after the DOM is loaded.
-// If you have a global script, this call might be moved there.
-document.addEventListener('DOMContentLoaded', () => {
-    initQTDSLibrary();
-});
-;
-
-/**
- * Component: QTDS Back To Top (Standardized JS)
- * Version: 1.0
- * Description: This script handles the show/hide functionality for the back-to-top button.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-// Find the button using its new standardized class name
-// Back To Top Component - Fixed version
-const backToTopBtn = document.querySelector('.qtds-back-to-top');
-
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        // Sử dụng class 'show' thay vì BEM modifier
-        if (window.scrollY > 400) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
-
-    // Thêm sự kiện click
-    backToTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-</script><style>
+    <title>Trang CT9 Hoàn Chỉnh</title>
+    
+    <!-- Vị trí chờ để Robot nhúng toàn bộ CSS vào đây -->
+    <style>
 /**
  * File: _global-ct6.css (Standardized)
  * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
@@ -2833,28 +2525,7 @@ p:last-child {
 }
 
 
-</style><!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Phần Head chung -->
-        <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-<!-- External CSS & Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-
-    <title>Trang CT9 Hoàn Chỉnh</title>
-    
-    <!-- Vị trí chờ để Robot nhúng toàn bộ CSS vào đây -->
-    <!-- INJECT_CSS_PLACEHOLDER -->
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -3925,6 +3596,37 @@ p:last-child {
 
 
     <!-- Vị trí chờ để Robot nhúng toàn bộ JS vào đây -->
-    <!-- INJECT_JS_PLACEHOLDER -->
+    <script>
+/**
+ * File: ct9-init.js (Master Initialization Script for CT9)
+ * Version: 3.0 (Unified)
+ * Description: This is the single source of truth for initializing all JavaScript functionality on the CT9 page.
+ * It handles scroll animations, navbar, FAQ, library loading, and back-to-top button.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ===== 1. GLOBAL: SCROLL ANIMATIONS =====
+    // This observer is defined once and used by all other functions.
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Initial observation run
+    document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
+
+
+    // ===== INITIALIZE ALL MODULES =====
+    initNavbar();
+    initFaq();
+    initLibrary();
+    initBackToTop();
+
+});
+</script>
 </body>
 </html>

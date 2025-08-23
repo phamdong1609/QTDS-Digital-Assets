@@ -25,7 +25,6 @@ async function buildSinglePage(templateFile) {
         const includePaths = [];
         const includeRegex = /<include src="([^"]+)"/g;
         let match;
-        // Reset lastIndex trước mỗi lần thực thi mới
         includeRegex.lastIndex = 0; 
         while ((match = includeRegex.exec(htmlContent)) !== null) {
             includePaths.push(match[1]);
@@ -50,39 +49,53 @@ async function buildSinglePage(templateFile) {
         const finalCss = cssContents.join('\n\n');
         console.log(`   ✅ Đã tổng hợp xong CSS.`);
 
-        // === 2. TỔNG HỢP JAVASCRIPT (ĐÃ SỬA LỖI TRÙNG LẶP) ===
-        console.log(`   - Đang tổng hợp các file JS...`);
-        const jsContents = [];
+        // === 2. ĐÓNG GÓI JAVASCRIPT MODULES (LOGIC NÂNG CẤP) ===
+        console.log(`   - Đang đóng gói các module JS...`);
         const initFileName = templateFile.replace('-index.html', '-init.js');
         const initPath = path.join(rootDir, 'core', 'scripts', initFileName);
-
-        // Ưu tiên file init. Nếu có, chỉ dùng nó.
+        
+        let finalJs = '';
         if (fs.existsSync(initPath)) {
-            console.log(`   -> Đã tìm thấy file init chính: ${initFileName}. Sẽ chỉ sử dụng file này.`);
-            jsContents.push(fs.readFileSync(initPath, 'utf8'));
-        } else {
-            // Nếu không có file init, mới đi thu thập từ các component lẻ
-            console.log(`   -> Không tìm thấy file init. Sẽ thu thập JS từ các component...`);
-            includePaths.forEach(includePath => {
-                const jsPath = path.join(rootDir, includePath.replace('.html', '.js'));
-                if (fs.existsSync(jsPath)) {
-                    jsContents.push(fs.readFileSync(jsPath, 'utf8'));
-                }
-            });
-        }
-        const finalJs = jsContents.join(';\n\n');
-        console.log(`   ✅ Đã tổng hợp xong JS.`);
+            const initContent = fs.readFileSync(initPath, 'utf8');
+            const importRegex = /import\s*{[^}]*}\s*from\s*['"](.+)['"];/g;
+            
+            let bundledComponentJs = '';
+            let mainScriptContent = initContent;
 
+            let importMatch;
+            // Reset regex state before new execution
+            importRegex.lastIndex = 0;
+            while ((importMatch = importRegex.exec(initContent)) !== null) {
+                // Correctly resolve the component path relative to the init file
+                const componentPath = path.resolve(path.dirname(initPath), importMatch[1]);
+                if (fs.existsSync(componentPath)) {
+                    console.log(`     -> Đang đọc module: ${path.basename(componentPath)}`);
+                    let componentContent = fs.readFileSync(componentPath, 'utf8');
+                    // Xóa từ khóa 'export' để biến nó thành hàm thông thường
+                    componentContent = componentContent.replace(/export\s+/g, '');
+                    bundledComponentJs += componentContent + '\n\n';
+                } else {
+                    console.warn(`     -> ⚠️ Cảnh báo: Không tìm thấy module tại: ${componentPath}`);
+                }
+            }
+            
+            // Xóa tất cả các dòng import khỏi file init
+            mainScriptContent = mainScriptContent.replace(importRegex, '');
+
+            // Nối các module đã được xử lý vào trước, sau đó đến file init
+            finalJs = bundledComponentJs + mainScriptContent;
+            console.log(`   ✅ Đã đóng gói xong JS.`);
+        } else {
+            console.log(`   -> Không tìm thấy file init cho ${templateFile}. Bỏ qua JS.`);
+        }
 
         // === 3. LẮP RÁP HTML (QUY TRÌNH MỚI ĐẢM BẢO THỨ TỰ) ===
         console.log(`   - Đang lắp ráp và đóng gói HTML...`);
         
-        // Bước 3.1: Chèn CSS và JS vào file template GỐC trước
         let intermediateHtml = htmlContent
-            .replace('', `<style>\n${finalCss}\n</style>`)
-            .replace('', `<script>\n${finalJs}\n</script>`);
+            .replace('<!-- INJECT_CSS_PLACEHOLDER -->', `<style>\n${finalCss}\n</style>`)
+            .replace('<!-- INJECT_JS_PLACEHOLDER -->', `<script>\n${finalJs}\n</script>`);
 
-        // Bước 3.2: Bây giờ mới dùng posthtml để xử lý các thẻ <include> trên file đã được chèn
         const result = await posthtml([include({ root: rootDir })]).process(intermediateHtml);
         
         const finalHtml = result.html;
