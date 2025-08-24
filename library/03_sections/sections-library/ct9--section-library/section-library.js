@@ -7,7 +7,7 @@
 
 // Note: This is the simplified script from the CT-6 breakdown.
 // The IntersectionObserver is assumed to be initialized in a global script (_main-ct6.js).
-function initQTDSLibrary() {
+export function initLibrary(observer) {
     const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec?teaser';
     const ARTICLES_TO_SHOW = 6;
     const gridContainer = document.getElementById('library-grid');
@@ -63,8 +63,3 @@ function initQTDSLibrary() {
     fetchArticles();
 }
 
-// Ensure this is called after the DOM is loaded.
-// If you have a global script, this call might be moved there.
-document.addEventListener('DOMContentLoaded', () => {
-    initQTDSLibrary();
-});
