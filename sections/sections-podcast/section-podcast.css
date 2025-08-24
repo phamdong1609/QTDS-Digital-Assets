@@ -1,9 +1,0 @@
-/**
- * Section: QTDS Podcast
- * Description: This section acts as a container for the podcast card component.
- * Version: 1.1 - Set background to gray for alternating color scheme.
- */
-
-.qtds-podcast {
-    background-color: var(--gray-50);
-}

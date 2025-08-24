@@ -1,0 +1,81 @@
+/**
+ * Section: QTDS Featured Posts (CT8 Version)
+ * Description: Carousel section displaying featured articles with Swiper.js
+ * Version: 2.0 - Standardized for CT8 Refactor
+ */
+
+/* ==========================================================================
+   1. BLOCK & LAYOUT
+   ========================================================================== */
+
+.qtds-featured {
+    background-color: white;
+}
+
+.qtds-featured__carousel {
+    width: 100%;
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+}
+
+/* * CHÚ Ý: Đã xóa thuộc tính 'gap' khỏi đây. 
+ * Việc tạo khoảng cách giữa các slide nên được quản lý bởi tham số 
+ * 'spaceBetween' trong file JavaScript (ct8-init.js) để đảm bảo tính nhất quán.
+*/
+.qtds-featured__carousel .swiper-wrapper {
+    display: flex;
+}
+
+/* ==========================================================================
+   2. SWIPER CUSTOMIZATION
+   ========================================================================== */
+
+/* Kích thước của mỗi slide trong carousel */
+.qtds-featured .swiper-slide {
+    width: 350px;
+    height: auto; /* Cho phép chiều cao tự động điều chỉnh theo nội dung card */
+}
+
+/* Định dạng cho card bài viết bên trong section này */
+.qtds-featured .qtds-article-card {
+    height: 100%; /* Đảm bảo các card có chiều cao bằng nhau */
+}
+
+/* Màu sắc cho các nút điều khiển của Swiper */
+.qtds-featured .swiper-pagination-bullet-active {
+    background: var(--primary);
+}
+
+.qtds-featured .swiper-button-next, 
+.qtds-featured .swiper-button-prev {
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   3. RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .qtds-featured__carousel {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-8);
+    }
+    
+    .qtds-featured .swiper-slide {
+        width: 320px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .qtds-featured .swiper-slide {
+        width: 280px;
+    }
+    
+    /* Ẩn nút qua lại trên màn hình nhỏ để tiết kiệm không gian */
+    .qtds-featured .swiper-button-next,
+    .qtds-featured .swiper-button-prev {
+        display: none;
+    }
+}
