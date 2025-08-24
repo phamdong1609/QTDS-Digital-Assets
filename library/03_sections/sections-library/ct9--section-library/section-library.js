@@ -8,7 +8,7 @@
 // NOTE: This file has been updated to correctly match the import and function call
 // in the master initialization script (ct9-init.js).
 function initLibrary(observer) {
-    const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec?teaser';
     const ARTICLES_TO_SHOW = 6;
     const gridContainer = document.getElementById('library-grid');
     const loader = document.getElementById('library-loader');
