@@ -155,3 +155,5 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# IDE files
+landingpage-mau

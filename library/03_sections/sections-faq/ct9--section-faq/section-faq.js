@@ -1,5 +1,5 @@
 // ===== 3. FAQ ACCORDION FUNCTIONALITY =====
-    export function initFaq() {
+    function initFaq() {
         document.querySelectorAll('.qtds-faq__button').forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;

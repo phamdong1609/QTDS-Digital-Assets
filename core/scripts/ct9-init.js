@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== INITIALIZE ALL MODULES =====
     initNavbar();
     initFaq();
-    initLibrary();
+    initLibrary(); 
     initBackToTop();
 
 });

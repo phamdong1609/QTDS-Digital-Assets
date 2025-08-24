@@ -3661,7 +3661,7 @@ p:last-child {
  * It has been updated to use the standardized 'qtds-' prefixed class names.
  */
 
-export document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // ===== NAVBAR FUNCTIONALITY =====
 
     // --- Mobile Menu Toggle ---
@@ -3731,7 +3731,7 @@ export document.addEventListener('DOMContentLoaded', () => {
 
 // Note: This is the simplified script from the CT-6 breakdown.
 // The IntersectionObserver is assumed to be initialized in a global script (_main-ct6.js).
-function initLibrary(observer) {
+function initLibrary() { // Chính xác, không cần observer ở đây
     const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec?teaser';
     const ARTICLES_TO_SHOW = 6;
     const gridContainer = document.getElementById('library-grid');
@@ -3760,9 +3760,8 @@ function initLibrary(observer) {
             const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
                 .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
             
-            // All classes in this template literal are now standardized with 'qtds-'
             return `
-                <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
+                <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card active">
                     <div class="qtds-article-card__image-wrapper">
                         <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
                     </div>
@@ -3777,15 +3776,13 @@ function initLibrary(observer) {
                 </a>`;
         }).join('');
 
-        // Assuming a global 'observer' is available from _main-ct6.js
-        // This will need to be updated when we standardize the main script.
-        if (typeof observer !== 'undefined') {
-             document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
-        }
+        // ĐÃ XÓA DÒNG GÂY LỖI Ở ĐÂY
     }
 
     fetchArticles();
 }
+
+
 
     /**
      * Module: Back To Top Button
@@ -3830,7 +3827,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== INITIALIZE ALL MODULES =====
     initNavbar();
     initFaq();
-    initLibrary();
+    initLibrary(); 
     initBackToTop();
 
 });

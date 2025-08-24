@@ -5,7 +5,7 @@
  * It has been updated to use the standardized 'qtds-' prefixed class names.
  */
 
-export document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // ===== NAVBAR FUNCTIONALITY =====
 
     // --- Mobile Menu Toggle ---
