@@ -1,0 +1,34 @@
+/* library/01_atoms/atom-tag/atom-tag.css */
+
+/**
+ * Component: QTDS Tag
+ * Description: Styles for small informational tags or badges.
+ */
+
+/* Base styles for all tags */
+.qtds-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Default style (used for article cards) */
+.qtds-tag--default {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+/* Hero Badge variant */
+.qtds-tag--hero-badge {
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    gap: var(--space-3);
+}

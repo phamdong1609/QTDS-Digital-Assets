@@ -38,16 +38,8 @@
     padding: 0 var(--space-4);
 }
 
-.qtds-hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-2) var(--space-6);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-full);
+.qtds-hero__content .qtds-tag--hero-badge {
     margin-bottom: var(--space-6);
-    backdrop-filter: blur(10px);
 }
 
 .qtds-hero__title {
