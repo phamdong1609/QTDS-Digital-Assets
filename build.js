@@ -1,10 +1,9 @@
-// build.js (Version 3.0 - Now with Expressions!)
+// build.js (Version 3.1 - Smart Atom CSS Loading)
 
 const fs = require('fs');
 const path = require('path');
 const posthtml = require('posthtml');
 const include = require('posthtml-include');
-// --- BƯỚC NÂNG CẤP 1: Import công cụ mới ---
 const expressions = require('posthtml-expressions');
 
 // --- KHAI BÁO CÁC ĐƯỜNG DẪN CỐT LÕI (Không đổi) ---
@@ -14,10 +13,8 @@ const distDir = path.join(rootDir, 'dist');
 const libraryDir = path.join(rootDir, 'library');
 const coreDir = path.join(rootDir, 'core');
 
-// --- CÁC HÀM HIỆN TẠI (Không đổi) ---
 function getIncludedComponents(htmlContent) {
     console.log('   - Đang phân tích bản thiết kế để tìm linh kiện...');
-    // Cập nhật Regex để bắt cả các thẻ include có thuộc tính locals
     const includeRegex = /<include src="([^"]+)"/g;
     const components = [];
     let match;
@@ -39,19 +36,42 @@ async function buildSinglePage(templateFile) {
         
         const requiredComponents = getIncludedComponents(htmlContent);
 
-        // === 1. TỔNG HỢP CSS THÔNG MINH (Không đổi) ===
+        // === 1. TỔNG HỢP CSS THÔNG MINH ===
         console.log('   - Đang tổng hợp CSS theo đơn hàng...');
         const cssContents = [];
+
+        // 1.1 Luôn nạp theme.css lõi
         const themePath = path.join(coreDir, 'styles', 'theme.css');
         if (fs.existsSync(themePath)) {
             cssContents.push(fs.readFileSync(themePath, 'utf8'));
         }
+
+        // 1.2 Chỉ nạp CSS của các linh kiện được yêu cầu trong template
         requiredComponents.forEach(componentPath => {
             const cssPath = path.join(rootDir, componentPath.replace('.html', '.css'));
             if (fs.existsSync(cssPath)) {
                 cssContents.push(fs.readFileSync(cssPath, 'utf8'));
             }
         });
+        
+        // --- BƯỚC NÂNG CẤP: Tự động nạp CSS cho TẤT CẢ atoms ---
+        console.log('   - Tự động nạp CSS cho các linh kiện ATOM...');
+        const atomsDir = path.join(libraryDir, '01_atoms');
+        if (fs.existsSync(atomsDir)) {
+            const atomFolders = fs.readdirSync(atomsDir, { withFileTypes: true })
+                .filter(dirent => dirent.isDirectory())
+                .map(dirent => dirent.name);
+
+            atomFolders.forEach(folder => {
+                const cssPath = path.join(atomsDir, folder, `${folder}.css`);
+                if (fs.existsSync(cssPath)) {
+                    cssContents.push(fs.readFileSync(cssPath, 'utf8'));
+                    console.log(`     -> Đã nạp: ${folder}.css`);
+                }
+            });
+        }
+        // --- KẾT THÚC NÂNG CẤP ---
+
         const finalCss = cssContents.join('\n\n');
         console.log('   ✅ Đã tổng hợp CSS thành công.');
 
@@ -71,16 +91,13 @@ async function buildSinglePage(templateFile) {
         const finalJs = jsContents.join('\n\n');
         console.log('   ✅ Đã đóng gói JS thành công.');
         
-        // === 3. LẮP RÁP HTML (Nâng cấp) ===
+        // === 3. LẮP RÁP HTML (Không đổi) ===
         console.log('   - Đang lắp ráp và đóng gói HTML...');
-        
-        // --- BƯỚC NÂNG CẤP 2: Sử dụng pipeline mới với expressions ---
         const result = await posthtml([
             include({ root: rootDir, encoding: 'utf8' }),
-            expressions({ locals: {} }) // Thêm expressions vào pipeline
+            expressions({ locals: {} })
         ]).process(htmlContent);
 
-        // Thay thế các placeholder CSS và JS sau khi đã xử lý include
         let finalHtml = result.html
             .replace('<!-- INJECT_CSS_PLACEHOLDER -->', `<style>\n${finalCss}\n</style>`)
             .replace('<!-- INJECT_JS_PLACEHOLDER -->', `<script>\n${finalJs}\n</script>`);
@@ -94,7 +111,7 @@ async function buildSinglePage(templateFile) {
 }
 
 async function buildAll() {
-    console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT PHIÊN BẢN 3.0 ---');
+    console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT PHIÊN BẢN 3.1 ---');
     if (!fs.existsSync(distDir)) {
         fs.mkdirSync(distDir, { recursive: true });
     }

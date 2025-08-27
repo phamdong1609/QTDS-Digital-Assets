@@ -2534,6 +2534,126 @@ p:last-child {
 }
 
 
+
+/* library/01_atoms/atom-button/atom-button.css */
+
+/**
+ * Component: QTDS Button
+ * Description: Foundational styles for all button components.
+ * This is the master CSS for the button atom.
+ */
+
+.qtds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: 2px solid transparent;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.qtds-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-btn--primary {
+    background: var(--primary);
+    color: white;
+}
+
+.qtds-btn--primary:hover {
+    background: var(--primary-dark);
+}
+
+.qtds-btn--secondary {
+    background: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.qtds-btn--secondary:hover {
+    background: var(--gray-100);
+}
+
+/* Responsive adjustments from theme.css */
+@media (max-width: 768px) {
+    .qtds-btn {
+        max-width: calc(100vw - var(--space-6));
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+    }
+}
+
+
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+
 </style>
 </head>
 <body>
