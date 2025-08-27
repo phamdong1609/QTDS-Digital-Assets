@@ -622,46 +622,7 @@ p:last-child {
     margin: 0 auto 3rem;
 }
 
-.qtds-stat-item {
-    padding: 2rem 1rem;
-    background: white;
-    border-radius: var(--radius-xl);
-    /* Note: --shadow variable was missing in original, assuming --shadow-md */
-    box-shadow: var(--shadow-md); 
-    text-align: center;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
 
-.qtds-stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    transition: all var(--transition-base);
-}
-
-.qtds-stat-item__value {
-    font-size: var(--text-4xl);
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: var(--space-3);
-}
-
-.qtds-stat-item__label {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    margin-top: auto;
-    line-height: 1.4;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 2.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .qtds-challenges__grid {
     display: grid;
@@ -1527,42 +1488,6 @@ p:last-child {
   gap: 2rem;
   max-width: 800px;
   margin: 0 auto 3rem;
-}
-
-.qtds-benefits__overview-item {
-  text-align: center;
-  padding: 1.5rem;
-  background: white;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--gray-200);
-  transition: all var(--transition-base);
-}
-
-.qtds-benefits__overview-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-}
-
-.qtds-benefits__overview-number {
-  font-size: var(--text-4xl);
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: var(--space-3);
-}
-
-.qtds-benefits__overview-label {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    font-weight: 500;
-    line-height: 1.4;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 2.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Stakeholder Cards Container */
@@ -2682,6 +2607,54 @@ p:last-child {
     gap: var(--space-3);
 }
 
+
+/* library/02_molecules/molecule-stat-card/molecule-stat-card.css */
+
+/**
+ * Component: QTDS Stat Card
+ * Description: A small card used to display a key statistic or metric.
+ */
+
+.qtds-stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md); 
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.qtds-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-stat-item__value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.qtds-stat-item__label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 </style>
 </head>
 <body>
@@ -2814,24 +2787,63 @@ p:last-child {
             <p>Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</p>
         </div>
 
-        <!-- Stats Overview -->
+         <!-- Stats Overview (THAY THẾ NỘI DUNG BÊN TRONG) -->
         <div class="qtds-challenges__stats">
-            <div class="qtds-scroll-animate qtds-stat-item">
-                <div class="qtds-stat-item__value text-danger">59.8%</div>
-                <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-                <div class="qtds-stat-item__value text-warning">42%</div>
-                <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-                <div class="qtds-stat-item__value text-purple">38.8%</div>
-                <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
-                <div class="qtds-stat-item__value text-primary">1,176</div>
-                <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
-            </div>
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
+    <div class="qtds-stat-item__value text-danger">59.8%</div>
+    <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
+</div>
+
+
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+    <div class="qtds-stat-item__value text-warning">42%</div>
+    <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
+</div>
+
+
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+    <div class="qtds-stat-item__value text-purple">38.8%</div>
+    <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
+</div>
+
+
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
+    <div class="qtds-stat-item__value text-primary">1,176</div>
+    <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
+</div>
+
         </div>
 
         <!-- Highlight Box -->
@@ -3353,24 +3365,62 @@ p:last-child {
             </p>
         </div>
 
-        <!-- Overview Stats -->
         <div class="qtds-scroll-animate qtds-benefits__overview">
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-primary">70%</div>
-                <div class="qtds-benefits__overview-label">Tăng năng suất</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-danger">95%</div>
-                <div class="qtds-benefits__overview-label">Giảm sai sót</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-success">100%</div>
-                <div class="qtds-benefits__overview-label">Tuân thủ NHNN</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-purple">80%</div>
-                <div class="qtds-benefits__overview-label">Tiết kiệm thời gian</div>
-            </div>
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
+    <div class="qtds-stat-item__value text-primary">70%</div>
+    <div class="qtds-stat-item__label">Tăng năng suất</div>
+</div>
+
+            
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+    <div class="qtds-stat-item__value text-danger">95%</div>
+    <div class="qtds-stat-item__label">Giảm sai sót</div>
+</div>
+
+
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+    <div class="qtds-stat-item__value text-success">100%</div>
+    <div class="qtds-stat-item__label">Tuân thủ NHNN</div>
+</div>
+
+
+            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
+    <div class="qtds-stat-item__value text-purple">80%</div>
+    <div class="qtds-stat-item__label">Tiết kiệm thời gian</div>
+</div>
+
         </div>
 
         <!-- Stakeholder Cards -->

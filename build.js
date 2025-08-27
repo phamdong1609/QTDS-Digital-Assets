@@ -1,4 +1,4 @@
-// build.js (Version 3.1 - Smart Atom CSS Loading)
+// build.js (Version 3.2 - Smart Atom & Molecule CSS Loading)
 
 const fs = require('fs');
 const path = require('path');
@@ -6,7 +6,6 @@ const posthtml = require('posthtml');
 const include = require('posthtml-include');
 const expressions = require('posthtml-expressions');
 
-// --- KHAI BÁO CÁC ĐƯỜNG DẪN CỐT LÕI (Không đổi) ---
 const rootDir = __dirname;
 const templatesDir = path.join(rootDir, 'template');
 const distDir = path.join(rootDir, 'dist');
@@ -33,49 +32,48 @@ async function buildSinglePage(templateFile) {
     console.log(`\n--- Bắt đầu xử lý đơn hàng: ${hubName} ---`);
     try {
         let htmlContent = fs.readFileSync(sourcePath, 'utf8');
-        
         const requiredComponents = getIncludedComponents(htmlContent);
 
-        // === 1. TỔNG HỢP CSS THÔNG MINH ===
         console.log('   - Đang tổng hợp CSS theo đơn hàng...');
         const cssContents = [];
 
-        // 1.1 Luôn nạp theme.css lõi
         const themePath = path.join(coreDir, 'styles', 'theme.css');
         if (fs.existsSync(themePath)) {
             cssContents.push(fs.readFileSync(themePath, 'utf8'));
         }
 
-        // 1.2 Chỉ nạp CSS của các linh kiện được yêu cầu trong template
         requiredComponents.forEach(componentPath => {
             const cssPath = path.join(rootDir, componentPath.replace('.html', '.css'));
             if (fs.existsSync(cssPath)) {
                 cssContents.push(fs.readFileSync(cssPath, 'utf8'));
             }
         });
-        
-        // --- BƯỚC NÂNG CẤP: Tự động nạp CSS cho TẤT CẢ atoms ---
-        console.log('   - Tự động nạp CSS cho các linh kiện ATOM...');
-        const atomsDir = path.join(libraryDir, '01_atoms');
-        if (fs.existsSync(atomsDir)) {
-            const atomFolders = fs.readdirSync(atomsDir, { withFileTypes: true })
-                .filter(dirent => dirent.isDirectory())
-                .map(dirent => dirent.name);
 
-            atomFolders.forEach(folder => {
-                const cssPath = path.join(atomsDir, folder, `${folder}.css`);
-                if (fs.existsSync(cssPath)) {
-                    cssContents.push(fs.readFileSync(cssPath, 'utf8'));
-                    console.log(`     -> Đã nạp: ${folder}.css`);
-                }
-            });
-        }
+        // --- NÂNG CẤP: Tự động nạp CSS cho ATOMS và MOLECULES ---
+        const componentLevels = ['01_atoms', '02_molecules'];
+        
+        componentLevels.forEach(level => {
+            console.log(`   - Tự động nạp CSS cho các linh kiện ${level.toUpperCase()}...`);
+            const levelDir = path.join(libraryDir, level);
+            if (fs.existsSync(levelDir)) {
+                const componentFolders = fs.readdirSync(levelDir, { withFileTypes: true })
+                    .filter(dirent => dirent.isDirectory())
+                    .map(dirent => dirent.name);
+
+                componentFolders.forEach(folder => {
+                    const cssPath = path.join(levelDir, folder, `${folder}.css`);
+                    if (fs.existsSync(cssPath)) {
+                        cssContents.push(fs.readFileSync(cssPath, 'utf8'));
+                        console.log(`     -> Đã nạp: ${folder}.css`);
+                    }
+                });
+            }
+        });
         // --- KẾT THÚC NÂNG CẤP ---
 
         const finalCss = cssContents.join('\n\n');
         console.log('   ✅ Đã tổng hợp CSS thành công.');
 
-        // === 2. ĐÓNG GÓI JAVASCRIPT THÔNG MINH (Không đổi) ===
         console.log(`   - Đang đóng gói JS theo đơn hàng cho ${hubName}...`);
         const jsContents = [];
         requiredComponents.forEach(componentPath => {
@@ -91,7 +89,6 @@ async function buildSinglePage(templateFile) {
         const finalJs = jsContents.join('\n\n');
         console.log('   ✅ Đã đóng gói JS thành công.');
         
-        // === 3. LẮP RÁP HTML (Không đổi) ===
         console.log('   - Đang lắp ráp và đóng gói HTML...');
         const result = await posthtml([
             include({ root: rootDir, encoding: 'utf8' }),
@@ -111,7 +108,7 @@ async function buildSinglePage(templateFile) {
 }
 
 async function buildAll() {
-    console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT PHIÊN BẢN 3.1 ---');
+    console.log('--- KHỞI ĐỘNG NHÀ MÁY SẢN XUẤT PHIÊN BẢN 3.2 ---');
     if (!fs.existsSync(distDir)) {
         fs.mkdirSync(distDir, { recursive: true });
     }

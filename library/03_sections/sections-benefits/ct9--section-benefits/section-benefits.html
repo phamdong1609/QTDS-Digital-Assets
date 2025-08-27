@@ -15,24 +15,34 @@
             </p>
         </div>
 
-        <!-- Overview Stats -->
         <div class="qtds-scroll-animate qtds-benefits__overview">
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-primary">70%</div>
-                <div class="qtds-benefits__overview-label">Tăng năng suất</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-danger">95%</div>
-                <div class="qtds-benefits__overview-label">Giảm sai sót</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-success">100%</div>
-                <div class="qtds-benefits__overview-label">Tuân thủ NHNN</div>
-            </div>
-            <div class="qtds-benefits__overview-item">
-                <div class="qtds-benefits__overview-number text-purple">80%</div>
-                <div class="qtds-benefits__overview-label">Tiết kiệm thời gian</div>
-            </div>
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "70%",
+                "label": "Tăng năng suất",
+                "colorClass": "text-primary",
+                "delay": "0s"
+            }'></include>
+            
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "95%",
+                "label": "Giảm sai sót",
+                "colorClass": "text-danger",
+                "delay": "0.1s"
+            }'></include>
+
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "100%",
+                "label": "Tuân thủ NHNN",
+                "colorClass": "text-success",
+                "delay": "0.2s"
+            }'></include>
+
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "80%",
+                "label": "Tiết kiệm thời gian",
+                "colorClass": "text-purple",
+                "delay": "0.3s"
+            }'></include>
         </div>
 
         <!-- Stakeholder Cards -->
