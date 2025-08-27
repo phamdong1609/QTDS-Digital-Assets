@@ -12,24 +12,35 @@
             <p>Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</p>
         </div>
 
-        <!-- Stats Overview -->
+         <!-- Stats Overview (THAY THẾ NỘI DUNG BÊN TRONG) -->
         <div class="qtds-challenges__stats">
-            <div class="qtds-scroll-animate qtds-stat-item">
-                <div class="qtds-stat-item__value text-danger">59.8%</div>
-                <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-                <div class="qtds-stat-item__value text-warning">42%</div>
-                <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-                <div class="qtds-stat-item__value text-purple">38.8%</div>
-                <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
-            </div>
-            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
-                <div class="qtds-stat-item__value text-primary">1,176</div>
-                <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
-            </div>
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "59.8%",
+                "label": "QTDND vi phạm quy định cho vay",
+                "colorClass": "text-danger",
+                "delay": "0s"
+            }'></include>
+
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "42%",
+                "label": "Có sai phạm về quản trị điều hành",
+                "colorClass": "text-warning",
+                "delay": "0.1s"
+            }'></include>
+
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "38.8%",
+                "label": "Thiếu sót trong kiểm soát nội bộ",
+                "colorClass": "text-purple",
+                "delay": "0.2s"
+            }'></include>
+
+            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                "value": "1,176",
+                "label": "QTDND trên toàn quốc",
+                "colorClass": "text-primary",
+                "delay": "0.3s"
+            }'></include>
         </div>
 
         <!-- Highlight Box -->

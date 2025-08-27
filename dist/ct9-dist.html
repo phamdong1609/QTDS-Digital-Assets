@@ -441,16 +441,8 @@ p:last-child {
     padding: 0 var(--space-4);
 }
 
-.qtds-hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-2) var(--space-6);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-full);
+.qtds-hero__content .qtds-tag--hero-badge {
     margin-bottom: var(--space-6);
-    backdrop-filter: blur(10px);
 }
 
 .qtds-hero__title {
@@ -2535,6 +2527,65 @@ p:last-child {
 
 
 
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+
+
 /* library/01_atoms/atom-button/atom-button.css */
 
 /**
@@ -2596,65 +2647,40 @@ p:last-child {
 }
 
 
-
+/* library/01_atoms/atom-tag/atom-tag.css */
 
 /**
- * Component: QTDS Back To Top
- * Description: Defines styles for the back-to-top button.
- * Version: 1.4 (Aligned with CT-7 working solution)
- * Changes:
- * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
- * - This ensures maximum compatibility with the LadiPage environment.
+ * Component: QTDS Tag
+ * Description: Styles for small informational tags or badges.
  */
 
-/* Back to Top Button - Hardened for LadiPage */
-.qtds-back-to-top {
-    position: fixed !important;
-    bottom: 30px !important;
-    right: 30px !important;
-    width: 48px !important;
-    height: 48px !important;
-    background: var(--primary) !important;
-    color: white !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 50% !important;
-    font-size: 1.5rem !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    z-index: 10000 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(20px) !important;
-    transition: all 0.3s ease !important;
-    border: none !important;
-    cursor: pointer !important;
+/* Base styles for all tags */
+.qtds-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
 }
 
-.qtds-back-to-top i {
-    color: white !important;
+/* Default style (used for article cards) */
+.qtds-tag--default {
+    background: var(--gray-100);
+    color: var(--gray-700);
 }
 
-/* Show state - using simple .show class */
-.qtds-back-to-top.show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
+/* Hero Badge variant */
+.qtds-tag--hero-badge {
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    gap: var(--space-3);
 }
-
-.qtds-back-to-top:hover {
-    background: var(--primary-dark) !important;
-    transform: translateY(-3px) !important;
-}
-
-/* Fallback for any variation */
-[class*="qtds-back-to-top"].show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-}
-
 
 </style>
 </head>
@@ -2701,12 +2727,30 @@ p:last-child {
   Description: This HTML has been updated to use the standardized QTDS BEM class names 
                to match the corresponding CSS file (standardized-hero-css-v1).
 -->
+<!-- library/03_sections/sections-hero/ct9--section-hero/section-hero.html -->
+
 <section id="tong-quan" class="qtds-hero">
     <div class="qtds-hero__bg"></div>
     <div class="container qtds-hero__content">
-        <div class="qtds-scroll-animate qtds-hero__badge">
-            <i class="fas fa-shield-alt"></i><span>BẢO MẬT DỮ LIỆU</span>
+        
+        <!-- THAY THẾ KHỐI DIV CŨ BẰNG INCLUDE NÀY -->
+        <div class="qtds-scroll-animate">
+             <!-- library/01_atoms/atom-tag/atom-tag.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ/nhãn (tag/badge).
+  - type: Kiểu style ('default' hoặc 'hero-badge').
+  - icon: Class của Font Awesome (tùy chọn).
+  - text: Nội dung chữ.
+-->
+<span class="qtds-tag qtds-tag--hero-badge">
+  
+    <i class="fas fa-shield-alt"></i>
+  <span>BẢO MẬT DỮ LIỆU</span>
+</span>
+
         </div>
+        
         <h1 class="qtds-scroll-animate qtds-hero__title">
             <span class="qtds-text-gradient">QTDS</span> - Chuẩn Hóa Dữ Liệu Tín Dụng
         </h1>
@@ -2717,7 +2761,6 @@ p:last-child {
             Giải pháp số hóa quy trình tín dụng dành riêng cho 1.176 QTDND tại Việt Nam. Chấm dứt tình trạng nhập liệu thủ công, sai sót dữ liệu và vi phạm quy định.
         </p>
         <div class="qtds-scroll-animate qtds-hero__actions">
-            <!-- THAY THẾ CODE CŨ BẰNG 2 DÒNG INCLUDE NÀY -->
             <!-- library/01_atoms/atom-button/atom-button.html -->
 
 <!-- 

@@ -18,46 +18,7 @@
     margin: 0 auto 3rem;
 }
 
-.qtds-stat-item {
-    padding: 2rem 1rem;
-    background: white;
-    border-radius: var(--radius-xl);
-    /* Note: --shadow variable was missing in original, assuming --shadow-md */
-    box-shadow: var(--shadow-md); 
-    text-align: center;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
 
-.qtds-stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    transition: all var(--transition-base);
-}
-
-.qtds-stat-item__value {
-    font-size: var(--text-4xl);
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: var(--space-3);
-}
-
-.qtds-stat-item__label {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    margin-top: auto;
-    line-height: 1.4;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 2.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .qtds-challenges__grid {
     display: grid;
