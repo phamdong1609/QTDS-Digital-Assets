@@ -2,7 +2,7 @@
      * Module: Back To Top Button
      * Description: Handles the show/hide and smooth scroll functionality.
      */
-    export function initBackToTop() {
+    function initBackToTop() {
         const backToTopBtn = document.querySelector('.qtds-back-to-top');
         if (backToTopBtn) {
             window.addEventListener('scroll', () => {
