@@ -159,49 +159,7 @@ p:last-child {
    4. COMPONENTS (Standardized)
    ========================================================================== */
 
-/* Button Component */
-.qtds-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-lg);
-    font-weight: 600;
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    transition: all var(--transition-base);
-    cursor: pointer;
-    border: 2px solid transparent;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
-.qtds-btn:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
-}
-
-.qtds-btn--primary {
-    background: var(--primary);
-    color: white;
-}
-
-.qtds-btn--primary:hover {
-    background: var(--primary-dark);
-}
-
-.qtds-btn--secondary {
-    background: white;
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-.qtds-btn--secondary:hover {
-    background: var(--gray-100);
-}
 
 /* Card Component */
 .qtds-card {
@@ -266,12 +224,6 @@ p:last-child {
     .qtds-section {
         width: 100% !important;
         overflow-x: hidden !important;
-    }
-
-    .qtds-btn {
-        max-width: calc(100vw - var(--space-6));
-        padding: var(--space-3) var(--space-6);
-        font-size: var(--text-base);
     }
 
     .qtds-card {

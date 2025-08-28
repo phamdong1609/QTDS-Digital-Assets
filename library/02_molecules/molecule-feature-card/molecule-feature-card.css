@@ -1,0 +1,72 @@
+/* library/02_molecules/molecule-feature-card/molecule-feature-card.css */
+
+/**
+ * Component: QTDS Feature Card
+ * Description: A card used to highlight a specific feature or benefit.
+ */
+
+/* Feature Item */
+.qtds-feature-card {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-feature-card--primary {
+    border-color: var(--primary);
+}
+.qtds-feature-card--primary .qtds-feature-card__icon {
+    color: var(--primary);
+}
+
+.qtds-feature-card--secondary {
+    border-color: var(--secondary);
+}
+.qtds-feature-card--secondary .qtds-feature-card__icon {
+    color: var(--secondary);
+}
+
+.qtds-feature-card--accent {
+    border-color: var(--accent);
+}
+.qtds-feature-card--accent .qtds-feature-card__icon {
+    color: var(--accent);
+}
+
+.qtds-feature-card--purple {
+    border-color: var(--purple);
+}
+.qtds-feature-card--purple .qtds-feature-card__icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-feature-card__icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-feature-card__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-feature-card__text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}

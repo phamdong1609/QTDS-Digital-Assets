@@ -1,0 +1,12 @@
+<!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ thống kê.
+  - value: Giá trị/con số (ví dụ: '59.8%').
+  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
+  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
+-->
+<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: {{ delay || '0s' }};">
+    <div class="qtds-stat-item__value {{ colorClass }}">{{ value }}</div>
+    <div class="qtds-stat-item__label">{{ label }}</div>
+</div>
