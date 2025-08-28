@@ -1,79 +1,100 @@
 <!-- 
-  Section: QTDS FAQ (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS FAQ (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Description: 
+  - Đã được nâng cấp để đọc dữ liệu động từ mảng `faqs` trong JSON blueprint.
+  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược với template CT9 cũ.
 -->
 <section id="faq" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
-            <h2>Giải Đáp Thắc Mắc Về QTDS</h2>
+            <h2>{{ title || 'Giải Đáp Thắc Mắc Về QTDS' }}</h2>
         </div>
 
         <div class="qtds-faq">
-            <!-- Question 1 -->
-            <div class="qtds-scroll-animate qtds-faq__item">
-                <button class="qtds-faq__button">
-                    <span>QTDS có phù hợp với các QTDND quy mô nhỏ không?</span>
-                    <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                </button>
-                <div class="qtds-faq__content">
-                    <div class="qtds-faq__content-inner">
-                        <p>Hoàn toàn phù hợp. QTDS được thiết kế với chi phí thấp và dễ triển khai, không yêu cầu hạ tầng phức tạp, lý tưởng cho các QTDND có nguồn lực hạn chế.</p>
+            <!-- Logic MỚI: Nếu có mảng 'faqs' được truyền vào (từ JSON), thì lặp qua nó -->
+            <if condition="faqs">
+                <each loop="faq in faqs">
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>{{ faq.question }}</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>{{ faq.answer }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </each>
+            </if>
 
-            <!-- Question 2 -->
-            <div class="qtds-scroll-animate qtds-faq__item">
-                <button class="qtds-faq__button">
-                    <span>QTDS khác gì so với các hệ thống Core Banking đắt tiền?</span>
-                    <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                </button>
-                <div class="qtds-faq__content">
-                    <div class="qtds-faq__content-inner">
-                        <p>QTDS là giải pháp chuyên biệt, tập trung vào quy trình tín dụng cốt lõi, giúp số hóa từng bước một cách hiệu quả với chi phí thấp, thay vì một hệ thống Core Banking tổng thể, tốn kém và phức tạp.</p>
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'faqs', thì hiển thị nội dung tĩnh như cũ để CT9 không bị lỗi -->
+            <if condition="!faqs">
+                <!-- Question 1 -->
+                <div class="qtds-scroll-animate qtds-faq__item">
+                    <button class="qtds-faq__button">
+                        <span>QTDS có phù hợp với các QTDND quy mô nhỏ không?</span>
+                        <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                    </button>
+                    <div class="qtds-faq__content">
+                        <div class="qtds-faq__content-inner">
+                            <p>Hoàn toàn phù hợp. QTDS được thiết kế với chi phí thấp và dễ triển khai, không yêu cầu hạ tầng phức tạp, lý tưởng cho các QTDND có nguồn lực hạn chế.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Question 3 -->
-            <div class="qtds-scroll-animate qtds-faq__item">
-                <button class="qtds-faq__button">
-                    <span>Làm thế nào QTDS giúp tuân thủ quy định của NHNN?</span>
-                    <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                </button>
-                <div class="qtds-faq__content">
-                    <div class="qtds-faq__content-inner">
-                        <p>Bằng cách tự động hóa việc nhập liệu từ các nguồn chính thức (CIC, OCR giấy tờ), QTDS giảm thiểu sai sót, gian lận, giúp đảm bảo tính toàn vẹn dữ liệu và tuân thủ các yêu cầu quản trị, kiểm soát của NHNN.</p>
+                <!-- Question 2 -->
+                <div class="qtds-scroll-animate qtds-faq__item">
+                    <button class="qtds-faq__button">
+                        <span>QTDS khác gì so với các hệ thống Core Banking đắt tiền?</span>
+                        <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                    </button>
+                    <div class="qtds-faq__content">
+                        <div class="qtds-faq__content-inner">
+                            <p>QTDS là giải pháp chuyên biệt, tập trung vào quy trình tín dụng cốt lõi, giúp số hóa từng bước một cách hiệu quả với chi phí thấp, thay vì một hệ thống Core Banking tổng thể, tốn kém và phức tạp.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Question 4 -->
-            <div class="qtds-scroll-animate qtds-faq__item">
-                <button class="qtds-faq__button">
-                    <span>QTDS có tích hợp Trí tuệ nhân tạo (AI) không?</span>
-                    <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                </button>
-                <div class="qtds-faq__content">
-                    <div class="qtds-faq__content-inner">
-                        <p>Có, QTDS đã tích hợp AI để tự động trích xuất dữ liệu từ giấy tờ tùy thân và chứng nhận quyền sử dụng đất, giúp tăng tốc độ và độ chính xác trong quy trình thẩm định.</p>
+                <!-- Question 3 -->
+                <div class="qtds-scroll-animate qtds-faq__item">
+                    <button class="qtds-faq__button">
+                        <span>Làm thế nào QTDS giúp tuân thủ quy định của NHNN?</span>
+                        <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                    </button>
+                    <div class="qtds-faq__content">
+                        <div class="qtds-faq__content-inner">
+                            <p>Bằng cách tự động hóa việc nhập liệu từ các nguồn chính thức (CIC, OCR giấy tờ), QTDS giảm thiểu sai sót, gian lận, giúp đảm bảo tính toàn vẹn dữ liệu và tuân thủ các yêu cầu quản trị, kiểm soát của NHNN.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Question 5 -->
-            <div class="qtds-scroll-animate qtds-faq__item">
-                <button class="qtds-faq__button">
-                    <span>QTDS có hỗ trợ hợp đồng điện tử và chữ ký số không?</span>
-                    <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                </button>
-                <div class="qtds-faq__content">
-                    <div class="qtds-faq__content-inner">
-                        <p>QTDS được xây dựng với kiến trúc sẵn sàng cho tương lai, có thể hỗ trợ hợp đồng điện tử, chữ ký số và phê duyệt online, giúp QTDND tiến tới số hóa toàn diện hơn.</p>
+                <!-- Question 4 -->
+                <div class="qtds-scroll-animate qtds-faq__item">
+                    <button class="qtds-faq__button">
+                        <span>QTDS có tích hợp Trí tuệ nhân tạo (AI) không?</span>
+                        <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                    </button>
+                    <div class="qtds-faq__content">
+                        <div class="qtds-faq__content-inner">
+                            <p>Có, QTDS đã tích hợp AI để tự động trích xuất dữ liệu từ giấy tờ tùy thân và chứng nhận quyền sử dụng đất, giúp tăng tốc độ và độ chính xác trong quy trình thẩm định.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Question 5 -->
+                <div class="qtds-scroll-animate qtds-faq__item">
+                    <button class="qtds-faq__button">
+                        <span>QTDS có hỗ trợ hợp đồng điện tử và chữ ký số không?</span>
+                        <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                    </button>
+                    <div class="qtds-faq__content">
+                        <div class="qtds-faq__content-inner">
+                            <p>QTDS được xây dựng với kiến trúc sẵn sàng cho tương lai, có thể hỗ trợ hợp đồng điện tử, chữ ký số và phê duyệt online, giúp QTDND tiến tới số hóa toàn diện hơn.</p>
+                        </div>
+                    </div>
+                </div>
+            </if>
         </div>
     </div>
 </section>

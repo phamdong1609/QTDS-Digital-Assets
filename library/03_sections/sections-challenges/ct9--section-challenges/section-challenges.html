@@ -1,110 +1,126 @@
 <!-- 
-  Section: QTDS Challenges (Standardized HTML)
-  Version: 2.1 (Corrected to preserve original class structure)
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS Challenges (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Description: 
+  - Đã được nâng cấp để đọc dữ liệu động từ mảng `stats` và `cards` trong JSON blueprint.
+  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược với template CT9 cũ.
 -->
 <section id="thach-thuc" class="qtds-section">
     <div class="qtds-container">
-        <!-- Section Header -->
+        <!-- Section Header: Dữ liệu được truyền từ template cha hoặc blueprint -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">THỰC TRẠNG HỆ THỐNG</span>
-            <h2>4 Thách Thức Cốt Lõi Của Hệ Thống QTDND</h2>
-            <p>Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</p>
+            <span class="qtds-section-header__tagline">{{ tagline || 'THỰC TRẠNG HỆ THỐNG' }}</span>
+            <h2>{{ title || '4 Thách Thức Cốt Lõi Của Hệ Thống QTDND' }}</h2>
+            <p>{{ description || 'Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.' }}</p>
         </div>
 
-         <!-- Stats Overview (THAY THẾ NỘI DUNG BÊN TRONG) -->
+        <!-- Stats Overview -->
         <div class="qtds-challenges__stats">
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "59.8%",
-                "label": "QTDND vi phạm quy định cho vay",
-                "colorClass": "text-danger",
-                "delay": "0s"
-            }'></include>
-
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "42%",
-                "label": "Có sai phạm về quản trị điều hành",
-                "colorClass": "text-warning",
-                "delay": "0.1s"
-            }'></include>
-
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "38.8%",
-                "label": "Thiếu sót trong kiểm soát nội bộ",
-                "colorClass": "text-purple",
-                "delay": "0.2s"
-            }'></include>
-
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "1,176",
-                "label": "QTDND trên toàn quốc",
-                "colorClass": "text-primary",
-                "delay": "0.3s"
-            }'></include>
+            <!-- Logic MỚI: Nếu có mảng 'stats' được truyền vào (từ JSON), thì lặp qua nó -->
+            <if condition="stats">
+                <each loop="stat in stats">
+                    <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{{ stat }}'></include>
+                </each>
+            </if>
+            
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'stats', thì hiển thị nội dung tĩnh như cũ để CT9 không bị lỗi -->
+            <if condition="!stats">
+                <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                    "value": "59.8%", "label": "QTDND vi phạm quy định cho vay", "colorClass": "text-danger", "delay": "0s"
+                }'></include>
+                <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                    "value": "42%", "label": "Có sai phạm về quản trị điều hành", "colorClass": "text-warning", "delay": "0.1s"
+                }'></include>
+                <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                    "value": "38.8%", "label": "Thiếu sót trong kiểm soát nội bộ", "colorClass": "text-purple", "delay": "0.2s"
+                }'></include>
+                <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
+                    "value": "1,176", "label": "QTDND trên toàn quốc", "colorClass": "text-primary", "delay": "0.3s"
+                }'></include>
+            </if>
         </div>
 
         <!-- Highlight Box -->
         <div class="qtds-scroll-animate qtds-challenges__highlight-box">
             <h3 class="qtds-challenges__highlight-title">
                 <i class="fas fa-layer-group qtds-challenges__highlight-icon"></i>
-                Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi
+                {{ highlightTitle || 'Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi' }}
             </h3>
             <p class="qtds-challenges__highlight-text">
-                Hiểu rõ từng thách thức để có giải pháp phù hợp và hiệu quả nhất
+                {{ highlightDescription || 'Hiểu rõ từng thách thức để có giải pháp phù hợp và hiệu quả nhất' }}
             </p>
         </div>
 
         <!-- Challenge Cards Grid -->
         <div class="qtds-challenges__grid">
-            <!-- Challenge 1 -->
-            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--1">
-                <div class="qtds-card__header qtds-challenges__card-header">
-                    <div class="qtds-card__icon qtds-challenges__card-icon">
-                        <i class="fas fa-user-tie"></i>
+            <!-- Logic MỚI: Nếu có mảng 'cards' được truyền vào (từ JSON), thì lặp qua nó -->
+            <if condition="cards">
+                <each loop="card in cards">
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--{{ card.id }}" style="animation-delay: {{ card.delay }};">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon qtds-challenges__card-icon">
+                                <i class="{{ card.icon }}"></i>
+                            </div>
+                            <div>
+                                <h3 class="qtds-card__title qtds-challenges__card-title">{{ card.title }}</h3>
+                                <span class="qtds-challenges__card-tag">{{ card.tag }}</span>
+                            </div>
+                        </div>
+                        <div class="qtds-card__body qtds-challenges__card-body">
+                            <h4 class="qtds-challenges__card-subtitle">{{ card.subtitle }}</h4>
+                            <ul class="qtds-challenges__card-list">
+                                <each loop="item in card.listItems">
+                                    <li><i class="fas fa-chevron-right"></i><span>{{ item }}</span></li>
+                                </each>
+                            </ul>
+                            <div class="qtds-challenges__card-insight">
+                                <strong>{{ card.insightPrefix }}:</strong> {{ card.insightText }}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="qtds-card__title qtds-challenges__card-title">Quản Trị Điều Hành</h3>
-                        <span class="qtds-challenges__card-tag">Thách thức</span>
-                    </div>
-                </div>
-                <div class="qtds-card__body qtds-challenges__card-body">
-                    <h4 class="qtds-challenges__card-subtitle">Vấn đề thường gặp:</h4>
-                    <ul class="qtds-challenges__card-list">
-                        <li><i class="fas fa-chevron-right"></i><span>Thiếu cán bộ có trình độ chuyên môn phù hợp</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Quy trình ra quyết định chưa minh bạch</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Hệ thống kiểm soát nội bộ còn nhiều sơ hở</span></li>
-                    </ul>
-                    <div class="qtds-challenges__card-insight">
-                        <strong>Tác động:</strong> Ảnh hưởng chất lượng tín dụng, uy tín
-                    </div>
-                </div>
-            </div>
+                </each>
+            </if>
 
-            <!-- Challenge 2 -->
-            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--2" style="animation-delay: 0.1s;">
-                <div class="qtds-card__header qtds-challenges__card-header">
-                    <div class="qtds-card__icon qtds-challenges__card-icon">
-                        <i class="fas fa-laptop"></i>
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'cards', thì hiển thị nội dung tĩnh như cũ để CT9 không bị lỗi -->
+            <if condition="!cards">
+                <!-- Challenge 1 -->
+                <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--1">
+                    <div class="qtds-card__header qtds-challenges__card-header">
+                        <div class="qtds-card__icon qtds-challenges__card-icon"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <h3 class="qtds-card__title qtds-challenges__card-title">Quản Trị Điều Hành</h3>
+                            <span class="qtds-challenges__card-tag">Thách thức</span>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="qtds-card__title qtds-challenges__card-title">Hạ Tầng Công Nghệ</h3>
-                        <span class="qtds-challenges__card-tag">Cần cải thiện</span>
+                    <div class="qtds-card__body qtds-challenges__card-body">
+                        <h4 class="qtds-challenges__card-subtitle">Vấn đề thường gặp:</h4>
+                        <ul class="qtds-challenges__card-list">
+                            <li><i class="fas fa-chevron-right"></i><span>Thiếu cán bộ có trình độ chuyên môn phù hợp</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Quy trình ra quyết định chưa minh bạch</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Hệ thống kiểm soát nội bộ còn nhiều sơ hở</span></li>
+                        </ul>
+                        <div class="qtds-challenges__card-insight"><strong>Tác động:</strong> Ảnh hưởng chất lượng tín dụng, uy tín</div>
                     </div>
                 </div>
-                <div class="qtds-card__body qtds-challenges__card-body">
-                    <h4 class="qtds-challenges__card-subtitle">Thực trạng hiện tại:</h4>
-                    <ul class="qtds-challenges__card-list">
-                        <li><i class="fas fa-chevron-right"></i><span>Sử dụng nhiều phần mềm riêng lẻ, không đồng bộ</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Xử lý nghiệp vụ chủ yếu bằng thủ công</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Thiếu hệ thống sao lưu dữ liệu an toàn</span></li>
-                    </ul>
-                    <div class="qtds-challenges__card-insight">
-                        <strong>Hệ quả:</strong> Hiệu quả vận hành thấp, dễ xảy ra sai sót
+                <!-- Challenge 2 -->
+                <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--2" style="animation-delay: 0.1s;">
+                     <div class="qtds-card__header qtds-challenges__card-header">
+                        <div class="qtds-card__icon qtds-challenges__card-icon"><i class="fas fa-laptop"></i></div>
+                        <div>
+                            <h3 class="qtds-card__title qtds-challenges__card-title">Hạ Tầng Công Nghệ</h3>
+                            <span class="qtds-challenges__card-tag">Cần cải thiện</span>
+                        </div>
+                    </div>
+                    <div class="qtds-card__body qtds-challenges__card-body">
+                        <h4 class="qtds-challenges__card-subtitle">Thực trạng hiện tại:</h4>
+                        <ul class="qtds-challenges__card-list">
+                            <li><i class="fas fa-chevron-right"></i><span>Sử dụng nhiều phần mềm riêng lẻ, không đồng bộ</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Xử lý nghiệp vụ chủ yếu bằng thủ công</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Thiếu hệ thống sao lưu dữ liệu an toàn</span></li>
+                        </ul>
+                        <div class="qtds-challenges__card-insight"><strong>Hệ quả:</strong> Hiệu quả vận hành thấp, dễ xảy ra sai sót</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Challenge 3 -->
+                <!-- Challenge 3 -->
             <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--3" style="animation-delay: 0.2s;">
                 <div class="qtds-card__header qtds-challenges__card-header">
                     <div class="qtds-card__icon qtds-challenges__card-icon">
@@ -160,6 +176,7 @@
                     </div>
                 </div>
             </div>
+            </if>
         </div>
     </div>
 </section>

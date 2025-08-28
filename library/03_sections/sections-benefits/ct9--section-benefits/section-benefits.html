@@ -1,195 +1,147 @@
 <!-- 
-  Section: QTDS Benefits (Standardized HTML)
-  Version: 1.1 (Full version, corrected)
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS Benefits (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Description: 
+  - Đã được nâng cấp để đọc dữ liệu động từ mảng `stakeholderBenefits`.
+  - Sử dụng các vòng lặp lồng nhau và thẻ <if> để xử lý cấu trúc dữ liệu phức tạp.
+  - Vẫn giữ lại code tĩnh để đảm bảo tương thích ngược với template CT9 cũ.
 -->
 <section id="loi-ich" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">TÁC ĐỘNG TOÀN DIỆN</span>
-            <h2>Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu</h2>
-            <p>
-                QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND,
-                từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.
-            </p>
+            <span class="qtds-section-header__tagline">{{ tagline || 'TÁC ĐỘNG TOÀN DIỆN' }}</span>
+            <h2>{{ title || 'Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu' }}</h2>
+            <p>{{ description || 'QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND, từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.' }}</p>
         </div>
 
+        <!-- Overview Stats -->
         <div class="qtds-scroll-animate qtds-benefits__overview">
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "70%",
-                "label": "Tăng năng suất",
-                "colorClass": "text-primary",
-                "delay": "0s"
-            }'></include>
-            
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "95%",
-                "label": "Giảm sai sót",
-                "colorClass": "text-danger",
-                "delay": "0.1s"
-            }'></include>
-
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "100%",
-                "label": "Tuân thủ NHNN",
-                "colorClass": "text-success",
-                "delay": "0.2s"
-            }'></include>
-
-            <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{
-                "value": "80%",
-                "label": "Tiết kiệm thời gian",
-                "colorClass": "text-purple",
-                "delay": "0.3s"
-            }'></include>
+            <!-- Phần này có thể được nâng cấp tương tự với một mảng 'overviewStats' nếu cần -->
+             <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "70%", "label": "Tăng năng suất", "colorClass": "text-primary", "delay": "0s" }'></include>
+             <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "95%", "label": "Giảm sai sót", "colorClass": "text-danger", "delay": "0.1s" }'></include>
+             <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "100%", "label": "Tuân thủ NHNN", "colorClass": "text-success", "delay": "0.2s" }'></include>
+             <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "80%", "label": "Tiết kiệm thời gian", "colorClass": "text-purple", "delay": "0.3s" }'></include>
         </div>
 
         <!-- Stakeholder Cards -->
         <div class="qtds-benefits__stakeholders">
-            <!-- Card 1: Cán bộ Tín dụng -->
-            <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--staff">
-                <div class="qtds-benefits__stakeholder-card-header">
-                    <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--staff">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="qtds-benefits__stakeholder-card-title-wrapper">
-                        <h3 class="qtds-benefits__stakeholder-card-title">Cán bộ Tín dụng</h3>
-                        <p class="qtds-benefits__stakeholder-card-subtitle">Trao quyền - Giảm tải - Nâng cao năng suất</p>
-                    </div>
-                </div>
-                <div class="qtds-card__body">
-                    <div class="qtds-benefits__highlight-list">
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-magic"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Tự động hóa công việc</h4>
-                                <p>OCR/AI tự động trích xuất dữ liệu, loại bỏ nhập liệu thủ công mệt mỏi.</p>
+            <!-- Logic MỚI: Nếu có mảng 'stakeholderBenefits' -->
+            <if condition="stakeholderBenefits">
+                <each loop="stakeholder, index in stakeholderBenefits">
+                    <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--{{ stakeholder.type }}" style="animation-delay: {{ index * 0.2 }}s;">
+                        <div class="qtds-benefits__stakeholder-card-header">
+                            <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--{{ stakeholder.type }}">
+                                <i class="{{ stakeholder.icon }}"></i>
+                            </div>
+                            <div class="qtds-benefits__stakeholder-card-title-wrapper">
+                                <h3 class="qtds-benefits__stakeholder-card-title">{{ stakeholder.title }}</h3>
+                                <p class="qtds-benefits__stakeholder-card-subtitle">{{ stakeholder.subtitle }}</p>
                             </div>
                         </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-clock"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Tiết kiệm thời gian</h4>
-                                <p>Rút ngắn 80% thời gian lập hồ sơ, tập trung vào chăm sóc khách hàng.</p>
+                        <div class="qtds-card__body">
+                            <div class="qtds-benefits__highlight-list">
+                                <each loop="item in stakeholder.highlights">
+                                    <div class="qtds-benefits__highlight-item">
+                                        <div class="qtds-benefits__highlight-item-icon"><i class="{{ item.icon }}"></i></div>
+                                        <div class="qtds-benefits__highlight-item-content">
+                                            <h4>{{ item.title }}</h4>
+                                            <p>{{ item.text }}</p>
+                                        </div>
+                                    </div>
+                                </each>
                             </div>
-                        </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-graduation-cap"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Phát triển chuyên môn</h4>
-                                <p>Quy trình chuẩn hóa giúp nhân viên mới nhanh chóng thích nghi.</p>
-                            </div>
+                            <!-- Render các khối đặc thù bằng thẻ <if> -->
+                            <if condition="stakeholder.quote">
+                                <div class="qtds-benefits__stakeholder-card-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                    <p>"{{ stakeholder.quote }}"</p>
+                                </div>
+                            </if>
+                            <if condition="stakeholder.costComparison">
+                                <div class="qtds-benefits__cost-comparison">
+                                    <div class="qtds-benefits__cost-comparison-item">
+                                        <span class="qtds-benefits__cost-comparison-label">{{ stakeholder.costComparison.item1.label }}</span>
+                                        <span class="qtds-benefits__cost-comparison-value text-danger">{{ stakeholder.costComparison.item1.value }}</span>
+                                    </div>
+                                    <div class="qtds-benefits__cost-comparison-divider">VS</div>
+                                    <div class="qtds-benefits__cost-comparison-item qtds-benefits__cost-comparison-item--highlight">
+                                        <span class="qtds-benefits__cost-comparison-label">{{ stakeholder.costComparison.item2.label }}</span>
+                                        <span class="qtds-benefits__cost-comparison-value text-success">{{ stakeholder.costComparison.item2.value }}</span>
+                                    </div>
+                                </div>
+                            </if>
                         </div>
                     </div>
-                    <div class="qtds-benefits__stakeholder-card-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Từ người nhập liệu, tôi trở thành chuyên viên tư vấn thực thụ."</p>
-                    </div>
-                </div>
-            </div>
+                </each>
+            </if>
 
-            <!-- Card 2: Ban Lãnh đạo -->
-            <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--leader">
-                <div class="qtds-benefits__stakeholder-card-header">
-                    <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--leader">
-                        <i class="fas fa-shield-alt"></i>
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'stakeholderBenefits' -->
+            <if condition="!stakeholderBenefits">
+                <!-- Card 1: Cán bộ Tín dụng -->
+                <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--staff">
+                    <div class="qtds-benefits__stakeholder-card-header">
+                        <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--staff"><i class="fas fa-user-tie"></i></div>
+                        <div class="qtds-benefits__stakeholder-card-title-wrapper">
+                            <h3 class="qtds-benefits__stakeholder-card-title">Cán bộ Tín dụng</h3>
+                            <p class="qtds-benefits__stakeholder-card-subtitle">Trao quyền - Giảm tải - Nâng cao năng suất</p>
+                        </div>
                     </div>
-                    <div class="qtds-benefits__stakeholder-card-title-wrapper">
-                        <h3 class="qtds-benefits__stakeholder-card-title">Ban Lãnh đạo</h3>
-                        <p class="qtds-benefits__stakeholder-card-subtitle">Kiểm soát rủi ro - Đảm bảo tuân thủ</p>
+                    <div class="qtds-card__body">
+                        <div class="qtds-benefits__highlight-list">
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-magic"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Tự động hóa công việc</h4><p>OCR/AI tự động trích xuất dữ liệu, loại bỏ nhập liệu thủ công mệt mỏi.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-clock"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Tiết kiệm thời gian</h4><p>Rút ngắn 80% thời gian lập hồ sơ, tập trung vào chăm sóc khách hàng.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-graduation-cap"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Phát triển chuyên môn</h4><p>Quy trình chuẩn hóa giúp nhân viên mới nhanh chóng thích nghi.</p></div></div>
+                        </div>
+                        <div class="qtds-benefits__stakeholder-card-quote"><i class="fas fa-quote-left"></i><p>"Từ người nhập liệu, tôi trở thành chuyên viên tư vấn thực thụ."</p></div>
                     </div>
                 </div>
-                <div class="qtds-card__body">
-                    <div class="qtds-benefits__highlight-list">
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-lock"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Ngăn chặn gian lận</h4>
-                                <p>Loại bỏ khả năng lập khống hồ sơ, thao túng dữ liệu.</p>
-                            </div>
-                        </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-check-double"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Tuân thủ quy định</h4>
-                                <p>Đáp ứng yêu cầu chuyển đổi số từ NHNN với chi phí hợp lý.</p>
-                            </div>
-                        </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Minh bạch vận hành</h4>
-                                <p>Dữ liệu chuẩn hóa tạo nền tảng cho báo cáo chính xác.</p>
-                            </div>
+                <!-- Card 2: Ban Lãnh đạo -->
+                <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--leader">
+                    <div class="qtds-benefits__stakeholder-card-header">
+                        <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--leader"><i class="fas fa-shield-alt"></i></div>
+                        <div class="qtds-benefits__stakeholder-card-title-wrapper">
+                            <h3 class="qtds-benefits__stakeholder-card-title">Ban Lãnh đạo</h3>
+                            <p class="qtds-benefits__stakeholder-card-subtitle">Kiểm soát rủi ro - Đảm bảo tuân thủ</p>
                         </div>
                     </div>
-                    <div class="qtds-benefits__cost-comparison">
-                        <div class="qtds-benefits__cost-comparison-item">
-                            <span class="qtds-benefits__cost-comparison-label">Core Banking</span>
-                            <span class="qtds-benefits__cost-comparison-value text-danger">20-25 tỷ</span>
+                    <div class="qtds-card__body">
+                        <div class="qtds-benefits__highlight-list">
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-lock"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Ngăn chặn gian lận</h4><p>Loại bỏ khả năng lập khống hồ sơ, thao túng dữ liệu.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-check-double"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Tuân thủ quy định</h4><p>Đáp ứng yêu cầu chuyển đổi số từ NHNN với chi phí hợp lý.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-chart-line"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Minh bạch vận hành</h4><p>Dữ liệu chuẩn hóa tạo nền tảng cho báo cáo chính xác.</p></div></div>
                         </div>
-                        <div class="qtds-benefits__cost-comparison-divider">VS</div>
-                        <div class="qtds-benefits__cost-comparison-item qtds-benefits__cost-comparison-item--highlight">
-                            <span class="qtds-benefits__cost-comparison-label">QTDS</span>
-                            <span class="qtds-benefits__cost-comparison-value text-success">Tiết kiệm 90%</span>
+                        <div class="qtds-benefits__cost-comparison">
+                            <div class="qtds-benefits__cost-comparison-item"><span class="qtds-benefits__cost-comparison-label">Core Banking</span><span class="qtds-benefits__cost-comparison-value text-danger">20-25 tỷ</span></div>
+                            <div class="qtds-benefits__cost-comparison-divider">VS</div>
+                            <div class="qtds-benefits__cost-comparison-item qtds-benefits__cost-comparison-item--highlight"><span class="qtds-benefits__cost-comparison-label">QTDS</span><span class="qtds-benefits__cost-comparison-value text-success">Tiết kiệm 90%</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 3: Hệ thống & NHNN -->
-            <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--system">
-                <div class="qtds-benefits__stakeholder-card-header">
-                    <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--system">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="qtds-benefits__stakeholder-card-title-wrapper">
-                        <h3 class="qtds-benefits__stakeholder-card-title">Hệ thống &amp; NHNN</h3>
-                        <p class="qtds-benefits__stakeholder-card-subtitle">Hiện đại hóa - Phát triển bền vững</p>
-                    </div>
-                </div>
-                <div class="qtds-card__body">
-                    <div class="qtds-benefits__highlight-list">
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-rocket"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Chất xúc tác số hóa</h4>
-                                <p>Giải pháp "bắc cầu" giúp QTDND bắt đầu hành trình số hóa ngay.</p>
-                            </div>
-                        </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-puzzle-piece"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Phù hợp chiến lược 2030</h4>
-                                <p>Đồng bộ với lộ trình tái cơ cấu và hiện đại hóa của NHNN.</p>
-                            </div>
-                        </div>
-                        <div class="qtds-benefits__highlight-item">
-                            <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-network-wired"></i></div>
-                            <div class="qtds-benefits__highlight-item-content">
-                                <h4>Nâng cao mặt bằng chung</h4>
-                                <p>Chuẩn hóa quy trình trên toàn hệ thống QTDND.</p>
-                            </div>
+                <!-- Card 3: Hệ thống & NHNN -->
+                <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--system">
+                    <div class="qtds-benefits__stakeholder-card-header">
+                        <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--system"><i class="fas fa-university"></i></div>
+                        <div class="qtds-benefits__stakeholder-card-title-wrapper">
+                            <h3 class="qtds-benefits__stakeholder-card-title">Hệ thống &amp; NHNN</h3>
+                            <p class="qtds-benefits__stakeholder-card-subtitle">Hiện đại hóa - Phát triển bền vững</p>
                         </div>
                     </div>
-                    <div class="qtds-benefits__system-impact">
-                        <div class="qtds-benefits__system-impact-stat">
-                            <i class="fas fa-users"></i>
-                            <span class="qtds-benefits__system-impact-number">1,178</span>
-                            <span class="qtds-benefits__system-impact-label">QTDND được hỗ trợ</span>
+                    <div class="qtds-card__body">
+                        <div class="qtds-benefits__highlight-list">
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-rocket"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Chất xúc tác số hóa</h4><p>Giải pháp "bắc cầu" giúp QTDND bắt đầu hành trình số hóa ngay.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-puzzle-piece"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Phù hợp chiến lược 2030</h4><p>Đồng bộ với lộ trình tái cơ cấu và hiện đại hóa của NHNN.</p></div></div>
+                            <div class="qtds-benefits__highlight-item"><div class="qtds-benefits__highlight-item-icon"><i class="fas fa-network-wired"></i></div><div class="qtds-benefits__highlight-item-content"><h4>Nâng cao mặt bằng chung</h4><p>Chuẩn hóa quy trình trên toàn hệ thống QTDND.</p></div></div>
                         </div>
-                        <div class="qtds-benefits__system-impact-stat">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <span class="qtds-benefits__system-impact-number">34</span>
-                            <span class="qtds-benefits__system-impact-label">Tỉnh thành</span>
+                        <div class="qtds-benefits__system-impact">
+                            <div class="qtds-benefits__system-impact-stat"><i class="fas fa-users"></i><span class="qtds-benefits__system-impact-number">1,178</span><span class="qtds-benefits__system-impact-label">QTDND được hỗ trợ</span></div>
+                            <div class="qtds-benefits__system-impact-stat"><i class="fas fa-map-marked-alt"></i><span class="qtds-benefits__system-impact-number">34</span><span class="qtds-benefits__system-impact-label">Tỉnh thành</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </if>
         </div>
-
-        <!-- ROI Preview -->
+        
+        <!-- ROI Preview and Final CTA -->
         <div class="qtds-scroll-animate qtds-benefits__roi-preview">
             <div class="qtds-benefits__roi-preview-content">
                 <div class="qtds-benefits__roi-preview-text">

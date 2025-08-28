@@ -1,188 +1,131 @@
 <!-- 
-  Section: QTDS Solutions (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS Solutions (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Description: 
+  - Đã được nâng cấp để đọc dữ liệu động từ mảng `pillars` và `processSteps` trong JSON blueprint.
+  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược với template CT9 cũ.
 -->
 <section id="giai-phap" class="qtds-section qtds-solutions">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">GIẢI PHÁP CHIẾN LƯỢC</span>
-            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
-            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
+            <span class="qtds-section-header__tagline">{{ tagline || 'GIẢI PHÁP CHIẾN LƯỢC' }}</span>
+            <h2>{{ title || 'QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt' }}</h2>
+            <p>{{ description || 'Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng' }}</p>
         </div>
 
-        <!-- Hero Visual -->
+        <!-- Hero Visual (Phần này thường tĩnh hoặc có các biến đơn giản) -->
         <div class="qtds-solutions__visual">
             <div class="qtds-solutions__device">
                 <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/VzvLd5z2WiANVb7tmfy9a.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
             </div>
             <div class="qtds-solutions__features">
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Ứng dụng di động</span>
-                </div>
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-brain"></i>
-                    <span>Tích hợp AI/OCR</span>
-                </div>
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-clock"></i>
-                    <span>Triển khai nhanh</span>
-                </div>
+                <div class="qtds-feature-badge"><i class="fas fa-mobile-alt"></i><span>Ứng dụng di động</span></div>
+                <div class="qtds-feature-badge"><i class="fas fa-brain"></i><span>Tích hợp AI/OCR</span></div>
+                <div class="qtds-feature-badge"><i class="fas fa-clock"></i><span>Triển khai nhanh</span></div>
             </div>
         </div>
 
         <!-- 3 Pillars -->
         <div class="qtds-solutions__pillars">
-            <!-- Pillar 1: Triết lý -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar">
-                <div class="qtds-solutions__pillar-number">01</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
-                <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
-                <div class="qtds-solutions__pillar-content">
-                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
-                    <div class="qtds-solutions__benefit-tag">
-                        <i class="fas fa-check-circle"></i>
-                        Vượt qua rào cản văn hóa
+            <!-- Logic MỚI: Nếu có mảng 'pillars' -->
+            <if condition="pillars">
+                <each loop="pillar, index in pillars">
+                    <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: {{ index * 0.2 }}s;">
+                        <div class="qtds-solutions__pillar-number">{{ '0' + (index + 1) }}</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="{{ pillar.icon }}"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">{{ pillar.title }}</h3>
+                        <p class="qtds-solutions__pillar-subtitle">{{ pillar.subtitle }}</p>
+                        <div class="qtds-solutions__pillar-content">
+                            <p>{{ pillar.description }}</p>
+                            <if condition="pillar.benefitTag">
+                                <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> {{ pillar.benefitTag }}</div>
+                            </if>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </each>
+            </if>
 
-            <!-- Pillar 2: Công nghệ -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
-                <div class="qtds-solutions__pillar-number">02</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
-                <p class="qtds-solutions__pillar-subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
-                <div class="qtds-solutions__tech-features">
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>OCR &amp; AI</strong>
-                            <p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p>
-                        </div>
-                    </div>
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>Kết nối CIC</strong>
-                            <p>Tự động điền thông tin tín dụng chính xác</p>
-                        </div>
-                    </div>
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>Mẫu chuẩn</strong>
-                            <p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p>
-                        </div>
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'pillars' -->
+            <if condition="!pillars">
+                <!-- Pillar 1: Triết lý -->
+                <div class="qtds-scroll-animate qtds-solutions__pillar">
+                    <div class="qtds-solutions__pillar-number">01</div>
+                    <div class="qtds-solutions__pillar-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
+                    <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
+                    <div class="qtds-solutions__pillar-content">
+                        <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
+                        <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> Vượt qua rào cản văn hóa</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Pillar 3: Định vị -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
-                <div class="qtds-solutions__pillar-number">03</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
-                <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
-                <div class="qtds-solutions__comparison">
-                    <div class="qtds-solutions__comparison-item">
-                        <span class="qtds-solutions__comparison-label">Core Banking</span>
-                        <span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span>
-                        <span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span>
-                    </div>
-                    <div class="qtds-solutions__comparison-divider">VS</div>
-                    <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight">
-                        <span class="qtds-solutions__comparison-label">QTDS</span>
-                        <span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span>
-                        <span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span>
+                <!-- Pillar 2: Công nghệ -->
+                <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
+                    <div class="qtds-solutions__pillar-number">02</div>
+                    <div class="qtds-solutions__pillar-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
+                    <p class="qtds-solutions__pillar-subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
+                    <div class="qtds-solutions__tech-features">
+                        <div class="qtds-solutions__tech-features-item"><div class="qtds-solutions__tech-features-icon"><i class="fas fa-camera"></i></div><div class="qtds-solutions__tech-features-content"><strong>OCR &amp; AI</strong><p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p></div></div>
+                        <div class="qtds-solutions__tech-features-item"><div class="qtds-solutions__tech-features-icon"><i class="fas fa-database"></i></div><div class="qtds-solutions__tech-features-content"><strong>Kết nối CIC</strong><p>Tự động điền thông tin tín dụng chính xác</p></div></div>
+                        <div class="qtds-solutions__tech-features-item"><div class="qtds-solutions__tech-features-icon"><i class="fas fa-file-contract"></i></div><div class="qtds-solutions__tech-features-content"><strong>Mẫu chuẩn</strong><p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p></div></div>
                     </div>
                 </div>
-            </div>
+                <!-- Pillar 3: Định vị -->
+                <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
+                    <div class="qtds-solutions__pillar-number">03</div>
+                    <div class="qtds-solutions__pillar-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
+                    <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
+                    <div class="qtds-solutions__comparison">
+                        <div class="qtds-solutions__comparison-item"><span class="qtds-solutions__comparison-label">Core Banking</span><span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span><span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span></div>
+                        <div class="qtds-solutions__comparison-divider">VS</div>
+                        <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight"><span class="qtds-solutions__comparison-label">QTDS</span><span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span><span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span></div>
+                    </div>
+                </div>
+            </if>
         </div>
 
         <!-- Process Flow -->
         <div class="qtds-scroll-animate qtds-solutions__process-section">
-            <h3 class="qtds-solutions__process-title">Quy trình Chuẩn hóa Tự động</h3>
+            <h3 class="qtds-solutions__process-title">{{ processTitle || 'Quy trình Chuẩn hóa Tự động' }}</h3>
             <div class="qtds-solutions__process-flow">
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-upload"></i>
-                    </div>
-                    <h4>Thu thập</h4>
-                    <p>Chụp ảnh giấy tờ</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h4>Xử lý AI</h4>
-                    <p>Trích xuất tự động</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-check-double"></i>
-                    </div>
-                    <h4>Chuẩn hóa</h4>
-                    <p>Định dạng chuẩn</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-signature"></i>
-                    </div>
-                    <h4>Hoàn thiện</h4>
-                    <p>Hồ sơ chuẩn mực</p>
-                </div>
+                <!-- Logic MỚI: Nếu có mảng 'processSteps' -->
+                <if condition="processSteps">
+                    <each loop="step, index in processSteps">
+                        <div class="qtds-solutions__process-step">
+                            <div class="qtds-solutions__process-icon"><i class="{{ step.icon }}"></i></div>
+                            <h4>{{ step.title }}</h4>
+                            <p>{{ step.description }}</p>
+                        </div>
+                        <if condition="index < processSteps.length - 1">
+                            <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </if>
+                    </each>
+                </if>
+
+                <!-- Logic CŨ: Nếu KHÔNG có mảng 'processSteps' -->
+                <if condition="!processSteps">
+                    <div class="qtds-solutions__process-step"><div class="qtds-solutions__process-icon"><i class="fas fa-file-upload"></i></div><h4>Thu thập</h4><p>Chụp ảnh giấy tờ</p></div>
+                    <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-solutions__process-step"><div class="qtds-solutions__process-icon"><i class="fas fa-robot"></i></div><h4>Xử lý AI</h4><p>Trích xuất tự động</p></div>
+                    <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-solutions__process-step"><div class="qtds-solutions__process-icon"><i class="fas fa-check-double"></i></div><h4>Chuẩn hóa</h4><p>Định dạng chuẩn</p></div>
+                    <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-solutions__process-step"><div class="qtds-solutions__process-icon"><i class="fas fa-file-signature"></i></div><h4>Hoàn thiện</h4><p>Hồ sơ chuẩn mực</p></div>
+                </if>
             </div>
         </div>
 
-        <!-- Key Benefits Box -->
+        <!-- Key Benefits Box (Thường là tĩnh hoặc có biến đơn giản) -->
         <div class="qtds-scroll-animate qtds-solutions__benefits-highlight">
-            <div class="qtds-solutions__benefits-highlight-icon">
-                <i class="fas fa-shield-alt"></i>
-            </div>
+            <div class="qtds-solutions__benefits-highlight-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="qtds-solutions__benefits-highlight-content">
                 <h4>Lợi ích Cốt lõi:</h4>
                 <div class="qtds-solutions__benefits-grid">
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Ngăn chặn gian lận, lập khống hồ sơ</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Tăng tốc xử lý hồ sơ lên 70%</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Tuân thủ 100% quy định NHNN</span>
-                    </div>
+                    <div class="qtds-solutions__benefits-item"><i class="fas fa-check"></i><span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span></div>
+                    <div class="qtds-solutions__benefits-item"><i class="fas fa-check"></i><span>Ngăn chặn gian lận, lập khống hồ sơ</span></div>
+                    <div class="qtds-solutions__benefits-item"><i class="fas fa-check"></i><span>Tăng tốc xử lý hồ sơ lên 70%</span></div>
+                    <div class="qtds-solutions__benefits-item"><i class="fas fa-check"></i><span>Tuân thủ 100% quy định NHNN</span></div>
                 </div>
             </div>
         </div>
