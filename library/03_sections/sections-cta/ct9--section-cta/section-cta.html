@@ -17,35 +17,11 @@
                 Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.
             </p>
 
-            <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
+            <!-- Features Grid (Phiên bản mới tự động cập nhật) -->
             <div class="qtds-cta__features">
-                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
-                    "color": "primary",
-                    "icon": "fas fa-shield-alt",
-                    "title": "Bảo Mật Dữ Liệu",
-                    "text": "Ngăn chặn gian lận hiệu quả"
-                }'></include>
-                
-                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
-                    "color": "secondary",
-                    "icon": "fas fa-rocket",
-                    "title": "Tối Ưu Quy Trình",
-                    "text": "Xử lý nhanh, giảm 70% thời gian"
-                }'></include>
-
-                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
-                    "color": "accent",
-                    "icon": "fas fa-chart-line",
-                    "title": "Nâng Cao Cạnh Tranh",
-                    "text": "Hiện đại hóa, thu hút khách hàng"
-                }'></include>
-
-                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
-                    "color": "purple",
-                    "icon": "fas fa-check-circle",
-                    "title": "Tuân Thủ NHNN",
-                    "text": "100% đáp ứng quy định"
-                }'></include>
+                <each loop="feature in features">
+                    <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals="feature"></include>
+                </each>
             </div>
 
             <!-- Action Buttons -->
