@@ -17,35 +17,35 @@
                 Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.
             </p>
 
-            <!-- Features Grid -->
+            <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
             <div class="qtds-cta__features">
-                <!-- Feature 1 -->
-                <div class="qtds-cta__feature qtds-cta__feature--primary">
-                    <i class="fas fa-shield-alt qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Bảo Mật Dữ Liệu</h4>
-                    <p class="qtds-cta__feature-text">Ngăn chặn gian lận hiệu quả</p>
-                </div>
+                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
+                    "color": "primary",
+                    "icon": "fas fa-shield-alt",
+                    "title": "Bảo Mật Dữ Liệu",
+                    "text": "Ngăn chặn gian lận hiệu quả"
+                }'></include>
+                
+                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
+                    "color": "secondary",
+                    "icon": "fas fa-rocket",
+                    "title": "Tối Ưu Quy Trình",
+                    "text": "Xử lý nhanh, giảm 70% thời gian"
+                }'></include>
 
-                <!-- Feature 2 -->
-                <div class="qtds-cta__feature qtds-cta__feature--secondary">
-                    <i class="fas fa-rocket qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Tối Ưu Quy Trình</h4>
-                    <p class="qtds-cta__feature-text">Xử lý nhanh, giảm 70% thời gian</p>
-                </div>
+                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
+                    "color": "accent",
+                    "icon": "fas fa-chart-line",
+                    "title": "Nâng Cao Cạnh Tranh",
+                    "text": "Hiện đại hóa, thu hút khách hàng"
+                }'></include>
 
-                <!-- Feature 3 -->
-                <div class="qtds-cta__feature qtds-cta__feature--accent">
-                    <i class="fas fa-chart-line qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Nâng Cao Cạnh Tranh</h4>
-                    <p class="qtds-cta__feature-text">Hiện đại hóa, thu hút khách hàng</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="qtds-cta__feature qtds-cta__feature--purple">
-                    <i class="fas fa-check-circle qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Tuân Thủ NHNN</h4>
-                    <p class="qtds-cta__feature-text">100% đáp ứng quy định</p>
-                </div>
+                <include src="library/02_molecules/molecule-feature-card/molecule-feature-card.html" locals='{
+                    "color": "purple",
+                    "icon": "fas fa-check-circle",
+                    "title": "Tuân Thủ NHNN",
+                    "text": "100% đáp ứng quy định"
+                }'></include>
             </div>
 
             <!-- Action Buttons -->

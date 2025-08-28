@@ -2241,99 +2241,7 @@ p:last-child {
     }
 }
 
-/* ==========================================================================
-   COMPONENT: QTDS ARTICLE CARD (within Library)
-   ========================================================================== */
 
-.qtds-article-card {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-}
-
-.qtds-article-card__image-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    overflow: hidden;
-    background: var(--gray-100);
-}
-
-.qtds-article-card__image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-base);
-}
-
-.qtds-article-card:hover .qtds-article-card__image {
-    transform: scale(1.05);
-}
-
-.qtds-article-card__tag {
-    display: inline-block;
-    padding: var(--space-2) var(--space-3);
-    background: var(--gray-100);
-    color: var(--gray-700);
-    font-size: var(--text-sm); /* Adjusted for better fit */
-    font-weight: 500;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-3);
-    margin-right: var(--space-2);
-}
-
-.qtds-article-card__title {
-    font-size: var(--text-xl); /* Adjusted for consistency */
-}
-
-.qtds-article-card .qtds-card__body {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.qtds-article-card__description {
-    font-size: var(--text-base); /* Adjusted for better readability */
-    color: var(--gray-600);
-}
-
-.qtds-article-card__cta {
-    margin-top: auto;
-    padding-top: var(--space-4);
-    text-align: center;
-}
-
-.qtds-btn-like {
-    display: inline-block;
-    padding: var(--space-2) var(--space-4);
-    background-color: var(--secondary);
-    color: white !important;
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-base);
-}
-
-.qtds-article-card:hover .qtds-btn-like {
-    background-color: var(--secondary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    color: white !important;
-    text-decoration: none;
-}
-
-.qtds-btn-like i {
-    margin-left: var(--space-2);
-    transition: transform var(--transition-base);
-}
-
-.qtds-article-card:hover .qtds-btn-like i {
-    transform: translateX(4px);
-}
 
 
 /**
@@ -2608,6 +2516,102 @@ p:last-child {
 }
 
 
+/* library/02_molecules/molecule-article-card/molecule-article-card.css */
+
+/**
+ * Component: QTDS Article Card
+ * Description: A card component for displaying article summaries.
+ */
+
+.qtds-article-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.qtds-article-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.qtds-article-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-article-card__image {
+    transform: scale(1.05);
+}
+
+.qtds-article-card__tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+    margin-right: var(--space-2);
+}
+
+.qtds-article-card__title {
+    font-size: var(--text-xl);
+}
+
+.qtds-article-card .qtds-card__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.qtds-article-card__description {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+}
+
+.qtds-article-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    text-align: center;
+}
+
+.qtds-btn-like {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--secondary);
+    color: white !important;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: white !important;
+    text-decoration: none;
+}
+
+.qtds-btn-like i {
+    margin-left: var(--space-2);
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like i {
+    transform: translateX(4px);
+}
 
 
 /* library/02_molecules/molecule-stat-card/molecule-stat-card.css */
