@@ -34,7 +34,7 @@
         "section_type": "Problem_Statement",
         "component_path": "library/03_sections/sections-challenges/ct9--section-challenges/section-challenges.html",
         "locals": {
-          "tagline": "THỰC TRẠNG HỆ THỐNG",
+          //"tagline": "THỰC TRẠNG HỆ THỐNG"
           "title": "4 Thách Thức Cốt Lõi Của Hệ Thống QTDND",
           "description": "Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.",
           "highlightTitle": "Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi",
@@ -82,7 +82,7 @@
         "section_type": "Final_CTA",
         "component_path": "library/03_sections/sections-cta/ct9--section-cta/section-cta.html",
         "locals": {
-          "tagline": "HÀNH ĐỘNG NGAY",
+          //"tagline": "HÀNH ĐỘNG NGAY",
           "title": "Sẵn Sàng Chuyển Đổi Số Cùng QTDS?",
           "description": "Đừng để những quyết định quan trọng của Quỹ được đưa ra dựa trên 'dữ liệu rác'. Đã đến lúc biến dữ liệu thành tài sản quý giá nhất của bạn.",
           "features": [

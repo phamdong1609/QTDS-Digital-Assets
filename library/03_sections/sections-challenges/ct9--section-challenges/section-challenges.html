@@ -1,12 +1,12 @@
 <!-- 
-  Section: QTDS Challenges (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Section: QTDS Challenges (Phiên bản Nâng cấp 3.1 - Chống lỗi)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `stats` và `cards` trong JSON blueprint.
-  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược với template CT9 cũ.
+  - Thêm giá trị mặc định cho các biến {{ tagline }}, {{ title }}, {{ description }}... 
+  - Điều này đảm bảo linh kiện không bị lỗi khi được gọi mà không có `locals` (như trong ct9-index.html).
 -->
 <section id="thach-thuc" class="qtds-section">
     <div class="qtds-container">
-        <!-- Section Header: Dữ liệu được truyền từ template cha hoặc blueprint -->
+        <!-- Section Header: Thêm giá trị mặc định bằng '||' -->
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">{{ tagline || 'THỰC TRẠNG HỆ THỐNG' }}</span>
             <h2>{{ title || '4 Thách Thức Cốt Lõi Của Hệ Thống QTDND' }}</h2>

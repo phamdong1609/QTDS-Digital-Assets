@@ -1,22 +1,22 @@
 <!-- 
-  Section: QTDS CTA (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Section: QTDS CTA (Phiên bản Nâng cấp 3.1 - Tương thích ngược & Chống lỗi)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `features` trong JSON blueprint.
-  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược với template CT9 cũ.
+  - Đã được nâng cấp để đọc dữ liệu động từ mảng `features`.
+  - Sử dụng thẻ <if> để giữ lại code tĩnh cho CT9.
+  - Thêm giá trị mặc định (sử dụng ||) cho các biến để chống lỗi khi không có locals.
 -->
 <section id="san-sang-chuyen-doi" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <!-- Dữ liệu cho các phần này sẽ được truyền từ template cha -->
-            <span class="qtds-section-header__tagline">{{ tagline }}</span>
-            <h2>{{ title }}</h2>
+            <span class="qtds-section-header__tagline">{{ tagline || 'HÀNH ĐỘNG NGAY' }}</span>
+            <h2>{{ title || 'Sẵn Sàng Chuyển Đổi Số Cùng QTDS?' }}</h2>
         </div>
 
         <!-- CTA Card -->
         <div class="qtds-scroll-animate qtds-cta">
             <p class="qtds-cta__description">
-                {{ description }}
+                {{ description || 'Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.' }}
             </p>
 
             <!-- ====================================================== -->

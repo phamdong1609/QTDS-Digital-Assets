@@ -1,9 +1,10 @@
 <!-- 
-  Section: QTDS Benefits (Phiên bản Nâng cấp 3.0 - Tương thích ngược)
+  Section: QTDS Benefits (Phiên bản Nâng cấp 3.1 - Hoàn thiện)
   Description: 
   - Đã được nâng cấp để đọc dữ liệu động từ mảng `stakeholderBenefits`.
   - Sử dụng các vòng lặp lồng nhau và thẻ <if> để xử lý cấu trúc dữ liệu phức tạp.
-  - Vẫn giữ lại code tĩnh để đảm bảo tương thích ngược với template CT9 cũ.
+  - Vẫn giữ lại code tĩnh đầy đủ để đảm bảo tương thích ngược với template CT9 cũ.
+  - Thêm giá trị mặc định cho các biến header để chống lỗi.
 -->
 <section id="loi-ich" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
@@ -141,7 +142,7 @@
             </if>
         </div>
         
-        <!-- ROI Preview and Final CTA -->
+        <!-- ROI Preview -->
         <div class="qtds-scroll-animate qtds-benefits__roi-preview">
             <div class="qtds-benefits__roi-preview-content">
                 <div class="qtds-benefits__roi-preview-text">
