@@ -2074,72 +2074,6 @@ p:last-child {
     margin-right: auto;
 }
 
-/* Feature Item */
-.qtds-cta__feature {
-    background-color: var(--gray-50);
-    padding: var(--space-6);
-    border-radius: var(--radius-xl);
-    border-top: 4px solid transparent;
-    transition: all var(--transition-base);
-    text-align: center;
-}
-
-.qtds-cta__feature:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    background-color: white;
-}
-
-/* Feature color variants */
-.qtds-cta__feature--primary {
-    border-color: var(--primary);
-}
-.qtds-cta__feature--primary .qtds-cta__feature-icon {
-    color: var(--primary);
-}
-
-.qtds-cta__feature--secondary {
-    border-color: var(--secondary);
-}
-.qtds-cta__feature--secondary .qtds-cta__feature-icon {
-    color: var(--secondary);
-}
-
-.qtds-cta__feature--accent {
-    border-color: var(--accent);
-}
-.qtds-cta__feature--accent .qtds-cta__feature-icon {
-    color: var(--accent);
-}
-
-.qtds-cta__feature--purple {
-    border-color: var(--purple);
-}
-.qtds-cta__feature--purple .qtds-cta__feature-icon {
-    color: var(--purple);
-}
-
-/* Feature content */
-.qtds-cta__feature-icon {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-4);
-    display: block;
-}
-
-.qtds-cta__feature-title {
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: var(--space-2);
-}
-
-.qtds-cta__feature-text {
-    font-size: var(--text-base);
-    color: var(--gray-600);
-    margin: 0;
-    line-height: 1.5;
-}
-
 /* Action Buttons */
 .qtds-cta__actions {
     display: flex;
@@ -2611,6 +2545,80 @@ p:last-child {
 
 .qtds-article-card:hover .qtds-btn-like i {
     transform: translateX(4px);
+}
+
+
+/* library/02_molecules/molecule-feature-card/molecule-feature-card.css */
+
+/**
+ * Component: QTDS Feature Card
+ * Description: A card used to highlight a specific feature or benefit.
+ */
+
+/* Feature Item */
+.qtds-feature-card {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-feature-card--primary {
+    border-color: var(--primary);
+}
+.qtds-feature-card--primary .qtds-feature-card__icon {
+    color: var(--primary);
+}
+
+.qtds-feature-card--secondary {
+    border-color: var(--secondary);
+}
+.qtds-feature-card--secondary .qtds-feature-card__icon {
+    color: var(--secondary);
+}
+
+.qtds-feature-card--accent {
+    border-color: var(--accent);
+}
+.qtds-feature-card--accent .qtds-feature-card__icon {
+    color: var(--accent);
+}
+
+.qtds-feature-card--purple {
+    border-color: var(--purple);
+}
+.qtds-feature-card--purple .qtds-feature-card__icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-feature-card__icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-feature-card__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-feature-card__text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
 }
 
 
@@ -3750,35 +3758,71 @@ p:last-child {
                 Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.
             </p>
 
-            <!-- Features Grid -->
+            <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
             <div class="qtds-cta__features">
-                <!-- Feature 1 -->
-                <div class="qtds-cta__feature qtds-cta__feature--primary">
-                    <i class="fas fa-shield-alt qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Bảo Mật Dữ Liệu</h4>
-                    <p class="qtds-cta__feature-text">Ngăn chặn gian lận hiệu quả</p>
-                </div>
+                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
 
-                <!-- Feature 2 -->
-                <div class="qtds-cta__feature qtds-cta__feature--secondary">
-                    <i class="fas fa-rocket qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Tối Ưu Quy Trình</h4>
-                    <p class="qtds-cta__feature-text">Xử lý nhanh, giảm 70% thời gian</p>
-                </div>
+<!-- 
+  Khuôn mẫu cho thẻ tính năng.
+  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
+  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
+  - title: Tiêu đề của thẻ.
+  - text: Nội dung mô tả.
+-->
+<div class="qtds-feature-card qtds-feature-card--primary">
+    <i class="fas fa-shield-alt qtds-feature-card__icon"></i>
+    <h4 class="qtds-feature-card__title">Bảo Mật Dữ Liệu</h4>
+    <p class="qtds-feature-card__text">Ngăn chặn gian lận hiệu quả</p>
+</div>
 
-                <!-- Feature 3 -->
-                <div class="qtds-cta__feature qtds-cta__feature--accent">
-                    <i class="fas fa-chart-line qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Nâng Cao Cạnh Tranh</h4>
-                    <p class="qtds-cta__feature-text">Hiện đại hóa, thu hút khách hàng</p>
-                </div>
+                
+                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
 
-                <!-- Feature 4 -->
-                <div class="qtds-cta__feature qtds-cta__feature--purple">
-                    <i class="fas fa-check-circle qtds-cta__feature-icon"></i>
-                    <h4 class="qtds-cta__feature-title">Tuân Thủ NHNN</h4>
-                    <p class="qtds-cta__feature-text">100% đáp ứng quy định</p>
-                </div>
+<!-- 
+  Khuôn mẫu cho thẻ tính năng.
+  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
+  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
+  - title: Tiêu đề của thẻ.
+  - text: Nội dung mô tả.
+-->
+<div class="qtds-feature-card qtds-feature-card--secondary">
+    <i class="fas fa-rocket qtds-feature-card__icon"></i>
+    <h4 class="qtds-feature-card__title">Tối Ưu Quy Trình</h4>
+    <p class="qtds-feature-card__text">Xử lý nhanh, giảm 70% thời gian</p>
+</div>
+
+
+                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ tính năng.
+  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
+  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
+  - title: Tiêu đề của thẻ.
+  - text: Nội dung mô tả.
+-->
+<div class="qtds-feature-card qtds-feature-card--accent">
+    <i class="fas fa-chart-line qtds-feature-card__icon"></i>
+    <h4 class="qtds-feature-card__title">Nâng Cao Cạnh Tranh</h4>
+    <p class="qtds-feature-card__text">Hiện đại hóa, thu hút khách hàng</p>
+</div>
+
+
+                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+
+<!-- 
+  Khuôn mẫu cho thẻ tính năng.
+  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
+  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
+  - title: Tiêu đề của thẻ.
+  - text: Nội dung mô tả.
+-->
+<div class="qtds-feature-card qtds-feature-card--purple">
+    <i class="fas fa-check-circle qtds-feature-card__icon"></i>
+    <h4 class="qtds-feature-card__title">Tuân Thủ NHNN</h4>
+    <p class="qtds-feature-card__text">100% đáp ứng quy định</p>
+</div>
+
             </div>
 
             <!-- Action Buttons -->
