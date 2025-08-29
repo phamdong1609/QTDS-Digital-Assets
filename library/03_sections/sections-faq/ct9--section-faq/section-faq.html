@@ -1,15 +1,20 @@
 <!-- 
-  Section: QTDS FAQ (Phiên bản 3.2 - Chống lỗi triệt để)
+  Section: QTDS FAQ (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    title: null,
+    faqs: null
+  }, expressions.locals);
+</script>
 <section id="faq" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
-            <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">Giải Đáp Thắc Mắc Về QTDS</if>
-            </h2>
+            <h2>{{ title || 'Giải Đáp Thắc Mắc Về QTDS' }}</h2>
         </div>
 
         <div class="qtds-faq">
@@ -100,3 +105,4 @@
         </div>
     </div>
 </section>
+

@@ -1,30 +1,33 @@
 <!-- 
-  Section: QTDS Challenges (Phiên bản 3.2 - Chống lỗi triệt để)
+  Section: QTDS Challenges (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
-  - Cách này sẽ kiểm tra sự tồn tại của biến trước khi render, tránh lỗi ReferenceError.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    tagline: null,
+    title: null,
+    description: null,
+    stats: null,
+    highlightTitle: null,
+    highlightDescription: null,
+    cards: null
+  }, expressions.locals);
+</script>
 <section id="thach-thuc" class="qtds-section">
     <div class="qtds-container">
-        <!-- Section Header: Sử dụng <if> để đặt giá trị mặc định -->
+        <!-- Section Header: Sử dụng `||` để đặt giá trị mặc định -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">
-                <if condition="tagline">{{ tagline }}</if>
-                <if condition="!tagline">THỰC TRẠNG HỆ THỐNG</if>
-            </span>
-            <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">4 Thách Thức Cốt Lõi Của Hệ Thống QTDND</if>
-            </h2>
-            <p>
-                <if condition="description">{{ description }}</if>
-                <if condition="!description">Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</if>
-            </p>
+            <span class="qtds-section-header__tagline">{{ tagline || 'THỰC TRẠNG HỆ THỐNG' }}</span>
+            <h2>{{ title || '4 Thách Thức Cốt Lõi Của Hệ Thống QTDND' }}</h2>
+            <p>{{ description || 'Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.' }}</p>
         </div>
 
         <!-- Stats Overview -->
         <div class="qtds-challenges__stats">
-            <!-- Logic MỚI: Nếu có mảng 'stats' được truyền vào (từ JSON), thì lặp qua nó -->
+            <!-- Logic MỚI: Nếu có mảng 'stats' được truyền vào từ JSON, thì lặp qua nó -->
             <if condition="stats">
                 <each loop="stat in stats">
                     <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{{ stat }}'></include>
@@ -52,12 +55,10 @@
         <div class="qtds-scroll-animate qtds-challenges__highlight-box">
             <h3 class="qtds-challenges__highlight-title">
                 <i class="fas fa-layer-group qtds-challenges__highlight-icon"></i>
-                <if condition="highlightTitle">{{ highlightTitle }}</if>
-                <if condition="!highlightTitle">Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi</if>
+                {{ highlightTitle || 'Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi' }}
             </h3>
             <p class="qtds-challenges__highlight-text">
-                <if condition="highlightDescription">{{ highlightDescription }}</if>
-                <if condition="!highlightDescription">Hiểu rõ từng thách thức để có giải pháp phù hợp và hiệu quả nhất</if>
+                {{ highlightDescription || 'Hiểu rõ từng thách thức để có giải pháp phù hợp và hiệu quả nhất' }}
             </p>
         </div>
 
@@ -191,3 +192,4 @@
         </div>
     </div>
 </section>
+

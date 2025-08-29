@@ -1,28 +1,31 @@
 <!-- 
-  Section: QTDS Navbar (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Section: QTDS Navbar (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON), bao gồm cả một mảng `nav_links`.
-  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    navbar_logo_src: null,
+    navbar_brand_name: null,
+    nav_links: null
+  }, expressions.locals);
+</script>
 <nav id="navbar" class="qtds-navbar">
     <div class="qtds-container qtds-navbar__content">
         <a href="#" class="qtds-navbar__brand">
-            <!-- Dynamic Logo -->
             <if condition="navbar_logo_src">
-                <img src="{{ navbar_logo_src }}" alt="Logo QTDS" class="qtds-navbar__logo">
+                <img src="{{ navbar_logo_src }}" alt="{{ navbar_brand_name || 'Logo QTDS' }}" class="qtds-navbar__logo">
             </if>
             <if condition="!navbar_logo_src">
                 <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
             </if>
-            
-            <!-- Dynamic Brand Name -->
             <span class="qtds-navbar__brand-name">
                 <if condition="navbar_brand_name">{{ navbar_brand_name }}</if>
                 <if condition="!navbar_brand_name">QTDS</if>
             </span>
         </a>
-
-        <!-- Desktop Links -->
         <div class="qtds-navbar__links">
             <if condition="nav_links">
                 <each loop="link in nav_links">
@@ -40,14 +43,11 @@
         </div>
         <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
     </div>
-
-    <!-- Mobile Menu -->
     <div class="qtds-navbar__mobile-menu" id="mobileMenu">
         <if condition="nav_links">
              <each loop="link in nav_links">
                 <a href="{{ link.href }}" class="qtds-navbar__mobile-link">{{ link.text }}</a>
             </each>
-            <!-- Add a default CTA button for mobile if it's not in the main links -->
             <a href="#san-sang-chuyen-doi" class="qtds-navbar__mobile-link">Hành Động</a>
         </if>
         <if condition="!nav_links">
@@ -61,3 +61,4 @@
         </if>
     </div>
 </nav>
+

@@ -1,29 +1,29 @@
 <!-- 
-  Section: QTDS Benefits (Phiên bản 3.2 - Chống lỗi triệt để)
+  Section: QTDS Benefits (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    tagline: null,
+    title: null,
+    description: null,
+    stakeholderBenefits: null
+  }, expressions.locals);
+</script>
 <section id="loi-ich" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">
-                <if condition="tagline">{{ tagline }}</if>
-                <if condition="!tagline">TÁC ĐỘNG TOÀN DIỆN</if>
-            </span>
-            <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu</if>
-            </h2>
-            <p>
-                <if condition="description">{{ description }}</if>
-                <if condition="!description">QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND, từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.</if>
-            </p>
+            <span class="qtds-section-header__tagline">{{ tagline || 'TÁC ĐỘNG TOÀN DIỆN' }}</span>
+            <h2>{{ title || 'Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu' }}</h2>
+            <p>{{ description || 'QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND, từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.' }}</p>
         </div>
 
-        <!-- Overview Stats -->
+        <!-- Overview Stats - Phần này tĩnh, không cần thay đổi -->
         <div class="qtds-scroll-animate qtds-benefits__overview">
-            <!-- Phần này có thể được nâng cấp tương tự với một mảng 'overviewStats' nếu cần -->
              <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "70%", "label": "Tăng năng suất", "colorClass": "text-primary", "delay": "0s" }'></include>
              <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "95%", "label": "Giảm sai sót", "colorClass": "text-danger", "delay": "0.1s" }'></include>
              <include src="library/02_molecules/molecule-stat-card/molecule-stat-card.html" locals='{ "value": "100%", "label": "Tuân thủ NHNN", "colorClass": "text-success", "delay": "0.2s" }'></include>
@@ -32,7 +32,7 @@
 
         <!-- Stakeholder Cards -->
         <div class="qtds-benefits__stakeholders">
-            <!-- Logic MỚI: Nếu có mảng 'stakeholderBenefits' -->
+            <!-- Logic MỚI: Nếu có mảng 'stakeholderBenefits' được truyền vào từ JSON -->
             <if condition="stakeholderBenefits">
                 <each loop="stakeholder, index in stakeholderBenefits">
                     <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--{{ stakeholder.type }}" style="animation-delay: {{ index * 0.2 }}s;">
@@ -82,7 +82,7 @@
                 </each>
             </if>
 
-            <!-- Logic CŨ: Nếu KHÔNG có mảng 'stakeholderBenefits' -->
+            <!-- Logic CŨ: Nếu KHÔNG có mảng 'stakeholderBenefits', hiển thị nội dung tĩnh (fallback cho CT9) -->
             <if condition="!stakeholderBenefits">
                 <!-- Card 1: Cán bộ Tín dụng -->
                 <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--staff">
@@ -148,7 +148,7 @@
             </if>
         </div>
         
-        <!-- ROI Preview -->
+        <!-- ROI Preview - Phần này tĩnh, không cần thay đổi -->
         <div class="qtds-scroll-animate qtds-benefits__roi-preview">
             <div class="qtds-benefits__roi-preview-content">
                 <div class="qtds-benefits__roi-preview-text">
@@ -162,12 +162,8 @@
                 </div>
                 <div class="qtds-benefits__roi-preview-visual">
                     <div class="qtds-benefits__roi-preview-chart">
-                        <div class="qtds-benefits__roi-preview-bar qtds-benefits__roi-preview-bar--cost" style="height: 30%; background: #E53E3E;">
-                            <span class="qtds-benefits__roi-preview-bar-label">Chi phí</span>
-                        </div>
-                        <div class="qtds-benefits__roi-preview-bar qtds-benefits__roi-preview-bar--benefit" style="height: 90%;">
-                            <span class="qtds-benefits__roi-preview-bar-label">Lợi ích</span>
-                        </div>
+                        <div class="qtds-benefits__roi-preview-bar qtds-benefits__roi-preview-bar--cost" style="height: 30%; background: #E53E3E;"><span class="qtds-benefits__roi-preview-bar-label">Chi phí</span></div>
+                        <div class="qtds-benefits__roi-preview-bar qtds-benefits__roi-preview-bar--benefit" style="height: 90%;"><span class="qtds-benefits__roi-preview-bar-label">Lợi ích</span></div>
                     </div>
                     <p class="qtds-benefits__roi-preview-caption">ROI: <strong>300%</strong> sau 12 tháng</p>
                 </div>
@@ -184,3 +180,4 @@
         </div>
     </div>
 </section>
+

@@ -6,35 +6,51 @@
       {
         "section_type": "Navbar",
         "component_path": "library/03_sections/sections-navbar/ct9--section-navbar/section-navbar.html",
-        "locals": {}
+        "locals": {
+          "navbar_logo_src": "https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png",
+          "navbar_brand_name": "QTDS",
+          "nav_links": [
+            { "href": "#thach-thuc", "text": "Thách Thức" },
+            { "href": "#giai-phap", "text": "Giải Pháp" },
+            { "href": "#loi-ich", "text": "Lợi Ích" },
+            { "href": "#faq", "text": "FAQ" }
+          ]
+        }
       },
       {
         "section_type": "Hero",
         "component_path": "library/03_sections/sections-hero/ct9--section-hero/section-hero.html",
         "locals": {
-          "badgeText": "CHẤT LƯỢNG DỮ LIỆU",
-          "title": "Rác Đầu Vào, Thảm Họa Đầu Ra",
-          "subtitle": "Giảm Rủi Ro Vận Hành • Nâng Cao Năng Lực Quản Trị",
-          "description": "Dữ liệu sai lệch đang âm thầm đẩy QTDND đến rủi ro nợ xấu. Khám phá cách chuẩn hóa dữ liệu đầu vào giúp ra quyết định chính xác và quản trị hiệu quả.",
-          "ctaPrimary": {
-            "link": "#giai-phap",
-            "type": "primary",
+          "hero_badge": {
+            "type": "hero-badge",
             "icon": "fas fa-shield-alt",
-            "text": "Khám Phá Giải Pháp"
+            "text": "CHẤT LƯỢNG DỮ LIỆU"
           },
-          "ctaSecondary": {
-            "link": "#san-sang-chuyen-doi",
-            "type": "secondary",
-            "icon": "fas fa-calendar-check",
-            "text": "Tư Vấn Lộ Trình"
-          }
+          "hero_title_gradient": "Rác Đầu Vào,",
+          "hero_title_main": "Thảm Họa Đầu Ra",
+          "hero_subtitle": "Giảm Rủi Ro Vận Hành • Nâng Cao Năng Lực Quản Trị",
+          "hero_description": "Dữ liệu sai lệch đang âm thầm đẩy QTDND đến rủi ro nợ xấu. Khám phá cách chuẩn hóa dữ liệu đầu vào giúp ra quyết định chính xác và quản trị hiệu quả.",
+          "hero_actions": [
+            {
+              "link": "#giai-phap",
+              "type": "primary",
+              "icon": "fas fa-shield-alt",
+              "text": "Khám Phá Giải Pháp"
+            },
+            {
+              "link": "#san-sang-chuyen-doi",
+              "type": "secondary",
+              "icon": "fas fa-calendar-check",
+              "text": "Tư Vấn Lộ Trình"
+            }
+          ]
         }
       },
       {
         "section_type": "Problem_Statement",
         "component_path": "library/03_sections/sections-challenges/ct9--section-challenges/section-challenges.html",
         "locals": {
-          //"tagline": "THỰC TRẠNG HỆ THỐNG"
+          "tagline": "THỰC TRẠNG HỆ THỐNG",
           "title": "4 Thách Thức Cốt Lõi Của Hệ Thống QTDND",
           "description": "Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.",
           "highlightTitle": "Phân Tích Chi Tiết 4 Thách Thức Cốt Lõi",
@@ -82,7 +98,7 @@
         "section_type": "Final_CTA",
         "component_path": "library/03_sections/sections-cta/ct9--section-cta/section-cta.html",
         "locals": {
-          //"tagline": "HÀNH ĐỘNG NGAY",
+          "tagline": "HÀNH ĐỘNG NGAY",
           "title": "Sẵn Sàng Chuyển Đổi Số Cùng QTDS?",
           "description": "Đừng để những quyết định quan trọng của Quỹ được đưa ra dựa trên 'dữ liệu rác'. Đã đến lúc biến dữ liệu thành tài sản quý giá nhất của bạn.",
           "features": [
@@ -104,3 +120,4 @@
     ]
   }
 }
+

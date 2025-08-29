@@ -1,27 +1,31 @@
 <!-- 
-  Section: QTDS Hero (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Section: QTDS Hero (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON).
-  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định, đảm bảo an toàn khi build CT9.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    hero_badge: null,
+    hero_title_gradient: null,
+    hero_title_main: null,
+    hero_subtitle: null,
+    hero_description: null,
+    hero_actions: null
+  }, expressions.locals);
+</script>
 <section id="tong-quan" class="qtds-hero">
     <div class="qtds-hero__bg"></div>
     <div class="container qtds-hero__content">
-        
-        <!-- Badge: Dynamic or Static -->
         <div class="qtds-scroll-animate">
             <if condition="hero_badge">
                 <include src="library/01_atoms/atom-tag/atom-tag.html" locals='{{ hero_badge }}'></include>
             </if>
             <if condition="!hero_badge">
-                 <include src="library/01_atoms/atom-tag/atom-tag.html" locals='{
-                    "type": "hero-badge",
-                    "icon": "fas fa-shield-alt",
-                    "text": "BẢO MẬT DỮ LIỆU"
-                }'></include>
+                 <include src="library/01_atoms/atom-tag/atom-tag.html" locals='{"type": "hero-badge", "icon": "fas fa-shield-alt", "text": "BẢO MẬT DỮ LIỆU"}'></include>
             </if>
         </div>
-        
         <h1 class="qtds-scroll-animate qtds-hero__title">
             <if condition="hero_title_gradient || hero_title_main">
                 <span class="qtds-text-gradient">{{ hero_title_gradient }}</span> {{ hero_title_main }}
@@ -30,45 +34,26 @@
                 <span class="qtds-text-gradient">QTDS</span> - Chuẩn Hóa Dữ Liệu Tín Dụng
             </if>
         </h1>
-        
         <h2 class="qtds-scroll-animate qtds-hero__subtitle">
             <if condition="hero_subtitle">{{ hero_subtitle }}</if>
-            <if condition="!hero_subtitle">
-                Giảm 70% Rủi Ro Vận Hành • Tuân Thủ 100% Quy Định NHNN
-            </if>
+            <if condition="!hero_subtitle">Giảm 70% Rủi Ro Vận Hành • Tuân Thủ 100% Quy Định NHNN</if>
         </h2>
-
         <p class="qtds-scroll-animate qtds-hero__description">
             <if condition="hero_description">{{ hero_description }}</if>
-            <if condition="!hero_description">
-                Giải pháp số hóa quy trình tín dụng dành riêng cho 1.176 QTDND tại Việt Nam. Chấm dứt tình trạng nhập liệu thủ công, sai sót dữ liệu và vi phạm quy định.
-            </if>
+            <if condition="!hero_description">Giải pháp số hóa quy trình tín dụng dành riêng cho 1.176 QTDND tại Việt Nam. Chấm dứt tình trạng nhập liệu thủ công, sai sót dữ liệu và vi phạm quy định.</if>
         </p>
-
         <div class="qtds-scroll-animate qtds-hero__actions">
-            <!-- Dynamic Buttons -->
             <if condition="hero_actions">
                 <each loop="action in hero_actions">
                     <include src="library/01_atoms/atom-button/atom-button.html" locals='{{ action }}'></include>
                 </each>
             </if>
-            
-            <!-- Static Fallback Buttons -->
             <if condition="!hero_actions">
-                <include src="library/01_atoms/atom-button/atom-button.html" locals='{
-                    "link": "#giai-phap",
-                    "type": "primary",
-                    "icon": "fas fa-chart-line",
-                    "text": "Khám Phá Giải Pháp"
-                }'></include>
-                
-                <include src="library/01_atoms/atom-button/atom-button.html" locals='{
-                    "link": "#san-sang-chuyen-doi",
-                    "type": "secondary",
-                    "icon": "fas fa-calendar-check",
-                    "text": "Dùng Thử Miễn Phí"
-                }'></include>
+                <include src="library/01_atoms/atom-button/atom-button.html" locals='{"link": "#giai-phap", "type": "primary", "icon": "fas fa-chart-line", "text": "Khám Phá Giải Pháp"}'></include>
+                <include src="library/01_atoms/atom-button/atom-button.html" locals='{"link": "#san-sang-chuyen-doi", "type": "secondary", "icon": "fas fa-calendar-check", "text": "Dùng Thử Miễn Phí"}'></include>
             </if>
         </div>
     </div>
 </section>
+
+

@@ -1,9 +1,17 @@
 <!-- 
-  Section: QTDS Footer (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Section: QTDS Footer (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON).
-  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
 -->
+<script>
+  expressions.locals = Object.assign({
+    footer_logo_src: null,
+    footer_tagline: null,
+    footer_socials: null,
+    footer_copyright: null
+  }, expressions.locals);
+</script>
 <footer class="qtds-footer" style="background: var(--gray-900); color: var(--gray-700); padding: var(--space-16) 0;">
     <div class="qtds-container" style="text-align: center;">
         <!-- Logo: Dynamic or Static -->
@@ -41,3 +49,4 @@
         </p>
     </div>
 </footer>
+

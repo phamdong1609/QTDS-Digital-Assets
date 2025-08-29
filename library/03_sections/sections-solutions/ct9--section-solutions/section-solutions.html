@@ -1,23 +1,32 @@
 <!-- 
-  Section: QTDS Solutions (Phiên bản 3.2 - Chống lỗi triệt để)
+  Section: QTDS Solutions (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    tagline: null,
+    title: null,
+    description: null,
+    pillars: null,
+    processTitle: null,
+    processSteps: null
+  }, expressions.locals);
+</script>
 <section id="giai-phap" class="qtds-section qtds-solutions">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">
-                <if condition="tagline">{{ tagline }}</if>
-                <if condition="!tagline">GIẢI PHÁP CHIẾN LƯỢC</if>
+                {{ tagline || 'GIẢI PHÁP CHIẾN LƯỢC' }}
             </span>
             <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</if>
+                {{ title || 'QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt' }}
             </h2>
             <p>
-                <if condition="description">{{ description }}</if>
-                <if condition="!description">Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</if>
+                {{ description || 'Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng' }}
             </p>
         </div>
 
@@ -96,8 +105,7 @@
         <!-- Process Flow -->
         <div class="qtds-scroll-animate qtds-solutions__process-section">
             <h3 class="qtds-solutions__process-title">
-                <if condition="processTitle">{{ processTitle }}</if>
-                <if condition="!processTitle">Quy trình Chuẩn hóa Tự động</if>
+                {{ processTitle || 'Quy trình Chuẩn hóa Tự động' }}
             </h3>
             <div class="qtds-solutions__process-flow">
                 <!-- Logic MỚI: Nếu có mảng 'processSteps' -->
@@ -151,3 +159,4 @@
         </div>
     </div>
 </section>
+

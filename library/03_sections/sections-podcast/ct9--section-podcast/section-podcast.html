@@ -1,24 +1,32 @@
 <!-- 
-  Section: QTDS Podcast (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Section: QTDS Podcast (Phiên bản 3.6 - Fix lỗi build triệt để)
   Description: 
-  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON).
-  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định, đảm bảo an toàn khi build CT9.
+  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
+  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
+  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
 -->
+<script>
+  expressions.locals = Object.assign({
+    tagline: null,
+    title: null,
+    description: null,
+    podcast_title: null,
+    podcast_description: null,
+    podcast_url: null
+  }, expressions.locals);
+</script>
 <section id="video-gioi-thieu" class="qtds-section">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">
-                <if condition="tagline">{{ tagline }}</if>
-                <if condition="!tagline">LẮNG NGHE PODCAST</if>
+                {{ tagline || 'LẮNG NGHE PODCAST' }}
             </span>
             <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">Podcast Giới Thiệu Về QTDS</if>
+                {{ title || 'Podcast Giới Thiệu Về QTDS' }}
             </h2>
             <p>
-                <if condition="description">{{ description }}</if>
-                <if condition="!description">Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</if>
+                {{ description || 'Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.' }}
             </p>
         </div>
 
@@ -31,12 +39,10 @@
             </div>
             <div class="qtds-podcast-card__content">
                 <h3 class="qtds-podcast-card__title">
-                    <if condition="podcast_title">{{ podcast_title }}</if>
-                    <if condition="!podcast_title">QTDS: Nâng Tầm Quản Lý Tín Dụng</if>
+                    {{ podcast_title || 'QTDS: Nâng Tầm Quản Lý Tín Dụng' }}
                 </h3>
                 <p class="qtds-podcast-card__description">
-                    <if condition="podcast_description">{{ podcast_description }}</if>
-                    <if condition="!podcast_description">Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.</if>
+                    {{ podcast_description || 'Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.' }}
                 </p>
                 <div class="qtds-podcast-card__player">
                     <if condition="podcast_url">
@@ -50,3 +56,4 @@
         </div>
     </div>
 </section>
+
