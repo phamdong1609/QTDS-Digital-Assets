@@ -1,37 +1,39 @@
 <!-- 
-  Section: QTDS Navbar (Phiên bản 3.6 - Fix lỗi build triệt để)
+  Section: QTDS Navbar (Phiên bản 3.7 - Clean & Simple)
   Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
+  - Đã loại bỏ script bảo vệ không cần thiết.
+  - Phụ thuộc vào `build.js` v3.5+ để tạo ra "Môi trường An toàn" (Safe Environment).
+  - Sửa lỗi cú pháp, đảm bảo tất cả các biến đều được bọc trong {{...}}.
 -->
-<script>
-  expressions.locals = Object.assign({
-    navbar_logo_src: null,
-    navbar_brand_name: null,
-    nav_links: null
-  }, expressions.locals);
-</script>
 <nav id="navbar" class="qtds-navbar">
     <div class="qtds-container qtds-navbar__content">
+        <!-- Brand Logo & Name -->
         <a href="#" class="qtds-navbar__brand">
+            <!-- Dynamic Logo -->
             <if condition="navbar_logo_src">
                 <img src="{{ navbar_logo_src }}" alt="{{ navbar_brand_name || 'Logo QTDS' }}" class="qtds-navbar__logo">
             </if>
+            <!-- Static Fallback Logo -->
             <if condition="!navbar_logo_src">
                 <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
             </if>
+            
+            <!-- Dynamic Brand Name -->
             <span class="qtds-navbar__brand-name">
                 <if condition="navbar_brand_name">{{ navbar_brand_name }}</if>
                 <if condition="!navbar_brand_name">QTDS</if>
             </span>
         </a>
+        
+        <!-- Desktop Navigation Links -->
         <div class="qtds-navbar__links">
+            <!-- Dynamic Links -->
             <if condition="nav_links">
                 <each loop="link in nav_links">
                     <a href="{{ link.href }}" class="qtds-navbar__link">{{ link.text }}</a>
                 </each>
             </if>
+            <!-- Static Fallback Links -->
             <if condition="!nav_links">
                 <a href="#tong-quan" class="qtds-navbar__link">Tổng Quan</a>
                 <a href="#thach-thuc" class="qtds-navbar__link">Thách Thức</a>
@@ -41,15 +43,25 @@
                 <a href="#articles" class="qtds-navbar__link">Thư Viện</a>
             </if>
         </div>
-        <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
+    
+    <!-- Mobile Menu -->
     <div class="qtds-navbar__mobile-menu" id="mobileMenu">
+        <!-- Dynamic Mobile Links -->
         <if condition="nav_links">
              <each loop="link in nav_links">
                 <a href="{{ link.href }}" class="qtds-navbar__mobile-link">{{ link.text }}</a>
             </each>
+            <!-- Default CTA for mobile -->
             <a href="#san-sang-chuyen-doi" class="qtds-navbar__mobile-link">Hành Động</a>
         </if>
+        
+        <!-- Static Fallback Mobile Links -->
         <if condition="!nav_links">
             <a href="#tong-quan" class="qtds-navbar__mobile-link">Tổng Quan</a>
             <a href="#thach-thuc" class="qtds-navbar__mobile-link">Thách Thức</a>

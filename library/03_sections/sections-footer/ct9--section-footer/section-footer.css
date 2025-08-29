@@ -1,14 +1,18 @@
 /**
  * Section: QTDS Footer
  * Description: Defines styles for the main site footer.
- * Version: 1.0 (Adopted from main branch)
+ * Version: 1.1 (Cleaned up)
+ * Changes:
+ * - Moved all inline styles from HTML into this file.
+ * - Added `text-align: center` to the content wrapper.
+ * - Updated padding and margins to match the intended design.
  */
 
 /* ----- Block: Footer Section ----- */
 .qtds-footer {
     background: var(--gray-900);
-    color: var(--gray-600);
-    padding: var(--space-12) 0;
+    color: var(--gray-700);
+    padding: var(--space-16) 0;
 }
 
 /* ----- Elements within Footer ----- */
@@ -18,13 +22,13 @@
 
 .qtds-footer__logo {
     height: 120px;
-    margin-bottom: var(--space-4);
+    margin: 0 auto var(--space-4);
 }
 
 .qtds-footer__tagline {
-    color: var(--gray-600);
     font-size: var(--text-lg);
     margin-bottom: var(--space-6);
+    color: var(--gray-600);
 }
 
 .qtds-footer__tagline strong {
@@ -35,12 +39,13 @@
     display: flex;
     justify-content: center;
     gap: var(--space-6);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-8);
+    font-size: var(--text-2xl);
 }
 
 .qtds-footer__social-link {
     color: var(--gray-600);
-    font-size: var(--text-2xl);
+    text-decoration: none;
     transition: all var(--transition-base);
 }
 
@@ -52,4 +57,5 @@
 .qtds-footer__copyright {
     font-size: var(--text-base);
     color: var(--gray-700);
+    margin: 0;
 }

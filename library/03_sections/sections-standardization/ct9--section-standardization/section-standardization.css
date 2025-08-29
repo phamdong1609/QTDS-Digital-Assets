@@ -225,6 +225,11 @@
     font-weight: 600;
 }
 
+/* LOGIC MỚI: Ẩn mũi tên cuối cùng trong data flow */
+.qtds-standardization__data-flow-item:last-of-type + .qtds-standardization__data-flow-arrow {
+    display: none;
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */

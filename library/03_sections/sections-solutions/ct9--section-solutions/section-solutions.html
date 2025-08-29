@@ -1,36 +1,29 @@
 <!-- 
-  Section: QTDS Solutions (Phiên bản 3.6 - Fix lỗi build triệt để)
+  Section: QTDS Solutions (Phiên bản 3.8 - Clean & Robust - Notion AI Fix)
   Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
+  - Đã loại bỏ script bảo vệ, phụ thuộc vào `build.js` v3.5+.
+  - Áp dụng logic CSS để xử lý mũi tên cuối cùng trong process flow, giúp HTML sạch hơn.
+  - Loại bỏ các phép tính `animation-delay` không ổn định trong vòng lặp.
 -->
-<script>
-  expressions.locals = Object.assign({
-    tagline: null,
-    title: null,
-    description: null,
-    pillars: null,
-    processTitle: null,
-    processSteps: null
-  }, expressions.locals);
-</script>
 <section id="giai-phap" class="qtds-section qtds-solutions">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">
-                {{ tagline || 'GIẢI PHÁP CHIẾN LƯỢC' }}
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">GIẢI PHÁP CHIẾN LƯỢC</if>
             </span>
             <h2>
-                {{ title || 'QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt' }}
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</if>
             </h2>
             <p>
-                {{ description || 'Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng' }}
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</if>
             </p>
         </div>
 
-        <!-- Hero Visual (Phần này thường tĩnh hoặc có các biến đơn giản) -->
+        <!-- Hero Visual (Phần này thường tĩnh) -->
         <div class="qtds-solutions__visual">
             <div class="qtds-solutions__device">
                 <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/VzvLd5z2WiANVb7tmfy9a.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
@@ -46,15 +39,15 @@
         <div class="qtds-solutions__pillars">
             <!-- Logic MỚI: Nếu có mảng 'pillars' -->
             <if condition="pillars">
-                <each loop="pillar, index in pillars">
-                    <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: {{ index * 0.2 }}s;">
-                        <div class="qtds-solutions__pillar-number">{{ '0' + (index + 1) }}</div>
+                <each loop="pillar in pillars">
+                    <div class="qtds-scroll-animate qtds-solutions__pillar">
+                        <div class="qtds-solutions__pillar-number">{{ pillar.number }}</div>
                         <div class="qtds-solutions__pillar-icon"><i class="{{ pillar.icon }}"></i></div>
                         <h3 class="qtds-solutions__pillar-title">{{ pillar.title }}</h3>
                         <p class="qtds-solutions__pillar-subtitle">{{ pillar.subtitle }}</p>
                         <div class="qtds-solutions__pillar-content">
                             <p>{{ pillar.description }}</p>
-                            <if condition="pillar.benefitTag">
+                            <if condition="pillar && pillar.benefitTag">
                                 <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> {{ pillar.benefitTag }}</div>
                             </if>
                         </div>
@@ -105,20 +98,22 @@
         <!-- Process Flow -->
         <div class="qtds-scroll-animate qtds-solutions__process-section">
             <h3 class="qtds-solutions__process-title">
-                {{ processTitle || 'Quy trình Chuẩn hóa Tự động' }}
+                <if condition="processTitle">{{ processTitle }}</if>
+                <if condition="!processTitle">Quy trình Chuẩn hóa Tự động</if>
             </h3>
             <div class="qtds-solutions__process-flow">
                 <!-- Logic MỚI: Nếu có mảng 'processSteps' -->
                 <if condition="processSteps">
-                    <each loop="step, index in processSteps">
+                    <each loop="step in processSteps">
                         <div class="qtds-solutions__process-step">
                             <div class="qtds-solutions__process-icon"><i class="{{ step.icon }}"></i></div>
                             <h4>{{ step.title }}</h4>
                             <p>{{ step.description }}</p>
                         </div>
-                        <if condition="index < processSteps.length - 1">
-                            <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </if>
+                        <!-- Luôn hiển thị arrow, CSS sẽ ẩn arrow cuối cùng -->
+                        <div class="qtds-solutions__process-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </each>
                 </if>
 
@@ -135,7 +130,7 @@
             </div>
         </div>
 
-        <!-- Key Benefits Box (Thường là tĩnh hoặc có biến đơn giản) -->
+        <!-- Key Benefits Box -->
         <div class="qtds-scroll-animate qtds-solutions__benefits-highlight">
             <div class="qtds-solutions__benefits-highlight-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="qtds-solutions__benefits-highlight-content">

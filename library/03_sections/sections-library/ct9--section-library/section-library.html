@@ -1,19 +1,4 @@
-<!-- 
-  Section: QTDS Library (Phiên bản 3.6 - Fix lỗi build triệt để)
-  Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
--->
-<script>
-  expressions.locals = Object.assign({
-    library_tagline: null,
-    library_title_main: null,
-    library_title_gradient: null,
-    library_description: null,
-    library_cta: null
-  }, expressions.locals);
-</script>
+<!-- Section: QTDS Library (Phiên bản 3.8 - Final) -->
 <section id="articles" class="qtds-section">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
@@ -21,10 +6,13 @@
                 {{ library_tagline || 'THƯ VIỆN TRI THỨC' }}
             </span>
             <h2>
-                <if condition="typeof library_title_main !== 'undefined' || typeof library_title_gradient !== 'undefined'">
-                    {{ library_title_main }} <span class="qtds-text-gradient">{{ library_title_gradient }}</span>
+                <if condition="library_title_main || library_title_gradient">
+                    <if condition="library_title_main">{{ library_title_main }}</if>
+                    <if condition="library_title_gradient">
+                        <span class="qtds-text-gradient">{{ library_title_gradient }}</span>
+                    </if>
                 </if>
-                <if condition="typeof library_title_main === 'undefined' && typeof library_title_gradient === 'undefined'">
+                <if condition="!library_title_main && !library_title_gradient">
                     Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span>
                 </if>
             </h2>
@@ -33,19 +21,22 @@
             </p>
         </div>
 
-        <!-- The grid will be populated by JavaScript, so it remains as is -->
         <div id="library-grid" class="qtds-library__grid"></div>
         <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
 
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
-             <!-- Dynamic CTA Button -->
-            <if condition="typeof library_cta !== 'undefined'">
+            <!-- Dynamic CTA with Safe Access -->
+            <if condition="library_cta && library_cta.href">
                 <a href="{{ library_cta.href }}" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
-                    <i class="{{ library_cta.icon }}"></i>{{ library_cta.text }}
+                    <if condition="library_cta.icon">
+                        <i class="{{ library_cta.icon }}"></i>
+                    </if>
+                    {{ library_cta.text || 'Xem Thư Viện' }}
                 </a>
             </if>
-            <!-- Static Fallback CTA Button -->
-            <if condition="typeof library_cta === 'undefined'">
+
+            <!-- Static Fallback - ĐÃ SỬA LINK -->
+            <if condition="!library_cta">
                 <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
                     <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
                 </a>
@@ -53,4 +44,3 @@
         </div>
     </div>
 </section>
-

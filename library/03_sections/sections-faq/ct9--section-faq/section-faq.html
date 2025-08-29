@@ -1,20 +1,16 @@
 <!-- 
-  Section: QTDS FAQ (Phiên bản 3.6 - Fix lỗi build triệt để)
+  Section: QTDS FAQ (Phiên bản 3.7 - Clean & Simple)
   Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
+  - Đã loại bỏ script bảo vệ không cần thiết, phụ thuộc vào `build.js` v3.5+.
+  - Code sạch, chỉ tập trung vào logic hiển thị.
 -->
-<script>
-  expressions.locals = Object.assign({
-    title: null,
-    faqs: null
-  }, expressions.locals);
-</script>
 <section id="faq" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
-            <h2>{{ title || 'Giải Đáp Thắc Mắc Về QTDS' }}</h2>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Giải Đáp Thắc Mắc Về QTDS</if>
+            </h2>
         </div>
 
         <div class="qtds-faq">

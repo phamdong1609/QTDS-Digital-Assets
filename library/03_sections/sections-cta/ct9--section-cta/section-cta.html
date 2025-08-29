@@ -1,30 +1,28 @@
 <!-- 
-  Section: QTDS CTA (Phiên bản 3.6 - Fix lỗi build triệt để)
+  Section: QTDS CTA (Phiên bản 3.8 - Full Dynamic & Robust)
   Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
+  - Đã loại bỏ script bảo vệ không cần thiết, phụ thuộc vào `build.js` v3.5+.
+  - Nâng cấp phần Action Buttons để có thể đọc dữ liệu động từ JSON.
 -->
-<script>
-  expressions.locals = Object.assign({
-    tagline: null,
-    title: null,
-    description: null,
-    features: null
-  }, expressions.locals);
-</script>
 <section id="san-sang-chuyen-doi" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">{{ tagline || 'HÀNH ĐỘNG NGAY' }}</span>
-            <h2>{{ title || 'Sẵn Sàng Chuyển Đổi Số Cùng QTDS?' }}</h2>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">HÀNH ĐỘNG NGAY</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Sẵn Sàng Chuyển Đổi Số Cùng QTDS?</if>
+            </h2>
         </div>
 
         <!-- CTA Card -->
         <div class="qtds-scroll-animate qtds-cta">
             <p class="qtds-cta__description">
-                {{ description || 'Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.' }}
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.</if>
             </p>
 
             <!-- Features Grid -->
@@ -68,18 +66,27 @@
                 </if>
             </div>
 
-            <!-- Action Buttons - Phần này tĩnh, không cần thay đổi -->
+            <!-- Action Buttons -->
             <div class="qtds-cta__actions">
-                <a href="https://giaiphap.qtds.vn" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-rocket"></i>
-                    Dùng Thử Miễn Phí
-                </a>
-                <a href="https://zalo.me/g/flgzlp294" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer" style="transition: none !important;" onmouseover="this.style.transform='scale(1)'" onmouseout="this.style.transform='scale(1)'">
-                    <i class="fas fa-users"></i>
-                    Tham Gia Cộng Đồng
-                </a>
+                <!-- Logic MỚI: Nếu có mảng 'actions' -->
+                <if condition="actions">
+                    <each loop="action in actions">
+                         <include src="library/01_atoms/atom-button/atom-button.html" locals='{{ action }}'></include>
+                    </each>
+                </if>
+
+                <!-- Logic CŨ: Fallback cho CT9 -->
+                <if condition="!actions">
+                    <a href="https://giaiphap.qtds.vn" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-rocket"></i>
+                        Dùng Thử Miễn Phí
+                    </a>
+                    <a href="https://zalo.me/g/flgzlp294" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-users"></i>
+                        Tham Gia Cộng Đồng
+                    </a>
+                </if>
             </div>
         </div>
     </div>
 </section>
-

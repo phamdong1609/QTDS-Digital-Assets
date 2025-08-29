@@ -1,32 +1,25 @@
 <!-- 
-  Section: QTDS Standardization (Phiên bản 3.6 - Fix lỗi build triệt để)
+  Section: QTDS Standardization (Phiên bản 3.9 - Final & Robust)
   Description: 
-  - Thêm script bảo vệ để khởi tạo `locals` và các biến mặc định.
-  - Cách này đảm bảo linh kiện không bị lỗi ReferenceError khi build tĩnh (CT9).
-  - Sử dụng `||` để cung cấp giá trị mặc định cho các biến đơn giản.
+  - Đã loại bỏ script bảo vệ, phụ thuộc vào `build.js` v3.5+.
+  - Áp dụng logic kiểm tra lồng nhau an toàn (ví dụ: <if condition="keyInsight && keyInsight.title">) 
+    để giải quyết triệt để lỗi SyntaxError.
 -->
-<script>
-  expressions.locals = Object.assign({
-    tagline: null,
-    title: null,
-    description: null,
-    flowItems: null,
-    analysisCards: null,
-    keyInsight: null
-  }, expressions.locals);
-</script>
 <section id="chuan-hoa-du-lieu" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">
-                {{ tagline || 'NGUYÊN NHÂN GỐC RỄ' }}
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">NGUYÊN NHÂN GỐC RỄ</if>
             </span>
             <h2>
-                {{ title || 'Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên' }}
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên</if>
             </h2>
             <p>
-                {{ description || 'Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu' }}
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu</if>
             </p>
         </div>
 
@@ -34,19 +27,18 @@
         <div class="qtds-standardization__data-flow">
             <!-- Logic MỚI: Nếu có mảng 'flowItems' -->
             <if condition="flowItems">
-                <each loop="item, index in flowItems">
-                    <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: {{ index * 0.1 }}s;">
+                <each loop="item in flowItems">
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-item">
                         <div class="qtds-standardization__data-flow-icon" style="background: {{ item.color }};">
                             <i class="{{ item.icon }}"></i>
                         </div>
                         <h4>{{ item.title }}</h4>
                         <p>{{ item.description }}</p>
                     </div>
-                    <if condition="index < flowItems.length - 1">
-                        <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </if>
+                    <!-- Luôn hiển thị arrow, CSS sẽ ẩn arrow cuối cùng -->
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </each>
             </if>
 
@@ -86,8 +78,8 @@
         <div class="qtds-standardization__grid">
             <!-- Logic MỚI: Nếu có mảng 'analysisCards' -->
             <if condition="analysisCards">
-                <each loop="card in analysisCards">
-                     <div class="qtds-scroll-animate qtds-card qtds-standardization__card" style="animation-delay: {{ card.delay }};">
+                 <each loop="card in analysisCards">
+                     <div class="qtds-scroll-animate qtds-card qtds-standardization__card">
                         <div class="qtds-card__header qtds-standardization__card-header">
                             <div class="qtds-card__icon qtds-standardization__card-icon" style="background: {{ card.iconBg }};">
                                 <i class="{{ card.icon }}"></i>
@@ -96,6 +88,7 @@
                         </div>
                         <div class="qtds-card__body">
                            <!-- Nội dung card sẽ được render động tùy theo loại card -->
+                           {{{ card.content }}}
                         </div>
                     </div>
                 </each>
@@ -159,10 +152,12 @@
             </div>
             <div class="qtds-standardization__key-insight-box-content">
                 <h4>
-                    {{ (keyInsight && keyInsight.title) || 'Nhận định then chốt:' }}
+                    <if condition="keyInsight && keyInsight.title">{{ keyInsight.title }}</if>
+                    <if condition="!keyInsight || !keyInsight.title">Nhận định then chốt:</if>
                 </h4>
                 <p>
-                   {{{ (keyInsight && keyInsight.text) || 'Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>, thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý - đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.' }}}
+                    <if condition="keyInsight && keyInsight.text">{{ keyInsight.text }}</if>
+                    <if condition="!keyInsight">Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>, thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý - đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.</if>
                 </p>
             </div>
         </div>

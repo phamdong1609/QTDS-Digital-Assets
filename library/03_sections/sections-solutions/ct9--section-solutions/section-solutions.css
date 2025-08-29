@@ -359,3 +359,9 @@
         text-align: left;
     }
 }
+
+/* === NEW RULE TO HIDE LAST ARROW (Notion AI Suggestion) === */
+.qtds-solutions__process-step:last-of-type + .qtds-solutions__process-arrow {
+    display: none;
+}
+
