@@ -1,23 +1,47 @@
 <!-- 
-  Section: QTDS Library (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS Library (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Description: 
+  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON).
+  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định.
 -->
 <section id="articles" class="qtds-section">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
-            <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
-            <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
+            <span class="qtds-section-header__tagline">
+                <if condition="library_tagline">{{ library_tagline }}</if>
+                <if condition="!library_tagline">THƯ VIỆN TRI THỨC</if>
+            </span>
+            <h2>
+                <if condition="library_title_main || library_title_gradient">
+                    {{ library_title_main }} <span class="qtds-text-gradient">{{ library_title_gradient }}</span>
+                </if>
+                <if condition="!library_title_main && !library_title_gradient">
+                    Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span>
+                </if>
+            </h2>
+            <p>
+                <if condition="library_description">{{ library_description }}</if>
+                <if condition="!library_description">Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</if>
+            </p>
         </div>
 
+        <!-- The grid will be populated by JavaScript, so it remains as is -->
         <div id="library-grid" class="qtds-library__grid"></div>
         <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
 
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
-            <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
-            </a>
+             <!-- Dynamic CTA Button -->
+            <if condition="library_cta">
+                <a href="{{ library_cta.href }}" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                    <i class="{{ library_cta.icon }}"></i>{{ library_cta.text }}
+                </a>
+            </if>
+            <!-- Static Fallback CTA Button -->
+            <if condition="!library_cta">
+                <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                    <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
+                </a>
+            </if>
         </div>
     </div>
 </section>

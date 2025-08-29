@@ -1,18 +1,24 @@
 <!-- 
-  Section: QTDS Benefits (Phiên bản Nâng cấp 3.1 - Hoàn thiện)
+  Section: QTDS Benefits (Phiên bản 3.2 - Chống lỗi triệt để)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `stakeholderBenefits`.
-  - Sử dụng các vòng lặp lồng nhau và thẻ <if> để xử lý cấu trúc dữ liệu phức tạp.
-  - Vẫn giữ lại code tĩnh đầy đủ để đảm bảo tương thích ngược với template CT9 cũ.
-  - Thêm giá trị mặc định cho các biến header để chống lỗi.
+  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
 -->
 <section id="loi-ich" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">{{ tagline || 'TÁC ĐỘNG TOÀN DIỆN' }}</span>
-            <h2>{{ title || 'Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu' }}</h2>
-            <p>{{ description || 'QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND, từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.' }}</p>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">TÁC ĐỘNG TOÀN DIỆN</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Lợi ích Vượt trội từ Chuẩn hóa Dữ liệu</if>
+            </h2>
+            <p>
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">QTDS mang lại giá trị thiết thực cho từng nhóm đối tượng trong hệ sinh thái QTDND, từ cán bộ tín dụng đến ban lãnh đạo và cả hệ thống.</if>
+            </p>
         </div>
 
         <!-- Overview Stats -->

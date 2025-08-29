@@ -1,17 +1,24 @@
 <!-- 
-  Section: QTDS Solutions (Phiên bản Nâng cấp 3.1 - Hoàn thiện)
+  Section: QTDS Solutions (Phiên bản 3.2 - Chống lỗi triệt để)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `pillars` và `processSteps`.
-  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược.
-  - Thêm giá trị mặc định cho các biến header để chống lỗi.
+  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
 -->
 <section id="giai-phap" class="qtds-section qtds-solutions">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">{{ tagline || 'GIẢI PHÁP CHIẾN LƯỢC' }}</span>
-            <h2>{{ title || 'QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt' }}</h2>
-            <p>{{ description || 'Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng' }}</p>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">GIẢI PHÁP CHIẾN LƯỢC</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</if>
+            </h2>
+            <p>
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</if>
+            </p>
         </div>
 
         <!-- Hero Visual (Phần này thường tĩnh hoặc có các biến đơn giản) -->
@@ -88,7 +95,10 @@
 
         <!-- Process Flow -->
         <div class="qtds-scroll-animate qtds-solutions__process-section">
-            <h3 class="qtds-solutions__process-title">{{ processTitle || 'Quy trình Chuẩn hóa Tự động' }}</h3>
+            <h3 class="qtds-solutions__process-title">
+                <if condition="processTitle">{{ processTitle }}</if>
+                <if condition="!processTitle">Quy trình Chuẩn hóa Tự động</if>
+            </h3>
             <div class="qtds-solutions__process-flow">
                 <!-- Logic MỚI: Nếu có mảng 'processSteps' -->
                 <if condition="processSteps">

@@ -1,15 +1,25 @@
 <!-- 
-  Section: QTDS Podcast (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+  Section: QTDS Podcast (Phiên bản 3.2 - Chống lỗi triệt để & Tương thích ngược)
+  Description: 
+  - Nâng cấp để đọc dữ liệu động từ `locals` (JSON).
+  - Sử dụng khối <if condition="!variable"> để cung cấp nội dung tĩnh mặc định, đảm bảo an toàn khi build CT9.
 -->
 <section id="video-gioi-thieu" class="qtds-section">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">LẮNG NGHE PODCAST</span>
-            <h2>Podcast Giới Thiệu Về QTDS</h2>
-            <p>Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</p>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">LẮNG NGHE PODCAST</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Podcast Giới Thiệu Về QTDS</if>
+            </h2>
+            <p>
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</if>
+            </p>
         </div>
 
         <!-- Podcast Card -->
@@ -20,13 +30,21 @@
                 </div>
             </div>
             <div class="qtds-podcast-card__content">
-                <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
+                <h3 class="qtds-podcast-card__title">
+                    <if condition="podcast_title">{{ podcast_title }}</if>
+                    <if condition="!podcast_title">QTDS: Nâng Tầm Quản Lý Tín Dụng</if>
+                </h3>
                 <p class="qtds-podcast-card__description">
-                    Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.
+                    <if condition="podcast_description">{{ podcast_description }}</if>
+                    <if condition="!podcast_description">Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.</if>
                 </p>
                 <div class="qtds-podcast-card__player">
-                    <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="">
-                    </iframe>
+                    <if condition="podcast_url">
+                        <iframe src="{{ podcast_url }}" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen=""></iframe>
+                    </if>
+                    <if condition="!podcast_url">
+                        <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen=""></iframe>
+                    </if>
                 </div>
             </div>
         </div>

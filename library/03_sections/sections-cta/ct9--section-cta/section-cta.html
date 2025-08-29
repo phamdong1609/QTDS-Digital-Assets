@@ -1,26 +1,31 @@
 <!-- 
-  Section: QTDS CTA (Phiên bản Nâng cấp 3.1 - Tương thích ngược & Chống lỗi)
+  Section: QTDS CTA (Phiên bản 3.2 - Chống lỗi triệt để)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `features`.
-  - Sử dụng thẻ <if> để giữ lại code tĩnh cho CT9.
-  - Thêm giá trị mặc định (sử dụng ||) cho các biến để chống lỗi khi không có locals.
+  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
 -->
 <section id="san-sang-chuyen-doi" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">{{ tagline || 'HÀNH ĐỘNG NGAY' }}</span>
-            <h2>{{ title || 'Sẵn Sàng Chuyển Đổi Số Cùng QTDS?' }}</h2>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">HÀNH ĐỘNG NGAY</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Sẵn Sàng Chuyển Đổi Số Cùng QTDS?</if>
+            </h2>
         </div>
 
         <!-- CTA Card -->
         <div class="qtds-scroll-animate qtds-cta">
             <p class="qtds-cta__description">
-                {{ description || 'Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.' }}
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.</if>
             </p>
 
             <!-- ====================================================== -->
-            <!-- PHẦN NÂNG CẤP KỸ THUẬT VỚI LOGIC <IF>                 -->
+            <!-- PHẦN NÂNG CẤP KỸ THUẬT VỚI LOGIC <IF>                      -->
             <!-- ====================================================== -->
             <div class="qtds-cta__features">
                 <!-- Logic MỚI: Nếu có mảng 'features' được truyền vào (từ JSON), thì lặp qua nó -->

@@ -1,17 +1,24 @@
 <!-- 
-  Section: QTDS Standardization (Phiên bản Nâng cấp 3.1 - Tương thích ngược & Chống lỗi)
+  Section: QTDS Standardization (Phiên bản 3.2 - Chống lỗi triệt để)
   Description: 
-  - Đã được nâng cấp để đọc dữ liệu động từ mảng `flowItems` và `analysisCards`.
-  - Sử dụng thẻ <if> để giữ lại code tĩnh, đảm bảo tương thích ngược.
-  - Thêm giá trị mặc định cho các biến header và keyInsight để chống lỗi.
+  - Thay thế toán tử '||' bằng khối <if condition="!variable"> để đảm bảo tương thích ngược tuyệt đối.
 -->
 <section id="chuan-hoa-du-lieu" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">{{ tagline || 'NGUYÊN NHÂN GỐC RỄ' }}</span>
-            <h2>{{ title || 'Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên' }}</h2>
-            <p>{{ description || 'Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu' }}</p>
+            <span class="qtds-section-header__tagline">
+                <if condition="tagline">{{ tagline }}</if>
+                <if condition="!tagline">NGUYÊN NHÂN GỐC RỄ</if>
+            </span>
+            <h2>
+                <if condition="title">{{ title }}</if>
+                <if condition="!title">Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên</if>
+            </h2>
+            <p>
+                <if condition="description">{{ description }}</if>
+                <if condition="!description">Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu</if>
+            </p>
         </div>
 
         <!-- Visual Flow -->
@@ -142,9 +149,13 @@
                 <i class="fas fa-lightbulb"></i>
             </div>
             <div class="qtds-standardization__key-insight-box-content">
-                <h4>{{ keyInsight.title || 'Nhận định then chốt:' }}</h4>
+                <h4>
+                    <if condition="keyInsight && keyInsight.title">{{ keyInsight.title }}</if>
+                    <if condition="!keyInsight || !keyInsight.title">Nhận định then chốt:</if>
+                </h4>
                 <p>
-                    {{ keyInsight.text || 'Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>, thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý - đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.' }}
+                    <if condition="keyInsight && keyInsight.text">{{ keyInsight.text }}</if>
+                    <if condition="!keyInsight || !keyInsight.text">Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>, thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý - đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.</if>
                 </p>
             </div>
         </div>
