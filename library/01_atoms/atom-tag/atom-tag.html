@@ -1,14 +1,7 @@
 <!-- library/01_atoms/atom-tag/atom-tag.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ/nhãn (tag/badge).
-  - type: Kiểu style ('default' hoặc 'hero-badge').
-  - icon: Class của Font Awesome (tùy chọn).
-  - text: Nội dung chữ.
--->
-<span class="qtds-tag qtds-tag--{{ type || 'default' }}">
+<span class="qtds-tag qtds-tag--<if condition="type">{{ type }}</if><if condition="!type">default</if>">
   <if condition="icon">
     <i class="{{ icon }}"></i>
   </if>
-  <span>{{ text || 'Tag Text' }}</span>
+  <span><if condition="text">{{ text }}</if><if condition="!text">Tag Text</if></span>
 </span>
