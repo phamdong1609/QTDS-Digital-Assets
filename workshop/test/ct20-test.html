@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Không Cần Máy Scan: Cách Mạng Hóa Quy Trình Tín Dụng Với Smartphone</title>
+    <meta name="description" content="Trong một thế giới mà mọi cán bộ tín dụng và thành viên đều sở hữu một thiết bị mạnh mẽ hơn ngay trong túi, đã đến lúc chúng ta cần một cuộc cách mạng trong tư duy về công cụ làm việc.">
+    <meta name="keywords" content="ứng dụng tín dụng di động, smartphone trong nghiệp vụ tín dụng, số hóa bằng điện thoại, chụp ảnh VNeID, OCR trên di động, công cụ cho CBTD">
+    <meta property="og:title" content="Không Cần Máy Scan: Cách Mạng Hóa Quy Trình Tín Dụng Với Smartphone">
+    <meta property="og:description" content="Trong một thế giới mà mọi cán bộ tín dụng và thành viên đều sở hữu một thiết bị mạnh mẽ hơn ngay trong túi, đã đến lúc chúng ta cần một cuộc cách mạng trong tư duy về công cụ làm việc.">
+    <meta property="og:image" content="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- INJECTED CSS -->
+    <style>
+        /* ==========================================================================
+           CORE: /core/styles/theme.css
+           ========================================================================== */
+        :root {
+            --primary: #1A73E8; --primary-dark: #1557B0; --secondary: #34A853; --secondary-dark: #2E7D32; --accent: #FBBC04; --danger: #EA4335; --purple: #9C27B0;
+            --gray-50: #F8F9FA; --gray-100: #F1F3F4; --gray-200: #E8EAED; --gray-600: #80868B; --gray-700: #5F6368; --gray-800: #3C4043; --gray-900: #202124;
+            --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%); --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+            --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+            --text-xs: clamp(0.875rem, 1.5vw, 1rem); --text-sm: clamp(1rem, 2vw, 1.125rem); --text-base: clamp(1.125rem, 2.5vw, 1.25rem); --text-lg: clamp(1.25rem, 3vw, 1.375rem); --text-xl: clamp(1.375rem, 3.5vw, 1.375rem); --text-2xl: clamp(1.625rem, 4vw, 1.5rem); --text-3xl: clamp(2.125rem, 5vw, 1.875rem); --text-4xl: clamp(2.625rem, 6vw, 3.625rem); --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition-base: 300ms ease;
+            --radius-lg: 0.5rem; --radius-xl: 0.75rem; --radius-2xl: 1rem; --radius-full: 9999px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: var(--text-base); line-height: 1.6; color: var(--gray-800); background-color: var(--gray-50); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        main, section { overflow-x: hidden; }
+        h1, h2, h3, h4 { font-weight: 800; line-height: 1.2; color: var(--gray-900); margin-bottom: var(--space-3); }
+        h1 { font-size: var(--text-5xl); } h2 { font-size: var(--text-4xl); } h3 { font-size: var(--text-2xl); } h4 { font-size: var(--text-xl); }
+        p { margin-bottom: var(--space-6); color: var(--gray-700); }
+        p:last-child { margin-bottom: 0; }
+        .qtds-container { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: var(--space-4); padding-right: var(--space-4); }
+        .qtds-section { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+        .qtds-section-header { text-align: center; max-width: 800px; margin: 0 auto var(--space-16); }
+        .qtds-section-header__tagline { display: block; color: var(--primary); font-weight: 600; font-size: var(--text-lg); margin-bottom: var(--space-2); }
+        .qtds-section-header p { font-size: var(--text-xl); }
+        .qtds-card { background: white; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); overflow: hidden; transition: transform var(--transition-base), box-shadow var(--transition-base); height: 100%; }
+        .qtds-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-card__header { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-6); background-color: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+        .qtds-card__icon { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: white; border-radius: var(--radius-lg); font-size: var(--text-2xl); }
+        .qtds-card__title { font-size: var(--text-2xl); margin: 0; }
+        .qtds-card__body { padding: var(--space-8); }
+        @media (max-width: 768px) {
+            html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+            .qtds-container { padding-left: var(--space-3); padding-right: var(--space-3); }
+            .qtds-section { width: 100% !important; overflow-x: hidden !important; }
+            .qtds-card { max-width: 100%; }
+            .qtds-data-flow__item { width: 100%; max-width: 200px; }
+            h1 { font-size: var(--text-5xl); } h2 { font-size: var(--text-4xl); } h3 { font-size: var(--text-2xl); } h4 { font-size: var(--text-xl); }
+            body { font-size: var(--text-base); }
+        }
+        @media (max-width: 480px) { .qtds-section-header h2 { font-size: var(--text-3xl); } }
+        .text-danger { color: var(--danger); } .text-warning { color: var(--accent); } .text-purple { color: var(--purple); } .text-success { color: var(--secondary); } .text-primary { color: var(--primary); }
+
+        /* ==========================================================================
+           ATOM: /library/01_atoms/atom-button/atom-button.css
+           ========================================================================== */
+        .qtds-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-4) var(--space-8); font-size: var(--text-lg); font-weight: 600; border-radius: var(--radius-lg); text-decoration: none; transition: all var(--transition-base); cursor: pointer; border: 2px solid transparent; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .qtds-btn:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
+        .qtds-btn--primary { background: var(--primary); color: white; }
+        .qtds-btn--primary:hover { background: var(--primary-dark); }
+        .qtds-btn--secondary { background: white; color: var(--primary); border-color: var(--primary); }
+        .qtds-btn--secondary:hover { background: var(--gray-100); }
+        @media (max-width: 768px) { .qtds-btn { max-width: calc(100vw - var(--space-6)); padding: var(--space-3) var(--space-6); font-size: var(--text-base); } }
+
+        /* ==========================================================================
+           ATOM: /library/01_atoms/atom-tag/atom-tag.css
+           ========================================================================== */
+        .qtds-tag { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
+        .qtds-tag--default { background: var(--gray-100); color: var(--gray-700); }
+        .qtds-tag--hero-badge { padding: var(--space-2) var(--space-6); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; gap: var(--space-3); }
+
+        /* ==========================================================================
+           MOLECULE: /library/02_molecules/molecule-article-card/molecule-article-card.css
+           ========================================================================== */
+        .qtds-article-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+        .qtds-article-card__image-wrapper { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; background: var(--gray-100); }
+        .qtds-article-card__image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-base); }
+        .qtds-article-card:hover .qtds-article-card__image { transform: scale(1.05); }
+        .qtds-article-card__tag { display: inline-block; padding: var(--space-2) var(--space-3); background: var(--gray-100); color: var(--gray-700); font-size: var(--text-sm); font-weight: 500; border-radius: var(--radius-full); margin-bottom: var(--space-3); margin-right: var(--space-2); }
+        .qtds-article-card__title { font-size: var(--text-xl); }
+        .qtds-article-card .qtds-card__body { display: flex; flex-direction: column; flex-grow: 1; }
+        .qtds-article-card__description { font-size: var(--text-base); color: var(--gray-600); }
+        .qtds-article-card__cta { margin-top: auto; padding-top: var(--space-4); text-align: center; }
+        .qtds-btn-like { display: inline-block; padding: var(--space-2) var(--space-4); background-color: var(--secondary); color: white !important; border-radius: var(--radius-lg); font-weight: 600; text-decoration: none; transition: all var(--transition-base); }
+        .qtds-article-card:hover .qtds-btn-like { background-color: var(--secondary-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); color: white !important; text-decoration: none; }
+        .qtds-btn-like i { margin-left: var(--space-2); transition: transform var(--transition-base); }
+        .qtds-article-card:hover .qtds-btn-like i { transform: translateX(4px); }
+
+        /* ==========================================================================
+           MOLECULE: /library/02_molecules/molecule-feature-card/molecule-feature-card.css
+           ========================================================================== */
+        .qtds-feature-card { background-color: var(--gray-50); padding: var(--space-6); border-radius: var(--radius-xl); border-top: 4px solid transparent; transition: all var(--transition-base); text-align: center; }
+        .qtds-feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); background-color: white; }
+        .qtds-feature-card--primary { border-color: var(--primary); } .qtds-feature-card--primary .qtds-feature-card__icon { color: var(--primary); }
+        .qtds-feature-card--secondary { border-color: var(--secondary); } .qtds-feature-card--secondary .qtds-feature-card__icon { color: var(--secondary); }
+        .qtds-feature-card--accent { border-color: var(--accent); } .qtds-feature-card--accent .qtds-feature-card__icon { color: var(--accent); }
+        .qtds-feature-card--purple { border-color: var(--purple); } .qtds-feature-card--purple .qtds-feature-card__icon { color: var(--purple); }
+        .qtds-feature-card__icon { font-size: var(--text-3xl); margin-bottom: var(--space-4); display: block; }
+        .qtds-feature-card__title { font-size: var(--text-lg); font-weight: 700; color: var(--gray-800); margin-bottom: var(--space-2); }
+        .qtds-feature-card__text { font-size: var(--text-base); color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+        /* ==========================================================================
+           MOLECULE: /library/02_molecules/molecule-stat-card/molecule-stat-card.css
+           ========================================================================== */
+        .qtds-stat-item { padding: 2rem 1rem; background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center; transition: all var(--transition-base); display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .qtds-stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); transition: all var(--transition-base); }
+        .qtds-stat-item__value { font-size: var(--text-4xl); font-weight: 800; line-height: 1; margin-bottom: var(--space-3); }
+        .qtds-stat-item__label { font-size: var(--text-base); color: var(--gray-700); margin-top: auto; line-height: 1.4; max-width: 90%; margin-left: auto; margin-right: auto; min-height: 2.8em; display: flex; align-items: center; justify-content: center; }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-navbar/ct9--section-navbar/section-navbar.css
+           ========================================================================== */
+        .qtds-navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; transition: box-shadow var(--transition-base); box-shadow: var(--shadow-sm); }
+        .qtds-navbar--scrolled { box-shadow: var(--shadow-md); }
+        .qtds-navbar__content { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .qtds-navbar__brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+        .qtds-navbar__logo { height: 40px; }
+        .qtds-navbar__brand-name { font-size: var(--text-2xl); font-weight: 700; color: var(--primary); }
+        .qtds-navbar__links { display: flex; align-items: center; gap: var(--space-10); }
+        .qtds-navbar__link { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color var(--transition-base); }
+        .qtds-navbar__link:hover { color: var(--primary); }
+        .qtds-navbar__mobile-btn { display: none; background: none; border: none; font-size: var(--text-2xl); color: var(--gray-700); cursor: pointer; }
+        .qtds-navbar__mobile-menu { display: none; background: white; border-top: 1px solid var(--gray-200); max-height: calc(100vh - 72px); overflow-y: auto; overflow-x: hidden; }
+        .qtds-navbar__mobile-menu--active { display: block; }
+        .qtds-navbar__mobile-link { display: block; padding: var(--space-4); text-decoration: none; color: var(--gray-700); font-weight: 500; border-bottom: 1px solid var(--gray-100); }
+        @media (max-width: 1024px) { .qtds-navbar__links { display: none; } .qtds-navbar__mobile-btn { display: block; } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-hero/ct9--section-hero/section-hero.css
+           ========================================================================== */
+        .qtds-hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--gradient-hero); color: white; overflow: hidden; padding-top: var(--space-20); }
+        .qtds-hero__content { position: relative; z-index: 1; text-align: center; max-width: 1000px; width: 100%; padding: 0 var(--space-4); }
+        .qtds-hero__content .qtds-tag--hero-badge { margin-bottom: var(--space-6); }
+        .qtds-hero__title { color: white; margin-bottom: var(--space-6); }
+        .qtds-hero__subtitle { font-size: 1.875rem; font-weight: 600; color: #E2E8F0; margin-bottom: var(--space-6); }
+        .qtds-hero__description { font-size: var(--text-xl); color: #94A3B8; max-width: 800px; margin: 0 auto var(--space-10); }
+        .qtds-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
+        .qtds-hero__bg { display: none; }
+        @media (min-width: 1024px) { .qtds-hero__bg { display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; z-index: 0; } .qtds-hero__bg::before, .qtds-hero__bg::after { content: ''; position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.8; animation: qtds-hero-float 25s ease-in-out infinite; } .qtds-hero__bg::before { width: 500px; height: 500px; background: rgba(26, 115, 232, 0.25); top: -150px; right: -150px; animation-delay: 0s; } .qtds-hero__bg::after { width: 700px; height: 700px; background: rgba(52, 168, 83, 0.15); bottom: -250px; left: -200px; animation-delay: 12s; } }
+        .qtds-text-gradient { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .qtds-scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .qtds-scroll-animate.active { opacity: 1; transform: translateY(0); }
+        @keyframes qtds-hero-float { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-50px) translateX(30px) scale(1.1); } }
+        @media (max-width: 768px) { .qtds-hero__actions { flex-direction: column; width: 100%; padding: 0 var(--space-4); } .qtds-hero__actions .qtds-btn { width: 100%; max-width: 400px; margin: 0 auto; } .qtds-hero__content { padding: 0 var(--space-3); } .qtds-hero__title { font-size: var(--text-4xl); word-wrap: break-word; } .qtds-hero__subtitle { font-size: var(--text-2xl); word-wrap: break-word; } .qtds-hero__description { font-size: var(--text-lg); padding: 0 var(--space-2); } .qtds-scroll-animate { transform: translateY(10px); } }
+        @media (max-width: 480px) { .qtds-hero__title { font-size: var(--text-3xl); } .qtds-hero__subtitle { font-size: 1.375rem; } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-challenges/ct9--section-challenges/section-challenges.css
+           ========================================================================== */
+        .qtds-challenges__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto 3rem; }
+        .qtds-challenges__grid { display: grid; gap: var(--space-8); }
+        .qtds-challenges__highlight-box { background: var(--gradient-primary); color: white; padding: var(--space-6); border-radius: var(--radius-xl); text-align: center; max-width: 900px; margin: 0 auto var(--space-8); }
+        .qtds-challenges__highlight-box * { color: white; }
+        .qtds-challenges__highlight-title { font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-2); }
+        .qtds-challenges__highlight-icon { margin-right: var(--space-3); }
+        .qtds-challenges__highlight-text { font-size: var(--text-lg); opacity: 0.9; }
+        .qtds-challenges__card { display: flex; flex-direction: column; }
+        .qtds-challenges__card-header { display: flex; align-items: center; gap: var(--space-4); }
+        .qtds-challenges__card-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); font-size: var(--text-2xl); color: white; flex-shrink: 0; }
+        .qtds-challenges__card--1 .qtds-challenges__card-icon { background: var(--gradient-primary); } .qtds-challenges__card--2 .qtds-challenges__card-icon { background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%); } .qtds-challenges__card--3 .qtds-challenges__card-icon { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); } .qtds-challenges__card--4 .qtds-challenges__card-icon { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); }
+        .qtds-challenges__card-title { font-size: var(--text-2xl); margin: 0; }
+        .qtds-challenges__card-tag { font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; color: var(--gray-700); }
+        .qtds-challenges__card-body { flex: 1; display: flex; flex-direction: column; }
+        .qtds-challenges__card-subtitle { font-size: var(--text-lg); color: var(--gray-700); margin-bottom: var(--space-4); font-weight: 600; }
+        .qtds-challenges__card-list { list-style: none; padding: 0; font-size: var(--text-lg); color: var(--gray-700); margin-bottom: var(--space-6); }
+        .qtds-challenges__card-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-3); }
+        .qtds-challenges__card-list i { margin-top: 8px; font-size: var(--text-sm); flex-shrink: 0; color: var(--primary); }
+        .qtds-challenges__card-insight { margin-top: auto; padding: var(--space-4); background-color: var(--gray-100); border-radius: var(--radius-lg); font-size: var(--text-base); }
+        .qtds-challenges__cost-comparison { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-4); }
+        .qtds-challenges__cost-item { text-align: center; padding: var(--space-3); background: var(--gray-50); border-radius: var(--radius-lg); }
+        .qtds-challenges__cost-label { display: block; font-size: var(--text-sm); color: var(--gray-600); margin-bottom: var(--space-2); font-weight: 500; }
+        .qtds-challenges__cost-value { font-size: var(--text-2xl); font-weight: 700; display: block; }
+        .qtds-challenges__legal-badge { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: var(--primary); color: white; border-radius: var(--radius-lg); font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-3); }
+        .qtds-challenges__legal-text { font-size: var(--text-base); line-height: 1.6; color: var(--gray-700); margin-bottom: var(--space-4); }
+        .qtds-challenges__deadline { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: #FEF3C7; border-radius: var(--radius-lg); color: #92400E; font-size: var(--text-base); font-weight: 500; }
+        .qtds-challenges__deadline i { color: #F59E0B; font-size: var(--text-xl); }
+        @media (max-width: 1024px) { .qtds-challenges__stats { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 768px) { .qtds-challenges__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .qtds-challenges__stats, .qtds-challenges__grid { padding: 0; width: 100%; } .qtds-stat-item__value { font-size: var(--text-4xl); } .qtds-challenges__stats { gap: 1rem; } }
+        
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-standardization/ct9--section-standardization.css
+           ========================================================================== */
+        .qtds-standardization__data-flow { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); max-width: 900px; margin: 0 auto var(--space-16); }
+        @media (min-width: 768px) { .qtds-standardization__data-flow { flex-direction: row; justify-content: center; gap: var(--space-4); } }
+        .qtds-standardization__data-flow-item { text-align: center; max-width: 100%; }
+        .qtds-standardization__data-flow-icon { width: 96px; height: 96px; margin: 0 auto var(--space-4); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-full); color: white; font-size: var(--text-4xl); box-shadow: var(--shadow-lg); }
+        .qtds-standardization__data-flow-arrow { font-size: var(--text-4xl); color: var(--gray-200); }
+        @media (max-width: 767px) { .qtds-standardization__data-flow-arrow i { transform: rotate(90deg); } }
+        .qtds-standardization__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-8); margin-top: var(--space-16); }
+        .qtds-standardization__card-header { background-color: var(--gray-50); }
+        .qtds-standardization__list { list-style: none; padding: 0; }
+        .qtds-standardization__list-item { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-lg); color: var(--gray-700); line-height: 1.6; }
+        .qtds-standardization__list-item:last-child { margin-bottom: 0; }
+        .qtds-standardization__list-item i { margin-top: 8px; font-size: var(--text-base); flex-shrink: 0; }
+        .qtds-standardization__impact-metrics { display: flex; flex-direction: column; gap: var(--space-6); }
+        .qtds-standardization__impact-metric { display: flex; gap: var(--space-4); align-items: flex-start; }
+        .qtds-standardization__impact-metric-icon { width: 40px; height: 40px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--text-xl); flex-shrink: 0; }
+        .qtds-standardization__impact-metric-content strong { display: block; font-size: var(--text-lg); color: var(--gray-900); margin-bottom: var(--space-2); }
+        .qtds-standardization__impact-metric-content p { font-size: var(--text-base); color: var(--gray-600); margin: 0; line-height: 1.5; }
+        .qtds-standardization__barrier-insight { background: var(--gray-50); padding: var(--space-6); border-radius: var(--radius-lg); position: relative; margin-bottom: var(--space-6); }
+        .qtds-standardization__barrier-insight i { position: absolute; top: var(--space-4); left: var(--space-4); font-size: var(--text-3xl); color: var(--primary); opacity: 0.2; }
+        .qtds-standardization__barrier-insight p { font-size: var(--text-base); color: var(--gray-700); line-height: 1.6; margin-bottom: var(--space-4); padding-left: var(--space-10); }
+        .qtds-standardization__barrier-insight p:last-child { margin-bottom: 0; }
+        .qtds-standardization__barrier-flow { display: flex; align-items: center; justify-content: space-around; padding: var(--space-4); background: white; border: 2px solid var(--gray-200); border-radius: var(--radius-lg); font-size: var(--text-base); color: var(--gray-700); gap: var(--space-2); }
+        .qtds-standardization__barrier-flow i { color: var(--gray-700); }
+        .qtds-standardization__key-insight-box { background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%); border: 2px solid #FFB74D; border-radius: var(--radius-2xl); padding: var(--space-8); display: flex; align-items: flex-start; gap: var(--space-6); box-shadow: var(--shadow-md); margin-top: var(--space-16); }
+        .qtds-standardization__key-insight-box-icon { width: 56px; height: 56px; background: #FF9800; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-3xl); flex-shrink: 0; }
+        .qtds-standardization__key-insight-box-content h4 { font-size: var(--text-xl); color: var(--gray-900); margin-bottom: var(--space-3); }
+        .qtds-standardization__key-insight-box-content p { font-size: var(--text-lg); color: var(--gray-700); line-height: 1.6; margin: 0; }
+        .qtds-standardization__key-insight-box-content strong { color: #E65100; font-weight: 600; }
+        @media (max-width: 768px) { .qtds-standardization__grid { grid-template-columns: 1fr; gap: var(--space-6); } .qtds-standardization__key-insight-box { flex-direction: column; text-align: center; align-items: center; } .qtds-standardization__barrier-flow { flex-direction: column; gap: var(--space-3); } .qtds-standardization__barrier-flow i { transform: rotate(90deg); } }
+        @media (max-width: 480px) { .qtds-standardization__grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-solutions/ct9--section-solutions/section-solutions.css
+           ========================================================================== */
+        .qtds-solutions__visual { display: flex; align-items: center; justify-content: center; gap: 4rem; padding: 3rem; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: var(--radius-2xl); margin-bottom: var(--space-12); }
+        .qtds-solutions__device { position: relative; }
+        .qtds-solutions__features { display: flex; flex-direction: column; gap: 1rem; }
+        .qtds-feature-badge { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: white; border: 2px solid var(--gray-200); border-radius: var(--radius-full); font-size: var(--text-base); font-weight: 500; box-shadow: var(--shadow-sm); }
+        .qtds-feature-badge i { color: var(--primary); }
+        .qtds-solutions__pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-8); margin-bottom: var(--space-16); }
+        .qtds-solutions__pillar { position: relative; background: white; border-radius: var(--radius-2xl); padding: var(--space-8); box-shadow: var(--shadow-lg); transition: all var(--transition-base); border: 1px solid var(--gray-100); }
+        .qtds-solutions__pillar:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-solutions__pillar-number { position: absolute; top: var(--space-4); right: var(--space-4); font-size: var(--text-5xl); font-weight: 900; color: var(--gray-100); }
+        .qtds-solutions__pillar-icon { width: 64px; height: 64px; background: var(--gradient-primary); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+        .qtds-solutions__pillar-title { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+        .qtds-solutions__pillar-subtitle { font-size: var(--text-lg); color: var(--gray-600); margin-bottom: var(--space-6); }
+        .qtds-solutions__pillar-content p { font-size: var(--text-base); line-height: 1.6; margin-bottom: var(--space-4); }
+        .qtds-solutions__benefit-tag { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: var(--gray-50); border-radius: var(--radius-lg); font-size: var(--text-base); font-weight: 500; color: var(--primary); }
+        .qtds-solutions__tech-features { display: flex; flex-direction: column; gap: var(--space-4); }
+        .qtds-solutions__tech-features-item { display: flex; align-items: flex-start; gap: var(--space-3); }
+        .qtds-solutions__tech-features-icon { width: 40px; height: 40px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+        .qtds-solutions__tech-features-content strong { display: block; font-size: var(--text-base); margin-bottom: var(--space-1); }
+        .qtds-solutions__tech-features-content p { font-size: var(--text-sm); color: var(--gray-600); margin: 0; }
+        .qtds-solutions__comparison { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-4); background: var(--gray-50); border-radius: var(--radius-xl); }
+        .qtds-solutions__comparison-item { flex: 1; text-align: center; }
+        .qtds-solutions__comparison-item--highlight { background: white; padding: var(--space-4); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .qtds-solutions__comparison-label { display: block; font-size: var(--text-sm); color: var(--gray-600); margin-bottom: var(--space-2); }
+        .qtds-solutions__comparison-value { display: block; font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-2); }
+        .qtds-solutions__comparison-note { display: block; font-size: var(--text-sm); color: var(--gray-600); }
+        .qtds-solutions__comparison-divider { font-weight: 700; color: var(--gray-400); }
+        .qtds-solutions__process-section { margin-top: var(--space-16); }
+        .qtds-solutions__process-title { text-align: center; margin-bottom: var(--space-8); }
+        .qtds-solutions__process-flow { display: flex; align-items: center; justify-content: center; gap: var(--space-4); }
+        .qtds-solutions__process-step { text-align: center; flex: 1; max-width: 160px; }
+        .qtds-solutions__process-icon { width: 80px; height: 80px; margin: 0 auto var(--space-3); background: var(--gradient-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-2xl); box-shadow: var(--shadow-lg); }
+        .qtds-solutions__process-step h4 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+        .qtds-solutions__process-step p { font-size: var(--text-sm); color: var(--gray-600); margin: 0; }
+        .qtds-solutions__process-arrow { color: var(--gray-300); font-size: var(--text-2xl); flex-shrink: 0; }
+        .qtds-solutions__benefits-highlight { background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border: 2px solid #1976D2; border-radius: var(--radius-2xl); padding: var(--space-8); display: flex; gap: var(--space-6); align-items: flex-start; margin-top: var(--space-8); }
+        .qtds-solutions__benefits-highlight-icon { width: 64px; height: 64px; background: #1976D2; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-3xl); flex-shrink: 0; }
+        .qtds-solutions__benefits-highlight-content h4 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+        .qtds-solutions__benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-3); }
+        .qtds-solutions__benefits-item { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-base); }
+        .qtds-solutions__benefits-item i { color: #1976D2; flex-shrink: 0; }
+        @media (max-width: 768px) { .qtds-solutions__visual { flex-direction: column; gap: 2rem; padding: 2rem; } .qtds-solutions__pillars { grid-template-columns: 1fr; gap: var(--space-6); } .qtds-feature-badge { font-size: var(--text-sm); padding: var(--space-2) var(--space-3); } .qtds-solutions__process-flow { flex-direction: column; gap: var(--space-6); } .qtds-solutions__process-arrow { transform: rotate(90deg); } .qtds-solutions__comparison { flex-direction: column; } .qtds-solutions__comparison-divider { margin: var(--space-4) 0; font-size: var(--text-2xl); } .qtds-solutions__benefits-highlight { flex-direction: column; align-items: center; text-align: center; } .qtds-solutions__benefits-grid { grid-template-columns: 1fr; } .qtds-solutions__benefits-item { text-align: left; } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-benefits/ct9--section-benefits/section-benefits.css
+           ========================================================================== */
+        .qtds-benefits__overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto 3rem; }
+        .qtds-benefits__stakeholders { display: flex; flex-direction: column; gap: var(--space-8); margin-bottom: var(--space-16); }
+        .qtds-benefits__stakeholder-card { background: white; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); overflow: hidden; transition: all var(--transition-base); position: relative; }
+        .qtds-benefits__stakeholder-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-benefits__stakeholder-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; }
+        .qtds-benefits__stakeholder-card--staff::before { background: var(--primary); } .qtds-benefits__stakeholder-card--leader::before { background: var(--secondary); } .qtds-benefits__stakeholder-card--system::before { background: var(--accent); }
+        .qtds-benefits__stakeholder-card-header { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-8); background: var(--gray-50); border-bottom: 2px solid var(--gray-100); }
+        .qtds-benefits__stakeholder-card-icon { width: 80px; height: 80px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--text-4xl); color: white; flex-shrink: 0; box-shadow: var(--shadow-md); }
+        .qtds-benefits__stakeholder-card-icon--staff { background: var(--gradient-primary); } .qtds-benefits__stakeholder-card-icon--leader { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); } .qtds-benefits__stakeholder-card-icon--system { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+        .qtds-benefits__stakeholder-card-title-wrapper { flex: 1; } .qtds-benefits__stakeholder-card-title { font-size: var(--text-2xl); margin-bottom: var(--space-2); color: var(--gray-900); }
+        .qtds-benefits__stakeholder-card-subtitle { font-size: var(--text-lg); color: var(--gray-600); margin: 0; font-weight: 500; }
+        .qtds-benefits__highlight-list { display: grid; gap: var(--space-6); margin-bottom: var(--space-8); }
+        .qtds-benefits__highlight-item { display: flex; gap: var(--space-4); align-items: flex-start; }
+        .qtds-benefits__highlight-item-icon { width: 48px; height: 48px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--text-xl); flex-shrink: 0; box-shadow: var(--shadow-sm); }
+        .qtds-benefits__stakeholder-card--staff .qtds-benefits__highlight-item-icon { color: var(--primary); } .qtds-benefits__stakeholder-card--leader .qtds-benefits__highlight-item-icon { color: var(--secondary); } .qtds-benefits__stakeholder-card--system .qtds-benefits__highlight-item-icon { color: var(--accent); }
+        .qtds-benefits__highlight-item-content h4 { font-size: var(--text-xl); margin-bottom: var(--space-2); color: var(--gray-900); }
+        .qtds-benefits__highlight-item-content p { font-size: var(--text-base); color: var(--gray-700); line-height: 1.6; margin: 0; }
+        .qtds-benefits__stakeholder-card-quote { background: var(--gray-50); padding: var(--space-6); border-radius: var(--radius-lg); position: relative; border-left: 4px solid var(--primary); margin-top: var(--space-6); }
+        .qtds-benefits__stakeholder-card-quote i { position: absolute; top: var(--space-4); left: var(--space-4); font-size: var(--text-3xl); color: var(--primary); opacity: 0.2; }
+        .qtds-benefits__stakeholder-card-quote p { font-size: var(--text-lg); font-style: italic; color: var(--gray-700); margin: 0; padding-left: var(--space-8); }
+        .qtds-benefits__cost-comparison { display: flex; align-items: center; justify-content: center; gap: var(--space-6); padding: var(--space-6); background: var(--gray-50); border-radius: var(--radius-xl); margin-top: var(--space-6); }
+        .qtds-benefits__cost-comparison-item { text-align: center; flex: 1; } .qtds-benefits__cost-comparison-item--highlight { background: white; padding: var(--space-4); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 2px solid var(--secondary); }
+        .qtds-benefits__cost-comparison-label { display: block; font-size: var(--text-sm); color: var(--gray-600); margin-bottom: var(--space-2); font-weight: 500; text-transform: uppercase; }
+        .qtds-benefits__cost-comparison-value { display: block; font-size: var(--text-2xl); font-weight: 700; }
+        .qtds-benefits__cost-comparison-divider { font-size: var(--text-2xl); font-weight: 700; color: var(--gray-400); }
+        .qtds-benefits__system-impact { display: flex; justify-content: center; gap: var(--space-10); padding: var(--space-6); background: var(--gray-50); border-radius: var(--radius-xl); margin-top: var(--space-6); }
+        .qtds-benefits__system-impact-stat { text-align: center; } .qtds-benefits__system-impact-stat i { font-size: var(--text-3xl); color: var(--accent); margin-bottom: var(--space-3); display: block; }
+        .qtds-benefits__system-impact-number { display: block; font-size: var(--text-3xl); font-weight: 700; color: var(--gray-900); margin-bottom: var(--space-2); }
+        .qtds-benefits__system-impact-label { font-size: var(--text-base); color: var(--gray-600); font-weight: 500; }
+        .qtds-benefits__roi-preview { background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%); border: 2px solid var(--primary); border-radius: var(--radius-2xl); padding: var(--space-12); margin-top: var(--space-16); }
+        .qtds-benefits__roi-preview-content { display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: center; }
+        .qtds-benefits__roi-preview-text h3 { font-size: var(--text-3xl); margin-bottom: var(--space-4); color: var(--gray-900); }
+        .qtds-benefits__roi-preview-text p { font-size: var(--text-lg); margin-bottom: var(--space-6); color: var(--gray-700); }
+        .qtds-benefits__roi-preview-benefits { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+        .qtds-benefits__roi-preview-benefits li { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-lg); color: var(--gray-700); }
+        .qtds-benefits__roi-preview-benefits i { color: var(--secondary); font-size: var(--text-xl); }
+        .qtds-benefits__roi-preview-visual { text-align: center; } .qtds-benefits__roi-preview-chart { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-10); height: 250px; margin-bottom: var(--space-6); }
+        .qtds-benefits__roi-preview-bar { width: 100px; background: var(--gray-300); border-radius: var(--radius-lg) var(--radius-lg) 0 0; position: relative; transition: height 0.8s ease-out; display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--space-3); }
+        .qtds-benefits__roi-preview-bar--benefit { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+        .qtds-benefits__roi-preview-bar-label { position: absolute; bottom: calc(-1 * var(--space-8)); left: 50%; transform: translateX(-50%); color: var(--gray-700); font-size: var(--text-base); font-weight: 600; white-space: nowrap; }
+        .qtds-benefits__roi-preview-caption { font-size: var(--text-xl); margin: 0; color: var(--gray-700); }
+        .qtds-benefits__roi-preview-caption strong { font-size: var(--text-3xl); color: var(--secondary); }
+        @media (min-width: 768px) { .qtds-benefits__roi-preview-content { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .qtds-benefits__stakeholder-card-header { flex-direction: column; text-align: center; gap: var(--space-4); padding: var(--space-6); } .qtds-benefits__cost-comparison, .qtds-benefits__system-impact { flex-direction: column; gap: var(--space-6); } .qtds-benefits__cost-comparison-divider { transform: none; } .qtds-benefits__roi-preview { padding: var(--space-6); } .qtds-benefits__roi-preview-content { gap: var(--space-6); } .qtds-benefits__roi-preview-chart { gap: var(--space-6); } .qtds-benefits__roi-preview-bar { width: 80px; } .qtds-benefits__roi-preview-caption { margin-top: var(--space-6); } }
+        .qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(2) { animation-delay: 0.2s; } .qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-faq/ct9--section-faq/section-faq.css
+           ========================================================================== */
+        .qtds-faq { max-width: 800px; margin: 0 auto; }
+        .qtds-faq__item { background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); margin-bottom: var(--space-4); }
+        .qtds-faq__button { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-xl); font-weight: 600; cursor: pointer; }
+        .qtds-faq__icon { transition: transform var(--transition-base); flex-shrink: 0; }
+        .qtds-faq__button--active .qtds-faq__icon { transform: rotate(180deg); }
+        .qtds-faq__content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .qtds-faq__content-inner { padding: 0 var(--space-6) var(--space-6); }
+        @media (max-width: 768px) { .qtds-faq__button { font-size: var(--text-lg); padding: var(--space-4); } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-podcast/ct9--section-podcast/section-podcast.css
+           ========================================================================== */
+        .qtds-podcast-card { display: flex; align-items: center; gap: var(--space-8); background: white; border-radius: var(--radius-2xl); padding: var(--space-8); box-shadow: var(--shadow-lg); max-width: 900px; margin: 0 auto; transition: transform var(--transition-base), box-shadow var(--transition-base); }
+        .qtds-podcast-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-podcast-card__icon-wrapper { flex-shrink: 0; }
+        .qtds-podcast-card__icon { width: 120px; height: 120px; background: var(--gradient-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-5xl); box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
+        .qtds-podcast-card__icon::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); transform: translate(-50%, -50%); animation: qtds-podcast-pulse 2s ease-in-out infinite; }
+        @keyframes qtds-podcast-pulse { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; } 50% { opacity: 0.3; } 100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; } }
+        .qtds-podcast-card__content { flex: 1; }
+        .qtds-podcast-card__title { font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--gray-900); }
+        .qtds-podcast-card__description { font-size: var(--text-lg); color: var(--gray-600); margin-bottom: var(--space-6); line-height: 1.6; }
+        .qtds-podcast-card__player { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+        .qtds-podcast-card__player iframe { display: block; border-radius: var(--radius-lg); }
+        @media (max-width: 768px) { .qtds-podcast-card { flex-direction: column; text-align: center; padding: var(--space-6); gap: var(--space-6); } .qtds-podcast-card__icon { width: 100px; height: 100px; font-size: var(--text-4xl); } .qtds-podcast-card__title { font-size: var(--text-xl); } .qtds-podcast-card__description { font-size: var(--text-base); } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-cta/ct9--section-cta/section-cta.css
+           ========================================================================== */
+        .qtds-cta { background: white; box-shadow: var(--shadow-xl); padding: var(--space-12); border-radius: var(--radius-2xl); text-align: center; max-width: 1100px; margin: 0 auto; position: relative; overflow: hidden; }
+        .qtds-cta::before { content: ''; position: absolute; top: -50%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%); border-radius: 50%; }
+        .qtds-cta__description { font-size: var(--text-xl); color: var(--gray-600); max-width: 800px; margin: 0 auto var(--space-10); line-height: 1.6; }
+        .qtds-cta__features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-10); max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .qtds-cta__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; align-items: center; }
+        .qtds-cta__btn--primary { transform: scale(1.05); font-size: var(--text-lg); padding: var(--space-4) var(--space-8); }
+        @media (max-width: 768px) { .qtds-cta { padding: var(--space-8); } .qtds-cta__description { font-size: var(--text-lg); margin-bottom: var(--space-8); } .qtds-cta__features { grid-template-columns: 1fr; gap: var(--space-4); } .qtds-feature-card { padding: var(--space-4); } .qtds-cta__actions { flex-direction: column; width: 100%; } .qtds-cta__actions .qtds-btn { width: 100%; max-width: 300px; } .qtds-cta__btn--primary { transform: scale(1); } }
+        
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-library/ct9--section-library/section-library.css
+           ========================================================================== */
+        .qtds-library__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-8); }
+        @media (max-width: 480px) { .qtds-library__grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+        /* ==========================================================================
+           SECTION: /library/03_sections/sections-footer/ct9--section-footer/section-footer.css
+           ========================================================================== */
+        .qtds-footer { background: var(--gray-900); color: var(--gray-600); padding: var(--space-12) 0; }
+        .qtds-footer__content { text-align: center; }
+        .qtds-footer__logo { height: 120px; margin-bottom: var(--space-4); }
+        .qtds-footer__tagline { color: var(--gray-600); font-size: var(--text-lg); margin-bottom: var(--space-6); }
+        .qtds-footer__tagline strong { color: white; }
+        .qtds-footer__socials { display: flex; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-6); }
+        .qtds-footer__social-link { color: var(--gray-600); font-size: var(--text-2xl); transition: all var(--transition-base); }
+        .qtds-footer__social-link:hover { color: white; transform: translateY(-2px); }
+        .qtds-footer__copyright { font-size: var(--text-base); color: var(--gray-700); }
+
+        /* ==========================================================================
+           ATOM: /library/01_atoms/atom-back-to-top/atom-back-to-top.css
+           ========================================================================== */
+        .qtds-back-to-top { position: fixed !important; bottom: 30px !important; right: 30px !important; width: 48px !important; height: 48px !important; background: var(--primary) !important; color: white !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; font-size: 1.5rem !important; text-decoration: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; z-index: 10000 !important; opacity: 0 !important; visibility: hidden !important; transform: translateY(20px) !important; transition: all 0.3s ease !important; border: none !important; cursor: pointer !important; }
+        .qtds-back-to-top i { color: white !important; }
+        .qtds-back-to-top.show { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; }
+        .qtds-back-to-top:hover { background: var(--primary-dark) !important; transform: translateY(-3px) !important; }
+        [class*="qtds-back-to-top"].show { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; }
+
+    </style>
+</head>
+<body>
+    <main>
+        <!-- ==========================================================================
+             SECTION: Navbar
+             ========================================================================== -->
+        <nav id="navbar" class="qtds-navbar">
+            <div class="qtds-container qtds-navbar__content">
+                <a href="#" class="qtds-navbar__brand">
+                    <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
+                    <span class="qtds-navbar__brand-name">QTDS</span>
+                </a>
+                <div class="qtds-navbar__links">
+                    <a href="#thach-thuc" class="qtds-navbar__link">Thách Thức</a>
+                    <a href="#giai-phap" class="qtds-navbar__link">Giải Pháp</a>
+                    <a href="#loi-ich" class="qtds-navbar__link">Lợi Ích</a>
+                    <a href="#faq" class="qtds-navbar__link">FAQ</a>
+                </div>
+                <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="qtds-navbar__mobile-menu" id="mobileMenu">
+                <a href="#thach-thuc" class="qtds-navbar__mobile-link">Thách Thức</a>
+                <a href="#giai-phap" class="qtds-navbar__mobile-link">Giải Pháp</a>
+                <a href="#loi-ich" class="qtds-navbar__mobile-link">Lợi Ích</a>
+                <a href="#faq" class="qtds-navbar__mobile-link">FAQ</a>
+                <a href="#san-sang-chuyen-doi" class="qtds-navbar__mobile-link">Hành Động</a>
+            </div>
+        </nav>
+
+        <!-- ==========================================================================
+             SECTION: Hero
+             ========================================================================== -->
+        <section id="tong-quan" class="qtds-hero">
+            <div class="qtds-hero__bg"></div>
+            <div class="container qtds-hero__content">
+                <div class="qtds-scroll-animate">
+                    <span class="qtds-tag qtds-tag--hero-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>CÁCH MẠNG QUY TRÌNH</span>
+                    </span>
+                </div>
+                <h1 class="qtds-scroll-animate qtds-hero__title">
+                    <span class="qtds-text-gradient">Cách Mạng Hóa Quy Trình Tín Dụng</span> Với Smartphone
+                </h1>
+                <h2 class="qtds-scroll-animate qtds-hero__subtitle">
+                    Kỷ nguyên của những cỗ máy cồng kềnh đã thực sự kết thúc?
+                </h2>
+                <p class="qtds-scroll-animate qtds-hero__description">
+                    Trong một thế giới mà mọi cán bộ tín dụng và thành viên đều sở hữu một thiết bị mạnh mẽ hơn ngay trong túi, đã đến lúc chúng ta cần một cuộc cách mạng trong tư duy về công cụ làm việc.
+                </p>
+                <div class="qtds-scroll-animate qtds-hero__actions">
+                    <a href="#giai-phap" class="qtds-btn qtds-btn--primary" title="Yêu Cầu Demo">
+                        <i class="fas fa-rocket"></i>
+                        <span>Yêu Cầu Demo</span>
+                    </a>
+                    <a href="#loi-ich" class="qtds-btn qtds-btn--secondary" title="Xem Bảng So Sánh">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Xem Bảng So Sánh</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Problem Statement (Challenges)
+             ========================================================================== -->
+        <section id="thach-thuc" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">GÁNH NẶNG TỪ QUÁ KHỨ</span>
+                    <h2>Khi Công Cụ Trở Thành Rào Cản</h2>
+                    <p>Đối với quy trình tín dụng đòi hỏi sự linh hoạt và tốc độ, việc phụ thuộc vào một thiết bị cố định như máy scan lại vô tình tạo ra những rào cản và chi phí ẩn.</p>
+                </div>
+                <div class="qtds-challenges__grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                    <!-- Card 1 -->
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--1" style="animation-delay: 0s;">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon qtds-challenges__card-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div>
+                                <h3 class="qtds-card__title qtds-challenges__card-title">Chi phí Đầu tư & Bảo trì</h3>
+                                <span class="qtds-challenges__card-tag">Tốn kém</span>
+                            </div>
+                        </div>
+                        <div class="qtds-card__body qtds-challenges__card-body">
+                            <h4 class="qtds-challenges__card-subtitle">Một khoản đầu tư không nhỏ:</h4>
+                            <ul class="qtds-challenges__card-list">
+                                <li><i class="fas fa-chevron-right"></i><span>Chiếm dụng không gian văn phòng.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Tiêu thụ điện năng liên tục.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Đòi hỏi chi phí bảo trì, sửa chữa định kỳ.</span></li>
+                            </ul>
+                            <div class="qtds-challenges__card-insight"><strong>Hệ quả:</strong> Chưa tối ưu trong phân bổ nguồn lực.</div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--2" style="animation-delay: 0.1s;">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon qtds-challenges__card-icon"><i class="fas fa-traffic-light"></i></div>
+                            <div>
+                                <h3 class="qtds-card__title qtds-challenges__card-title">Tạo Ra 'Điểm Nghẽn'</h3>
+                                <span class="qtds-challenges__card-tag">Thiếu linh hoạt</span>
+                            </div>
+                        </div>
+                        <div class="qtds-card__body qtds-challenges__card-body">
+                            <h4 class="qtds-challenges__card-subtitle">Gánh nặng lớn nhất:</h4>
+                            <ul class="qtds-challenges__card-list">
+                                <li><i class="fas fa-chevron-right"></i><span>'Trói chân' cán bộ tín dụng vào văn phòng.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Không thể xử lý công việc ngay tại thực địa.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Lãng phí thời gian di chuyển và chờ đợi.</span></li>
+                            </ul>
+                            <div class="qtds-challenges__card-insight"><strong>Hệ quả:</strong> Kéo dài thời gian xử lý tổng thể.</div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--3" style="animation-delay: 0.2s;">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon qtds-challenges__card-icon"><i class="fas fa-tasks"></i></div>
+                            <div>
+                                <h3 class="qtds-card__title qtds-challenges__card-title">Quy Trình Phức Tạp</h3>
+                                <span class="qtds-challenges__card-tag">Nhiều bước</span>
+                            </div>
+                        </div>
+                        <div class="qtds-card__body qtds-challenges__card-body">
+                            <h4 class="qtds-challenges__card-subtitle">Chuỗi hành động tiềm ẩn rủi ro:</h4>
+                            <ul class="qtds-challenges__card-list">
+                                <li><i class="fas fa-chevron-right"></i><span>Scan tài liệu -> Đặt tên file.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Lưu file vào máy tính -> Tìm lại file.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Đính kèm file vào hệ thống khác.</span></li>
+                            </ul>
+                            <div class="qtds-challenges__card-insight"><strong>Hệ quả:</strong> Nguy cơ sai sót cao từ lưu nhầm đến đính kèm sai.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Solution Introduction
+             ========================================================================== -->
+        <section id="giai-phap" class="qtds-section qtds-solutions" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">CUỘC CÁCH MẠNG TRONG TÚI QUẦN</span>
+                    <h2>Sức Mạnh Bị Đánh Thấp Của Smartphone</h2>
+                    <p>Sự phát triển vũ bão của công nghệ di động đã biến chiếc smartphone từ một vật dụng cá nhân thành một công cụ làm việc toàn năng, sẵn sàng cách mạng hóa toàn bộ quy trình.</p>
+                </div>
+                <div class="qtds-solutions__pillars">
+                    <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0s;">
+                        <div class="qtds-solutions__pillar-number">01</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-camera"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Phần Cứng Mạnh Mẽ</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Camera độ phân giải cao và ứng dụng thông minh</p>
+                        <div class="qtds-solutions__pillar-content">
+                            <p>Các ứng dụng scan miễn phí và chất lượng cao biến camera điện thoại thành máy scan di động, tạo ra các tệp tài liệu phẳng, rõ nét, không thua kém máy scan chuyên dụng.</p>
+                            <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> Chất lượng tương đương</div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
+                        <div class="qtds-solutions__pillar-number">02</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-brain"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Phần Mềm Thông Minh</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Công nghệ Nhận diện Ký tự Quang học (OCR)</p>
+                        <div class="qtds-solutions__pillar-content">
+                            <p>Công nghệ OCR cho phép phần mềm 'đọc' và 'hiểu' nội dung văn bản từ hình ảnh. Nó biến những hình ảnh số hóa từ điện thoại thành dữ liệu có cấu trúc.</p>
+                            <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> Tự động hóa nhập liệu</div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
+                        <div class="qtds-solutions__pillar-number">03</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Sự Phổ Biến Rộng Rãi</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Chất xúc tác cho sự cộng tác</p>
+                        <div class="qtds-solutions__pillar-content">
+                            <p>Không chỉ CBTD mà cả thành viên của họ cũng đã sẵn sàng tham gia vào một quy trình số hóa hiện đại, khai thác sức mạnh cộng hưởng một cách an toàn và hiệu quả.</p>
+                            <div class="qtds-solutions__benefit-tag"><i class="fas fa-check-circle"></i> Trao quyền cho thành viên</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: How It Works (Standardization)
+             ========================================================================== -->
+        <section id="chuan-hoa-du-lieu" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">QUY TRÌNH MỚI</span>
+                    <h2>QTDS: Biến Smartphone Thành 'Trạm Tác Chiến' Cộng Tác</h2>
+                    <p>QTDS là một hệ sinh thái được thiết kế để biến những chiếc smartphone của cả CBTD và thành viên thành các điểm cuối trong một quy trình cộng tác, cách mạng hóa khâu thu thập dữ liệu.</p>
+                </div>
+                <div class="qtds-standardization__data-flow">
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0s;">
+                        <div class="qtds-standardization__data-flow-icon" style="background: var(--gradient-primary);">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Scan Di Động & Cộng Tác</h4>
+                        <p>Số hóa tức thì mọi lúc, mọi nơi, hoặc hướng dẫn thành viên tự cung cấp dữ liệu qua Zalo.</p>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.1s;">
+                        <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>AI 'Đọc Hiểu'</h4>
+                        <p>AI và OCR tích hợp tự động nhận diện và trích xuất thông tin quan trọng vào đúng các trường dữ liệu.</p>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.2s;">
+                        <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%);">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <h4>Dữ Liệu Sạch</h4>
+                        <p>Kết quả là bộ hồ sơ số với dữ liệu đã được cấu trúc hóa, sạch sẽ và chuẩn mực, sẵn sàng cho các bước tiếp theo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Benefits Showcase
+             ========================================================================== -->
+        <section id="loi-ich" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">HIỆU QUẢ VƯỢT TRỘI</span>
+                    <h2>Không Chỉ Là Tiết Kiệm Chi Phí Mua Máy Scan</h2>
+                    <p>Việc thay thế máy scan bằng smartphone tạo ra một loạt các lợi ích mang tính chiến lược, tác động sâu sắc đến toàn bộ hoạt động của Quỹ.</p>
+                </div>
+                <div class="qtds-scroll-animate qtds-benefits__overview">
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
+                        <div class="qtds-stat-item__value text-primary">70%</div>
+                        <div class="qtds-stat-item__label">Tăng tốc xử lý hồ sơ</div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+                        <div class="qtds-stat-item__value text-success">99%</div>
+                        <div class="qtds-stat-item__label">Nâng cao độ chính xác</div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+                        <div class="qtds-stat-item__value text-purple">24/7</div>
+                        <div class="qtds-stat-item__label">Linh hoạt mọi lúc mọi nơi</div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
+                        <div class="qtds-stat-item__value text-warning">5*</div>
+                        <div class="qtds-stat-item__label">Nâng cao trải nghiệm</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==========================================================================
+             SECTION: FAQ
+             ========================================================================== -->
+        <section id="faq" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <h2>Câu Hỏi Thường Gặp</h2>
+                </div>
+                <div class="qtds-faq">
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Chất lượng file scan từ ứng dụng điện thoại có đủ sắc nét không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Hoàn toàn đủ. Các ứng dụng scan trên smartphone hiện nay rất thông minh, có khả năng tự động căn chỉnh, tăng độ tương phản để tạo ra file tài liệu rõ nét. QTDS khuyến khích phương pháp này để đảm bảo chất lượng hình ảnh tốt nhất cho việc nhận diện, với tỷ lệ chính xác lên đến trên 98-99%.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Việc thành viên tự scan và gửi file giấy tờ có đảm bảo an toàn, bảo mật không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Có. Dữ liệu không được lưu trên các ứng dụng nhắn tin thông thường mà được mã hóa và truyền thẳng lên máy chủ an toàn của Quỹ thông qua ứng dụng QTDS. Ngay cả khi điện thoại bị mất, dữ liệu của thành viên và của Quỹ vẫn được bảo vệ.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Liệu thành viên ở vùng sâu, vùng xa, không rành công nghệ có tham gia được không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Hoàn toàn có thể. Dưới sự hướng dẫn đơn giản qua điện thoại của CBTD, việc sử dụng một ứng dụng scan miễn phí hoặc chụp ảnh màn hình là thao tác mà hầu hết người dùng smartphone đều có thể thực hiện được, giúp tiết kiệm rất nhiều thời gian và chi phí đi lại cho họ.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Podcast
+             ========================================================================== -->
+        <section id="video-gioi-thieu" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">LẮNG NGHE PODCAST</span>
+                    <h2>Podcast Giới Thiệu Về QTDS</h2>
+                    <p>Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</p>
+                </div>
+                <div class="qtds-scroll-animate qtds-podcast-card">
+                    <div class="qtds-podcast-card__icon-wrapper">
+                        <div class="qtds-podcast-card__icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="qtds-podcast-card__content">
+                        <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
+                        <p class="qtds-podcast-card__description">Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.</p>
+                        <div class="qtds-podcast-card__player">
+                            <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Final CTA
+             ========================================================================== -->
+        <section id="san-sang-chuyen-doi" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">BẠN ĐÃ SẴN SÀNG?</span>
+                    <h2>Giải Phóng Bộ Phận Tín Dụng Khỏi Những Chiếc Máy Scan Cồng Kềnh</h2>
+                </div>
+                <div class="qtds-scroll-animate qtds-cta">
+                    <p class="qtds-cta__description">Hãy liên hệ ngay với QTDS để yêu cầu một buổi demo trực tiếp. Chỉ trong 15 phút, chúng tôi sẽ cho bạn thấy chiếc smartphone có thể biến thành một công cụ thu thập dữ liệu mạnh mẽ, chính xác và mang tính cộng tác như thế nào.</p>
+                    <div class="qtds-cta__actions">
+                        <a href="#" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary"><i class="fas fa-rocket"></i> Yêu Cầu Demo OCR</a>
+                        <a href="#" class="qtds-btn qtds-btn--secondary"><i class="fas fa-file-pdf"></i> Nhận Bảng So Sánh Hiệu Quả</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION: Resource Library
+             ========================================================================== -->
+        <section id="articles" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
+                    <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
+                    <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
+                </div>
+                <div id="library-grid" class="qtds-library__grid"></div>
+                <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
+                <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
+                    <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                        <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- ==========================================================================
+         SECTION: Footer
+         ========================================================================== -->
+    <footer class="qtds-footer">
+        <div class="qtds-container" style="text-align: center;">
+            <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo" style="height: 120px; margin: 0 auto var(--space-4);">
+            <p class="qtds-footer__tagline">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
+            <div class="qtds-footer__socials">
+                <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-home"></i></a>
+                <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-archive"></i></a>
+                <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-comments"></i></a>
+            </div>
+            <p class="qtds-footer__copyright">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         COMPONENT: Back To Top
+         ========================================================================== -->
+    <a href="#" class="qtds-back-to-top" title="Lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- INJECTED JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== GLOBAL: SCROLL ANIMATIONS =====
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
+
+            // ===== NAVBAR FUNCTIONALITY =====
+            function initNavbar() {
+                const navbar = document.getElementById('navbar');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (navbar) {
+                    window.addEventListener('scroll', () => {
+                        navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
+                    });
+                }
+                if (mobileMenuBtn && mobileMenu) {
+                    const menuIcon = mobileMenuBtn.querySelector('i');
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+                        if (menuIcon) {
+                            menuIcon.classList.toggle('fa-bars');
+                            menuIcon.classList.toggle('fa-times');
+                        }
+                    });
+                    mobileMenu.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                            if (menuIcon) {
+                                menuIcon.classList.add('fa-bars');
+                                menuIcon.classList.remove('fa-times');
+                            }
+                        });
+                    });
+                }
+            }
+            initNavbar();
+
+            // ===== FAQ ACCORDION FUNCTIONALITY =====
+            function initFaq() {
+                document.querySelectorAll('.qtds-faq__button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        const allContents = document.querySelectorAll('.qtds-faq__content');
+                        const allButtons = document.querySelectorAll('.qtds-faq__button');
+                        
+                        // Close all other items
+                        allButtons.forEach(btn => {
+                            if(btn !== button) {
+                                btn.classList.remove('qtds-faq__button--active');
+                            }
+                        });
+                        allContents.forEach(cont => {
+                            if(cont !== content) {
+                                cont.style.maxHeight = null;
+                            }
+                        });
+                        
+                        // Toggle the clicked item
+                        button.classList.toggle('qtds-faq__button--active');
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                });
+            }
+            initFaq();
+
+            // ===== LIBRARY LOADER FUNCTIONALITY =====
+            function initLibrary() {
+                const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
+                const ARTICLES_TO_SHOW = 6;
+                const gridContainer = document.getElementById('library-grid');
+                const loader = document.getElementById('library-loader');
+
+                if (!gridContainer || !loader) return;
+
+                async function fetchArticles() {
+                    try {
+                        const response = await fetch(API_URL);
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        const data = await response.json();
+                        if (data && data.articles) {
+                            const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
+                            renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
+                        }
+                    } catch (error) {
+                        loader.textContent = "Không thể tải thư viện.";
+                    } finally {
+                        if (gridContainer.innerHTML !== '') loader.style.display = 'none';
+                    }
+                }
+
+                function renderArticles(articles) {
+                    gridContainer.innerHTML = articles.map(article => {
+                        const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
+                            .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
+                        return `
+                            <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
+                                <div class="qtds-article-card__image-wrapper">
+                                    <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
+                                </div>
+                                <div class="qtds-card__body">
+                                    <div>${tagsHTML}</div>
+                                    <h4 class="qtds-article-card__title">${article.title}</h4>
+                                    <p class="qtds-article-card__description">${article.short_description}</p>
+                                    <div class="qtds-article-card__cta">
+                                        <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </div>
+                            </a>`;
+                    }).join('');
+                    document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
+                }
+                fetchArticles();
+            }
+            initLibrary();
+
+            // ===== BACK TO TOP FUNCTIONALITY =====
+            function initBackToTop() {
+                const backToTopBtn = document.querySelector('.qtds-back-to-top');
+                if (backToTopBtn) {
+                    window.addEventListener('scroll', () => {
+                        backToTopBtn.classList.toggle('show', window.scrollY > 400);
+                    });
+                    backToTopBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                }
+            }
+            initBackToTop();
+        });
+    </script>
+</body>
+</html>
