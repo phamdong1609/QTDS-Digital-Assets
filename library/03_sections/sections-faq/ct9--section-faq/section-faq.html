@@ -1,20 +1,15 @@
-<!-- 
-  Section: QTDS FAQ (Phiên bản 3.7 - Clean & Simple)
-  Description: 
-  - Đã loại bỏ script bảo vệ không cần thiết, phụ thuộc vào `build.js` v3.5+.
-  - Code sạch, chỉ tập trung vào logic hiển thị.
--->
 <section id="faq" class="qtds-section" style="background-color: white;">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
             <h2>
-                <if condition="title">{{ title }}</if>
-                <if condition="!title">Giải Đáp Thắc Mắc Về QTDS</if>
+                <if condition="title">
+                    {{ title }}
+                </if>
+                <else>Giải Đáp Thắc Mắc Về QTDS</else>
             </h2>
         </div>
 
         <div class="qtds-faq">
-            <!-- Logic MỚI: Nếu có mảng 'faqs' được truyền vào (từ JSON), thì lặp qua nó -->
             <if condition="faqs">
                 <each loop="faq in faqs">
                     <div class="qtds-scroll-animate qtds-faq__item">
@@ -30,10 +25,7 @@
                     </div>
                 </each>
             </if>
-
-            <!-- Logic CŨ: Nếu KHÔNG có mảng 'faqs', thì hiển thị nội dung tĩnh như cũ để CT9 không bị lỗi -->
-            <if condition="!faqs">
-                <!-- Question 1 -->
+            <else>
                 <div class="qtds-scroll-animate qtds-faq__item">
                     <button class="qtds-faq__button">
                         <span>QTDS có phù hợp với các QTDND quy mô nhỏ không?</span>
@@ -46,7 +38,6 @@
                     </div>
                 </div>
 
-                <!-- Question 2 -->
                 <div class="qtds-scroll-animate qtds-faq__item">
                     <button class="qtds-faq__button">
                         <span>QTDS khác gì so với các hệ thống Core Banking đắt tiền?</span>
@@ -59,7 +50,6 @@
                     </div>
                 </div>
 
-                <!-- Question 3 -->
                 <div class="qtds-scroll-animate qtds-faq__item">
                     <button class="qtds-faq__button">
                         <span>Làm thế nào QTDS giúp tuân thủ quy định của NHNN?</span>
@@ -72,7 +62,6 @@
                     </div>
                 </div>
 
-                <!-- Question 4 -->
                 <div class="qtds-scroll-animate qtds-faq__item">
                     <button class="qtds-faq__button">
                         <span>QTDS có tích hợp Trí tuệ nhân tạo (AI) không?</span>
@@ -85,7 +74,6 @@
                     </div>
                 </div>
 
-                <!-- Question 5 -->
                 <div class="qtds-scroll-animate qtds-faq__item">
                     <button class="qtds-faq__button">
                         <span>QTDS có hỗ trợ hợp đồng điện tử và chữ ký số không?</span>
@@ -97,8 +85,7 @@
                         </div>
                     </div>
                 </div>
-            </if>
+            </else>
         </div>
     </div>
 </section>
-

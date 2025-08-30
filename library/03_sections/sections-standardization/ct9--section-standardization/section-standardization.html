@@ -88,7 +88,7 @@
                         </div>
                         <div class="qtds-card__body">
                            <!-- Nội dung card sẽ được render động tùy theo loại card -->
-                           {{{ card.content }}}
+                           {{ card.content }}
                         </div>
                     </div>
                 </each>
@@ -153,7 +153,8 @@
             <div class="qtds-standardization__key-insight-box-content">
                 <h4>
                     <if condition="keyInsight && keyInsight.title">{{ keyInsight.title }}</if>
-                    <if condition="!keyInsight || !keyInsight.title">Nhận định then chốt:</if>
+                    <if condition="!keyInsight">Nhận định then chốt:</if>
+                    <if condition="keyInsight && !keyInsight.title">Nhận định then chốt:</if>
                 </h4>
                 <p>
                     <if condition="keyInsight && keyInsight.text">{{ keyInsight.text }}</if>

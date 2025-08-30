@@ -1,13 +1,4 @@
-<!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ tính năng.
-  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
-  - title: Tiêu đề của thẻ.
-  - text: Nội dung mô tả.
--->
-<div class="qtds-feature-card qtds-feature-card--{{ color || 'primary' }}">
+<div class="qtds-feature-card qtds-feature-card--<if condition="color">{{ color }}</if><if condition="!color">primary</if>">
     <i class="{{ icon }} qtds-feature-card__icon"></i>
     <h4 class="qtds-feature-card__title">{{ title }}</h4>
     <p class="qtds-feature-card__text">{{ text }}</p>

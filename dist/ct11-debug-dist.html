@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug CT11 Sections</title>
+    <style>\n/**
+ * File: _global-ct6.css (Standardized)
+ * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
+ * Version: 2.1 (Corrected & Finalized)
+ * Changes:
+ * - Standardized all utility and component classes with the 'qtds-' prefix.
+ * - Re-included the missing '.data-flow__item' rule inside the mobile media query.
+ * - Maintained all original styles, variables, and media queries.
+ */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME
+   ========================================================================== */
+:root {
+    /* Colors */
+    --primary: #1A73E8;
+    --primary-dark: #1557B0;
+    --secondary: #34A853;
+    --secondary-dark: #2E7D32;
+    --accent: #FBBC04;
+    --danger: #EA4335;
+    --purple: #9C27B0;
+    
+    /* Grays */
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E8EAED;
+    --gray-600: #80868B;
+    --gray-700: #5F6368;
+    --gray-800: #3C4043;
+    --gray-900: #202124;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+    --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+    
+    /* Spacing */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem;   /* 48px */
+    --space-16: 4rem;   /* 64px */
+    --space-20: 5rem;   /* 80px */
+
+    /* Typography - Fluid Sizes */
+    --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+    --text-sm: clamp(1rem, 2vw, 1.125rem);
+    --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+    --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+    --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+    --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+    --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+    --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+    --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-base: 300ms ease;
+    
+    /* Border Radius */
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main, section {
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+    margin-bottom: var(--space-6);
+    color: var(--gray-700);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   3. LAYOUT & UTILITIES (Standardized)
+   ========================================================================== */
+.qtds-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.qtds-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+}
+
+.qtds-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-section-header__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-section-header p {
+    font-size: var(--text-xl);
+}
+
+/* ==========================================================================
+   4. COMPONENTS (Standardized)
+   ========================================================================== */
+
+
+
+/* Card Component */
+.qtds-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    height: 100%;
+}
+
+.qtds-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.qtds-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+}
+
+.qtds-card__title {
+    font-size: var(--text-2xl);
+    margin: 0;
+}
+
+.qtds-card__body {
+    padding: var(--space-8);
+}
+
+/* ==========================================================================
+   7. MOBILE OVERFLOW FIXES & RESPONSIVE (Standardized)
+   ========================================================================== */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    .qtds-container {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+
+    .qtds-section {
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .qtds-card {
+        max-width: 100%;
+    }
+    
+    .qtds-data-flow__item {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-2xl); }
+    h4 { font-size: var(--text-xl); }
+    body { font-size: var(--text-base); }
+}
+
+@media (max-width: 480px) {
+    .qtds-section-header h2 {
+        font-size: var(--text-3xl);
+    }
+}
+
+/**
+ * Utility: Text Colors
+ * Description: Defines color utility classes used across multiple sections.
+ */
+
+.text-danger { 
+    color: var(--danger); 
+}
+.text-warning { 
+    color: var(--accent); 
+}
+.text-purple { 
+    color: var(--purple); 
+}
+.text-success { 
+    color: var(--secondary); 
+}
+.text-primary { 
+    color: var(--primary); 
+} \n\n/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+\n\n/* library/01_atoms/atom-button/atom-button.css */
+
+/**
+ * Component: QTDS Button
+ * Description: Foundational styles for all button components.
+ * This is the master CSS for the button atom.
+ */
+
+.qtds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: 2px solid transparent;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.qtds-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-btn--primary {
+    background: var(--primary);
+    color: white;
+}
+
+.qtds-btn--primary:hover {
+    background: var(--primary-dark);
+}
+
+.qtds-btn--secondary {
+    background: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.qtds-btn--secondary:hover {
+    background: var(--gray-100);
+}
+
+/* Responsive adjustments from theme.css */
+@media (max-width: 768px) {
+    .qtds-btn {
+        max-width: calc(100vw - var(--space-6));
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+    }
+}
+\n\n/* library/01_atoms/atom-tag/atom-tag.css */
+
+/**
+ * Component: QTDS Tag
+ * Description: Styles for small informational tags or badges.
+ */
+
+/* Base styles for all tags */
+.qtds-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Default style (used for article cards) */
+.qtds-tag--default {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+/* Hero Badge variant */
+.qtds-tag--hero-badge {
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    gap: var(--space-3);
+}
+\n\n/* library/02_molecules/molecule-article-card/molecule-article-card.css */
+
+/**
+ * Component: QTDS Article Card
+ * Description: A card component for displaying article summaries.
+ */
+
+.qtds-article-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.qtds-article-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.qtds-article-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-article-card__image {
+    transform: scale(1.05);
+}
+
+.qtds-article-card__tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+    margin-right: var(--space-2);
+}
+
+.qtds-article-card__title {
+    font-size: var(--text-xl);
+}
+
+.qtds-article-card .qtds-card__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.qtds-article-card__description {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+}
+
+.qtds-article-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    text-align: center;
+}
+
+.qtds-btn-like {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--secondary);
+    color: white !important;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: white !important;
+    text-decoration: none;
+}
+
+.qtds-btn-like i {
+    margin-left: var(--space-2);
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like i {
+    transform: translateX(4px);
+}
+\n\n/* library/02_molecules/molecule-feature-card/molecule-feature-card.css */
+
+/**
+ * Component: QTDS Feature Card
+ * Description: A card used to highlight a specific feature or benefit.
+ */
+
+/* Feature Item */
+.qtds-feature-card {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-feature-card--primary {
+    border-color: var(--primary);
+}
+.qtds-feature-card--primary .qtds-feature-card__icon {
+    color: var(--primary);
+}
+
+.qtds-feature-card--secondary {
+    border-color: var(--secondary);
+}
+.qtds-feature-card--secondary .qtds-feature-card__icon {
+    color: var(--secondary);
+}
+
+.qtds-feature-card--accent {
+    border-color: var(--accent);
+}
+.qtds-feature-card--accent .qtds-feature-card__icon {
+    color: var(--accent);
+}
+
+.qtds-feature-card--purple {
+    border-color: var(--purple);
+}
+.qtds-feature-card--purple .qtds-feature-card__icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-feature-card__icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-feature-card__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-feature-card__text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}
+\n\n/* library/02_molecules/molecule-stat-card/molecule-stat-card.css */
+
+/**
+ * Component: QTDS Stat Card
+ * Description: A small card used to display a key statistic or metric.
+ */
+
+.qtds-stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md); 
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.qtds-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-stat-item__value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.qtds-stat-item__label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+\n</style>
+</head>
+</html>

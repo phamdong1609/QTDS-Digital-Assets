@@ -1,9 +1,10 @@
-<!-- Section: QTDS Library (Phiên bản 3.8 - Final) -->
+<!-- Section: QTDS Library (Phiên bản 3.9 - Fixed) -->
 <section id="articles" class="qtds-section">
     <div class="qtds-container">
         <div class="qtds-scroll-animate qtds-section-header">
             <span class="qtds-section-header__tagline">
-                {{ library_tagline || 'THƯ VIỆN TRI THỨC' }}
+                <if condition="library_tagline">{{ library_tagline }}</if>
+                <if condition="!library_tagline">THƯ VIỆN TRI THỨC</if>
             </span>
             <h2>
                 <if condition="library_title_main || library_title_gradient">
@@ -17,7 +18,8 @@
                 </if>
             </h2>
             <p>
-                {{ library_description || 'Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.' }}
+                <if condition="library_description">{{ library_description }}</if>
+                <if condition="!library_description">Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</if>
             </p>
         </div>
 
@@ -25,8 +27,7 @@
         <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
 
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
-            <!-- Dynamic CTA with Safe Access -->
-            <if condition="library_cta && library_cta.href">
+             <if condition="library_cta && library_cta.href">
                 <a href="{{ library_cta.href }}" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
                     <if condition="library_cta.icon">
                         <i class="{{ library_cta.icon }}"></i>
@@ -34,8 +35,6 @@
                     {{ library_cta.text || 'Xem Thư Viện' }}
                 </a>
             </if>
-
-            <!-- Static Fallback - ĐÃ SỬA LINK -->
             <if condition="!library_cta">
                 <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
                     <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
