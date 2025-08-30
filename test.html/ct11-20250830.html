@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Meta Tags for SEO & Social Sharing -->
+    <title>Chuẩn Hóa Dữ Liệu QTDND: Rác Đầu Vào, Thảm Họa Đầu Ra</title>
+    <meta name="description" content="Dữ liệu sai lệch đang âm thầm đẩy QTDND đến rủi ro nợ xấu. Khám phá cách chuẩn hóa dữ liệu đầu vào giúp ra quyết định chính xác và quản trị hiệu quả.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* TOÀN BỘ CSS CỦA HỆ THỐNG THIẾT KẾ QTDS */
+        :root {
+            --primary: #1A73E8;
+            --primary-dark: #1557B0;
+            --secondary: #34A853;
+            --secondary-dark: #2E7D32;
+            --accent: #FBBC04;
+            --danger: #EA4335;
+            --purple: #9C27B0;
+            --gray-50: #F8F9FA;
+            --gray-100: #F1F3F4;
+            --gray-200: #E8EAED;
+            --gray-600: #80868B;
+            --gray-700: #5F6368;
+            --gray-800: #3C4043;
+            --gray-900: #202124;
+            --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+            --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+            --text-sm: clamp(1rem, 2vw, 1.125rem);
+            --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+            --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+            --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+            --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+            --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+            --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+            --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition-base: 300ms ease;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: var(--text-base); line-height: 1.6; color: var(--gray-800); background-color: var(--gray-50); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        main, section { overflow-x: hidden; }
+        h1, h2, h3, h4 { font-weight: 800; line-height: 1.2; color: var(--gray-900); margin-bottom: var(--space-3); }
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-2xl); }
+        h4 { font-size: var(--text-xl); }
+        p { margin-bottom: var(--space-6); color: var(--gray-700); }
+        p:last-child { margin-bottom: 0; }
+        .qtds-container { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: var(--space-4); padding-right: var(--space-4); }
+        .qtds-section { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+        .qtds-section-header { text-align: center; max-width: 800px; margin: 0 auto var(--space-16); }
+        .qtds-section-header__tagline { display: block; color: var(--primary); font-weight: 600; font-size: var(--text-lg); margin-bottom: var(--space-2); }
+        .qtds-section-header p { font-size: var(--text-xl); }
+        .qtds-card { background: white; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); overflow: hidden; transition: transform var(--transition-base), box-shadow var(--transition-base); height: 100%; }
+        .qtds-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-card__header { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-6); background-color: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+        .qtds-card__icon { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: white; border-radius: var(--radius-lg); font-size: var(--text-2xl); }
+        .qtds-card__title { font-size: var(--text-2xl); margin: 0; }
+        .qtds-card__body { padding: var(--space-8); }
+        @media (max-width: 768px) {
+            html, body { overflow-x: hidden !important; width: 100% !important; position: relative !important; }
+            .qtds-container { padding-left: var(--space-3); padding-right: var(--space-3); }
+            .qtds-section { width: 100% !important; overflow-x: hidden !important; }
+            .qtds-card { max-width: 100%; }
+            .qtds-data-flow__item { width: 100%; max-width: 200px; }
+            h1 { font-size: var(--text-5xl); } h2 { font-size: var(--text-4xl); } h3 { font-size: var(--text-2xl); } h4 { font-size: var(--text-xl); }
+            body { font-size: var(--text-base); }
+        }
+        @media (max-width: 480px) { .qtds-section-header h2 { font-size: var(--text-3xl); } }
+        .text-danger { color: var(--danger); } .text-warning { color: var(--accent); } .text-purple { color: var(--purple); } .text-success { color: var(--secondary); } .text-primary { color: var(--primary); }
+        
+        .qtds-navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; transition: box-shadow var(--transition-base); box-shadow: var(--shadow-sm); }
+        .qtds-navbar--scrolled { box-shadow: var(--shadow-md); }
+        .qtds-navbar__content { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .qtds-navbar__brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+        .qtds-navbar__logo { height: 40px; }
+        .qtds-navbar__brand-name { font-size: var(--text-2xl); font-weight: 700; color: var(--primary); }
+        .qtds-navbar__links { display: flex; align-items: center; gap: var(--space-10); }
+        .qtds-navbar__link { color: var(--gray-700); text-decoration: none; font-weight: 500; transition: color var(--transition-base); }
+        .qtds-navbar__link:hover { color: var(--primary); }
+        .qtds-navbar__mobile-btn { display: none; background: none; border: none; font-size: var(--text-2xl); color: var(--gray-700); cursor: pointer; }
+        .qtds-navbar__mobile-menu { display: none; background: white; border-top: 1px solid var(--gray-200); max-height: calc(100vh - 72px); overflow-y: auto; overflow-x: hidden; }
+        .qtds-navbar__mobile-menu--active { display: block; }
+        .qtds-navbar__mobile-link { display: block; padding: var(--space-4); text-decoration: none; color: var(--gray-700); font-weight: 500; border-bottom: 1px solid var(--gray-100); }
+        @media (max-width: 1024px) { .qtds-navbar__links { display: none; } .qtds-navbar__mobile-btn { display: block; } }
+
+        .qtds-hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--gradient-hero); color: white; overflow: hidden; padding-top: var(--space-20); }
+        .qtds-hero__content { position: relative; z-index: 1; text-align: center; max-width: 1000px; width: 100%; padding: 0 var(--space-4); }
+        .qtds-hero__title { color: white; margin-bottom: var(--space-6); }
+        .qtds-hero__subtitle { font-size: 1.875rem; font-weight: 600; color: #E2E8F0; margin-bottom: var(--space-6); }
+        .qtds-hero__description { font-size: var(--text-xl); color: #94A3B8; max-width: 800px; margin: 0 auto var(--space-10); }
+        .qtds-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
+        .qtds-hero__bg { display: none; }
+        @media (min-width: 1024px) {
+            .qtds-hero__bg { display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; z-index: 0; }
+            .qtds-hero__bg::before, .qtds-hero__bg::after { content: ''; position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.8; animation: qtds-hero-float 25s ease-in-out infinite; }
+            .qtds-hero__bg::before { width: 500px; height: 500px; background: rgba(26, 115, 232, 0.25); top: -150px; right: -150px; animation-delay: 0s; }
+            .qtds-hero__bg::after { width: 700px; height: 700px; background: rgba(52, 168, 83, 0.15); bottom: -250px; left: -200px; animation-delay: 12s; }
+        }
+        .qtds-text-gradient { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .qtds-scroll-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .qtds-scroll-animate.active { opacity: 1; transform: translateY(0); }
+        @keyframes qtds-hero-float { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-50px) translateX(30px) scale(1.1); } }
+        @media (max-width: 768px) {
+            .qtds-hero__actions { flex-direction: column; width: 100%; padding: 0 var(--space-4); }
+            .qtds-hero__actions .qtds-btn { width: 100%; max-width: 400px; margin: 0 auto; }
+            .qtds-hero__content { padding: 0 var(--space-3); }
+            .qtds-hero__title { font-size: var(--text-4xl); word-wrap: break-word; }
+            .qtds-hero__subtitle { font-size: var(--text-2xl); word-wrap: break-word; }
+            .qtds-hero__description { font-size: var(--text-lg); padding: 0 var(--space-2); }
+            .qtds-scroll-animate { transform: translateY(10px); }
+        }
+        @media (max-width: 480px) { .qtds-hero__title { font-size: var(--text-3xl); } .qtds-hero__subtitle { font-size: 1.375rem; } }
+        
+        /* Other section styles will be here */
+
+        .qtds-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-4) var(--space-8); font-size: var(--text-lg); font-weight: 600; border-radius: var(--radius-lg); text-decoration: none; transition: all var(--transition-base); cursor: pointer; border: 2px solid transparent; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .qtds-btn:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
+        .qtds-btn--primary { background: var(--primary); color: white; }
+        .qtds-btn--primary:hover { background: var(--primary-dark); }
+        .qtds-btn--secondary { background: white; color: var(--primary); border-color: var(--primary); }
+        .qtds-btn--secondary:hover { background: var(--gray-100); }
+        
+        .qtds-tag { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
+        .qtds-tag--default { background: var(--gray-100); color: var(--gray-700); }
+        .qtds-tag--hero-badge { padding: var(--space-2) var(--space-6); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; gap: var(--space-3); margin-bottom: var(--space-6); }
+        
+        .qtds-stat-item { padding: 2rem 1rem; background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center; transition: all var(--transition-base); display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .qtds-stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+        .qtds-stat-item__value { font-size: var(--text-4xl); font-weight: 800; line-height: 1; margin-bottom: var(--space-3); }
+        .qtds-stat-item__label { font-size: var(--text-base); color: var(--gray-700); margin-top: auto; line-height: 1.4; max-width: 90%; margin-left: auto; margin-right: auto; min-height: 2.8em; display: flex; align-items: center; justify-content: center; }
+
+        /* Challenges Section */
+        .qtds-challenges__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto 3rem; }
+        .qtds-challenges__grid { display: grid; gap: var(--space-8); }
+        @media (min-width: 768px) { .qtds-challenges__grid { grid-template-columns: repeat(2, 1fr); } }
+        .qtds-challenges__card-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg); font-size: var(--text-2xl); color: white; flex-shrink: 0; }
+        .qtds-challenges__card-subtitle { font-size: var(--text-lg); color: var(--gray-700); margin-bottom: var(--space-4); font-weight: 600; }
+        .qtds-challenges__card-list { list-style: none; padding: 0; font-size: var(--text-lg); color: var(--gray-700); margin-bottom: var(--space-6); }
+        .qtds-challenges__card-list li { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-3); }
+        .qtds-challenges__card-list i { margin-top: 8px; font-size: var(--text-sm); flex-shrink: 0; color: var(--primary); }
+
+        /* Standardization Section */
+        .qtds-standardization__card--problem .qtds-card__icon { background: var(--gradient-primary); }
+        .qtds-standardization__card--impact .qtds-card__icon { background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%); }
+        .qtds-standardization__list { list-style: none; padding: 0; }
+        .qtds-standardization__list-item { display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-lg); color: var(--gray-700); line-height: 1.6; }
+        .qtds-standardization__list-item i { margin-top: 8px; font-size: var(--text-base); flex-shrink: 0; }
+        .qtds-standardization__impact-metrics { display: flex; flex-direction: column; gap: var(--space-6); }
+        .qtds-standardization__impact-metric { display: flex; gap: var(--space-4); align-items: flex-start; }
+        .qtds-standardization__impact-metric-icon { width: 40px; height: 40px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--text-xl); flex-shrink: 0; }
+        .qtds-standardization__impact-metric-content strong { display: block; font-size: var(--text-lg); color: var(--gray-900); margin-bottom: var(--space-2); }
+
+        /* Solutions Section */
+        .qtds-solutions__pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-8); }
+        .qtds-solutions__pillar-icon { width: 64px; height: 64px; background: var(--gradient-primary); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+        .qtds-solutions__pillar-title { font-size: var(--text-2xl); }
+        .qtds-solutions__tech-features { display: flex; flex-direction: column; gap: var(--space-4); }
+        .qtds-solutions__tech-features-item { display: flex; align-items: flex-start; gap: var(--space-3); }
+        .qtds-solutions__tech-features-icon { width: 40px; height: 40px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+        .qtds-solutions__tech-features-content strong { display: block; font-size: var(--text-base); margin-bottom: var(--space-2); }
+
+        /* Benefits Section */
+        .qtds-benefits__stakeholders { display: flex; flex-direction: column; gap: var(--space-8); }
+        .qtds-benefits__stakeholder-card-header { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-8); background: var(--gray-50); border-bottom: 2px solid var(--gray-100); }
+        .qtds-benefits__stakeholder-card-icon { width: 80px; height: 80px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--text-4xl); color: white; flex-shrink: 0; box-shadow: var(--shadow-md); }
+        .qtds-benefits__stakeholder-card-icon--staff { background: var(--gradient-primary); }
+        .qtds-benefits__highlight-list { display: grid; gap: var(--space-6); }
+        .qtds-benefits__highlight-item { display: flex; gap: var(--space-4); align-items: flex-start; }
+        .qtds-benefits__highlight-item-icon { width: 48px; height: 48px; background: var(--gray-50); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--text-xl); flex-shrink: 0; box-shadow: var(--shadow-sm); }
+        .qtds-benefits__stakeholder-card--staff .qtds-benefits__highlight-item-icon { color: var(--primary); }
+        .qtds-benefits__highlight-item-content h4 { font-size: var(--text-xl); }
+
+        /* FAQ Section */
+        .qtds-faq { max-width: 800px; margin: 0 auto; }
+        .qtds-faq__item { background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); margin-bottom: var(--space-4); }
+        .qtds-faq__button { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: var(--space-6); background: none; border: none; text-align: left; font-size: var(--text-xl); font-weight: 600; cursor: pointer; }
+        .qtds-faq__icon { transition: transform var(--transition-base); flex-shrink: 0; }
+        .qtds-faq__button--active .qtds-faq__icon { transform: rotate(180deg); }
+        .qtds-faq__content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .qtds-faq__content-inner { padding: 0 var(--space-6) var(--space-6); }
+        
+        /* Podcast, CTA, Library, Footer Sections */
+        .qtds-podcast-card { display: flex; align-items: center; gap: var(--space-8); background: white; border-radius: var(--radius-2xl); padding: var(--space-8); box-shadow: var(--shadow-lg); max-width: 900px; margin: 0 auto; }
+        .qtds-podcast-card__icon { width: 120px; height: 120px; background: var(--gradient-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-5xl); }
+        .qtds-cta { background: white; box-shadow: var(--shadow-xl); padding: var(--space-12); border-radius: var(--radius-2xl); text-align: center; max-width: 1100px; margin: 0 auto; }
+        .qtds-library__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-8); }
+        .qtds-footer { background: var(--gray-900); color: var(--gray-600); padding: var(--space-12) 0; }
+        .qtds-footer__logo { height: 120px; margin-bottom: var(--space-4); }
+
+        [class*="qtds-back-to-top"] { position: fixed !important; bottom: 30px !important; right: 30px !important; width: 48px !important; height: 48px !important; background: var(--primary) !important; color: white !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: var(--radius-full) !important; font-size: var(--text-xl) !important; text-decoration: none !important; box-shadow: var(--shadow-lg) !important; z-index: 10000 !important; opacity: 0 !important; visibility: hidden !important; transform: translateY(20px) !important; transition: all 0.3s ease !important; border: none !important; cursor: pointer !important; }
+        [class*="qtds-back-to-top"] i { color: white !important; }
+        [class*="qtds-back-to-top"].show { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; }
+        [class*="qtds-back-to-top"]:hover { background: var(--primary-dark) !important; transform: translateY(-3px) !important; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="qtds-navbar">
+        <div class="qtds-container qtds-navbar__content">
+            <a href="#" class="qtds-navbar__brand">
+                <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
+                <span class="qtds-navbar__brand-name">QTDS</span>
+            </a>
+            <div class="qtds-navbar__links">
+                <a href="#thach-thuc" class="qtds-navbar__link">Thách Thức</a>
+                <a href="#giai-phap" class="qtds-navbar__link">Giải Pháp</a>
+                <a href="#loi-ich" class="qtds-navbar__link">Lợi Ích</a>
+                <a href="#faq" class="qtds-navbar__link">FAQ</a>
+            </div>
+            <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="qtds-navbar__mobile-menu" id="mobileMenu">
+            <a href="#thach-thuc" class="qtds-navbar__mobile-link">Thách Thức</a>
+            <a href="#giai-phap" class="qtds-navbar__mobile-link">Giải Pháp</a>
+            <a href="#loi-ich" class="qtds-navbar__mobile-link">Lợi Ích</a>
+            <a href="#faq" class="qtds-navbar__mobile-link">FAQ</a>
+            <a href="#san-sang-chuyen-doi" class="qtds-navbar__mobile-link">Hành Động</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="tong-quan" class="qtds-hero">
+            <div class="qtds-hero__bg"></div>
+            <div class="container qtds-hero__content">
+                <div class="qtds-scroll-animate">
+                    <span class="qtds-tag qtds-tag--hero-badge">
+                        <i class="fas fa-database"></i>
+                        <span>CHẤT LƯỢNG DỮ LIỆU</span>
+                    </span>
+                </div>
+                <h1 class="qtds-scroll-animate qtds-hero__title">
+                    <span class="qtds-text-gradient">Rác Đầu Vào,</span> Thảm Họa Đầu Ra
+                </h1>
+                <h2 class="qtds-scroll-animate qtds-hero__subtitle">
+                    Nguyên tắc vàng 'Garbage In, Garbage Out' trong quản trị QTDND
+                </h2>
+                <p class="qtds-scroll-animate qtds-hero__description">
+                    Chất lượng của quyết định tài chính phụ thuộc hoàn toàn vào chất lượng dữ liệu đầu vào. Dữ liệu không được chuẩn hóa đang trở thành 'tài sản tồn kho' thay vì tài sản chiến lược, là nguồn cơn của các thảm họa tiềm ẩn.
+                </p>
+                <div class="qtds-scroll-animate qtds-hero__actions">
+                    <a href="#giai-phap" class="qtds-btn qtds-btn--primary"><i class="fas fa-shield-alt"></i>Khám Phá Giải Pháp QTDS</a>
+                    <a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--secondary"><i class="fas fa-phone"></i>Tư Vấn Lộ Trình</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="thuc-trang" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-section-header">
+                    <span class="qtds-section-header__tagline">THỰC TRẠNG</span>
+                    <h2>Dữ Liệu QTDND: 'Tài Sản Tồn Kho' Đầy Rủi Ro</h2>
+                    <p>Thực trạng dữ liệu đến từ nhiều nguồn, nhiều định dạng: đơn vay viết tay, bản photo mờ, báo cáo CIC in giấy, file Excel rời rạc.</p>
+                </div>
+                <div class="qtds-standardization__grid">
+                    <div class="qtds-scroll-animate qtds-card">
+                        <div class="qtds-card__header">
+                            <div class="qtds-card__icon qtds-standardization__card--problem"><i class="fas fa-eye-slash"></i></div>
+                            <h3 class="qtds-card__title">Bất Động & Khó Truy Xuất</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                           <p>Cán bộ phải lục tìm trong các chồng hồ sơ vật lý hoặc nhiều file khác nhau, tốn thời gian và tiềm ẩn nguy cơ thất lạc tài liệu. Dữ liệu không nằm trong tầm tay để phục vụ công việc ngay lập tức.</p>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-card" style="animation-delay: 0.2s;">
+                        <div class="qtds-card__header">
+                             <div class="qtds-card__icon qtds-standardization__card--impact"><i class="fas fa-not-equal"></i></div>
+                            <h3 class="qtds-card__title">Không Nhất Quán & Phân Mảnh</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <p>Tên của cùng một khách hàng có thể bị viết sai ở những nơi khác nhau. Dữ liệu tồn tại trong các "ốc đảo" riêng biệt, không thể đối chiếu và tạo ra một bức tranh toàn cảnh 360 độ về thành viên.</p>
+                        </div>
+                    </div>
+                     <div class="qtds-scroll-animate qtds-card" style="animation-delay: 0.4s;">
+                        <div class="qtds-card__header">
+                            <div class="qtds-card__icon" style="background: var(--purple);"><i class="fas fa-lock"></i></div>
+                            <h3 class="qtds-card__title">Không Thể Khai Thác</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <p>Vì dữ liệu không có cấu trúc và không đáng tin cậy, ban lãnh đạo không thể thực hiện các phân tích tổng hợp. Dữ liệu trở thành một gánh nặng lưu trữ thay vì động lực cho hoạt động.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="thach-thuc" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-section-header">
+                    <span class="qtds-section-header__tagline">HẬU QUẢ</span>
+                    <h2>Ba Thảm Họa Tiềm Ẩn Từ 'Dữ Liệu Rác'</h2>
+                </div>
+                <div class="qtds-challenges__stats">
+                    <div class="qtds-scroll-animate qtds-stat-item">
+                        <div class="qtds-stat-item__value text-danger"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="qtds-stat-item__label">Bào Mòn Lợi Nhuận</div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+                        <div class="qtds-stat-item__value text-warning"><i class="fas fa-lock"></i></div>
+                        <div class="qtds-stat-item__label">Đóng Băng Cạnh Tranh</div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+                        <div class="qtds-stat-item__value text-purple"><i class="fas fa-user-shield"></i></div>
+                        <div class="qtds-stat-item__label">Suy Giảm Quản Trị</div>
+                    </div>
+                </div>
+                <div class="qtds-challenges__grid">
+                    <div class="qtds-scroll-animate qtds-card">
+                         <div class="qtds-card__header">
+                            <div class="qtds-card__icon" style="background: var(--danger);"><i class="fas fa-dollar-sign"></i></div>
+                            <h3 class="qtds-card__title">Bào Mòn Lợi Nhuận</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <h4 class="qtds-challenges__card-subtitle">Chi phí ẩn trong vận hành:</h4>
+                             <ul class="qtds-challenges__card-list">
+                                <li><i class="fas fa-chevron-right"></i><span>Thời gian lãng phí cho việc tìm kiếm, đối chiếu, sửa lỗi.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Chi phí vật tư, lưu trữ cho hồ sơ giấy.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="qtds-scroll-animate qtds-card">
+                         <div class="qtds-card__header">
+                            <div class="qtds-card__icon" style="background: var(--accent);"><i class="fas fa-lock"></i></div>
+                            <h3 class="qtds-card__title">Đóng Băng Năng Lực Cạnh Tranh</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                           <h4 class="qtds-challenges__card-subtitle">Bỏ lỡ cơ hội thị trường:</h4>
+                             <ul class="qtds-challenges__card-list">
+                                <li><i class="fas fa-chevron-right"></i><span>Không thể nhận diện "khách hàng vàng" để chăm sóc.</span></li>
+                                <li><i class="fas fa-chevron-right"></i><span>Không có cơ sở dữ liệu để thiết kế sản phẩm mới phù hợp.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="giai-phap" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                 <div class="qtds-section-header">
+                    <span class="qtds-section-header__tagline">LỐI THOÁT</span>
+                    <h2>QTDS: 'Hồi Sinh' Dữ Liệu Bằng Chuẩn Hóa Đầu Vào</h2>
+                </div>
+                 <div class="qtds-solutions__pillars">
+                    <div class="qtds-scroll-animate qtds-card">
+                        <div class="qtds-card__header">
+                            <div class="qtds-solutions__pillar-icon"><i class="fas fa-camera"></i></div>
+                            <h3 class="qtds-solutions__pillar-title">OCR & AI Thông Minh</h3>
+                        </div>
+                         <div class="qtds-card__body">
+                            <p>Chụp ảnh VNeID, GCNQSDĐ, báo cáo CIC... hệ thống sẽ tự động "đọc", bóc tách và điền chính xác thông tin vào các trường dữ liệu, loại bỏ hoàn toàn nhập liệu thủ công.</p>
+                        </div>
+                    </div>
+                     <div class="qtds-scroll-animate qtds-card">
+                        <div class="qtds-card__header">
+                           <div class="qtds-solutions__pillar-icon"><i class="fas fa-file-signature"></i></div>
+                            <h3 class="qtds-solutions__pillar-title">Cấu Trúc Hóa Dự Án</h3>
+                        </div>
+                         <div class="qtds-card__body">
+                            <p>Phương án kinh doanh của thành viên được đưa vào một cấu trúc chuẩn, đảm bảo mọi thông tin cần thiết cho việc thẩm định đều được thu thập một cách nhất quán.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="loi-ich" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-section-header">
+                    <span class="qtds-section-header__tagline">KẾT QUẢ</span>
+                    <h2>Từ "Tồn Kho" Bất Động Đến "Tài Sản Sống" Linh Hoạt</h2>
+                </div>
+                <div class="qtds-benefits__stakeholders">
+                    <div class="qtds-scroll-animate qtds-benefits__stakeholder-card qtds-benefits__stakeholder-card--staff">
+                         <div class="qtds-benefits__stakeholder-card-header">
+                            <div class="qtds-benefits__stakeholder-card-icon qtds-benefits__stakeholder-card-icon--staff"><i class="fas fa-check-double"></i></div>
+                            <h3 class="qtds-card__title">Dữ Liệu Được Chuẩn Hóa</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                             <div class="qtds-benefits__highlight-list">
+                                <div class="qtds-benefits__highlight-item">
+                                    <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-database"></i></div>
+                                    <div class="qtds-benefits__highlight-item-content">
+                                        <h4>Số Hóa & Tập Trung</h4>
+                                        <p>Toàn bộ dữ liệu được lưu trữ trên một nền tảng duy nhất, tạo ra một "nguồn sự thật" đáng tin cậy.</p>
+                                    </div>
+                                </div>
+                                <div class="qtds-benefits__highlight-item">
+                                    <div class="qtds-benefits__highlight-item-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="qtds-benefits__highlight-item-content">
+                                        <h4>Sẵn Sàng Khai Thác</h4>
+                                        <p>Dữ liệu trở nên linh hoạt, dễ dàng lấy, gọi, tổng hợp và phân tích chỉ bằng vài thao tác đơn giản.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <h2>Giải Đáp Thắc Mắc</h2>
+                </div>
+                <div class="qtds-faq">
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Việc chuẩn hóa dữ liệu có đòi hỏi nhân viên phải có kỹ năng IT cao không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Hoàn toàn không. QTDS được thiết kế để tự động hóa quá trình này. Nhân viên chỉ cần thực hiện các thao tác đơn giản như chụp ảnh giấy tờ, hệ thống sẽ tự động xử lý việc chuẩn hóa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Dữ liệu cũ, lưu trữ trên giấy tờ có thể được chuẩn hóa không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Có. QTDS hỗ trợ việc số hóa các hồ sơ cũ. Mặc dù cần một nỗ lực ban đầu, nhưng việc đưa toàn bộ dữ liệu lịch sử lên một nền tảng chuẩn hóa sẽ mang lại giá trị to lớn cho việc phân tích và quản trị lâu dài.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Làm thế nào để đảm bảo dữ liệu được chuẩn hóa sẽ an toàn?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>QTDS được xây dựng trên nền tảng công nghệ hiện đại, tuân thủ các tiêu chuẩn bảo mật nghiêm ngặt, bao gồm mã hóa dữ liệu và phân quyền truy cập chi tiết, đảm bảo tài sản dữ liệu của Quỹ luôn được bảo vệ.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-gioi-thieu" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">LẮNG NGHE PODCAST</span>
+                    <h2>Nguyên Tắc 'Garbage In, Garbage Out'</h2>
+                </div>
+                <div class="qtds-scroll-animate qtds-podcast-card">
+                    <div class="qtds-podcast-card__icon-wrapper">
+                        <div class="qtds-podcast-card__icon"><i class="fas fa-microphone-alt"></i></div>
+                    </div>
+                    <div class="qtds-podcast-card__content">
+                        <h3 class="qtds-podcast-card__title">Podcast: Dữ liệu rác ảnh hưởng đến quyết định quản trị</h3>
+                        <p class="qtds-podcast-card__description">Lắng nghe phân tích chuyên sâu về cách chất lượng dữ liệu đầu vào tác động trực tiếp đến sự an toàn và hiệu quả hoạt động của Quỹ Tín dụng Nhân dân.</p>
+                        <div class="qtds-podcast-card__player">
+                            <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="san-sang-chuyen-doi" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-cta">
+                     <div class="qtds-section-header">
+                        <span class="qtds-section-header__tagline">HÀNH ĐỘNG NGAY</span>
+                        <h2>Hãy Biến Dữ Liệu Thành Tài Sản Quý Giá Nhất</h2>
+                    </div>
+                    <p class="qtds-cta__description">Đừng để những quyết định quan trọng của Quỹ được đưa ra dựa trên dữ liệu không đáng tin cậy. Hãy liên hệ với QTDS để được tư vấn về một lộ trình chuẩn hóa dữ liệu thực tế và khám phá cách chúng tôi có thể giúp Quỹ của bạn hoạt động an toàn và thông minh hơn.</p>
+                    <div class="qtds-cta__actions">
+                        <a href="https://giaiphap.qtds.vn" class="qtds-btn qtds-btn--primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-rocket"></i>Yêu Cầu Demo</a>
+                        <a href="https://zalo.me/g/flgzlp294" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fas fa-users"></i>Tham Gia Cộng Đồng</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
+                    <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
+                    <p>Tìm hiểu sâu hơn về quản trị dữ liệu và chuyển đổi số trong QTDND qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
+                </div>
+                <div id="library-grid" class="qtds-library__grid"></div>
+                <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải...</div>
+                <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
+                    <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary"><i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="qtds-footer">
+        <div class="qtds-container" style="text-align: center;">
+            <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo">
+            <p class="qtds-footer__tagline">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
+            <div class="qtds-footer__socials" style="display: flex; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); font-size: var(--text-2xl);">
+                <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-home"></i></a>
+                <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-archive"></i></a>
+                <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-comments"></i></a>
+            </div>
+            <p class="qtds-footer__copyright" style="font-size: var(--text-base); color: var(--gray-700);">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="qtds-back-to-top" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
+
+            function initNavbar() {
+                const navbar = document.getElementById('navbar');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (navbar) {
+                    window.addEventListener('scroll', () => {
+                        navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
+                    });
+                }
+                if (mobileMenuBtn && mobileMenu) {
+                    const menuIcon = mobileMenuBtn.querySelector('i');
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+                        if (menuIcon) {
+                            menuIcon.classList.toggle('fa-bars');
+                            menuIcon.classList.toggle('fa-times');
+                        }
+                    });
+                    document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                            if (menuIcon) {
+                                menuIcon.classList.add('fa-bars');
+                                menuIcon.classList.remove('fa-times');
+                            }
+                        });
+                    });
+                }
+            }
+            initNavbar();
+
+            function initFaq() {
+                document.querySelectorAll('.qtds-faq__button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        const wasActive = button.classList.contains('qtds-faq__button--active');
+                        document.querySelectorAll('.qtds-faq__button').forEach(b => {
+                            b.classList.remove('qtds-faq__button--active');
+                            b.nextElementSibling.style.maxHeight = null;
+                        });
+                        if (!wasActive) {
+                            button.classList.add('qtds-faq__button--active');
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+                });
+            }
+            initFaq();
+
+            function initLibrary() {
+                const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
+                const ARTICLES_TO_SHOW = 6;
+                const gridContainer = document.getElementById('library-grid');
+                const loader = document.getElementById('library-loader');
+                if (!gridContainer || !loader) return;
+                async function fetchArticles() {
+                    try {
+                        const response = await fetch(API_URL);
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        const data = await response.json();
+                        if (data && data.articles) {
+                            const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
+                            renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
+                        }
+                    } catch (error) {
+                        loader.textContent = "Không thể tải thư viện.";
+                    } finally {
+                        if (gridContainer.innerHTML !== '') loader.style.display = 'none';
+                    }
+                }
+                function renderArticles(articles) {
+                    gridContainer.innerHTML = articles.map(article => {
+                        const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
+                            .map(tag => `<span class="qtds-tag qtds-tag--default">${tag}</span>`).join('');
+                        return `
+                            <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card">
+                                <div class="qtds-article-card__image-wrapper" style="background-image: url('${article.featured_image_url}');"></div>
+                                <div class="qtds-card__body">
+                                    <div>${tagsHTML}</div>
+                                    <h4 class="qtds-card__title">${article.title}</h4>
+                                    <p>${article.short_description}</p>
+                                </div>
+                            </a>`;
+                    }).join('');
+                     document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
+                }
+                fetchArticles();
+            }
+            initLibrary();
+
+            function initBackToTop() {
+                const backToTopBtn = document.querySelector('.qtds-back-to-top');
+                if (backToTopBtn) {
+                    window.addEventListener('scroll', () => {
+                        backToTopBtn.classList.toggle('show', window.scrollY > 400);
+                    });
+                    backToTopBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                }
+            }
+            initBackToTop();
+        });
+    </script>
+</body>
+</html>
