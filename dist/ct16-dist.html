@@ -2,8 +2,11 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lộ Trình Chuyển Đổi Số QTDND Theo Đề Án NHNN</title>
+    <meta name="description" content="Đề án chuyển đổi số của NHNN là yêu cầu sống còn. Bài viết này cung cấp lộ trình hành động rõ ràng, khả thi giúp QTDND tuân thủ và phát triển bền vững.">
+    <meta name="keywords" content="chuyển đổi số QTDND, đề án NHNN, hiện đại hóa QTDND, lộ trình chuyển đổi số, chiến lược số hóa, tuân thủ NHNN">
 
     <!-- Phần Head chung -->
         <!-- Fonts & Icons -->
@@ -15,8 +18,6 @@
 <!-- External CSS & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-
-    <title>Trang CT9 Hoàn Chỉnh</title>
     
     <!-- Vị trí chờ để Robot nhúng toàn bộ CSS vào đây -->
     <style>
@@ -849,263 +850,367 @@ p:last-child {
 
 
 /**
- * Section: QTDS Standardization
+ * Section: QTDS Benefits
  * Version: 1.0 (Standardized)
- * Description: Standardized CSS to match the BEM structure of section-standardization.html.
- * All original rules and structures are preserved.
+ * Description: Standardized CSS to match the BEM structure of section-benefits.html.
  */
 
 /* ==========================================================================
-   BLOCK: QTDS STANDARDIZATION
+   BLOCK: QTDS BENEFITS
    ========================================================================== */
 
-/* ----- Data Flow Element ----- */
-.qtds-standardization__data-flow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-8);
-    max-width: 900px;
-    margin: 0 auto var(--space-16);
+/* Overview Stats */
+.qtds-benefits__overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
 }
 
+/* Stakeholder Cards Container */
+.qtds-benefits__stakeholders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* Stakeholder Card */
+.qtds-benefits__stakeholder-card {
+  background: white;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.qtds-benefits__stakeholder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.qtds-benefits__stakeholder-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+}
+
+.qtds-benefits__stakeholder-card--staff::before { background: var(--primary); }
+.qtds-benefits__stakeholder-card--leader::before { background: var(--secondary); }
+.qtds-benefits__stakeholder-card--system::before { background: var(--accent); }
+
+/* Card Header */
+.qtds-benefits__stakeholder-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.qtds-benefits__stakeholder-card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-4xl);
+  color: white;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.qtds-benefits__stakeholder-card-icon--staff { background: var(--gradient-primary); }
+.qtds-benefits__stakeholder-card-icon--leader { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-benefits__stakeholder-card-icon--system { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+
+.qtds-benefits__stakeholder-card-title-wrapper { flex: 1; }
+.qtds-benefits__stakeholder-card-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+  color: var(--gray-900);
+}
+.qtds-benefits__stakeholder-card-subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Highlight List */
+.qtds-benefits__highlight-list {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.qtds-benefits__highlight-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.qtds-benefits__highlight-item-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.qtds-benefits__stakeholder-card--staff .qtds-benefits__highlight-item-icon { color: var(--primary); }
+.qtds-benefits__stakeholder-card--leader .qtds-benefits__highlight-item-icon { color: var(--secondary); }
+.qtds-benefits__stakeholder-card--system .qtds-benefits__highlight-item-icon { color: var(--accent); }
+
+.qtds-benefits__highlight-item-content h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+  color: var(--gray-900);
+}
+
+.qtds-benefits__highlight-item-content p {
+  font-size: var(--text-base);
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Quote Box */
+.qtds-benefits__stakeholder-card-quote {
+  background: var(--gray-50);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  position: relative;
+  border-left: 4px solid var(--primary);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__stakeholder-card-quote i {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  font-size: var(--text-3xl);
+  color: var(--primary);
+  opacity: 0.2;
+}
+
+.qtds-benefits__stakeholder-card-quote p {
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--gray-700);
+  margin: 0;
+  padding-left: var(--space-8);
+}
+
+/* Cost Comparison */
+.qtds-benefits__cost-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__cost-comparison-item { text-align: center; flex: 1; }
+.qtds-benefits__cost-comparison-item--highlight {
+  background: white;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--secondary);
+}
+
+.qtds-benefits__cost-comparison-label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--gray-600);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.qtds-benefits__cost-comparison-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+.qtds-benefits__cost-comparison-divider {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gray-400);
+}
+
+/* System Impact */
+.qtds-benefits__system-impact {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-10);
+  padding: var(--space-6);
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__system-impact-stat { text-align: center; }
+.qtds-benefits__system-impact-stat i {
+  font-size: var(--text-3xl);
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.qtds-benefits__system-impact-number {
+  display: block;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+.qtds-benefits__system-impact-label {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+/* ROI Preview */
+.qtds-benefits__roi-preview {
+  background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.qtds-benefits__roi-preview-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.qtds-benefits__roi-preview-text h3 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+  color: var(--gray-900);
+}
+.qtds-benefits__roi-preview-text p {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.qtds-benefits__roi-preview-benefits li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-benefits i {
+  color: var(--secondary);
+  font-size: var(--text-xl);
+}
+
+.qtds-benefits__roi-preview-visual { text-align: center; }
+.qtds-benefits__roi-preview-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-10);
+  height: 250px;
+  margin-bottom: var(--space-6);
+}
+
+.qtds-benefits__roi-preview-bar {
+  width: 100px;
+  background: var(--gray-300);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  position: relative;
+  transition: height 0.8s ease-out;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-3);
+}
+
+.qtds-benefits__roi-preview-bar--benefit { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-benefits__roi-preview-bar-label {
+  position: absolute;
+  bottom: calc(-1 * var(--space-8));
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gray-700);
+  font-size: var(--text-base);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.qtds-benefits__roi-preview-caption {
+  font-size: var(--text-xl);
+  margin: 0;
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-caption strong {
+  font-size: var(--text-3xl);
+  color: var(--secondary);
+}
+
+/* Responsive adjustments */
 @media (min-width: 768px) {
-    .qtds-standardization__data-flow {
-        flex-direction: row;
-        justify-content: center;
-        gap: var(--space-4);
-    }
+  .qtds-benefits__roi-preview-content {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.qtds-standardization__data-flow-item {
+@media (max-width: 768px) {
+  .qtds-benefits__stakeholder-card-header {
+    flex-direction: column;
     text-align: center;
-    max-width: 100%;
-}
-
-.qtds-standardization__data-flow-icon {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto var(--space-4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-full);
-    color: white;
-    font-size: var(--text-4xl);
-    box-shadow: var(--shadow-lg);
-}
-
-.qtds-standardization__data-flow-arrow {
-    font-size: var(--text-4xl);
-    color: var(--gray-200);
-}
-
-@media (max-width: 767px) {
-    .qtds-standardization__data-flow-arrow i {
-        transform: rotate(90deg);
-    }
-}
-
-/* ----- Grid & Cards within Standardization Section ----- */
-.qtds-standardization__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-8);
-    margin-top: var(--space-16);
-}
-
-.qtds-standardization__card-header {
-    /* This class is for specific overrides on top of .qtds-card__header if needed */
-    background-color: var(--gray-50);
-}
-
-.qtds-standardization__list {
-    list-style: none;
-    padding: 0;
-}
-
-.qtds-standardization__list-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
-    font-size: var(--text-lg);
-    color: var(--gray-700);
-    line-height: 1.6;
-}
-
-.qtds-standardization__list-item:last-child {
-    margin-bottom: 0;
-}
-
-.qtds-standardization__list-item i {
-    margin-top: 8px;
-    font-size: var(--text-base);
-    flex-shrink: 0;
-}
-
-/* Impact Metrics */
-.qtds-standardization__impact-metrics {
-    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+  .qtds-benefits__cost-comparison,
+  .qtds-benefits__system-impact {
     flex-direction: column;
     gap: var(--space-6);
+  }
+  .qtds-benefits__cost-comparison-divider { transform: none; }
+  .qtds-benefits__roi-preview { padding: var(--space-6); }
+  .qtds-benefits__roi-preview-content { gap: var(--space-6); }
+  .qtds-benefits__roi-preview-chart { gap: var(--space-6); }
+  .qtds-benefits__roi-preview-bar { width: 80px; }
+  .qtds-benefits__roi-preview-caption { margin-top: var(--space-6); }
 }
 
-.qtds-standardization__impact-metric {
-    display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
-}
-
-.qtds-standardization__impact-metric-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--gray-50);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--text-xl);
-    flex-shrink: 0;
-}
-
-.qtds-standardization__impact-metric-content strong {
-    display: block;
-    font-size: var(--text-lg);
-    color: var(--gray-900);
-    margin-bottom: var(--space-2);
-}
-
-.qtds-standardization__impact-metric-content p {
-    font-size: var(--text-base);
-    color: var(--gray-600);
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* Barrier Insight */
-.qtds-standardization__barrier-insight {
-    background: var(--gray-50);
-    padding: var(--space-6);
-    border-radius: var(--radius-lg);
-    position: relative;
-    margin-bottom: var(--space-6);
-}
-
-.qtds-standardization__barrier-insight i {
-    position: absolute;
-    top: var(--space-4);
-    left: var(--space-4);
-    font-size: var(--text-3xl);
-    color: var(--primary);
-    opacity: 0.2;
-}
-
-.qtds-standardization__barrier-insight p {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin-bottom: var(--space-4);
-    padding-left: var(--space-10);
-}
-
-.qtds-standardization__barrier-insight p:last-child {
-    margin-bottom: 0;
-}
-
-/* Barrier Flow */
-.qtds-standardization__barrier-flow {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: var(--space-4);
-    background: white;
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-lg);
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    gap: var(--space-2);
-}
-
-.qtds-standardization__barrier-flow i {
-    color: var(--gray-700);
-}
-
-/* Key Insight Box */
-.qtds-standardization__key-insight-box {
-    background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
-    border: 2px solid #FFB74D;
-    border-radius: var(--radius-2xl);
-    padding: var(--space-8);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-6);
-    box-shadow: var(--shadow-md);
-    margin-top: var(--space-16);
-}
-
-.qtds-standardization__key-insight-box-icon {
-    width: 56px;
-    height: 56px;
-    background: #FF9800;
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: var(--text-3xl);
-    flex-shrink: 0;
-}
-
-.qtds-standardization__key-insight-box-content h4 {
-    font-size: var(--text-xl);
-    color: var(--gray-900);
-    margin-bottom: var(--space-3);
-}
-
-.qtds-standardization__key-insight-box-content p {
-    font-size: var(--text-lg);
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin: 0;
-}
-
-.qtds-standardization__key-insight-box-content strong {
-    color: #E65100;
-    font-weight: 600;
-}
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media (max-width: 768px) {
-    .qtds-standardization__grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-
-    .qtds-standardization__key-insight-box {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-    .qtds-standardization__barrier-flow {
-        flex-direction: column;
-        gap: var(--space-3);
-    }
-
-    .qtds-standardization__barrier-flow i {
-        transform: rotate(90deg);
-    }
-}
-
-@media (max-width: 480px) {
-    .qtds-standardization__grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-}
+/* Animation delay for cards */
+.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(2) { animation-delay: 0.2s; }
+.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
 
 
 /**
@@ -1472,432 +1577,261 @@ p:last-child {
 
 
 /**
- * Section: QTDS Benefits
+ * Section: QTDS Standardization
  * Version: 1.0 (Standardized)
- * Description: Standardized CSS to match the BEM structure of section-benefits.html.
+ * Description: Standardized CSS to match the BEM structure of section-standardization.html.
+ * All original rules and structures are preserved.
  */
 
 /* ==========================================================================
-   BLOCK: QTDS BENEFITS
+   BLOCK: QTDS STANDARDIZATION
    ========================================================================== */
 
-/* Overview Stats */
-.qtds-benefits__overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-}
-
-/* Stakeholder Cards Container */
-.qtds-benefits__stakeholders {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-  margin-bottom: var(--space-16);
-}
-
-/* Stakeholder Card */
-.qtds-benefits__stakeholder-card {
-  background: white;
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  transition: all var(--transition-base);
-  position: relative;
-}
-
-.qtds-benefits__stakeholder-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-}
-
-.qtds-benefits__stakeholder-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-}
-
-.qtds-benefits__stakeholder-card--staff::before { background: var(--primary); }
-.qtds-benefits__stakeholder-card--leader::before { background: var(--secondary); }
-.qtds-benefits__stakeholder-card--system::before { background: var(--accent); }
-
-/* Card Header */
-.qtds-benefits__stakeholder-card-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-8);
-  background: var(--gray-50);
-  border-bottom: 2px solid var(--gray-100);
-}
-
-.qtds-benefits__stakeholder-card-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-4xl);
-  color: white;
-  flex-shrink: 0;
-  box-shadow: var(--shadow-md);
-}
-
-.qtds-benefits__stakeholder-card-icon--staff { background: var(--gradient-primary); }
-.qtds-benefits__stakeholder-card-icon--leader { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
-.qtds-benefits__stakeholder-card-icon--system { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
-
-.qtds-benefits__stakeholder-card-title-wrapper { flex: 1; }
-.qtds-benefits__stakeholder-card-title {
-  font-size: var(--text-2xl);
-  margin-bottom: var(--space-2);
-  color: var(--gray-900);
-}
-.qtds-benefits__stakeholder-card-subtitle {
-  font-size: var(--text-lg);
-  color: var(--gray-600);
-  margin: 0;
-  font-weight: 500;
-}
-
-/* Highlight List */
-.qtds-benefits__highlight-list {
-  display: grid;
-  gap: var(--space-6);
-  margin-bottom: var(--space-8);
-}
-
-.qtds-benefits__highlight-item {
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
-}
-
-.qtds-benefits__highlight-item-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--gray-50);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-xl);
-  flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
-}
-
-.qtds-benefits__stakeholder-card--staff .qtds-benefits__highlight-item-icon { color: var(--primary); }
-.qtds-benefits__stakeholder-card--leader .qtds-benefits__highlight-item-icon { color: var(--secondary); }
-.qtds-benefits__stakeholder-card--system .qtds-benefits__highlight-item-icon { color: var(--accent); }
-
-.qtds-benefits__highlight-item-content h4 {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-2);
-  color: var(--gray-900);
-}
-
-.qtds-benefits__highlight-item-content p {
-  font-size: var(--text-base);
-  color: var(--gray-700);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Quote Box */
-.qtds-benefits__stakeholder-card-quote {
-  background: var(--gray-50);
-  padding: var(--space-6);
-  border-radius: var(--radius-lg);
-  position: relative;
-  border-left: 4px solid var(--primary);
-  margin-top: var(--space-6);
-}
-
-.qtds-benefits__stakeholder-card-quote i {
-  position: absolute;
-  top: var(--space-4);
-  left: var(--space-4);
-  font-size: var(--text-3xl);
-  color: var(--primary);
-  opacity: 0.2;
-}
-
-.qtds-benefits__stakeholder-card-quote p {
-  font-size: var(--text-lg);
-  font-style: italic;
-  color: var(--gray-700);
-  margin: 0;
-  padding-left: var(--space-8);
-}
-
-/* Cost Comparison */
-.qtds-benefits__cost-comparison {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-6);
-  padding: var(--space-6);
-  background: var(--gray-50);
-  border-radius: var(--radius-xl);
-  margin-top: var(--space-6);
-}
-
-.qtds-benefits__cost-comparison-item { text-align: center; flex: 1; }
-.qtds-benefits__cost-comparison-item--highlight {
-  background: white;
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  border: 2px solid var(--secondary);
-}
-
-.qtds-benefits__cost-comparison-label {
-  display: block;
-  font-size: var(--text-sm);
-  color: var(--gray-600);
-  margin-bottom: var(--space-2);
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.qtds-benefits__cost-comparison-value {
-  display: block;
-  font-size: var(--text-2xl);
-  font-weight: 700;
-}
-
-.qtds-benefits__cost-comparison-divider {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--gray-400);
-}
-
-/* System Impact */
-.qtds-benefits__system-impact {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-10);
-  padding: var(--space-6);
-  background: var(--gray-50);
-  border-radius: var(--radius-xl);
-  margin-top: var(--space-6);
-}
-
-.qtds-benefits__system-impact-stat { text-align: center; }
-.qtds-benefits__system-impact-stat i {
-  font-size: var(--text-3xl);
-  color: var(--accent);
-  margin-bottom: var(--space-3);
-  display: block;
-}
-.qtds-benefits__system-impact-number {
-  display: block;
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: var(--space-2);
-}
-.qtds-benefits__system-impact-label {
-  font-size: var(--text-base);
-  color: var(--gray-600);
-  font-weight: 500;
-}
-
-/* ROI Preview */
-.qtds-benefits__roi-preview {
-  background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-12);
-  margin-top: var(--space-16);
-}
-
-.qtds-benefits__roi-preview-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-.qtds-benefits__roi-preview-text h3 {
-  font-size: var(--text-3xl);
-  margin-bottom: var(--space-4);
-  color: var(--gray-900);
-}
-.qtds-benefits__roi-preview-text p {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-6);
-  color: var(--gray-700);
-}
-
-.qtds-benefits__roi-preview-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.qtds-benefits__roi-preview-benefits li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-lg);
-  color: var(--gray-700);
-}
-
-.qtds-benefits__roi-preview-benefits i {
-  color: var(--secondary);
-  font-size: var(--text-xl);
-}
-
-.qtds-benefits__roi-preview-visual { text-align: center; }
-.qtds-benefits__roi-preview-chart {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: var(--space-10);
-  height: 250px;
-  margin-bottom: var(--space-6);
-}
-
-.qtds-benefits__roi-preview-bar {
-  width: 100px;
-  background: var(--gray-300);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  position: relative;
-  transition: height 0.8s ease-out;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: var(--space-3);
-}
-
-.qtds-benefits__roi-preview-bar--benefit { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
-.qtds-benefits__roi-preview-bar-label {
-  position: absolute;
-  bottom: calc(-1 * var(--space-8));
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gray-700);
-  font-size: var(--text-base);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.qtds-benefits__roi-preview-caption {
-  font-size: var(--text-xl);
-  margin: 0;
-  color: var(--gray-700);
-}
-
-.qtds-benefits__roi-preview-caption strong {
-  font-size: var(--text-3xl);
-  color: var(--secondary);
-}
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-  .qtds-benefits__roi-preview-content {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .qtds-benefits__stakeholder-card-header {
+/* ----- Data Flow Element ----- */
+.qtds-standardization__data-flow {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+    max-width: 900px;
+    margin: 0 auto var(--space-16);
+}
+
+@media (min-width: 768px) {
+    .qtds-standardization__data-flow {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-4);
+    }
+}
+
+.qtds-standardization__data-flow-item {
     text-align: center;
-    gap: var(--space-4);
-    padding: var(--space-6);
-  }
-  .qtds-benefits__cost-comparison,
-  .qtds-benefits__system-impact {
+    max-width: 100%;
+}
+
+.qtds-standardization__data-flow-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    color: white;
+    font-size: var(--text-4xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-standardization__data-flow-arrow {
+    font-size: var(--text-4xl);
+    color: var(--gray-200);
+}
+
+@media (max-width: 767px) {
+    .qtds-standardization__data-flow-arrow i {
+        transform: rotate(90deg);
+    }
+}
+
+/* ----- Grid & Cards within Standardization Section ----- */
+.qtds-standardization__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+}
+
+.qtds-standardization__card-header {
+    /* This class is for specific overrides on top of .qtds-card__header if needed */
+    background-color: var(--gray-50);
+}
+
+.qtds-standardization__list {
+    list-style: none;
+    padding: 0;
+}
+
+.qtds-standardization__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.qtds-standardization__list-item:last-child {
+    margin-bottom: 0;
+}
+
+.qtds-standardization__list-item i {
+    margin-top: 8px;
+    font-size: var(--text-base);
+    flex-shrink: 0;
+}
+
+/* Impact Metrics */
+.qtds-standardization__impact-metrics {
+    display: flex;
     flex-direction: column;
     gap: var(--space-6);
-  }
-  .qtds-benefits__cost-comparison-divider { transform: none; }
-  .qtds-benefits__roi-preview { padding: var(--space-6); }
-  .qtds-benefits__roi-preview-content { gap: var(--space-6); }
-  .qtds-benefits__roi-preview-chart { gap: var(--space-6); }
-  .qtds-benefits__roi-preview-bar { width: 80px; }
-  .qtds-benefits__roi-preview-caption { margin-top: var(--space-6); }
 }
 
-/* Animation delay for cards */
-.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(2) { animation-delay: 0.2s; }
-.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
-
-
-/**
- * Section: QTDS FAQ
- * Version: 1.0 (Standardized)
- * Description: Standardized CSS to match the BEM structure of section-faq.html.
- */
-
-/* ==========================================================================
-   BLOCK: QTDS FAQ
-   ========================================================================== */
-
-.qtds-faq {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.qtds-faq__item {
-    background: white;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    margin-bottom: var(--space-4);
-}
-
-.qtds-faq__button {
-    width: 100%;
+.qtds-standardization__impact-metric {
     display: flex;
-    justify-content: space-between;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.qtds-standardization__impact-metric-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
     align-items: center;
-    padding: var(--space-6);
-    background: none;
-    border: none;
-    text-align: left;
+    justify-content: center;
     font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+.qtds-standardization__impact-metric-content strong {
+    display: block;
+    font-size: var(--text-lg);
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-standardization__impact-metric-content p {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Barrier Insight */
+.qtds-standardization__barrier-insight {
+    background: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    position: relative;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-standardization__barrier-insight i {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    font-size: var(--text-3xl);
+    color: var(--primary);
+    opacity: 0.2;
+}
+
+.qtds-standardization__barrier-insight p {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-10);
+}
+
+.qtds-standardization__barrier-insight p:last-child {
+    margin-bottom: 0;
+}
+
+/* Barrier Flow */
+.qtds-standardization__barrier-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--space-4);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    gap: var(--space-2);
+}
+
+.qtds-standardization__barrier-flow i {
+    color: var(--gray-700);
+}
+
+/* Key Insight Box */
+.qtds-standardization__key-insight-box {
+    background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+    border: 2px solid #FFB74D;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--space-16);
+}
+
+.qtds-standardization__key-insight-box-icon {
+    width: 56px;
+    height: 56px;
+    background: #FF9800;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    flex-shrink: 0;
+}
+
+.qtds-standardization__key-insight-box-content h4 {
+    font-size: var(--text-xl);
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-standardization__key-insight-box-content p {
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.qtds-standardization__key-insight-box-content strong {
+    color: #E65100;
     font-weight: 600;
-    cursor: pointer;
-}
-
-.qtds-faq__icon {
-    transition: transform var(--transition-base);
-    flex-shrink: 0; /* Prevent icon from shrinking */
-}
-
-.qtds-faq__button--active .qtds-faq__icon {
-    transform: rotate(180deg);
-}
-
-.qtds-faq__content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
-}
-
-.qtds-faq__content-inner {
-    padding: 0 var(--space-6) var(--space-6);
 }
 
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
-
 @media (max-width: 768px) {
-    .qtds-faq__button {
-        font-size: var(--text-lg);
-        padding: var(--space-4);
+    .qtds-standardization__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .qtds-standardization__key-insight-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .qtds-standardization__barrier-flow {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .qtds-standardization__barrier-flow i {
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-standardization__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
     }
 }
 
@@ -2020,6 +1954,100 @@ p:last-child {
         font-size: var(--text-base);
     }
 }
+
+
+/**
+ * Section: QTDS FAQ
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-faq.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS FAQ
+   ========================================================================== */
+
+.qtds-faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qtds-faq__item {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-faq__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qtds-faq__icon {
+    transition: transform var(--transition-base);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.qtds-faq__button--active .qtds-faq__icon {
+    transform: rotate(180deg);
+}
+
+.qtds-faq__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.qtds-faq__content-inner {
+    padding: 0 var(--space-6) var(--space-6);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-faq__button {
+        font-size: var(--text-lg);
+        padding: var(--space-4);
+    }
+}
+
+
+/**
+ * Section: QTDS Library
+ * Version: 1.1 (Completed)
+ * Description: Standardized and completed CSS for the library section, 
+ * including the grid layout and individual article card styles.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS LIBRARY GRID LAYOUT
+   ========================================================================== */
+
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+@media (max-width: 480px) {
+    .qtds-library__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
+
+
 
 
 /**
@@ -2149,33 +2177,6 @@ p:last-child {
     background: #F1F3F4 !important;
     color: #1A73E8 !important;
 }
-
-
-/**
- * Section: QTDS Library
- * Version: 1.1 (Completed)
- * Description: Standardized and completed CSS for the library section, 
- * including the grid layout and individual article card styles.
- */
-
-/* ==========================================================================
-   BLOCK: QTDS LIBRARY GRID LAYOUT
-   ========================================================================== */
-
-.qtds-library__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: var(--space-8);
-}
-
-@media (max-width: 480px) {
-    .qtds-library__grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-}
-
-
 
 
 /**
@@ -2672,8 +2673,9 @@ p:last-child {
 </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <!-- 
+    <main>
+        <!-- SECTION: Navigation Bar -->
+        <!-- 
   Section: QTDS Navbar (Standardized HTML)
   Version: 1.0
   Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
@@ -2705,9 +2707,8 @@ p:last-child {
     </div>
 </nav>
 
-
-    <main>
-        <!-- Hero Section -->
+        
+        <!-- SECTION: Hero -->
         <!-- 
   Section: QTDS Hero (Standardized HTML)
   Version: 2.1
@@ -2785,8 +2786,8 @@ p:last-child {
     </div>
 </section>
 
-
-        <!-- Challenges Section -->
+        
+        <!-- SECTION: Problem Statement / Root Cause -->
         <!-- 
   Section: QTDS Challenges (Standardized HTML)
   Version: 2.1 (Corrected to preserve original class structure)
@@ -2857,8 +2858,9 @@ p:last-child {
     <div class="qtds-stat-item__value text-primary">1,176</div>
     <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
 </div>
+
         </div>
-        
+
         <!-- Highlight Box -->
         <div class="qtds-scroll-animate qtds-challenges__highlight-box">
             <h3 class="qtds-challenges__highlight-title">
@@ -2980,387 +2982,8 @@ p:last-child {
     </div>
 </section>
 
-
-        <!-- Standardization Section -->
-        <!-- 
-  Section: QTDS Standardization (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
--->
-<section id="chuan-hoa-du-lieu" class="qtds-section" style="background-color: white;">
-    <div class="qtds-container">
-        <!-- Section Header -->
-        <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">NGUYÊN NHÂN GỐC RỄ</span>
-            <h2>Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên</h2>
-            <p>Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu</p>
-        </div>
-
-        <!-- Visual Flow -->
-        <div class="qtds-standardization__data-flow">
-            <div class="qtds-scroll-animate qtds-standardization__data-flow-item">
-                <div class="qtds-standardization__data-flow-icon" style="background: var(--gradient-primary);">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-                <h4>Dữ liệu thô</h4>
-                <p>Giấy tờ, chứng từ không đồng nhất</p>
-            </div>
-            <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
-                <i class="fas fa-arrow-right"></i>
-            </div>
-            <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.1s;">
-                <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
-                    <i class="fas fa-hand-paper"></i>
-                </div>
-                <h4>Nhập liệu thủ công</h4>
-                <p>Sai sót, thiếu sót, không nhất quán</p>
-            </div>
-            <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
-                <i class="fas fa-arrow-right"></i>
-            </div>
-            <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.2s;">
-                <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, var(--danger) 0%, #D33B2C 100%);">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <h4>Rủi ro hệ thống</h4>
-                <p>Vi phạm, gian lận, kém hiệu quả</p>
-            </div>
-        </div>
-
-        <!-- 3 Columns Grid -->
-        <div class="qtds-standardization__grid">
-            <!-- Column 1: Thực trạng -->
-            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--problem">
-                <div class="qtds-card__header qtds-standardization__card-header">
-                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: var(--gradient-primary);">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="qtds-card__title">Thực trạng Dữ liệu</h3>
-                </div>
-                <div class="qtds-card__body">
-                    <ul class="qtds-standardization__list">
-                        <li class="qtds-standardization__list-item">
-                            <i class="fas fa-times-circle text-danger"></i>
-                            <span>Các phần mềm đơn lẻ, không tích hợp</span>
-                        </li>
-                        <li class="qtds-standardization__list-item">
-                            <i class="fas fa-times-circle text-danger"></i>
-                            <span>Dữ liệu tồn tại theo "ốc đảo" riêng biệt</span>
-                        </li>
-                        <li class="qtds-standardization__list-item">
-                            <i class="fas fa-times-circle text-danger"></i>
-                            <span>Phụ thuộc hoàn toàn vào nhập liệu thủ công</span>
-                        </li>
-                        <li class="qtds-standardization__list-item">
-                            <i class="fas fa-times-circle text-danger"></i>
-                            <span>Không có quy chuẩn định dạng thống nhất</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Column 2: Hậu quả -->
-            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--impact" style="animation-delay: 0.2s;">
-                <div class="qtds-card__header qtds-standardization__card-header">
-                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="qtds-card__title">Hậu quả Trực tiếp</h3>
-                </div>
-                <div class="qtds-card__body">
-                    <div class="qtds-standardization__impact-metrics">
-                        <div class="qtds-standardization__impact-metric">
-                            <div class="qtds-standardization__impact-metric-icon text-danger">
-                                <i class="fas fa-user-secret"></i>
-                            </div>
-                            <div class="qtds-standardization__impact-metric-content">
-                                <strong>Gian lận dễ dàng</strong>
-                                <p>Lập khống hồ sơ, làm giả chứng từ khó phát hiện</p>
-                            </div>
-                        </div>
-                        <div class="qtds-standardization__impact-metric">
-                            <div class="qtds-standardization__impact-metric-icon text-warning">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="qtds-standardization__impact-metric-content">
-                                <strong>Vận hành chậm trễ</strong>
-                                <p>Thời gian xử lý kéo dài do kiểm tra thủ công</p>
-                            </div>
-                        </div>
-                        <div class="qtds-standardization__impact-metric">
-                            <div class="qtds-standardization__impact-metric-icon text-purple">
-                                <i class="fas fa-exclamation"></i>
-                            </div>
-                            <div class="qtds-standardization__impact-metric-content">
-                                <strong>Sai sót chồng chất</strong>
-                                <p>Lỗi nhập liệu tích lũy qua từng hồ sơ</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Column 3: Rào cản -->
-            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--barrier" style="animation-delay: 0.4s;">
-                <div class="qtds-card__header qtds-standardization__card-header">
-                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="qtds-card__title">Rào cản Văn hóa</h3>
-                </div>
-                <div class="qtds-card__body">
-                    <div class="qtds-standardization__barrier-insight">
-                        <i class="fas fa-quote-left"></i>
-                        <p>
-                            Quy trình thủ công tạo ra sự <strong>mờ ảo trong quản lý</strong>,
-                            khiến ban lãnh đạo khó có cái nhìn rõ ràng về hoạt động thực tế.
-                        </p>
-                        <p>
-                            Sự mờ ảo này vô tình <strong>bảo vệ những cá nhân</strong> làm việc
-                            kém hiệu quả hoặc có hành vi không minh bạch.
-                        </p>
-                    </div>
-                    <div class="qtds-standardization__barrier-flow">
-                        <span>Thủ công</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Mờ ảo</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Khó kiểm soát</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Key Insight Box -->
-        <div class="qtds-scroll-animate qtds-standardization__key-insight-box">
-            <div class="qtds-standardization__key-insight-box-icon">
-                <i class="fas fa-lightbulb"></i>
-            </div>
-            <div class="qtds-standardization__key-insight-box-content">
-                <h4>Nhận định then chốt:</h4>
-                <p>
-                    Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>,
-                    thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý -
-                    đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.
-                </p>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-16);">
-            <a href="#giai-phap" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-shield-alt"></i>
-                Khám phá Giải pháp QTDS
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-        <!-- Solutions Section -->
-        <!-- 
-  Section: QTDS Solutions (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
--->
-<section id="giai-phap" class="qtds-section qtds-solutions">
-    <div class="qtds-container">
-        <!-- Section Header -->
-        <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">GIẢI PHÁP CHIẾN LƯỢC</span>
-            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
-            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
-        </div>
-
-        <!-- Hero Visual -->
-        <div class="qtds-solutions__visual">
-            <div class="qtds-solutions__device">
-                <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/VzvLd5z2WiANVb7tmfy9a.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
-            </div>
-            <div class="qtds-solutions__features">
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Ứng dụng di động</span>
-                </div>
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-brain"></i>
-                    <span>Tích hợp AI/OCR</span>
-                </div>
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-clock"></i>
-                    <span>Triển khai nhanh</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3 Pillars -->
-        <div class="qtds-solutions__pillars">
-            <!-- Pillar 1: Triết lý -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar">
-                <div class="qtds-solutions__pillar-number">01</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
-                <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
-                <div class="qtds-solutions__pillar-content">
-                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
-                    <div class="qtds-solutions__benefit-tag">
-                        <i class="fas fa-check-circle"></i>
-                        Vượt qua rào cản văn hóa
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pillar 2: Công nghệ -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
-                <div class="qtds-solutions__pillar-number">02</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
-                <p class="qtds-solutions__pillar-subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
-                <div class="qtds-solutions__tech-features">
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>OCR &amp; AI</strong>
-                            <p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p>
-                        </div>
-                    </div>
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>Kết nối CIC</strong>
-                            <p>Tự động điền thông tin tín dụng chính xác</p>
-                        </div>
-                    </div>
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>Mẫu chuẩn</strong>
-                            <p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pillar 3: Định vị -->
-            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
-                <div class="qtds-solutions__pillar-number">03</div>
-                <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
-                <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
-                <div class="qtds-solutions__comparison">
-                    <div class="qtds-solutions__comparison-item">
-                        <span class="qtds-solutions__comparison-label">Core Banking</span>
-                        <span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span>
-                        <span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span>
-                    </div>
-                    <div class="qtds-solutions__comparison-divider">VS</div>
-                    <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight">
-                        <span class="qtds-solutions__comparison-label">QTDS</span>
-                        <span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span>
-                        <span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Process Flow -->
-        <div class="qtds-scroll-animate qtds-solutions__process-section">
-            <h3 class="qtds-solutions__process-title">Quy trình Chuẩn hóa Tự động</h3>
-            <div class="qtds-solutions__process-flow">
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-upload"></i>
-                    </div>
-                    <h4>Thu thập</h4>
-                    <p>Chụp ảnh giấy tờ</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h4>Xử lý AI</h4>
-                    <p>Trích xuất tự động</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-check-double"></i>
-                    </div>
-                    <h4>Chuẩn hóa</h4>
-                    <p>Định dạng chuẩn</p>
-                </div>
-                <div class="qtds-solutions__process-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="qtds-solutions__process-step">
-                    <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-signature"></i>
-                    </div>
-                    <h4>Hoàn thiện</h4>
-                    <p>Hồ sơ chuẩn mực</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Key Benefits Box -->
-        <div class="qtds-scroll-animate qtds-solutions__benefits-highlight">
-            <div class="qtds-solutions__benefits-highlight-icon">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="qtds-solutions__benefits-highlight-content">
-                <h4>Lợi ích Cốt lõi:</h4>
-                <div class="qtds-solutions__benefits-grid">
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Ngăn chặn gian lận, lập khống hồ sơ</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Tăng tốc xử lý hồ sơ lên 70%</span>
-                    </div>
-                    <div class="qtds-solutions__benefits-item">
-                        <i class="fas fa-check"></i>
-                        <span>Tuân thủ 100% quy định NHNN</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10);">
-            <a href="#loi-ich" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-chart-line"></i>
-                Xem Lợi ích Chi tiết
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-        <!-- Benefits Section -->
+        
+        <!-- SECTION: Roadmap -->
         <!-- 
   Section: QTDS Benefits (Standardized HTML)
   Version: 1.1 (Full version, corrected)
@@ -3618,7 +3241,423 @@ p:last-child {
 </section>
 
 
-        <!-- FAQ Section -->
+        <!-- SECTION: Solution Introduction -->
+        <!-- 
+  Section: QTDS Solutions (Standardized HTML)
+  Version: 1.0
+  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+-->
+<section id="giai-phap" class="qtds-section qtds-solutions">
+    <div class="qtds-container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">GIẢI PHÁP CHIẾN LƯỢC</span>
+            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
+            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="qtds-solutions__visual">
+            <div class="qtds-solutions__device">
+                <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/VzvLd5z2WiANVb7tmfy9a.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+            </div>
+            <div class="qtds-solutions__features">
+                <div class="qtds-feature-badge">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Ứng dụng di động</span>
+                </div>
+                <div class="qtds-feature-badge">
+                    <i class="fas fa-brain"></i>
+                    <span>Tích hợp AI/OCR</span>
+                </div>
+                <div class="qtds-feature-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>Triển khai nhanh</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 Pillars -->
+        <div class="qtds-solutions__pillars">
+            <!-- Pillar 1: Triết lý -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar">
+                <div class="qtds-solutions__pillar-number">01</div>
+                <div class="qtds-solutions__pillar-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
+                <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
+                <div class="qtds-solutions__pillar-content">
+                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
+                    <div class="qtds-solutions__benefit-tag">
+                        <i class="fas fa-check-circle"></i>
+                        Vượt qua rào cản văn hóa
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Công nghệ -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
+                <div class="qtds-solutions__pillar-number">02</div>
+                <div class="qtds-solutions__pillar-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
+                <p class="qtds-solutions__pillar-subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
+                <div class="qtds-solutions__tech-features">
+                    <div class="qtds-solutions__tech-features-item">
+                        <div class="qtds-solutions__tech-features-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="qtds-solutions__tech-features-content">
+                            <strong>OCR &amp; AI</strong>
+                            <p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p>
+                        </div>
+                    </div>
+                    <div class="qtds-solutions__tech-features-item">
+                        <div class="qtds-solutions__tech-features-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="qtds-solutions__tech-features-content">
+                            <strong>Kết nối CIC</strong>
+                            <p>Tự động điền thông tin tín dụng chính xác</p>
+                        </div>
+                    </div>
+                    <div class="qtds-solutions__tech-features-item">
+                        <div class="qtds-solutions__tech-features-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="qtds-solutions__tech-features-content">
+                            <strong>Mẫu chuẩn</strong>
+                            <p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Định vị -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
+                <div class="qtds-solutions__pillar-number">03</div>
+                <div class="qtds-solutions__pillar-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
+                <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
+                <div class="qtds-solutions__comparison">
+                    <div class="qtds-solutions__comparison-item">
+                        <span class="qtds-solutions__comparison-label">Core Banking</span>
+                        <span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span>
+                        <span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span>
+                    </div>
+                    <div class="qtds-solutions__comparison-divider">VS</div>
+                    <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight">
+                        <span class="qtds-solutions__comparison-label">QTDS</span>
+                        <span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span>
+                        <span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="qtds-scroll-animate qtds-solutions__process-section">
+            <h3 class="qtds-solutions__process-title">Quy trình Chuẩn hóa Tự động</h3>
+            <div class="qtds-solutions__process-flow">
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Thu thập</h4>
+                    <p>Chụp ảnh giấy tờ</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>Xử lý AI</h4>
+                    <p>Trích xuất tự động</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h4>Chuẩn hóa</h4>
+                    <p>Định dạng chuẩn</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h4>Hoàn thiện</h4>
+                    <p>Hồ sơ chuẩn mực</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Benefits Box -->
+        <div class="qtds-scroll-animate qtds-solutions__benefits-highlight">
+            <div class="qtds-solutions__benefits-highlight-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="qtds-solutions__benefits-highlight-content">
+                <h4>Lợi ích Cốt lõi:</h4>
+                <div class="qtds-solutions__benefits-grid">
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Ngăn chặn gian lận, lập khống hồ sơ</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Tăng tốc xử lý hồ sơ lên 70%</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Tuân thủ 100% quy định NHNN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10);">
+            <a href="#loi-ich" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-chart-line"></i>
+                Xem Lợi ích Chi tiết
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+        <!-- SECTION: Benefits / Checklist -->
+        <!-- 
+  Section: QTDS Standardization (Standardized HTML)
+  Version: 1.0
+  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+-->
+<section id="chuan-hoa-du-lieu" class="qtds-section" style="background-color: white;">
+    <div class="qtds-container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">NGUYÊN NHÂN GỐC RỄ</span>
+            <h2>Chuẩn hóa Dữ liệu Đầu vào: Nền tảng Bị Lãng quên</h2>
+            <p>Phần lớn rủi ro vận hành, gian lận tín dụng và vi phạm quy định đều xuất phát từ việc thiếu hệ thống chuẩn hóa dữ liệu ngay từ khâu thu thập ban đầu</p>
+        </div>
+
+        <!-- Visual Flow -->
+        <div class="qtds-standardization__data-flow">
+            <div class="qtds-scroll-animate qtds-standardization__data-flow-item">
+                <div class="qtds-standardization__data-flow-icon" style="background: var(--gradient-primary);">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h4>Dữ liệu thô</h4>
+                <p>Giấy tờ, chứng từ không đồng nhất</p>
+            </div>
+            <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.1s;">
+                <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <h4>Nhập liệu thủ công</h4>
+                <p>Sai sót, thiếu sót, không nhất quán</p>
+            </div>
+            <div class="qtds-scroll-animate qtds-standardization__data-flow-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="qtds-scroll-animate qtds-standardization__data-flow-item" style="animation-delay: 0.2s;">
+                <div class="qtds-standardization__data-flow-icon" style="background: linear-gradient(135deg, var(--danger) 0%, #D33B2C 100%);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>Rủi ro hệ thống</h4>
+                <p>Vi phạm, gian lận, kém hiệu quả</p>
+            </div>
+        </div>
+
+        <!-- 3 Columns Grid -->
+        <div class="qtds-standardization__grid">
+            <!-- Column 1: Thực trạng -->
+            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--problem">
+                <div class="qtds-card__header qtds-standardization__card-header">
+                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: var(--gradient-primary);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="qtds-card__title">Thực trạng Dữ liệu</h3>
+                </div>
+                <div class="qtds-card__body">
+                    <ul class="qtds-standardization__list">
+                        <li class="qtds-standardization__list-item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Các phần mềm đơn lẻ, không tích hợp</span>
+                        </li>
+                        <li class="qtds-standardization__list-item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Dữ liệu tồn tại theo "ốc đảo" riêng biệt</span>
+                        </li>
+                        <li class="qtds-standardization__list-item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Phụ thuộc hoàn toàn vào nhập liệu thủ công</span>
+                        </li>
+                        <li class="qtds-standardization__list-item">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            <span>Không có quy chuẩn định dạng thống nhất</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 2: Hậu quả -->
+            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--impact" style="animation-delay: 0.2s;">
+                <div class="qtds-card__header qtds-standardization__card-header">
+                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="qtds-card__title">Hậu quả Trực tiếp</h3>
+                </div>
+                <div class="qtds-card__body">
+                    <div class="qtds-standardization__impact-metrics">
+                        <div class="qtds-standardization__impact-metric">
+                            <div class="qtds-standardization__impact-metric-icon text-danger">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="qtds-standardization__impact-metric-content">
+                                <strong>Gian lận dễ dàng</strong>
+                                <p>Lập khống hồ sơ, làm giả chứng từ khó phát hiện</p>
+                            </div>
+                        </div>
+                        <div class="qtds-standardization__impact-metric">
+                            <div class="qtds-standardization__impact-metric-icon text-warning">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="qtds-standardization__impact-metric-content">
+                                <strong>Vận hành chậm trễ</strong>
+                                <p>Thời gian xử lý kéo dài do kiểm tra thủ công</p>
+                            </div>
+                        </div>
+                        <div class="qtds-standardization__impact-metric">
+                            <div class="qtds-standardization__impact-metric-icon text-purple">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="qtds-standardization__impact-metric-content">
+                                <strong>Sai sót chồng chất</strong>
+                                <p>Lỗi nhập liệu tích lũy qua từng hồ sơ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Rào cản -->
+            <div class="qtds-scroll-animate qtds-card qtds-standardization__card qtds-standardization__card--barrier" style="animation-delay: 0.4s;">
+                <div class="qtds-card__header qtds-standardization__card-header">
+                    <div class="qtds-card__icon qtds-standardization__card-icon" style="background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="qtds-card__title">Rào cản Văn hóa</h3>
+                </div>
+                <div class="qtds-card__body">
+                    <div class="qtds-standardization__barrier-insight">
+                        <i class="fas fa-quote-left"></i>
+                        <p>
+                            Quy trình thủ công tạo ra sự <strong>mờ ảo trong quản lý</strong>,
+                            khiến ban lãnh đạo khó có cái nhìn rõ ràng về hoạt động thực tế.
+                        </p>
+                        <p>
+                            Sự mờ ảo này vô tình <strong>bảo vệ những cá nhân</strong> làm việc
+                            kém hiệu quả hoặc có hành vi không minh bạch.
+                        </p>
+                    </div>
+                    <div class="qtds-standardization__barrier-flow">
+                        <span>Thủ công</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Mờ ảo</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Khó kiểm soát</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insight Box -->
+        <div class="qtds-scroll-animate qtds-standardization__key-insight-box">
+            <div class="qtds-standardization__key-insight-box-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="qtds-standardization__key-insight-box-content">
+                <h4>Nhận định then chốt:</h4>
+                <p>
+                    Một hệ thống chuẩn hóa và tự động hóa dữ liệu sẽ tạo ra <strong>sự minh bạch tuyệt đối</strong>,
+                    thực thi quy trình thống nhất và <strong>loại bỏ các "vùng xám"</strong> trong quản lý -
+                    đây chính là lý do tại sao việc chuyển đổi số thường gặp phải sự phản kháng ngầm.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-16);">
+            <a href="#giai-phap" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-shield-alt"></i>
+                Khám phá Giải pháp QTDS
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+        
+        <!-- SECTION: Podcast -->
+        <!-- 
+  Section: QTDS Podcast (Standardized HTML)
+  Version: 1.0
+  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+-->
+<section id="video-gioi-thieu" class="qtds-section">
+    <div class="qtds-container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">LẮNG NGHE PODCAST</span>
+            <h2>Podcast Giới Thiệu Về QTDS</h2>
+            <p>Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</p>
+        </div>
+
+        <!-- Podcast Card -->
+        <div class="qtds-scroll-animate qtds-podcast-card">
+            <div class="qtds-podcast-card__icon-wrapper">
+                <div class="qtds-podcast-card__icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+            </div>
+            <div class="qtds-podcast-card__content">
+                <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
+                <p class="qtds-podcast-card__description">
+                    Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.
+                </p>
+                <div class="qtds-podcast-card__player">
+                    <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+        <!-- SECTION: FAQ -->
         <!-- 
   Section: QTDS FAQ (Standardized HTML)
   Version: 1.0
@@ -3700,44 +3739,33 @@ p:last-child {
 </section>
 
 
-        <!-- Podcast Section -->
+        <!-- SECTION: Library -->
         <!-- 
-  Section: QTDS Podcast (Standardized HTML)
+  Section: QTDS Library (Standardized HTML)
   Version: 1.0
   Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
 -->
-<section id="video-gioi-thieu" class="qtds-section">
+<section id="articles" class="qtds-section">
     <div class="qtds-container">
-        <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">LẮNG NGHE PODCAST</span>
-            <h2>Podcast Giới Thiệu Về QTDS</h2>
-            <p>Xem cách QTDS giải quyết các thách thức vận hành và quản trị của QTDND, mang lại hiệu quả vượt trội.</p>
+            <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
+            <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
+            <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
         </div>
 
-        <!-- Podcast Card -->
-        <div class="qtds-scroll-animate qtds-podcast-card">
-            <div class="qtds-podcast-card__icon-wrapper">
-                <div class="qtds-podcast-card__icon">
-                    <i class="fas fa-play-circle"></i>
-                </div>
-            </div>
-            <div class="qtds-podcast-card__content">
-                <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
-                <p class="qtds-podcast-card__description">
-                    Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.
-                </p>
-                <div class="qtds-podcast-card__player">
-                    <iframe src="https://drive.google.com/file/d/1Bbulpj3pSRNYxceVpm2TL2oxLwhmdxSe/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="">
-                    </iframe>
-                </div>
-            </div>
+        <div id="library-grid" class="qtds-library__grid"></div>
+        <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
+
+        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
+            <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
+            </a>
         </div>
     </div>
 </section>
 
-
-        <!-- CTA Section -->
+        
+        <!-- SECTION: Final CTA -->
         <!-- 
   Section: QTDS CTA (Standardized HTML)
   Version: 1.0
@@ -3840,35 +3868,10 @@ p:last-child {
     </div>
 </section>
 
-
-        <!-- Library Section -->
-        <!-- 
-  Section: QTDS Library (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
--->
-<section id="articles" class="qtds-section">
-    <div class="qtds-container">
-        <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
-            <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
-            <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
-        </div>
-
-        <div id="library-grid" class="qtds-library__grid"></div>
-        <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
-
-        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
-            <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
-            </a>
-        </div>
-    </div>
-</section>
-
+        
     </main>
 
-    <!-- Footer -->
+    <!-- SECTION: Footer -->
     <!-- 
   Section: QTDS Footer (Standardized HTML)
   Version: 1.0
@@ -3888,7 +3891,7 @@ p:last-child {
 </footer>
 
 
-    <!-- Back To Top -->
+    <!-- ATOM: Back To Top -->
     <!-- 
   Component: QTDS Back To Top (Standardized HTML)
   Version: 1.0
@@ -3898,7 +3901,7 @@ p:last-child {
     <i class="fas fa-arrow-up"></i>
 </a>
 
-
+    
     <!-- Vị trí chờ để Robot nhúng toàn bộ JS vào đây -->
     <script>
 /**
@@ -4043,9 +4046,8 @@ function initLibrary(observer) {
             });
         }
     }
-    
 
-/**
+    /**
  * File: ct9-init.js (Master Initialization Script for CT9)
  * Version: 5.1 (Standardized & Co-located)
  * Description: Kích hoạt các module JavaScript cho trang CT9.
@@ -4071,6 +4073,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLibrary(observer);
     initBackToTop();
 });
+    
 </script>
 </body>
 </html>
