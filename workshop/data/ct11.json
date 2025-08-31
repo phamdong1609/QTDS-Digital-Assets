@@ -1,0 +1,203 @@
+<!-- Thử nghiệm JSON-LD cho cấu trúc trang web -->
+Nguồn: KLK-614_20250830_2.5F_GEM-Daisy-Code_CT16 - Tinh chỉnh lại code
+https://gemini.google.com/gem/8b9ce71a7d1c/9bae5e412820844a --!>
+
+{
+  "structural_blueprint": {
+    "content_hub_id": "CT16",
+    "page_title": "Lộ Trình Chuyển Đổi Số QTDND Theo Đề Án NHNN",
+    "sections": [
+      {
+        "section_type": "Navbar",
+        "proposed_title": "Thanh điều hướng chính",
+        "component_path": "library/03_sections/sections-navbar/ct9--section-navbar/section-navbar.html",
+        "locals": {
+          "navbar_logo_src": "https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png",
+          "nav_links": [
+            { "href": "#giai-ma", "text": "Giải Mã" },
+            { "href": "#lo-trinh", "text": "Lộ Trình" },
+            { "href": "#giai-phap", "text": "Giải Pháp" },
+            { "href": "#hanh-dong", "text": "Hành Động" },
+            { "href": "#faq", "text": "FAQ" }
+          ]
+        }
+      },
+      {
+        "section_type": "Hero",
+        "proposed_title": "Mệnh Lệnh Chuyển Đổi Số Đã Vang Lên",
+        "component_path": "library/03_sections/sections-hero/ct9--section-hero/section-hero.html",
+        "locals": {
+          "hero_badge": {
+            "type": "hero-badge",
+            "icon": "fas fa-bullhorn",
+            "text": "TUÂN THỦ QUY ĐỊNH"
+          },
+          "hero_title_gradient": "\"Mệnh Lệnh\"",
+          "hero_title_main": "Chuyển Đổi Số Đã Vang Lên",
+          "hero_subtitle": "Lộ Trình Hành Động Cho 1.176 QTDND Đến Năm 2030",
+          "hero_description": "Bài viết này là \"cẩm nang sinh tồn\", giải mã các yêu cầu phức tạp từ Đề án của NHNN và diễn giải thành một lộ trình hành động rõ ràng, khả thi và thông minh cho các nhà lãnh đạo QTDND.",
+          "hero_actions": [
+            { "link": "#hanh-dong", "type": "primary", "icon": "fas fa-tasks", "text": "Xem Checklist Hành Động" },
+            { "link": "#faq", "type": "secondary", "icon": "fas fa-question-circle", "text": "Giải Đáp Thắc Mắc" }
+          ]
+        }
+      },
+      {
+        "section_type": "Problem_Statement",
+        "proposed_title": "Giải Mã \"Mệnh Lệnh\" Chuyển Đổi Số",
+        "component_path": "library/03_sections/sections-challenges/ct9--section-challenges/section-challenges.html",
+        "locals": {
+          "tagline": "YÊU CẦU TỪ NGÂN HÀNG NHÀ NƯỚC",
+          "title": "Giải Mã \"Mệnh Lệnh\" Chuyển Đổi Số",
+          "description": "Đây không phải là yêu cầu hình thức, mà là chiến lược tái cấu trúc toàn diện nhằm giải quyết những yếu kém cố hữu: quản trị yếu, hạ tầng CNTT lạc hậu, và quy trình thủ công dễ sai sót.",
+          "stats": [
+            { "value": "59.8%", "label": "QTDND vi phạm quy định cho vay", "colorClass": "text-danger", "delay": "0s" },
+            { "value": "42%", "label": "Có sai phạm về quản trị điều hành", "colorClass": "text-warning", "delay": "0.1s" },
+            { "value": "38.8%", "label": "Thiếu sót trong kiểm soát nội bộ", "colorClass": "text-purple", "delay": "0.2s" },
+            { "value": "1,176", "label": "QTDND trên toàn quốc", "colorClass": "text-primary", "delay": "0.3s" }
+          ]
+        }
+      },
+      {
+        "section_type": "How_It_Works",
+        "proposed_title": "Các Cột Mốc Sống Còn Đến Năm 2030",
+        "component_path": "library/03_sections/sections-standardization/ct9--section-standardization/section-standardization.html",
+        "locals": {
+          "tagline": "LỘ TRÌNH CHIẾN LƯỢC",
+          "title": "Các Cột Mốc Sống Còn Đến Năm 2030",
+          "description": "Đề án của NHNN đã vạch ra một lộ trình rõ ràng, giúp ban lãnh đạo QTDND xây dựng kế hoạch hành động phù hợp, tránh rơi vào tình trạng \"nước đến chân mới nhảy\".",
+          "flowItems": [
+            { "icon": "fas fa-file-alt", "title": "Dữ liệu thô", "description": "Giấy tờ, chứng từ không đồng nhất", "color": "var(--gradient-primary)" },
+            { "icon": "fas fa-hand-paper", "title": "Nhập liệu thủ công", "description": "Sai sót, thiếu sót, không nhất quán", "color": "linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%)" },
+            { "icon": "fas fa-exclamation-triangle", "title": "Rủi ro hệ thống", "description": "Vi phạm, gian lận, kém hiệu quả", "color": "linear-gradient(135deg, var(--danger) 0%, #D33B2C 100%)" }
+          ]
+        }
+      },
+      {
+        "section_type": "Solution_Introduction",
+        "proposed_title": "Tại Sao Phải Bắt Đầu Từ Chuẩn Hóa Quy Trình Tín Dụng?",
+        "component_path": "library/03_sections/sections-solutions/ct9--section-solutions/section-solutions.html",
+        "locals": {
+          "tagline": "ĐIỂM KHỞI ĐẦU CHIẾN LƯỢC",
+          "title": "Tại Sao Phải Bắt Đầu Từ Chuẩn Hóa Quy Trình Tín Dụng?",
+          "description": "Việc lựa chọn bắt đầu từ quy trình tín dụng là một quyết định chiến lược, cho phép QTDND giải quyết vấn đề lớn nhất, tạo ra hiệu quả nhanh nhất và xây dựng nền tảng vững chắc nhất cho hành trình chuyển đổi số.",
+          "pillars": [
+            { "icon": "fas fa-heartbeat", "title": "Nơi \"Đau Đớn\" Nhất", "subtitle": "Với 59,8% vi phạm, quy trình tín dụng là \"tâm bão\" của rủi ro. Can thiệp vào đây là chữa tận gốc căn bệnh." },
+            { "icon": "fas fa-trophy", "title": "Tạo \"Thắng Lợi Nhanh\"", "subtitle": "Kết quả hữu hình (giảm thời gian, sai sót) xây dựng niềm tin và động lực cho toàn đội ngũ, vượt qua \"sức ì văn hóa\"." },
+            { "icon": "fas fa-gem", "title": "Xây Dựng \"Mỏ Vàng\" Dữ Liệu", "subtitle": "Tạo ra nguồn dữ liệu sạch, có cấu trúc và đáng tin cậy - \"nhiên liệu\" không thể thiếu cho mọi hoạt động phân tích trong tương lai." }
+          ]
+        }
+      },
+      {
+        "section_type": "Benefits_Showcase",
+        "proposed_title": "Cẩm Nang Tuân Thủ Dành Cho Lãnh Đạo QTDND",
+        "component_path": "library/03_sections/sections-benefits/ct9--section-benefits/section-benefits.html",
+        "locals": {
+          "tagline": "CHECKLIST HÀNH ĐỘNG",
+          "title": "Cẩm Nang Tuân Thủ Dành Cho Lãnh Đạo QTDND",
+          "description": "Để biến kế hoạch thành hành động, đây là một checklist cụ thể mà ban lãnh đạo QTDND có thể sử dụng để dẫn dắt tổ chức của mình đi đúng lộ trình.",
+          "stakeholderBenefits": [
+            {
+              "type": "staff", "icon": "fas fa-tasks", "title": "Hành Động Ngay", "subtitle": "3-6 tháng tới",
+              "highlights": [
+                { "icon": "fas fa-users", "title": "Thành lập Ban chỉ đạo", "text": "Thành lập Ban chỉ đạo Chuyển đổi số với sự tham gia của lãnh đạo cấp cao" },
+                { "icon": "fas fa-search", "title": "Đánh giá thực trạng", "text": "Rà soát và đánh giá toàn diện quy trình tín dụng hiện tại" },
+                { "icon": "fas fa-laptop-code", "title": "Lựa chọn giải pháp", "text": "Tìm hiểu và lựa chọn giải pháp công nghệ \"mũi nhọn\" phù hợp" },
+                { "icon": "fas fa-bullhorn", "title": "Truyền thông nội bộ", "text": "Tổ chức họp toàn thể để truyền thông về Đề án của NHNN" }
+              ]
+            },
+            {
+              "type": "leader", "icon": "fas fa-bullseye", "title": "Mục Tiêu Trung Hạn", "subtitle": "1-2 năm tới",
+              "highlights": [
+                { "icon": "fas fa-rocket", "title": "Triển khai giải pháp", "text": "Triển khai thành công giải pháp số hóa quy trình tín dụng" },
+                { "icon": "fas fa-graduation-cap", "title": "Đào tạo nhân sự", "text": "Đào tạo và nâng cao kỹ năng số cho toàn bộ cán bộ" },
+                { "icon": "fas fa-chart-line", "title": "Báo cáo thông minh", "text": "Xây dựng hệ thống báo cáo quản trị dựa trên dữ liệu" },
+                { "icon": "fas fa-road", "title": "Lập kế hoạch giai đoạn 2", "text": "Chuẩn bị cho số hóa kế toán, quản lý thành viên và các quy trình khác" }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "section_type": "Expert_Quote_Podcast",
+        "proposed_title": "Podcast Cùng Chuyên Gia QTDS",
+        "component_path": "library/03_sections/sections-podcast/ct9--section-podcast/section-podcast.html",
+        "locals": {
+          "tagline": "LẮNG NGHE CHIA SẺ",
+          "title": "Podcast Cùng QTDS",
+          "description": "Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.",
+          "podcast_title": "QTDS: Nâng Tầm Quản Lý Tín Dụng",
+          "podcast_description": "Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quy trình thẩm định tín dụng.",
+          "podcast_url": "https://drive.google.com/file/d/1sdlM8ZSiYCGbwnl33bLM1D0fU4hTjKPK/preview"
+        }
+      },
+      {
+        "section_type": "FAQ",
+        "proposed_title": "Giải Đáp Thắc Mắc",
+        "component_path": "library/03_sections/sections-faq/ct9--section-faq/section-faq.html",
+        "locals": {
+          "title": "Giải Đáp Thắc Mắc",
+          "faqs": [
+            { "question": "Tại sao phải ưu tiên số hóa quy trình tín dụng trước?", "answer": "Theo báo cáo NHNN, 59,8% vi phạm tập trung ở hoạt động cho vay. Số hóa quy trình tín dụng giúp giảm rủi ro ngay lập tức, tăng năng suất xử lý hồ sơ và tạo nguồn dữ liệu sạch cho các quyết định quản trị." },
+            { "question": "Chi phí đầu tư ban đầu là bao nhiêu?", "answer": "Với mô hình SaaS (thuê bao theo tháng), QTDND có thể bắt đầu với chi phí thấp, không cần đầu tư lớn ban đầu. Chi phí cụ thể phụ thuộc vào quy mô và nhu cầu từng Quỹ. Liên hệ để được tư vấn phương án phù hợp." },
+            { "question": "Thời gian triển khai mất bao lâu?", "answer": "Triển khai cơ bản từ 3-6 tháng, bao gồm: đào tạo nhân viên, chuyển đổi dữ liệu và vận hành thử nghiệm. Sau đó tiếp tục tối ưu và mở rộng dần các tính năng khác." },
+            { "question": "Nhân viên không giỏi công nghệ có sử dụng được không?", "answer": "Hoàn toàn sử dụng được. Giao diện được thiết kế đơn giản, trực quan như các app thông dụng. Có đào tạo trực tiếp và hỗ trợ liên tục trong quá trình sử dụng." },
+            { "question": "Làm sao đảm bảo tuân thủ yêu cầu của NHNN?", "answer": "Giải pháp được xây dựng dựa trên Đề án của NHNN, đảm bảo chuẩn hóa quy trình, bảo mật dữ liệu và sẵn sàng tích hợp với hệ sinh thái chung của NHHTX trong tương lai." },
+            { "question": "Dữ liệu hiện tại của Quỹ có được bảo toàn không?", "answer": "100% dữ liệu được chuyển đổi an toàn và bảo toàn nguyên vẹn. Có quy trình sao lưu và kiểm tra chéo để đảm bảo không mất mát thông tin." }
+          ]
+        }
+      },
+      {
+        "section_type": "Final_CTA",
+        "proposed_title": "Tuân Thủ Không Phải Là Gánh Nặng, Mà Là Cơ Hội Tái Sinh",
+        "component_path": "library/03_sections/sections-cta/ct9--section-cta/section-cta.html",
+        "locals": {
+          "tagline": "HÀNH ĐỘNG NGAY",
+          "title": "Tuân Thủ Không Phải Là Gánh Nặng, Mà Là Cơ Hội Tái Sinh",
+          "description": "Đừng để sự hoang mang làm trì hoãn hành động của bạn. Hãy biến \"mệnh lệnh\" của NHNN thành kế hoạch chi tiết ngay hôm nay. Liên hệ với các chuyên gia của QTDS để nhận một buổi tư vấn miễn phí.",
+          "cta_buttons": [
+            { "link": "https://qtds.vn", "type": "primary", "icon": "fas fa-paper-plane", "text": "Yêu Cầu Tư Vấn Lộ Trình" },
+            { "link": "https://thuvien.qtds.vn", "type": "secondary", "icon": "fas fa-book-open", "text": "Khám Phá Giải Pháp QTDS" }
+          ]
+        }
+      },
+      {
+        "section_type": "Resource_Library",
+        "proposed_title": "Thư Viện Tri Thức",
+        "component_path": "library/03_sections/sections-library/ct9--section-library/section-library.html",
+        "locals": {
+          "library_tagline": "THƯ VIỆN TRI THỨC",
+          "library_title_main": "Khám Phá",
+          "library_title_gradient": "Kho Tàng Kiến Thức QTDS",
+          "library_description": "Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.",
+          "library_cta": {
+            "href": "https://thuvien.qtds.vn",
+            "icon": "fas fa-book-open",
+            "text": "Xem Toàn Bộ Thư Viện"
+          }
+        }
+      },
+      {
+        "section_type": "Footer",
+        "proposed_title": "Chân trang",
+        "component_path": "library/03_sections/sections-footer/ct9--section-footer/section-footer.html",
+        "locals": {
+          "footer_logo_src": "https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png",
+          "footer_tagline": "Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style=\"color: white;\">trợ lý AI QTDS</strong>.",
+          "footer_socials": [
+            { "href": "https://giaiphap.qtds.vn", "icon": "fas fa-home" },
+            { "href": "https://thuvien.qtds.vn", "icon": "fas fa-archive" },
+            { "href": "https://zalo.me/g/flgzlp294", "icon": "fas fa-comments" }
+          ],
+          "footer_copyright": "© 2025 Quỹ Tín Dụng Số. All rights reserved."
+        }
+      },
+      {
+        "section_type": "Back_To_Top",
+        "proposed_title": "Nút lên đầu trang",
+        "component_path": "library/01_atoms/atom-back-to-top/atom-back-to-top.html",
+        "locals": {}
+      }
+    ]
+  }
+}
