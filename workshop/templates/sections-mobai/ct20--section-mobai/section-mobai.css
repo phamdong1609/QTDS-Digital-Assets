@@ -1,0 +1,181 @@
+/* SECTION: Introduction (Phiên bản Tinh Chỉnh cho CT20 - Nền trắng)
+        Mô tả: CSS này giữ lại cấu trúc của phiên bản gốc nhưng thay đổi 
+                màu nền và màu chữ để phù hợp với giao diện sáng của CT20.
+        */
+        .qtds-intro {
+            position: relative;
+            background: white; 
+            overflow: hidden;
+        }
+
+        .qtds-intro__container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .qtds-intro__header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .qtds-intro__title {
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+            position: relative;
+            display: inline-block;
+        }
+
+        .qtds-intro__title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+
+        .qtds-intro__content {
+            display: grid;
+            gap: var(--space-8);
+        }
+
+        .qtds-intro__paragraph {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .qtds-intro__paragraph:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qtds-intro__paragraph-icon {
+            position: absolute;
+            top: var(--space-6);
+            left: var(--space-6);
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xl);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .qtds-intro__paragraph-text {
+            padding-left: calc(48px + var(--space-6));
+            font-size: var(--text-lg);
+            line-height: 1.8;
+            color: var(--gray-700);
+            margin: 0;
+        }
+
+        .qtds-intro__paragraph-text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .qtds-intro__highlight {
+            background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-top: var(--space-8);
+            text-align: center;
+            border: 1px solid var(--primary);
+        }
+
+        .qtds-intro__highlight-icon {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+            color: var(--primary);
+        }
+
+        .qtds-intro__highlight-text {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .qtds-intro__visual-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--space-6);
+            align-items: center;
+            margin-top: var(--space-12);
+            padding: var(--space-8);
+            background: var(--gray-50);
+            border-radius: var(--radius-2xl);
+        }
+
+        .qtds-intro__device {
+            text-align: center;
+        }
+
+        .qtds-intro__device-icon {
+            font-size: 5rem;
+            margin-bottom: var(--space-4);
+            display: block;
+        }
+
+        .qtds-intro__device--old .qtds-intro__device-icon {
+            color: var(--danger);
+        }
+
+        .qtds-intro__device--new .qtds-intro__device-icon {
+            color: var(--primary);
+            animation: qtds-intro-pulse 2s ease-in-out infinite;
+        }
+
+        .qtds-intro__device-label {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+            display: block;
+            color: var(--gray-900);
+        }
+
+        .qtds-intro__device-status {
+            font-size: var(--text-base);
+            color: var(--gray-600);
+        }
+
+        .qtds-intro__device--new .qtds-intro__device-status {
+            color: var(--secondary);
+        }
+
+        @keyframes qtds-intro-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        @media (max-width: 768px) {
+            .qtds-intro__title { font-size: var(--text-3xl); }
+            .qtds-intro__paragraph { padding: var(--space-6); }
+            .qtds-intro__paragraph-icon { position: static; margin: 0 auto var(--space-4); }
+            .qtds-intro__paragraph-text { padding-left: 0; font-size: var(--text-base); text-align: center; }
+            .qtds-intro__visual-comparison { grid-template-columns: 1fr; gap: var(--space-8); }
+            .qtds-intro__versus { 
+                transform: rotate(0deg); 
+                margin: var(--space-4) 0;
+                /* THAY ĐỔI: Thêm 2 dòng này để căn giữa và đổi màu cho mobile */
+                text-align: center;
+                color: var(--accent);
+            }
+        }

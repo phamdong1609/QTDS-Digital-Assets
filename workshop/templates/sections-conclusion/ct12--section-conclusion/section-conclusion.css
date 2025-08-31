@@ -1,0 +1,227 @@
+/* ==========================================================================
+   SECTION: QTDS CONCLUSION
+   Version: 1.1 (Fixed - Reusing global styles)
+   Description: Styles for the conclusion section following BEM methodology
+   ========================================================================== */
+
+.qtds-conclusion {
+    position: relative;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+    overflow: hidden;
+}
+
+/* Reuse global section header styles */
+.qtds-conclusion__header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-conclusion__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.qtds-conclusion__title {
+    /* Inherit from global h2 styles - no need to redefine */
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-conclusion__title-highlight {
+    display: block;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: var(--space-2);
+}
+
+/* Content Container */
+.qtds-conclusion__content {
+    display: grid;
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto var(--space-12);
+}
+
+/* Paragraph Blocks - Similar to intro section */
+.qtds-conclusion__paragraph {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.qtds-conclusion__paragraph:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--primary);
+}
+
+.qtds-conclusion__paragraph--highlight {
+    background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+    border: 2px solid var(--primary);
+    border-left-width: 4px;
+}
+
+.qtds-conclusion__paragraph-icon {
+    position: absolute;
+    top: var(--space-6);
+    left: var(--space-6);
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-conclusion__paragraph-text {
+    padding-left: calc(48px + var(--space-8));
+    font-size: var(--text-base); /* Changed from text-lg to match global */
+    line-height: 1.6; /* Match global line-height */
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.qtds-conclusion__paragraph-text strong {
+    color: var(--primary); /* Changed to match other sections */
+    font-weight: 600;
+}
+
+/* Journey Path - Similar to process flow in solutions */
+.qtds-conclusion__journey {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    padding: var(--space-10);
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--space-10);
+}
+
+.qtds-conclusion__journey-step {
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+}
+
+.qtds-conclusion__journey-step--final .qtds-conclusion__journey-icon {
+    background: linear-gradient(135deg, #FBBC04 0%, #F9AB00 100%);
+}
+
+.qtds-conclusion__journey-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-3);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-2xl);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base);
+}
+
+.qtds-conclusion__journey-step:hover .qtds-conclusion__journey-icon {
+    transform: scale(1.05);
+}
+
+.qtds-conclusion__journey-label {
+    font-size: var(--text-sm); /* Changed to match global */
+    font-weight: 600;
+    color: var(--gray-600); /* Changed to match global */
+    text-align: center;
+}
+
+.qtds-conclusion__journey-arrow {
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+}
+
+/* CTA Box - Similar to highlight boxes in other sections */
+.qtds-conclusion__cta {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.qtds-conclusion__cta-text {
+    font-size: var(--text-lg); /* Changed from text-xl */
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.qtds-conclusion__cta-text i {
+    margin-right: var(--space-3);
+    font-size: var(--text-2xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE - Match global breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-conclusion__paragraph {
+        padding: var(--space-6);
+    }
+
+    .qtds-conclusion__paragraph-icon {
+        position: static;
+        margin: 0 auto var(--space-4);
+    }
+
+    .qtds-conclusion__paragraph-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .qtds-conclusion__journey {
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-6);
+    }
+
+    .qtds-conclusion__journey-arrow {
+        transform: rotate(90deg);
+    }
+
+    .qtds-conclusion__cta {
+        padding: var(--space-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-conclusion__journey-icon {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+    }
+}
