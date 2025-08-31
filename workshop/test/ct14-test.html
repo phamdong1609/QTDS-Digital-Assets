@@ -2,19 +2,19 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Chi Phí Ẩn QTDND: Mỗi Hồ Sơ Thủ Công Lấy Đi Bao Nhiêu Tiền?</title>
-    <meta name="description" content="Quy trình thủ công không chỉ chậm, nó đang âm thầm tạo ra các chi phí ẩn. Khám phá 3 loại chi phí lớn nhất và cách tự động hóa để tối ưu lợi nhuận cho QTDND.">
-    <meta name="keywords" content="chi phí ẩn QTDND, tối ưu chi phí vận hành, quy trình tín dụng thủ công, hiệu quả hoạt động QTDND, tăng lợi nhuận QTDND, tối ưu hóa quy trình">
+    <title>Sức Ì Văn Hóa: Kẻ Thù Thầm Lặng Cản Trở Tương Lai QTDND</title>
+    <meta name="description" content="Sức ì văn hóa đang kìm hãm tiềm năng của QTDND. Bài viết phân tích khách quan nguồn gốc của sự ngại thay đổi từ cả lãnh đạo và nhân viên, và đề xuất giải pháp.">
+    <meta name="keywords" content="sức ì văn hóa QTDND, quản lý sự thay đổi QTDND, văn hóa tổ chức, lãnh đạo QTDND, thuyết phục đội ngũ, vượt qua rào cản thay đổi, ngại thay đổi, tư duy bảo thủ">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-   <style>
+    
+<style>
 /**
  * File: _global-ct6.css (Standardized)
  * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
@@ -597,44 +597,80 @@ p:last-child {
 }
 
 
+/**
+ * Section: QTDS Challenges
+ * Version: 2.1 (Corrected to match original structure)
+ * Changes:
+ * - Applied 'qtds-' prefix and BEM convention to all classes literally from the source.
+ * - Restored original structure without abstracting base classes.
+ */
+
 /* ==========================================================================
-   QTDS CHALLENGES SECTION - Optimized & Standardized
-   Version: 2.0
+   BLOCK: QTDS CHALLENGES
    ========================================================================== */
 
-/* Base grid layout */
 .qtds-challenges__stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     max-width: 1000px;
-    margin: 0 auto var(--space-12);
+    margin: 0 auto 3rem;
 }
+
+
 
 .qtds-challenges__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    margin-bottom: var(--space-8);
+    gap: var(--space-8);
+    grid-template-columns: repeat(3, 1fr); /* Mặc định 3 cột */
 }
 
-/* Card base styles */
+/* Highlight Box */
+.qtds-challenges__highlight-box {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto var(--space-8);
+}
+
+.qtds-challenges__highlight-box * {
+    color: white;
+}
+
+.qtds-challenges__highlight-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.qtds-challenges__highlight-icon {
+    margin-right: var(--space-3);
+}
+
+.qtds-challenges__highlight-text {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+}
+
+/* Challenge Cards */
 .qtds-challenges__card {
+    /* This class is for specific layout within the challenges grid */
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .qtds-challenges__card-header {
+    /* This class styles the header specifically for the challenges card */
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    padding: var(--space-6);
-    background-color: var(--gray-50);
-    border-bottom: 2px solid var(--gray-100);
 }
 
 .qtds-challenges__card-icon {
+    /* This is the icon specific to the challenges card, not a generic card icon */
     width: 48px;
     height: 48px;
     display: flex;
@@ -644,35 +680,17 @@ p:last-child {
     font-size: var(--text-2xl);
     color: white;
     flex-shrink: 0;
-    box-shadow: var(--shadow-sm);
 }
 
-/* Card icon variants */
-.qtds-challenges__card--1 .qtds-challenges__card-icon {
-    background: var(--gradient-primary);
-}
+/* Modifier classes for card icons */
+.qtds-challenges__card--1 .qtds-challenges__card-icon { background: var(--gradient-primary); }
+.qtds-challenges__card--2 .qtds-challenges__card-icon { background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%); }
+.qtds-challenges__card--3 .qtds-challenges__card-icon { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+.qtds-challenges__card--4 .qtds-challenges__card-icon { background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); }
 
-.qtds-challenges__card--2 .qtds-challenges__card-icon {
-    background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
-}
-
-.qtds-challenges__card--3 .qtds-challenges__card-icon {
-    background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%);
-}
-
-/* Card full-width modifier */
-.qtds-challenges__card--full-width {
-    grid-column: 1 / -1;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* Card content */
 .qtds-challenges__card-title {
+    /* Styles for the title inside a challenges card */
     font-size: var(--text-2xl);
-    font-weight: 700;
-    color: var(--gray-900);
     margin: 0;
 }
 
@@ -680,66 +698,65 @@ p:last-child {
     font-size: var(--text-sm);
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--gray-600);
-    letter-spacing: 0.5px;
+    color: var(--gray-700);
 }
 
 .qtds-challenges__card-body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: var(--space-6);
 }
 
 .qtds-challenges__card-subtitle {
     font-size: var(--text-lg);
-    color: var(--gray-800);
+    color: var(--gray-700);
     margin-bottom: var(--space-4);
     font-weight: 600;
 }
 
-/* Card list */
 .qtds-challenges__card-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-6) 0;
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    margin-bottom: var(--space-6);
 }
 
 .qtds-challenges__card-list li {
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);
-    margin-bottom: var(--space-4);
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    line-height: 1.6;
-}
-
-.qtds-challenges__card-list li:last-child {
-    margin-bottom: 0;
+    margin-bottom: var(--space-3);
 }
 
 .qtds-challenges__card-list i {
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: var(--text-sm);
     flex-shrink: 0;
     color: var(--primary);
 }
 
-/* Cost comparison */
+.qtds-challenges__card-insight {
+    margin-top: auto;
+    padding: var(--space-4);
+    background-color: var(--gray-100);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+}
+
+/* Cost Comparison */
 .qtds-challenges__cost-comparison {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
 }
 
 .qtds-challenges__cost-item {
     text-align: center;
-    padding: var(--space-4);
+    padding: var(--space-3);
     background: var(--gray-50);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--gray-100);
 }
 
 .qtds-challenges__cost-label {
@@ -748,8 +765,6 @@ p:last-child {
     color: var(--gray-600);
     margin-bottom: var(--space-2);
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .qtds-challenges__cost-value {
@@ -758,23 +773,7 @@ p:last-child {
     display: block;
 }
 
-/* Card insight box */
-.qtds-challenges__card-insight {
-    margin-top: auto;
-    padding: var(--space-4);
-    background-color: var(--gray-50);
-    border-radius: var(--radius-lg);
-    border-left: 3px solid var(--primary);
-    font-size: var(--text-base);
-    line-height: 1.6;
-}
-
-.qtds-challenges__card-insight strong {
-    color: var(--gray-900);
-    font-weight: 600;
-}
-
-/* Legal elements */
+/* Legal Requirements */
 .qtds-challenges__legal-badge {
     display: inline-flex;
     align-items: center;
@@ -785,204 +784,403 @@ p:last-child {
     border-radius: var(--radius-lg);
     font-size: var(--text-base);
     font-weight: 600;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
 }
 
 .qtds-challenges__legal-text {
     font-size: var(--text-base);
     line-height: 1.6;
     color: var(--gray-700);
-    margin-bottom: var(--space-6);
-    padding: var(--space-4);
-    background: var(--gray-50);
-    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
 }
 
-/* Deadline/Warning box */
 .qtds-challenges__deadline {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-3);
-    padding: var(--space-4);
+    padding: var(--space-3);
     background: #FEF3C7;
-    border: 1px solid #F59E0B;
     border-radius: var(--radius-lg);
-    margin-bottom: var(--space-6);
+    color: #92400E;
+    font-size: var(--text-base);
+    font-weight: 500;
 }
 
 .qtds-challenges__deadline i {
     color: #F59E0B;
     font-size: var(--text-xl);
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.qtds-challenges__deadline span {
-    color: #92400E;
-    font-size: var(--text-base);
-    font-weight: 500;
-    line-height: 1.6;
-}
-
-/* Highlight box */
-.qtds-challenges__highlight-box {
-    background: var(--gradient-primary);
-    color: white;
-    padding: var(--space-8);
-    border-radius: var(--radius-xl);
-    text-align: center;
-    max-width: 900px;
-    margin: var(--space-12) auto 0;
-    box-shadow: var(--shadow-lg);
-}
-
-.qtds-challenges__highlight-box * {
-    color: white;
-}
-
-.qtds-challenges__highlight-title {
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    margin-bottom: var(--space-4);
-}
-
-.qtds-challenges__highlight-icon {
-    margin-right: var(--space-3);
-    font-size: var(--text-3xl);
-}
-
-.qtds-challenges__highlight-text {
-    font-size: var(--text-lg);
-    opacity: 0.95;
-    line-height: 1.6;
-}
-
-/* Animation delays */
-.qtds-challenges__card:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.qtds-challenges__card:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.qtds-challenges__card:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.qtds-challenges__highlight-box {
-    animation-delay: 0.3s;
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE
    ========================================================================== */
 
-/* Tablet - 768px and up */
-@media (min-width: 768px) {
-    .qtds-challenges__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-8);
-    }
-
-    .qtds-challenges__card--full-width {
-        grid-column: 1 / -1;
-    }
-
+@media (max-width: 1024px) {
     .qtds-challenges__stats {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--space-8);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop - 992px and up */
-@media (min-width: 992px) {
+@media (max-width: 1024px) and (min-width: 768px) {
     .qtds-challenges__grid {
-        gap: var(--space-10);
-    }
-
-    .qtds-challenges__card-list li {
-        font-size: var(--text-lg);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile - 767px and below */
-@media (max-width: 767px) {
-    .qtds-challenges__stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-4);
-    }
-
-    .qtds-challenges__card-header {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--space-3);
-        padding: var(--space-4);
-    }
-
-    .qtds-challenges__card-title {
-        font-size: var(--text-xl);
-    }
-
-    .qtds-challenges__cost-comparison {
+@media (max-width: 768px) {
+    .qtds-challenges__stats,
+    .qtds-challenges__grid {
         grid-template-columns: 1fr;
-        gap: var(--space-3);
+        gap: var(--space-6);
+    }
+}
+
+    .qtds-stat-item__value {
+        font-size: var(--text-4xl);
+    }
+    
+    .qtds-challenges__stats {
+        gap: 1rem;
+    }
+}
+
+
+/*
+* Section: QTDS Real Challenges
+* Version: 1.0 (Standardized)
+* Description: Styles for the Real Challenges section showcasing current QTDND barriers
+*/
+
+/* ==========================================================================
+   BLOCK: QTDS REAL CHALLENGES
+   ========================================================================== */
+
+.qtds-real-challenges {
+    background-color: var(--gray-50);
+}
+
+/* ==========================================================================
+   ELEMENT: Stats Grid
+   ========================================================================== */
+
+.qtds-real-challenges__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+}
+
+.qtds-real-challenges__stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.qtds-real-challenges__stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-real-challenges__stat-value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+/* Stat value color modifiers */
+.qtds-real-challenges__stat-value--danger { color: var(--danger); }
+.qtds-real-challenges__stat-value--warning { color: var(--accent); }
+.qtds-real-challenges__stat-value--purple { color: var(--purple); }
+.qtds-real-challenges__stat-value--primary { color: var(--primary); }
+
+.qtds-real-challenges__stat-label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   ELEMENT: Main Grid Layout
+   ========================================================================== */
+
+.qtds-real-challenges__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+}
+
+.qtds-real-challenges__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.qtds-real-challenges__column-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-8);
+    color: var(--gray-900);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.qtds-real-challenges__column-icon {
+    font-size: var(--text-3xl);
+}
+
+/* Column icon color modifiers */
+.qtds-real-challenges__column-icon--danger { color: var(--danger); }
+.qtds-real-challenges__column-icon--primary { color: var(--primary); }
+
+/* ==========================================================================
+   ELEMENT: Barrier Cards
+   ========================================================================== */
+
+.qtds-real-challenges__barrier-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border-left: 4px solid var(--gray-300);
+    padding: var(--space-8);
+}
+
+.qtds-real-challenges__barrier-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Card border color modifiers */
+.qtds-real-challenges__barrier-card--danger { border-left-color: var(--danger); }
+.qtds-real-challenges__barrier-card--warning { border-left-color: var(--accent); }
+.qtds-real-challenges__barrier-card--primary { border-left-color: var(--primary); }
+.qtds-real-challenges__barrier-card--purple { border-left-color: var(--purple); }
+
+.qtds-real-challenges__barrier-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-real-challenges__barrier-card-icon {
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+/* Card icon colors matching border colors */
+.qtds-real-challenges__barrier-card--danger .qtds-real-challenges__barrier-card-icon {
+    color: var(--danger);
+}
+.qtds-real-challenges__barrier-card--warning .qtds-real-challenges__barrier-card-icon {
+    color: var(--accent);
+}
+.qtds-real-challenges__barrier-card--primary .qtds-real-challenges__barrier-card-icon {
+    color: var(--primary);
+}
+.qtds-real-challenges__barrier-card--purple .qtds-real-challenges__barrier-card-icon {
+    color: var(--purple);
+}
+
+.qtds-real-challenges__barrier-card-title {
+    font-size: var(--text-xl);
+    color: var(--gray-900);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ==========================================================================
+   ELEMENT: Barrier List
+   ========================================================================== */
+
+.qtds-real-challenges__barrier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.qtds-real-challenges__barrier-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.qtds-real-challenges__barrier-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.qtds-real-challenges__barrier-list-icon {
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+}
+
+/* List icon colors matching parent card */
+.qtds-real-challenges__barrier-card--danger .qtds-real-challenges__barrier-list-icon {
+    color: var(--danger);
+}
+.qtds-real-challenges__barrier-card--warning .qtds-real-challenges__barrier-list-icon {
+    color: var(--accent);
+}
+.qtds-real-challenges__barrier-card--primary .qtds-real-challenges__barrier-list-icon {
+    color: var(--primary);
+}
+.qtds-real-challenges__barrier-card--purple .qtds-real-challenges__barrier-list-icon {
+    color: var(--purple);
+}
+
+/* ==========================================================================
+   ELEMENT: CTA Box
+   ========================================================================== */
+
+.qtds-real-challenges__cta-box {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    max-width: 900px;
+    margin: var(--space-16) auto 0;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+}
+
+.qtds-real-challenges__cta-icon {
+    font-size: var(--text-4xl);
+    color: white;
+    opacity: 0.9;
+    flex-shrink: 0;
+}
+
+.qtds-real-challenges__cta-content {
+    flex: 1;
+}
+
+.qtds-real-challenges__cta-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    color: white;
+}
+
+.qtds-real-challenges__cta-text {
+    font-size: var(--text-lg);
+    opacity: 0.95;
+    color: white;
+    margin: 0;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+/* Animation delays for scroll animations */
+.qtds-real-challenges__stat-item:nth-child(1) { animation-delay: 0s; }
+.qtds-real-challenges__stat-item:nth-child(2) { animation-delay: 0.1s; }
+.qtds-real-challenges__stat-item:nth-child(3) { animation-delay: 0.2s; }
+.qtds-real-challenges__stat-item:nth-child(4) { animation-delay: 0.3s; }
+
+.qtds-real-challenges__column:nth-child(2) { animation-delay: 0.2s; }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .qtds-real-challenges__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .qtds-real-challenges__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
-    .qtds-challenges__highlight-box {
+    .qtds-real-challenges__stat-value {
+        font-size: var(--text-3xl);
+    }
+
+    .qtds-real-challenges__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .qtds-real-challenges__column-title {
+        font-size: var(--text-2xl);
+        margin-bottom: var(--space-6);
+    }
+
+    .qtds-real-challenges__barrier-card {
         padding: var(--space-6);
     }
 
-    .qtds-challenges__highlight-title {
-        font-size: var(--text-xl);
+    .qtds-real-challenges__barrier-card-title {
+        font-size: var(--text-lg);
     }
 
-    .qtds-challenges__highlight-text {
+    .qtds-real-challenges__barrier-list-item {
         font-size: var(--text-base);
     }
 
-    .qtds-challenges__deadline {
+    .qtds-real-challenges__cta-box {
         flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* Small mobile - 480px and below */
-@media (max-width: 480px) {
-    .qtds-challenges__stats {
-        grid-template-columns: 1fr;
+        padding: var(--space-6);
+        gap: var(--space-4);
     }
 
-    .qtds-challenges__card-body {
-        padding: var(--space-4);
+    .qtds-real-challenges__cta-icon {
+        font-size: var(--text-3xl);
     }
 
-    .qtds-challenges__card-list li {
-        font-size: var(--text-sm);
-        gap: var(--space-2);
-    }
-
-    .qtds-challenges__cost-value {
+    .qtds-real-challenges__cta-title {
         font-size: var(--text-xl);
     }
+
+    .qtds-real-challenges__cta-text {
+        font-size: var(--text-base);
+    }
 }
 
-/* Utility classes for text colors */
-.text-danger {
-    color: var(--danger) !important;
+@media (max-width: 480px) {
+    .qtds-real-challenges__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .qtds-real-challenges__barrier-card {
+        padding: var(--space-4);
+    }
 }
 
-.text-warning {
-    color: var(--accent) !important;
-}
-
-.text-success {
-    color: var(--secondary) !important;
-}
-
-.text-primary {
-    color: var(--primary) !important;
-}
 
 
 
@@ -1244,6 +1442,413 @@ p:last-child {
         gap: var(--space-6);
     }
 }
+
+/**
+ * Section: QTDS Roadmap
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of standardized-solutions-html-v1.
+ * All original rules and structures are preserved.
+ */
+
+ /* QTDS Roadmap Section */
+
+/* ==========================================================================
+   BLOCK: QTDS ROADMAP
+   ========================================================================== */
+
+.qtds-roadmap {
+  position: relative;
+  background-color: white;
+}
+
+/* Timeline Visual */
+.qtds-roadmap__timeline {
+  position: relative;
+  margin: var(--space-12) auto;
+  padding: var(--space-6) 0;
+  max-width: 900px;
+}
+
+.qtds-roadmap__timeline-bar {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--primary) 0%,
+    var(--primary) 33%,
+    var(--secondary) 33%,
+    var(--secondary) 66%,
+    var(--gray-300) 66%,
+    var(--gray-300) 100%
+  );
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.qtds-roadmap__timeline-points {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.qtds-roadmap__timeline-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+  background: white;
+  padding: 0 var(--space-2);
+}
+
+.qtds-roadmap__timeline-point::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 4px solid var(--gray-300);
+  border-radius: 50%;
+  margin-bottom: var(--space-2);
+  transition: all var(--transition-base);
+}
+
+.qtds-roadmap__timeline-point--active::before {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 8px rgba(26, 115, 232, 0.1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(26, 115, 232, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+}
+
+.qtds-roadmap__timeline-year {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--gray-900);
+  text-align: center;
+}
+
+.qtds-roadmap__timeline-label {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  text-align: center;
+}
+
+/* Roadmap Phases Container */
+.qtds-roadmap__phases {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Phase Card */
+.qtds-roadmap__phase {
+  background: white;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.qtds-roadmap__phase:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.qtds-roadmap__phase--1 {
+  border-left: 6px solid var(--primary);
+}
+
+.qtds-roadmap__phase--2 {
+  border-left: 6px solid var(--secondary);
+}
+
+.qtds-roadmap__phase--3 {
+  border-left: 6px solid var(--accent);
+}
+
+/* Phase Header */
+.qtds-roadmap__phase-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.qtds-roadmap__phase-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  font-size: var(--text-3xl);
+  color: white;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.qtds-roadmap__phase--1 .qtds-roadmap__phase-icon {
+  background: var(--gradient-primary);
+}
+
+.qtds-roadmap__phase--2 .qtds-roadmap__phase-icon {
+  background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%);
+}
+
+.qtds-roadmap__phase--3 .qtds-roadmap__phase-icon {
+  background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%);
+}
+
+.qtds-roadmap__phase-info {
+  flex: 1;
+}
+
+.qtds-roadmap__phase-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.qtds-roadmap__phase-subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.qtds-roadmap__phase-badge {
+  margin-left: auto;
+}
+
+/* Phase Content */
+.qtds-roadmap__phase-content {
+  padding: var(--space-8);
+}
+
+/* Tasks List */
+.qtds-roadmap__tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.qtds-roadmap__task {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.qtds-roadmap__task:hover {
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+.qtds-roadmap__task i {
+  font-size: var(--text-xl);
+  color: var(--secondary);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.qtds-roadmap__task-content {
+  flex: 1;
+}
+
+.qtds-roadmap__task-content h4 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.qtds-roadmap__task-content p {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Phase Footer - Sửa lại CSS cho phần này */
+.qtds-roadmap__phase-footer {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+  border-radius: var(--radius-xl);
+  border: 1px solid #BAE6FD;
+}
+
+.qtds-roadmap__kpi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.qtds-roadmap__kpi i {
+  font-size: var(--text-2xl);
+  color: var(--primary);
+}
+
+.qtds-roadmap__kpi span {
+  color: var(--gray-900);
+}
+
+/* Vision Box cho giai đoạn 3 */
+.qtds-roadmap__vision-box {
+  padding: var(--space-8);
+  background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  border: 2px solid #FFB74D;
+}
+
+.qtds-roadmap__vision-box i {
+  font-size: var(--text-4xl);
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.qtds-roadmap__vision-box p {
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Tag variants cho badges */
+.qtds-tag--urgent {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+  font-weight: 600;
+}
+
+.qtds-tag--progress {
+  background: #DBEAFE;
+  color: #1E40AF;
+  border: 1px solid #BFDBFE;
+  font-weight: 600;
+}
+
+.qtds-tag--future {
+  background: #F3E8FF;
+  color: #7C3AED;
+  border: 1px solid #E9D5FF;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .qtds-roadmap__phase-header {
+    padding: var(--space-6);
+  }
+
+  .qtds-roadmap__phase-content {
+    padding: var(--space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .qtds-roadmap__timeline {
+    display: none;
+  }
+
+  .qtds-roadmap__phase-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .qtds-roadmap__phase-badge {
+    margin-left: 0;
+    margin-top: var(--space-4);
+  }
+
+  .qtds-roadmap__phase-icon {
+    width: 64px;
+    height: 64px;
+    font-size: var(--text-2xl);
+  }
+
+  .qtds-roadmap__phase-title {
+    font-size: var(--text-xl);
+  }
+
+  .qtds-roadmap__phase-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .qtds-roadmap__task {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .qtds-roadmap__task i {
+    align-self: center;
+  }
+
+  .qtds-roadmap__task-content {
+    text-align: center;
+  }
+
+  .qtds-roadmap__phase-footer {
+    padding: var(--space-4);
+  }
+
+  .qtds-roadmap__kpi {
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .qtds-roadmap__vision-box {
+    padding: var(--space-6);
+  }
+
+  .qtds-roadmap__vision-box p {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .qtds-roadmap__phases {
+    gap: var(--space-6);
+  }
+
+  .qtds-roadmap__phase-header {
+    padding: var(--space-4);
+  }
+
+  .qtds-roadmap__phase-content {
+    padding: var(--space-4);
+  }
+
+  .qtds-roadmap__tasks {
+    gap: var(--space-4);
+  }
+}
+
 
 
 /**
@@ -1609,237 +2214,6 @@ p:last-child {
 }
 
 
-/* ==========================================================================
-   SECTION: QTDS CONCLUSION
-   Version: 1.1 (Fixed - Reusing global styles)
-   Description: Styles for the conclusion section following BEM methodology
-   ========================================================================== */
-
-.qtds-conclusion {
-    position: relative;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
-    overflow: hidden;
-}
-
-/* Reuse global section header styles */
-.qtds-conclusion__header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto var(--space-16);
-}
-
-.qtds-conclusion__tagline {
-    display: block;
-    color: var(--primary);
-    font-weight: 600;
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-2);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.qtds-conclusion__title {
-    /* Inherit from global h2 styles - no need to redefine */
-    font-size: var(--text-4xl);
-    font-weight: 800;
-    line-height: 1.2;
-    color: var(--gray-900);
-    margin-bottom: var(--space-3);
-}
-
-.qtds-conclusion__title-highlight {
-    display: block;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-top: var(--space-2);
-}
-
-/* Content Container */
-.qtds-conclusion__content {
-    display: grid;
-    gap: var(--space-6);
-    max-width: 900px;
-    margin: 0 auto var(--space-12);
-}
-
-/* Paragraph Blocks - Similar to intro section */
-.qtds-conclusion__paragraph {
-    background: white;
-    border-radius: var(--radius-xl);
-    padding: var(--space-8);
-    box-shadow: var(--shadow-md);
-    position: relative;
-    transition: all var(--transition-base);
-    border-left: 4px solid transparent;
-}
-
-.qtds-conclusion__paragraph:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-    border-left-color: var(--primary);
-}
-
-.qtds-conclusion__paragraph--highlight {
-    background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
-    border: 2px solid var(--primary);
-    border-left-width: 4px;
-}
-
-.qtds-conclusion__paragraph-icon {
-    position: absolute;
-    top: var(--space-6);
-    left: var(--space-6);
-    width: 48px;
-    height: 48px;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: var(--text-xl);
-    box-shadow: var(--shadow-md);
-}
-
-.qtds-conclusion__paragraph-text {
-    padding-left: calc(48px + var(--space-8));
-    font-size: var(--text-base); /* Changed from text-lg to match global */
-    line-height: 1.6; /* Match global line-height */
-    color: var(--gray-700);
-    margin: 0;
-}
-
-.qtds-conclusion__paragraph-text strong {
-    color: var(--primary); /* Changed to match other sections */
-    font-weight: 600;
-}
-
-/* Journey Path - Similar to process flow in solutions */
-.qtds-conclusion__journey {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-4);
-    padding: var(--space-10);
-    background: white;
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-lg);
-    margin-bottom: var(--space-10);
-}
-
-.qtds-conclusion__journey-step {
-    text-align: center;
-    flex: 1;
-    max-width: 160px;
-}
-
-.qtds-conclusion__journey-step--final .qtds-conclusion__journey-icon {
-    background: linear-gradient(135deg, #FBBC04 0%, #F9AB00 100%);
-}
-
-.qtds-conclusion__journey-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto var(--space-3);
-    background: var(--gradient-primary);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: var(--text-2xl);
-    box-shadow: var(--shadow-lg);
-    transition: transform var(--transition-base);
-}
-
-.qtds-conclusion__journey-step:hover .qtds-conclusion__journey-icon {
-    transform: scale(1.05);
-}
-
-.qtds-conclusion__journey-label {
-    font-size: var(--text-sm); /* Changed to match global */
-    font-weight: 600;
-    color: var(--gray-600); /* Changed to match global */
-    text-align: center;
-}
-
-.qtds-conclusion__journey-arrow {
-    color: var(--gray-300);
-    font-size: var(--text-2xl);
-    flex-shrink: 0;
-}
-
-/* CTA Box - Similar to highlight boxes in other sections */
-.qtds-conclusion__cta {
-    text-align: center;
-    padding: var(--space-8);
-    background: var(--gradient-primary);
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-xl);
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.qtds-conclusion__cta-text {
-    font-size: var(--text-lg); /* Changed from text-xl */
-    font-weight: 600;
-    color: white;
-    margin: 0;
-    line-height: 1.6;
-}
-
-.qtds-conclusion__cta-text i {
-    margin-right: var(--space-3);
-    font-size: var(--text-2xl);
-}
-
-/* ==========================================================================
-   RESPONSIVE - Match global breakpoints
-   ========================================================================== */
-
-@media (max-width: 768px) {
-    .qtds-conclusion__paragraph {
-        padding: var(--space-6);
-    }
-
-    .qtds-conclusion__paragraph-icon {
-        position: static;
-        margin: 0 auto var(--space-4);
-    }
-
-    .qtds-conclusion__paragraph-text {
-        padding-left: 0;
-        text-align: center;
-    }
-
-    .qtds-conclusion__journey {
-        flex-direction: column;
-        gap: var(--space-6);
-        padding: var(--space-6);
-    }
-
-    .qtds-conclusion__journey-arrow {
-        transform: rotate(90deg);
-    }
-
-    .qtds-conclusion__cta {
-        padding: var(--space-6);
-    }
-}
-
-@media (max-width: 480px) {
-    .qtds-conclusion__journey-icon {
-        width: 60px;
-        height: 60px;
-        font-size: var(--text-xl);
-    }
-}
-
-
-
-
 /**
  * Section: QTDS Benefits
  * Version: 1.0 (Standardized)
@@ -2202,9 +2576,6 @@ p:last-child {
 /* Animation delay for cards */
 .qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(2) { animation-delay: 0.2s; }
 .qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
-
-
-
 
 
 /**
@@ -3041,604 +3412,306 @@ p:last-child {
     justify-content: center;
 }
 
-        /* SECTION: Introduction (Phiên bản Tinh Chỉnh cho CT20 - Nền trắng)
-        Mô tả: CSS này giữ lại cấu trúc của phiên bản gốc nhưng thay đổi 
-                màu nền và màu chữ để phù hợp với giao diện sáng của CT20.
-        */
-        .qtds-intro {
-            position: relative;
-            background: white; 
-            overflow: hidden;
-        }
 
-        .qtds-intro__container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+/* =========================================================================
+CSS thêm ảnh
+========================================================================== */
 
-        .qtds-intro__header {
-            text-align: center;
-            margin-bottom: var(--space-12);
-        }
+.qtds-image-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto var(--space-12);
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: var(--gray-100);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
 
-        .qtds-intro__title {
-            font-size: var(--text-4xl);
-            font-weight: 800;
-            color: var(--gray-900);
-            margin-bottom: var(--space-4);
-            position: relative;
-            display: inline-block;
-        }
+.qtds-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .qtds-intro__title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: var(--radius-full);
-        }
-
-        .qtds-intro__content {
-            display: grid;
-            gap: var(--space-8);
-        }
-
-        .qtds-intro__paragraph {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            position: relative;
-            transition: all var(--transition-base);
-        }
-
-        .qtds-intro__paragraph:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .qtds-intro__paragraph-icon {
-            position: absolute;
-            top: var(--space-6);
-            left: var(--space-6);
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--text-xl);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .qtds-intro__paragraph-text {
-            padding-left: calc(48px + var(--space-6));
-            font-size: var(--text-lg);
-            line-height: 1.8;
-            color: var(--gray-700);
-            margin: 0;
-        }
-
-        .qtds-intro__paragraph-text strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .qtds-intro__highlight {
-            background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            margin-top: var(--space-8);
-            text-align: center;
-            border: 1px solid var(--primary);
-        }
-
-        .qtds-intro__highlight-icon {
-            font-size: var(--text-4xl);
-            margin-bottom: var(--space-4);
-            color: var(--primary);
-        }
-
-        .qtds-intro__highlight-text {
-            font-size: var(--text-xl);
-            font-weight: 600;
-            color: var(--gray-900);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .qtds-intro__visual-comparison {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: var(--space-6);
-            align-items: center;
-            margin-top: var(--space-12);
-            padding: var(--space-8);
-            background: var(--gray-50);
-            border-radius: var(--radius-2xl);
-        }
-
-        .qtds-intro__device {
-            text-align: center;
-        }
-
-        .qtds-intro__device-icon {
-            font-size: 5rem;
-            margin-bottom: var(--space-4);
-            display: block;
-        }
-
-        .qtds-intro__device--old .qtds-intro__device-icon {
-            color: var(--danger);
-        }
-
-        .qtds-intro__device--new .qtds-intro__device-icon {
-            color: var(--primary);
-            animation: qtds-intro-pulse 2s ease-in-out infinite;
-        }
-
-        .qtds-intro__device-label {
-            font-size: var(--text-lg);
-            font-weight: 600;
-            margin-bottom: var(--space-2);
-            display: block;
-            color: var(--gray-900);
-        }
-
-        .qtds-intro__device-status {
-            font-size: var(--text-base);
-            color: var(--gray-600);
-        }
-
-        .qtds-intro__device--new .qtds-intro__device-status {
-            color: var(--secondary);
-        }
-
-        @keyframes qtds-intro-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-
-        @media (max-width: 768px) {
-            .qtds-intro__title { font-size: var(--text-3xl); }
-            .qtds-intro__paragraph { padding: var(--space-6); }
-            .qtds-intro__paragraph-icon { position: static; margin: 0 auto var(--space-4); }
-            .qtds-intro__paragraph-text { padding-left: 0; font-size: var(--text-base); text-align: center; }
-            .qtds-intro__visual-comparison { grid-template-columns: 1fr; gap: var(--space-8); }
-            .qtds-intro__versus { 
-                transform: rotate(0deg); 
-                margin: var(--space-4) 0;
-                /* THAY ĐỔI: Thêm 2 dòng này để căn giữa và đổi màu cho mobile */
-                text-align: center;
-                color: var(--accent);
-            }
-        }
+/* Responsive */
+@media (max-width: 768px) {
+    .qtds-image-wrapper {
+        margin-bottom: var(--space-8);
+        border-radius: var(--radius-xl);
+    }
+}
 
 </style>
 </head>
 <body>
+    <!-- SECTION: Navigation Bar -->
     <nav id="navbar" class="qtds-navbar">
-  <div class="qtds-container qtds-navbar__content">
-    <a href="#" class="qtds-navbar__brand">
-      <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
-      <span class="qtds-navbar__brand-name">QTDS</span>
-    </a>
-    <div class="qtds-navbar__links">
-      <a href="#van-de" class="qtds-navbar__link">Vấn Đề</a>
-      <a href="#loi-ich" class="qtds-navbar__link">Lợi Ích</a>
-      <a href="#ket-luan" class="qtds-navbar__link">Kết Luận</a>
-      <a href="#giai-phap" class="qtds-navbar__link">Giải Pháp</a>
-      <a href="#faq" class="qtds-navbar__link">FAQ</a>
-    </div>
-    <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-  </div>
-  <div class="qtds-navbar__mobile-menu" id="mobileMenu">
-    <a href="#van-de" class="qtds-navbar__mobile-link">Vấn Đề</a>
-    <a href="#loi-ich" class="qtds-navbar__mobile-link">Lợi Ích</a>
-    <a href="#ket-luan" class="qtds-navbar__mobile-link">Kết Luận</a>
-    <a href="#giai-phap" class="qtds-navbar__mobile-link">Giải Pháp</a>
-    <a href="#faq" class="qtds-navbar__mobile-link">FAQ</a>
-  </div>
-</nav>
-
+        <div class="qtds-container qtds-navbar__content">
+            <a href="#" class="qtds-navbar__brand">
+                <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
+            </a>
+            <div class="qtds-navbar__links">
+                <a href="#nguon-goc" class="qtds-navbar__link">Nguồn Gốc</a>
+                <a href="#phan-tich" class="qtds-navbar__link">Phân Tích</a>
+                <a href="#giai-phap" class="qtds-navbar__link">Giải Pháp</a>
+                <a href="#faq" class="qtds-navbar__link">FAQ</a>
+            </div>
+            <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="qtds-navbar__mobile-menu" id="mobileMenu">
+            <a href="#nguon-goc" class="qtds-navbar__mobile-link">Nguồn Gốc</a>
+            <a href="#phan-tich" class="qtds-navbar__mobile-link">Phân Tích</a>
+            <a href="#giai-phap" class="qtds-navbar__mobile-link">Giải Pháp</a>
+            <a href="#faq" class="qtds-navbar__mobile-link">FAQ</a>
+        </div>
+    </nav>
 
     <main>
-        <section id="hero" class="qtds-hero">
+        <!-- SECTION: Hero -->
+        <section id="tong-quan" class="qtds-hero">
             <div class="qtds-hero__bg"></div>
-            <div class="container qtds-hero__content">
-            <div class="qtds-scroll-animate">
-            <span class="qtds-tag qtds-tag--hero-badge">
-            <i class="fas fa-search-dollar"></i>
-            <span>PHÂN TÍCH CHI PHÍ ẨN</span>
-            </span>
-            </div>
-            <h1 class="qtds-scroll-animate qtds-hero__title">
-            Mỗi Hồ Sơ Thủ Công <span class="qtds-text-gradient">Lấy Đi Bao Nhiêu Tiền?</span>
-            </h1>
-            <h2 class="qtds-scroll-animate qtds-hero__subtitle">
-            Khám phá những khoản lãng phí vô hình đang bào mòn lợi nhuận trong quy trình tín dụng
-            </h2>
-            <p class="qtds-scroll-animate qtds-hero__description">
-            Ngay cả khi Quỹ đang hoạt động ổn định, vẫn tồn tại 3 "kẻ cắp" lợi nhuận thầm lặng. Hãy cùng nhận diện và tìm giải pháp loại bỏ chúng.
-            </p>
-            <div class="qtds-scroll-animate qtds-hero__actions">
-            <a href="#van-de" class="qtds-btn qtds-btn--primary">
-            <i class="fas fa-magnifying-glass"></i>
-            <span>Nhận Diện 3 "Kẻ Cắp" Lợi Nhuận</span>
-            </a>
-            <a href="#giai-phap" class="qtds-btn qtds-btn--secondary">
-            <i class="fas fa-lightbulb"></i>
-            <span>Khám Phá Giải Pháp</span>
-            </a>
-            </div>
+            <div class="qtds-container qtds-hero__content">
+                <div class="qtds-scroll-animate">
+                    <span class="qtds-tag qtds-tag--hero-badge"><i class="fas fa-users-cog"></i><span>QUẢN LÝ SỰ THAY ĐỔI</span></span>
+                </div>
+                <h1 class="qtds-scroll-animate qtds-hero__title">Sức Ì Văn Hóa: <span class="qtds-text-gradient">Kẻ Thù Thầm Lặng</span></h1>
+                <h2 class="qtds-scroll-animate qtds-hero__subtitle">Rào Cản Lớn Nhất Không Nằm Ở Công Nghệ Hay Tiền Bạc</h2>
+                <p class="qtds-scroll-animate qtds-hero__description">
+                    Khi bàn về thách thức chuyển đổi số của QTDND, người ta thường nói về tài chính hay công nghệ. Nhưng có một rào cản lớn hơn, vô hình nhưng níu kéo mạnh mẽ hơn tất cả: đó chính là "sức ì văn hóa".
+                </p>
+                <div class="qtds-scroll-animate qtds-hero__actions">
+                    <a href="#phan-tich" class="qtds-btn qtds-btn--primary"><i class="fas fa-search-plus"></i>Phân Tích Sâu</a>
+                    <a href="#giai-phap" class="qtds-btn qtds-btn--secondary"><i class="fas fa-lightbulb"></i>Khám Phá Giải Pháp</a>
+                </div>
             </div>
         </section>
 
-        <!--
-  Section: Mở bài - Vượt Lên Sự Ổn Định
-  Version: 1.0
-  Mô tả: Giới thiệu tổng quan về chi phí ẩn trong quy trình tín dụng QTDND
--->
-<section id="mo-bai" class="qtds-section qtds-intro">
-    <div class="qtds-container qtds-intro__container">
-        <!-- Section Header -->
-        <div class="qtds-scroll-animate qtds-intro__header">
-            <h2 class="qtds-intro__title">Vượt Lên Sự Ổn Định - Hành Trình Tối Ưu Hóa Của QTDND Hiện Đại</h2>
-        </div>
-
-        <!-- Hero Image 16:9 -->
-        <div class="qtds-scroll-animate qtds-intro__hero-image" style="
-            animation-delay: 0.05s;
-            margin: var(--space-8) auto;
-            max-width: 1200px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-xl);
-        ">
-            <div style="
-                position: relative;
-                width: 100%;
-                padding-top: 56.25%; /* Tỷ lệ 16:9 */
-                background: var(--gray-100);
-            ">
-                <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/chgGqmyqFRjKE3hO8kqji.png"
-                     alt="Chi phí ẩn trong quy trình tín dụng QTDND"
-                     style="position: absolute; top: 0; left: 0;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                     "
-                     loading="lazy">
-            </div>
-        </div>
-
-        <!-- Content Grid -->
-        <div class="qtds-intro__content">
-            <!-- Paragraph 1: Thành tựu và Nền tảng -->
-            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.1s;">
-                <div class="qtds-intro__paragraph-icon">
-                    <i class="fas fa-landmark"></i>
-                </div>
-                <p class="qtds-intro__paragraph-text">
-                    Hệ thống <strong>Quỹ Tín dụng Nhân dân (QTDND)</strong> tại Việt Nam đã khẳng định vai trò là kênh dẫn vốn quan trọng, duy trì sự ổn định và góp phần phát triển kinh tế địa phương. Đây là thành tựu đáng ghi nhận của biết bao thế hệ cán bộ.
-                </p>
-            </div>
-
-            <!-- Paragraph 2: Câu hỏi then chốt -->
-            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.2s;">
-                <div class="qtds-intro__paragraph-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <p class="qtds-intro__paragraph-text">
-                    Tuy nhiên, các nhà lãnh đạo QTDND ưu tú luôn trăn trở: <strong>"Làm thế nào để hoạt động hiệu quả hơn nữa? Những tiềm năng nào còn chưa được khai phá?"</strong> Câu trả lời thường ẩn giấu trong chính quy trình vận hành hàng ngày.
-                </p>
-            </div>
-
-            <!-- Paragraph 3: Chi phí ẩn -->
-            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.3s;">
-                <div class="qtds-intro__paragraph-icon">
-                    <i class="fas fa-search-dollar"></i>
-                </div>
-                <p class="qtds-intro__paragraph-text">
-                    Đó là những <strong>"chi phí ẩn"</strong> - khoản lãng phí không xuất hiện trên báo cáo tài chính, nhưng đang âm thầm bào mòn lợi nhuận, làm chậm tốc độ phát triển và kìm hãm tiềm năng của Quỹ.
-                </p>
-            </div>
-        </div>
-
-        <!-- Visual Comparison -->
-        <div class="qtds-scroll-animate qtds-intro__visual-comparison" style="animation-delay: 0.4s;">
-            <div class="qtds-intro__device qtds-intro__device--old">
-                <i class="fas fa-file-alt qtds-intro__device-icon"></i>
-                <span class="qtds-intro__device-label">Quy trình thủ công</span>
-                <span class="qtds-intro__device-status">Ổn định • Quen thuộc • Chậm</span>
-            </div>
-            <div class="qtds-intro__versus">→</div>
-            <div class="qtds-intro__device qtds-intro__device--new">
-                <i class="fas fa-rocket qtds-intro__device-icon"></i>
-                <span class="qtds-intro__device-label">Quy trình tối ưu</span>
-                <span class="qtds-intro__device-status">Hiệu quả • Nhanh • Vượt trội</span>
-            </div>
-        </div>
-
-        <!-- Highlight Box -->
-        <div class="qtds-scroll-animate qtds-intro__highlight" style="animation-delay: 0.5s;">
-            <i class="fas fa-lightbulb qtds-intro__highlight-icon"></i>
-            <p class="qtds-intro__highlight-text">
-                Bài viết này sẽ soi rọi vào những góc khuất,<br>
-                nhận diện "kẻ cắp" lợi nhuận thầm lặng và khám phá giải pháp công nghệ
-            </p>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10); animation-delay: 0.6s;">
-            <a href="#van-de" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-arrow-down"></i>
-                Khám Phá Chi Phí Ẩn
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<section id="van-de" class="qtds-section">
-    <div class="qtds-container">
-        <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">PHÂN TÍCH CHI TIẾT</span>
-            <h2>Bóc Tách 3 "Kẻ Cắp" Lợi Nhuận Thầm Lặng</h2>
-            <p>Dù một Quỹ đang hoạt động ổn định và có lợi nhuận, việc nhận diện và cắt giảm các chi phí ẩn này sẽ trực tiếp gia tăng hiệu quả tài chính và tạo ra nguồn lực cho sự phát triển.</p>
-        </div>
-
-        <div class="qtds-challenges__grid">
-            <!-- Card 1: Chi phí thời gian phi sản xuất -->
-            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--1">
-                <div class="qtds-card__header qtds-challenges__card-header">
-                    <div class="qtds-challenges__card-icon">
-                        <i class="fas fa-hourglass-half"></i>
-                    </div>
-                    <div>
-                        <h3 class="qtds-challenges__card-title">Chi phí thời gian phi sản xuất</h3>
-                        <span class="qtds-challenges__card-tag">Kẻ cắp lớn nhất</span>
-                    </div>
-                </div>
-                <div class="qtds-card__body qtds-challenges__card-body">
-                    <h4 class="qtds-challenges__card-subtitle">Thời gian dành cho "hành chính" thay vì "nghiệp vụ":</h4>
-                    <ul class="qtds-challenges__card-list">
-                        <li><i class="fas fa-chevron-right"></i><span>Tìm kiếm và truy xuất hồ sơ vật lý tốn hàng giờ.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Nhập liệu thông tin thành viên lặp đi lặp lại nhiều lần.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Đối chiếu thủ công giữa hồ sơ giấy và phần mềm.</span></li>
-                    </ul>
-                    <div class="qtds-challenges__cost-comparison">
-                        <div class="qtds-challenges__cost-item">
-                            <span class="qtds-challenges__cost-label">Thời gian lãng phí/năm</span>
-                            <span class="qtds-challenges__cost-value text-danger">1,300 giờ</span>
-                        </div>
-                        <div class="qtds-challenges__cost-item">
-                            <span class="qtds-challenges__cost-label">Chi phí ẩn</span>
-                            <span class="qtds-challenges__cost-value text-danger">Hàng trăm triệu</span>
-                        </div>
-                    </div>
-                    <div class="qtds-challenges__card-insight">
-                        <strong>Ví dụ thực tế:</strong> QTDND có 5 cán bộ tín dụng, mỗi người lãng phí 1 giờ/ngày cho công việc hành chính = 1,300 giờ/năm. Đây là thời gian vàng lẽ ra phải được dành để thẩm định kỹ hơn, tư vấn sâu hơn cho thành viên.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: Chi phí rủi ro từ dữ liệu -->
-            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--2">
-                <div class="qtds-card__header qtds-challenges__card-header">
-                    <div class="qtds-challenges__card-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div>
-                        <h3 class="qtds-challenges__card-title">Chi phí rủi ro từ dữ liệu</h3>
-                        <span class="qtds-challenges__card-tag">Thiếu nhất quán</span>
-                    </div>
-                </div>
-                <div class="qtds-card__body qtds-challenges__card-body">
-                    <h4 class="qtds-challenges__card-subtitle">Hệ quả từ dữ liệu phân mảnh (giấy, word, excel):</h4>
-                    <ul class="qtds-challenges__card-list">
-                        <li><i class="fas fa-chevron-right"></i><span>"Độ trễ" trong việc cập nhật thông tin thành viên.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Khó khăn khi tạo báo cáo tổng hợp, dẫn đến quyết định sai lầm.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Rủi ro tuân thủ Thông tư 11/2021/TT-NHNN về phân loại nợ.</span></li>
-                    </ul>
-                    <div class="qtds-challenges__legal-badge">
-                        <i class="fas fa-gavel"></i>
-                        <span>Yêu cầu pháp lý</span>
-                    </div>
-                    <p class="qtds-challenges__legal-text">
-                        Theo Thông tư 11/2021/TT-NHNN, việc phân loại nợ và trích lập dự phòng rủi ro đòi hỏi sự chính xác và kịp thời. Hệ thống dữ liệu không nhất quán tiềm ẩn nguy cơ phân loại sai nhóm nợ.
-                    </p>
-                    <div class="qtds-challenges__card-insight">
-                        <strong>Hậu quả:</strong> Ra quyết định dựa trên những con số không hoàn toàn chính xác.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Chi phí cơ hội (sử dụng modifier class) -->
-            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--3 qtds-challenges__card--full-width">
-                <div class="qtds-card__header qtds-challenges__card-header">
-                    <div class="qtds-challenges__card-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div>
-                        <h3 class="qtds-challenges__card-title">Chi phí cơ hội từ dữ liệu "tĩnh"</h3>
-                        <span class="qtds-challenges__card-tag">Tài sản bị lãng quên</span>
-                    </div>
-                </div>
-                <div class="qtds-card__body qtds-challenges__card-body">
-                    <h4 class="qtds-challenges__card-subtitle">Dữ liệu "chết" không thể được khai thác để:</h4>
-                    <ul class="qtds-challenges__card-list">
-                        <li><i class="fas fa-chevron-right"></i><span>Tối ưu hóa danh mục cho vay và nhận diện rủi ro.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Phát triển các sản phẩm, gói vay mới phù hợp nhu cầu.</span></li>
-                        <li><i class="fas fa-chevron-right"></i><span>Hệ thống hóa lợi thế cạnh tranh "am hiểu địa phương".</span></li>
-                    </ul>
-                    <div class="qtds-challenges__deadline">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Lợi thế lớn nhất của QTDND là "am hiểu địa phương". Khi không được hệ thống hóa thành dữ liệu có thể phân tích, nó sẽ trở nên bị động và khó nhân rộng.</span>
-                    </div>
-                    <div class="qtds-challenges__card-insight">
-                        <strong>Cái giá phải trả:</strong> Không biến dữ liệu thành một tài sản chiến lược.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Highlight Box dẫn dắt sang giải pháp -->
-        <div class="qtds-challenges__highlight-box qtds-scroll-animate">
-            <h3 class="qtds-challenges__highlight-title">
-                <i class="fas fa-lightbulb qtds-challenges__highlight-icon"></i>
-                Giải pháp không phải là làm việc chăm chỉ hơn
-            </h3>
-            <p class="qtds-challenges__highlight-text">
-                Mà là làm việc thông minh hơn. Lối thoát nằm ở việc chuẩn hóa và số hóa quy trình tín dụng ngay từ đầu vào.
-            </p>
-        </div>
-    </div>
-</section>
-
-
-
-        <section id="loi-ich" class="qtds-section qtds-solutions" style="background: white;">
+        <!-- SECTION: Context -->
+        <section id="nguon-goc" class="qtds-section">
             <div class="qtds-container">
                 <div class="qtds-scroll-animate qtds-section-header">
-                    <span class="qtds-section-header__tagline">LỐI THOÁT KHỎI 'MA TRẬN' CHI PHÍ ẨN</span>
-                    <h2>Sức Mạnh Của Chuẩn Hóa</h2>
-                    <p>Giải pháp để loại bỏ các chi phí ẩn không phải là làm việc chăm chỉ hơn, mà là làm việc thông minh hơn. Lối thoát nằm ở việc chuẩn hóa và số hóa quy trình tín dụng ngay từ đầu vào.</p>
+                    <span class="qtds-section-header__tagline">BỐI CẢNH ĐẶC THÙ</span>
+                    <h2>Tại Sao Môi Trường QTDND Lại Khác Biệt?</h2>
+                    <p>Để hiểu tại sao sự ngại thay đổi lại bén rễ sâu trong hệ thống QTDND, chúng ta cần nhìn vào chính những yếu tố đã tạo nên bản sắc và thành công của mô hình này.</p>
+                </div>
+
+                <!-- Ảnh minh họa 16:9 - Code sạch hơn -->
+                <div class="qtds-scroll-animate qtds-image-wrapper">
+                    <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/pGEz7J0JP65KvuVMNDVEx.png"
+                        alt="Môi trường QTDND">
+                </div>
+
+                <div class="qtds-challenges__grid">
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon" style="background: var(--primary);"><i class="fas fa-users"></i></div>
+                            <h3 class="qtds-card__title">Môi trường "Gia Đình"</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <p>Đội ngũ nhân sự thường có sự gắn bó lâu dài, ít biến động, tạo nên một không khí làm việc gần gũi. Mặt trái của sự ổn định này là làm giảm đi áp lực phải liên tục cải tiến.</p>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card" style="animation-delay: 0.2s;">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon" style="background: var(--secondary);"><i class="fas fa-handshake"></i></div>
+                            <h3 class="qtds-card__title">Sức Mạnh "Kinh Nghiệm"</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <p>Lợi thế cạnh tranh cốt lõi là "am hiểu địa phương". Điều này vô hình trung đề cao vai trò của kinh nghiệm cá nhân hơn là các quy trình chuẩn hóa và công nghệ.</p>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-card qtds-challenges__card" style="animation-delay: 0.4s;">
+                        <div class="qtds-card__header qtds-challenges__card-header">
+                            <div class="qtds-card__icon" style="background: var(--accent);"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="qtds-card__title">Đề Cao Sự An Toàn</h3>
+                        </div>
+                        <div class="qtds-card__body">
+                            <p>Bản chất của QTDND là hợp tác xã, ưu tiên sự an toàn và thận trọng. Việc đầu tư vào công nghệ mới bị xem là một rủi ro không cần thiết.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION: Analysis -->
+        <section id="phan-tich" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">PHÂN TÍCH HAI CHIỀU</span>
+                    <h2>"Giải Phẫu" Sức Ì Văn Hóa</h2>
+                    <p>Sự ngại thay đổi tồn tại ở cả cấp lãnh đạo cao nhất và trong từng người cán bộ, nhân viên. Hiểu rõ nguyên nhân từ cả hai phía là chìa khóa để phá vỡ rào cản này.</p>
+                </div>
+                <div class="qtds-real-challenges__grid">
+                    <div class="qtds-scroll-animate qtds-real-challenges__column">
+                        <h3 class="qtds-real-challenges__column-title">
+                            <i class="fas fa-user-tie qtds-real-challenges__column-icon qtds-real-challenges__column-icon--danger"></i>
+                            Từ Phía Lãnh Đạo
+                        </h3>
+                        <div class="qtds-real-challenges__barrier-card qtds-real-challenges__barrier-card--danger">
+                            <div class="qtds-real-challenges__barrier-card-header">
+                                <i class="fas fa-lock qtds-real-challenges__barrier-card-icon"></i>
+                                <h4 class="qtds-real-challenges__barrier-card-title">Nỗi sợ mất kiểm soát & quyền lực</h4>
+                            </div>
+                            <ul class="qtds-real-challenges__barrier-list">
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Công nghệ mang lại sự minh bạch, thách thức quyền lực dựa trên kinh nghiệm cảm tính.</span></li>
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Quy trình chuẩn hóa làm giảm không gian cho sự "linh hoạt" hay "du di".</span></li>
+                            </ul>
+                        </div>
+                        <div class="qtds-real-challenges__barrier-card qtds-real-challenges__barrier-card--danger">
+                            <div class="qtds-real-challenges__barrier-card-header">
+                                <i class="fas fa-thumbs-up qtds-real-challenges__barrier-card-icon"></i>
+                                <h4 class="qtds-real-challenges__barrier-card-title">Tư duy "Ổn định là đủ"</h4>
+                            </div>
+                             <ul class="qtds-real-challenges__barrier-list">
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Khi Quỹ vẫn đang hoạt động ổn, lãnh đạo không thấy sự cấp bách phải thay đổi.</span></li>
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Ngại rủi ro đầu tư vào một dự án công nghệ có kết quả không chắc chắn.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-real-challenges__column">
+                        <h3 class="qtds-real-challenges__column-title">
+                            <i class="fas fa-users qtds-real-challenges__column-icon qtds-real-challenges__column-icon--primary"></i>
+                            Từ Phía Nhân Viên
+                        </h3>
+                        <div class="qtds-real-challenges__barrier-card qtds-real-challenges__barrier-card--primary">
+                            <div class="qtds-real-challenges__barrier-card-header">
+                                <i class="fas fa-couch qtds-real-challenges__barrier-card-icon"></i>
+                                <h4 class="qtds-real-challenges__barrier-card-title">Sự thoải mái trong "vùng an toàn"</h4>
+                            </div>
+                            <ul class="qtds-real-challenges__barrier-list">
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Quy trình thủ công dù bất cập nhưng rất quen thuộc và đã trở thành kỹ năng.</span></li>
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Tâm lý "ngại học cái mới", đặc biệt là với nhân viên lớn tuổi.</span></li>
+                            </ul>
+                        </div>
+                        <div class="qtds-real-challenges__barrier-card qtds-real-challenges__barrier-card--primary">
+                            <div class="qtds-real-challenges__barrier-card-header">
+                                <i class="fas fa-robot qtds-real-challenges__barrier-card-icon"></i>
+                                <h4 class="qtds-real-challenges__barrier-card-title">Nỗi sợ công nghệ thay thế con người</h4>
+                            </div>
+                            <ul class="qtds-real-challenges__barrier-list">
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Lo lắng vai trò sẽ trở nên thừa thãi và có nguy cơ mất việc.</span></li>
+                                <li class="qtds-real-challenges__barrier-list-item"><i class="fas fa-chevron-right qtds-real-challenges__barrier-list-icon"></i><span>Sợ kinh nghiệm và kỹ năng của mình không còn được coi trọng.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Solution -->
+        <section id="giai-phap" class="qtds-section">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">GIẢI PHÁP CHIẾN LƯỢC</span>
+                    <h2>Vượt Qua Sức Ì Bằng Sự Thấu Cảm và Trao Quyền</h2>
+                    <p>Giải pháp không nằm ở một mệnh lệnh "bắt buộc phải thay đổi", mà ở việc kiến tạo một con đường thay đổi thông minh và nhân văn hơn, bắt đầu từ việc giải quyết "nỗi đau" hàng ngày của nhân viên.</p>
                 </div>
                 <div class="qtds-solutions__pillars">
                     <div class="qtds-scroll-animate qtds-solutions__pillar">
-                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-clock"></i></div>
-                        <h3 class="qtds-solutions__pillar-title">Giải phóng thời gian</h3>
-                        <p class="qtds-solutions__pillar-subtitle">Tự động hóa các tác vụ lặp lại, trả lại hàng ngàn giờ làm việc mỗi năm để đội ngũ tập trung vào nghiệp vụ chuyên môn.</p>
+                        <div class="qtds-solutions__pillar-number">01</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Tạo "Đại sứ Thay đổi"</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Khi một CBTD giảm 80% thời gian làm hồ sơ, họ sẽ tự nhiên chia sẻ với đồng nghiệp, tạo ra một "lực kéo" thay đổi từ bên trong.</p>
                     </div>
                     <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
-                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-check-double"></i></div>
-                        <h3 class="qtds-solutions__pillar-title">Đảm bảo sự nhất quán</h3>
-                        <p class="qtds-solutions__pillar-subtitle">Tạo ra một "nguồn sự thật duy nhất", nơi mọi thông tin đều được cập nhật và đồng bộ, giúp việc báo cáo trở nên tức thì và chính xác.</p>
+                        <div class="qtds-solutions__pillar-number">02</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-trophy"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Xây dựng Niềm tin từ "Thắng lợi nhỏ"</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Thành công của việc số hóa một quy trình nhỏ là bằng chứng sống động nhất để thuyết phục cả những người hoài nghi nhất.</p>
                     </div>
                     <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
-                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-lightbulb"></i></div>
-                        <h3 class="qtds-solutions__pillar-title">"Hồi sinh" dữ liệu</h3>
-                        <p class="qtds-solutions__pillar-subtitle">Biến dữ liệu "tĩnh" thành dữ liệu "sống", sẵn sàng cho việc phân tích, giúp ban lãnh đạo đưa ra các quyết định chiến lược dựa trên bằng chứng.</p>
+                        <div class="qtds-solutions__pillar-number">03</div>
+                        <div class="qtds-solutions__pillar-icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="qtds-solutions__pillar-title">Giao tiếp và Lắng nghe</h3>
+                        <p class="qtds-solutions__pillar-subtitle">Lãnh đạo cần đóng vai trò người truyền cảm hứng, liên tục giải thích tầm nhìn và cam kết đồng hành cùng nhân viên.</p>
+                    </div>
+                </div>
+                 <div class="qtds-scroll-animate qtds-real-challenges__cta-box">
+                <i class="fas fa-lightbulb qtds-real-challenges__cta-icon"></i>
+                <div class="qtds-real-challenges__cta-content">
+                    <h3 class="qtds-real-challenges__cta-title">Kết Luận: Bài Kiểm Tra Năng Lực Lãnh Đạo</h3>
+                    <p class="qtds-real-challenges__cta-text">Một QTDND thành công trong kỷ nguyên số không phải nơi có công nghệ hiện đại nhất, mà là nơi có nền văn hóa cởi mở, sẵn sàng học hỏi. Xây dựng nền văn hóa đó chính là nhiệm vụ quan trọng nhất của người lãnh đạo.</p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- SECTION: FAQ -->
+        <section id="faq" class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <h2>Giải Đáp Thắc Mắc</h2>
+                </div>
+                <div class="qtds-faq">
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button"><span>Làm thế nào để bắt đầu trò chuyện về sự thay đổi với lãnh đạo bảo thủ?</span><i class="fas fa-chevron-down qtds-faq__icon"></i></button>
+                        <div class="qtds-faq__content"><div class="qtds-faq__content-inner"><p>Hãy bắt đầu bằng ngôn ngữ của họ: Rủi ro và Tuân thủ. Thay vì nói về "công nghệ mới", hãy nói về "giải pháp đáp ứng yêu cầu của NHNN" hoặc "công cụ giảm thiểu rủi ro gian lận".</p></div></div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item" style="animation-delay: 0.1s;">
+                        <button class="qtds-faq__button"><span>Cách tốt nhất để trấn an nhân viên lo sợ mất việc là gì?</span><i class="fas fa-chevron-down qtds-faq__icon"></i></button>
+                        <div class="qtds-faq__content"><div class="qtds-faq__content-inner"><p>Hãy cho họ thấy một lộ trình phát triển mới. Giải thích rằng công nghệ sẽ giúp họ chuyển từ vai trò "nhân viên nhập liệu" sang "chuyên gia tư vấn", một vai trò có giá trị và được tôn trọng hơn.</p></div></div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item" style="animation-delay: 0.2s;">
+                        <button class="qtds-faq__button"><span>Mất bao lâu để thay đổi văn hóa của một tổ chức?</span><i class="fas fa-chevron-down qtds-faq__icon"></i></button>
+                        <div class="qtds-faq__content"><div class="qtds-faq__content-inner"><p>Đây là một quá trình dài hạn. Tuy nhiên, bằng cách bắt đầu từ những thay đổi nhỏ, có tác động lớn (như số hóa quy trình tín dụng), bạn có thể tạo ra chuyển biến tích cực và thấy kết quả ban đầu chỉ sau 6-12 tháng.</p></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Kết Luận - Từ Ổn Định Đến Vượt Trội -->
-        <section id="ket-luan" class="qtds-section qtds-conclusion">
-            <div class="qtds-container">
-                <!-- Section Header using global structure -->
-                <div class="qtds-scroll-animate qtds-section-header qtds-conclusion__header">
-                    <span class="qtds-section-header__tagline">KẾT LUẬN</span>
-                    <h2>Từ Ổn Định Đến Vượt Trội - <span class="qtds-text-gradient">Hành Trình Tối Ưu Hóa Bắt Đầu Từ Đâu?</span></h2>
-                </div>
 
-        <!-- Content -->
-        <div class="qtds-conclusion__content">
-            <!-- Paragraph 1 -->
-            <div class="qtds-scroll-animate qtds-conclusion__paragraph" style="animation-delay: 0.1s;">
-                <div class="qtds-conclusion__paragraph-icon">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <p class="qtds-conclusion__paragraph-text">
-                    Sự ổn định là một tài sản quý giá, nhưng <strong>sự tự mãn với ổn định có thể là kẻ thù của sự phát triển</strong>. Ngay cả trong những quy trình vận hành tốt nhất, vẫn luôn tồn tại những "chi phí ẩn" đang chờ được khám phá và loại bỏ.
-                </p>
-            </div>
-
-            <!-- Paragraph 2 -->
-            <div class="qtds-scroll-animate qtds-conclusion__paragraph" style="animation-delay: 0.2s;">
-                <div class="qtds-conclusion__paragraph-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <p class="qtds-conclusion__paragraph-text">
-                    Việc nhận diện và giải quyết các chi phí ẩn trong quy trình tín dụng thủ công <strong>không phải là thừa nhận sự yếu kém</strong>, mà là biểu hiện của một tư duy quản trị cấp tiến, luôn tìm kiếm sự hoàn hảo. Đó là hành trình chuyển đổi từ một QTDND hoạt động "tốt" trở thành một QTDND hoạt động <strong>"xuất sắc"</strong>.
-                </p>
-            </div>
-
-            <!-- Paragraph 3 -->
-            <div class="qtds-scroll-animate qtds-conclusion__paragraph qtds-conclusion__paragraph--highlight" style="animation-delay: 0.3s;">
-                <div class="qtds-conclusion__paragraph-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <p class="qtds-conclusion__paragraph-text">
-                    Bằng cách loại bỏ lãng phí thời gian, giảm thiểu rủi ro từ dữ liệu thiếu nhất quán và khai phá những cơ hội bị bỏ lỡ, các nhà lãnh đạo không chỉ đang tiết kiệm chi phí, mà còn đang <strong>tái đầu tư nguồn lực vào những hoạt động thực sự tạo ra giá trị</strong> cho thành viên và sự bền vững cho Quỹ.
-                </p>
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="qtds-scroll-animate qtds-conclusion__cta" style="animation-delay: 0.5s;">
-            <p class="qtds-conclusion__cta-text">
-                <i class="fas fa-lightbulb"></i>
-                Hành trình tối ưu hóa đó, bắt đầu từ việc soi rọi vào những chi phí ẩn nhỏ nhất.
-            </p>
-        </div>
-    </div>
-</section>
-
-
-<!-- 
-  Section: QTDS Solutions (Standardized HTML)
-  Version: 1.0
-  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
--->
+        <!--   Section: QTDS Solutions (Standardized HTML)  Version: 1.0  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.-->
+<!-- Section: QTDS Solutions (Standardized HTML) -->
 <section id="giai-phap" class="qtds-section qtds-solutions">
     <div class="qtds-container">
         <!-- Section Header -->
         <div class="qtds-scroll-animate qtds-section-header">
-            <span class="qtds-section-header__tagline">GIỚI THIỆU GIẢI PHÁP</span>
-            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
-            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
+            <span class="qtds-section-header__tagline">VƯỢT QUA SỨC Ì VĂN HÓA</span>
+            <h2>QTDS: Giải Pháp "Từ Dưới Lên" Cho QTDND</h2>
+            <p>Không phải một cuộc cách mạng áp đặt, mà là công cụ đơn giản giúp nhân viên giải quyết "nỗi đau" hàng ngày, tạo động lực thay đổi từ bên trong</p>
         </div>
 
         <!-- Hero Visual -->
         <div class="qtds-solutions__visual">
             <div class="qtds-solutions__device">
-                <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/Mt-3KmS8uoNSo1ejGyakG.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+                <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/WCv_omyn9AAdwmZaxpLQj.png" alt="Ứng dụng QTDS trên điện thoại" style="width: 280px; height: auto; border-radius: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
             </div>
             <div class="qtds-solutions__features">
                 <div class="qtds-feature-badge">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Ứng dụng di động</span>
-                </div>
-                <div class="qtds-feature-badge">
-                    <i class="fas fa-brain"></i>
-                    <span>Tích hợp AI/OCR</span>
+                    <i class="fas fa-users"></i>
+                    <span>Dễ sử dụng ngay</span>
                 </div>
                 <div class="qtds-feature-badge">
                     <i class="fas fa-clock"></i>
-                    <span>Triển khai nhanh</span>
+                    <span>Giảm 80% thời gian</span>
+                </div>
+                <div class="qtds-feature-badge">
+                    <i class="fas fa-smile"></i>
+                    <span>Nhân viên hài lòng</span>
                 </div>
             </div>
         </div>
 
         <!-- 3 Pillars -->
         <div class="qtds-solutions__pillars">
-            <!-- Pillar 1: Triết lý -->
+            <!-- Pillar 1: Vượt qua nỗi sợ mất kiểm soát -->
             <div class="qtds-scroll-animate qtds-solutions__pillar">
                 <div class="qtds-solutions__pillar-number">01</div>
                 <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-seedling"></i>
+                    <i class="fas fa-chart-line"></i>
                 </div>
-                <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
-                <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
+                <h3 class="qtds-solutions__pillar-title">Minh Bạch Hóa Quản Trị</h3>
+                <p class="qtds-solutions__pillar-subtitle">Tăng cường quyền kiểm soát cho lãnh đạo</p>
                 <div class="qtds-solutions__pillar-content">
-                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
+                    <p>QTDS không làm giảm quyền lực mà trao cho lãnh đạo "con mắt thần" - theo dõi mọi hoạt động real-time, phát hiện sai phạm tức thì, ra quyết định dựa trên dữ liệu chính xác.</p>
                     <div class="qtds-solutions__benefit-tag">
                         <i class="fas fa-check-circle"></i>
-                        Vượt qua rào cản văn hóa
+                        Kiểm soát tốt hơn, không phải ít hơn
                     </div>
                 </div>
             </div>
@@ -3673,26 +3746,25 @@ p:last-child {
             </div>
             </div>
 
-
-            <!-- Pillar 3: Định vị -->
+            <!-- Pillar 3: Phương pháp thẩm thấu -->
             <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
                 <div class="qtds-solutions__pillar-number">03</div>
                 <div class="qtds-solutions__pillar-icon">
-                    <i class="fas fa-bullseye"></i>
+                    <i class="fas fa-seedling"></i>
                 </div>
-                <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
-                <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
+                <h3 class="qtds-solutions__pillar-title">Chiến Lược "Thẩm Thấu"</h3>
+                <p class="qtds-solutions__pillar-subtitle">Bắt đầu nhỏ, lan tỏa tự nhiên</p>
                 <div class="qtds-solutions__comparison">
                     <div class="qtds-solutions__comparison-item">
-                        <span class="qtds-solutions__comparison-label">Core Banking</span>
-                        <span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span>
-                        <span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span>
+                        <span class="qtds-solutions__comparison-label">Cách cũ</span>
+                        <span class="qtds-solutions__comparison-value text-danger">Áp đặt từ trên</span>
+                        <span class="qtds-solutions__comparison-note">Gặp phản kháng mạnh</span>
                     </div>
                     <div class="qtds-solutions__comparison-divider">VS</div>
                     <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight">
                         <span class="qtds-solutions__comparison-label">QTDS</span>
-                        <span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span>
-                        <span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span>
+                        <span class="qtds-solutions__comparison-value text-success">Lan tỏa từ dưới</span>
+                        <span class="qtds-solutions__comparison-note">Nhân viên tự nguyện ủng hộ</span>
                     </div>
                 </div>
             </div>
@@ -3700,44 +3772,44 @@ p:last-child {
 
         <!-- Process Flow -->
         <div class="qtds-scroll-animate qtds-solutions__process-section">
-            <h3 class="qtds-solutions__process-title">Quy trình Chuẩn hóa Tự động</h3>
+            <h3 class="qtds-solutions__process-title">Lộ Trình Tạo "Đại Sứ Thay Đổi"</h3>
             <div class="qtds-solutions__process-flow">
                 <div class="qtds-solutions__process-step">
                     <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-upload"></i>
+                        <i class="fas fa-user-check"></i>
                     </div>
-                    <h4>Thu thập</h4>
-                    <p>Chụp ảnh giấy tờ</p>
+                    <h4>Chọn người tiên phong</h4>
+                    <p>3-5 CBTD tích cực</p>
                 </div>
                 <div class="qtds-solutions__process-arrow">
                     <i class="fas fa-arrow-right"></i>
                 </div>
                 <div class="qtds-solutions__process-step">
                     <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-magic"></i>
                     </div>
-                    <h4>Xử lý AI</h4>
-                    <p>Trích xuất tự động</p>
+                    <h4>Trải nghiệm thành công</h4>
+                    <p>Giảm 80% công việc</p>
                 </div>
                 <div class="qtds-solutions__process-arrow">
                     <i class="fas fa-arrow-right"></i>
                 </div>
                 <div class="qtds-solutions__process-step">
                     <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-check-double"></i>
+                        <i class="fas fa-comments"></i>
                     </div>
-                    <h4>Chuẩn hóa</h4>
-                    <p>Định dạng chuẩn</p>
+                    <h4>Chia sẻ tự nhiên</h4>
+                    <p>Đồng nghiệp thấy lợi ích</p>
                 </div>
                 <div class="qtds-solutions__process-arrow">
                     <i class="fas fa-arrow-right"></i>
                 </div>
                 <div class="qtds-solutions__process-step">
                     <div class="qtds-solutions__process-icon">
-                        <i class="fas fa-file-signature"></i>
+                        <i class="fas fa-network-wired"></i>
                     </div>
-                    <h4>Hoàn thiện</h4>
-                    <p>Hồ sơ chuẩn mực</p>
+                    <h4>Lan tỏa toàn Quỹ</h4>
+                    <p>Thay đổi từ bên trong</p>
                 </div>
             </div>
         </div>
@@ -3770,11 +3842,12 @@ p:last-child {
             </div>
         </div>
 
+
         <!-- CTA -->
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10);">
             <a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--primary">
-                <i class="fas fa-chart-line"></i>
-                Dùng Thử Miễn Phí Ngay
+                <i class="fas fa-seedling"></i>
+                Khám Phá Giải Pháp
                 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -3782,72 +3855,31 @@ p:last-child {
 </section>
 
 
-        <section id="faq" class="qtds-section" style="background: white;">
+
+        <!-- SECTION: Podcast -->
+        <section id="podcast" class="qtds-section" style="background-color: white;">
             <div class="qtds-container">
                 <div class="qtds-scroll-animate qtds-section-header">
-                    <h2>Giải Đáp Thắc Mắc</h2>
+                    <span class="qtds-section-header__tagline">LẮNG NGHE CHIA SẺ</span>
+                    <h2>Podcast Cùng QTDS</h2>
                 </div>
-                <div class="qtds-faq">
-                    <div class="qtds-scroll-animate qtds-faq__item">
-                        <button class="qtds-faq__button">
-                            <span>Quỹ của chúng tôi hoạt động rất ổn định, tại sao cần phải thay đổi quy trình?</span>
-                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                        </button>
-                        <div class="qtds-faq__content">
-                            <div class="qtds-faq__content-inner">
-                                <p>Sự ổn định là nền tảng, nhưng tối ưu hóa mới là động lực tăng trưởng. Việc loại bỏ chi phí ẩn giúp Quỹ của bạn hoạt động hiệu quả hơn, lợi nhuận cao hơn và có thêm nguồn lực để cạnh tranh và phục vụ thành viên tốt hơn trong tương lai.</p>
-                            </div>
+                <div class="qtds-scroll-animate qtds-podcast-card">
+                    <div class="qtds-podcast-card__icon-wrapper">
+                        <div class="qtds-podcast-card__icon">
+                            <i class="fas fa-play-circle"></i>
                         </div>
                     </div>
-                    <div class="qtds-scroll-animate qtds-faq__item">
-                        <button class="qtds-faq__button">
-                            <span>Làm thế nào để đo lường được các "chi phí ẩn" này một cách cụ thể?</span>
-                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                        </button>
-                        <div class="qtds-faq__content">
-                            <div class="qtds-faq__content-inner">
-                                <p>Hãy bắt đầu bằng việc khảo sát thời gian. Thử ghi lại thời gian mà một cán bộ tín dụng phải dành cho các công việc phi sản xuất như tìm kiếm hồ sơ, nhập liệu lại trong một tuần. Con số thu được có thể sẽ khiến bạn bất ngờ.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="qtds-scroll-animate qtds-faq__item">
-                        <button class="qtds-faq__button">
-                            <span>Việc triển khai một hệ thống mới có tốn kém và phức tạp hơn chính các chi phí ẩn không?</span>
-                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
-                        </button>
-                        <div class="qtds-faq__content">
-                            <div class="qtds-faq__content-inner">
-                                <p>Với các giải pháp hiện đại theo mô hình SaaS như QTDS, chi phí triển khai và vận hành rất hợp lý và quá trình chuyển đổi được thiết kế để diễn ra một cách mượt mà, ít gây xáo trộn. Lợi ích thu được từ việc loại bỏ chi phí ẩn thường vượt xa chi phí đầu tư chỉ sau một thời gian ngắn.</p>
-                            </div>
+                    <div class="qtds-podcast-card__content">
+                        <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
+                        <p class="qtds-podcast-card__description">Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quá trình thiết lập hồ sơ tín dụng.</p>
+                        <div class="qtds-podcast-card__player">
+                            <iframe src="https://drive.google.com/file/d/1QV7ZtZCBpV3ovcNPQSxlTnK-e9oY1Wfs/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- SECTION: Podcast -->
-        <section class="qtds-section" style="background-color: white;">
-        <div class="qtds-container">
-        <div class="qtds-scroll-animate qtds-section-header">
-        <span class="qtds-section-header__tagline">LẮNG NGHE CHIA SẺ</span>
-        <h2>Podcast Cùng QTDS</h2>
-        <p>Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quá trình thiết lập hồ sơ tín dụng.</p>
-        </div>
-        <div class="qtds-scroll-animate qtds-podcast-card">
-        <div class="qtds-podcast-card__icon-wrapper">
-        <div class="qtds-podcast-card__icon"><i class="fas fa-play-circle"></i></div>
-        </div>
-        <div class="qtds-podcast-card__content">
-        <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Quản Lý Tín Dụng</h3>
-        <p class="qtds-podcast-card__description">Tổng quan về các tính năng nổi bật và lợi ích thực tế mà QTDS mang lại cho quá trình thiết lập hồ sơ tín dụng.</p>
-        <div class="qtds-podcast-card__player">
-        <iframe src="https://drive.google.com/file/d/1jZmGBxL-0GUdcQA85sj-MVtnrARJ59vC/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        </div>
-        </div>
-        </div>
-        </section>
-        
+
         <!-- CTA Section -->
         <!-- 
         Section: QTDS CTA (Standardized HTML)
@@ -3870,18 +3902,21 @@ p:last-child {
 
                     <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
                     <div class="qtds-cta__features">
-                        <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+
         <div class="qtds-feature-card qtds-feature-card--primary">
             <i class="fas fa-shield-alt qtds-feature-card__icon"></i>
             <h4 class="qtds-feature-card__title">Bảo Mật Dữ Liệu</h4>
             <p class="qtds-feature-card__text">Ngăn chặn gian lận hiệu quả</p>
         </div>
 
+
+
         <div class="qtds-feature-card qtds-feature-card--secondary">
             <i class="fas fa-rocket qtds-feature-card__icon"></i>
             <h4 class="qtds-feature-card__title">Tối Ưu Quy Trình</h4>
             <p class="qtds-feature-card__text">Xử lý nhanh, giảm 70% thời gian</p>
         </div>
+
 
         <div class="qtds-feature-card qtds-feature-card--accent">
             <i class="fas fa-chart-line qtds-feature-card__icon"></i>
@@ -3895,7 +3930,8 @@ p:last-child {
             <h4 class="qtds-feature-card__title">Tuân Thủ NHNN</h4>
             <p class="qtds-feature-card__text">100% đáp ứng quy định</p>
         </div>
-    </div>
+
+                    </div>
 
                     <!-- Action Buttons -->
                     <div class="qtds-cta__actions">
@@ -3908,19 +3944,27 @@ p:last-child {
                             Tham Gia Cộng Đồng
                         </a>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <section class="qtds-section">
+        <!-- 
+        Section: QTDS Library (Standardized HTML)
+        Version: 1.0
+        Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+        -->
+        <section id="articles" class="qtds-section">
             <div class="qtds-container">
                 <div class="qtds-scroll-animate qtds-section-header">
                     <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
                     <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
                     <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
                 </div>
+
                 <div id="library-grid" class="qtds-library__grid"></div>
                 <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
+
                 <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
                     <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
                         <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
@@ -3928,83 +3972,94 @@ p:last-child {
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="qtds-footer" style="padding: var(--space-12) 0;">
-        <div class="qtds-container" style="text-align: center;">
-            <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo" style="height: 80px; margin-bottom: var(--space-4);">
-            <p class="qtds-footer__tagline">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
-            <div class="qtds-footer__socials">
-                <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link"><i class="fas fa-home"></i></a>
-                <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link"><i class="fas fa-archive"></i></a>
-                <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link"><i class="fas fa-comments"></i></a>
-            </div>
-            <p class="qtds-footer__copyright">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+    <!-- 
+  Section: QTDS Footer (Standardized HTML)
+  Version: 1.0
+  Description: Updated to use standardized QTDS BEM class names while keeping the original structure and inline styles intact for comparison.
+-->
+<footer class="qtds-footer" style="background: var(--gray-900); color: var(--gray-700); padding: var(--space-16) 0;">
+    <div class="qtds-container" style="text-align: center;">
+        <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo" style="height: 120px; margin: 0 auto var(--space-4);">
+        <p class="qtds-footer__tagline" style="margin-bottom: var(--space-6); font-size: var(--text-lg);">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
+        <div class="qtds-footer__socials" style="display: flex; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); font-size: var(--text-2xl);">
+            <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-home"></i></a>
+            <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-archive"></i></a>
+            <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-comments"></i></a>
         </div>
-    </footer>
+        <p class="qtds-footer__copyright" style="font-size: var(--text-base); color: var(--gray-700);">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+    </div>
+</footer>
 
-    <a href="#" class="qtds-back-to-top" title="Lên đầu trang">
-        <i class="fas fa-arrow-up"></i>
-    </a>
 
-     <script>
-/**
- * Section: QTDS Navbar (Standardized JS)
- * Version: 1.0
- * Description: This script handles the mobile menu toggle and scroll effects for the navbar.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
+    <!-- ATOM: Back To Top -->
+    <a href="#" class="qtds-back-to-top" title="Lên đầu trang" aria-label="Lên đầu trang"><i class="fas fa-arrow-up"></i></a>
 
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+    <script>
+        /**
+         * File: _main-ct16.js (Master Initialization Script for CT16)
+         * Description: Kích hoạt các module JavaScript cho trang CT16.
+         * Tất cả các module được gộp vào đây để tạo một file độc lập.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== GLOBAL: SCROLL ANIMATIONS =====
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
 
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
-        });
-    }
-
-    if (mobileMenuBtn && mobileMenu) {
-        const menuIcon = mobileMenuBtn.querySelector('i');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
-            if (menuIcon) {
-                menuIcon.classList.toggle('fa-bars');
-                menuIcon.classList.toggle('fa-times');
-            }
-        });
-
-        document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
-                if (menuIcon) {
-                    menuIcon.classList.add('fa-bars');
-                    menuIcon.classList.remove('fa-times');
+            // ===== NAVBAR FUNCTIONALITY =====
+            function initNavbar() {
+                const navbar = document.getElementById('navbar');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (navbar) {
+                    window.addEventListener('scroll', () => {
+                        navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
+                    });
                 }
-            });
-        });
-    }
-}
-
-
-// ===== 3. FAQ ACCORDION FUNCTIONALITY =====
-    function initFaq() {
-    document.querySelectorAll('.qtds-faq__button').forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            button.classList.toggle('qtds-faq__button--active');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                if (mobileMenuBtn && mobileMenu) {
+                    const menuIcon = mobileMenuBtn.querySelector('i');
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+                        if (menuIcon) {
+                            menuIcon.classList.toggle('fa-bars');
+                            menuIcon.classList.toggle('fa-times');
+                        }
+                    });
+                    document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                            if (menuIcon) {
+                                menuIcon.classList.add('fa-bars');
+                                menuIcon.classList.remove('fa-times');
+                            }
+                        });
+                    });
+                }
             }
-        });
-    });
-}
+            initNavbar();
 
-/**
+            // ===== FAQ ACCORDION FUNCTIONALITY =====
+            function initFaq() {
+                document.querySelectorAll('.qtds-faq__button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        const isActive = button.classList.toggle('qtds-faq__button--active');
+                        content.style.maxHeight = isActive ? content.scrollHeight + "px" : null;
+                    });
+                });
+            }
+            initFaq();
+
+            /**
  * Section: QTDS Library (Standardized JS)
  * Version: 1.1 (Fixed)
  * Description: This script handles fetching and displaying a limited number of articles.
@@ -4073,49 +4128,21 @@ function initLibrary(observer) {
     }
     fetchArticles();
 }
+initLibrary(observer);
 
-    /**
-     * Module: Back To Top Button
-     * Description: Handles the show/hide and smooth scroll functionality.
-     */
-    function initBackToTop() {
-        const backToTopBtn = document.querySelector('.qtds-back-to-top');
-        if (backToTopBtn) {
-            window.addEventListener('scroll', () => {
-                backToTopBtn.classList.toggle('show', window.scrollY > 400);
-            });
-            backToTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    }
-    
-
-/**
- * File: ct9-init.js (Master Initialization Script for CT9)
- * Version: 5.1 (Standardized & Co-located)
- * Description: Kích hoạt các module JavaScript cho trang CT9.
- * Tất cả các module được import từ vị trí gốc của chúng trong /library.
- */
-// Global initialization script
-document.addEventListener('DOMContentLoaded', () => {
-    // ===== 1. GLOBAL: SCROLL ANIMATIONS =====
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+            // ===== BACK TO TOP FUNCTIONALITY =====
+            function initBackToTop() {
+                const backToTopBtn = document.querySelector('.qtds-back-to-top');
+                if (backToTopBtn) {
+                    window.addEventListener('scroll', () => backToTopBtn.classList.toggle('show', window.scrollY > 400));
+                    backToTopBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                }
             }
+            initBackToTop();
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
-
-    // ===== INITIALIZE ALL MODULES =====
-    initNavbar();
-    initFaq();
-    initLibrary(observer);
-    initBackToTop();
-});
-</script>
+    </script>
+</body>
+</html>
