@@ -1,0 +1,4033 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quản Lý Tín Dụng Từ Xa: Giải Pháp Cho Lãnh Đạo QTDND Năng Động</title>
+    <meta name="description" content="Công việc không thể dừng lại chỉ vì lãnh đạo đi công tác. Khám phá quy trình phê duyệt online an toàn, giúp bạn điều hành bộ phận tín dụng hiệu quả từ bất kỳ đâu.">
+    <meta name="keywords" content="phê duyệt hồ sơ online, quản lý tín dụng từ xa, lãnh đạo QTDND 4.0, giải pháp QTDND, chuyển đổi số QTDND">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+     <style>
+/**
+ * File: _global-ct6.css (Standardized)
+ * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
+ * Version: 2.1 (Corrected & Finalized)
+ * Changes:
+ * - Standardized all utility and component classes with the 'qtds-' prefix.
+ * - Re-included the missing '.data-flow__item' rule inside the mobile media query.
+ * - Maintained all original styles, variables, and media queries.
+ */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME
+   ========================================================================== */
+:root {
+    /* Colors */
+    --primary: #1A73E8;
+    --primary-dark: #1557B0;
+    --secondary: #34A853;
+    --secondary-dark: #2E7D32;
+    --accent: #FBBC04;
+    --danger: #EA4335;
+    --purple: #9C27B0;
+    
+    /* Grays */
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E8EAED;
+    --gray-600: #80868B;
+    --gray-700: #5F6368;
+    --gray-800: #3C4043;
+    --gray-900: #202124;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
+    --gradient-hero: linear-gradient(135deg, #0D1117 0%, #1a1f2e 100%);
+    
+    /* Spacing */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem;   /* 48px */
+    --space-16: 4rem;   /* 64px */
+    --space-20: 5rem;   /* 80px */
+
+    /* Typography - Fluid Sizes */
+    --text-xs: clamp(0.875rem, 1.5vw, 1rem);
+    --text-sm: clamp(1rem, 2vw, 1.125rem);
+    --text-base: clamp(1.125rem, 2.5vw, 1.25rem);
+    --text-lg: clamp(1.25rem, 3vw, 1.375rem);
+    --text-xl: clamp(1.375rem, 3.5vw, 1.375rem);
+    --text-2xl: clamp(1.625rem, 4vw, 1.5rem);
+    --text-3xl: clamp(2.125rem, 5vw, 1.875rem);
+    --text-4xl: clamp(2.625rem, 6vw, 3.625rem);
+    --text-5xl: clamp(3.125rem, 8vw, 4.625rem);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-base: 300ms ease;
+    
+    /* Border Radius */
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main, section {
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+    margin-bottom: var(--space-6);
+    color: var(--gray-700);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   3. LAYOUT & UTILITIES (Standardized)
+   ========================================================================== */
+.qtds-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.qtds-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+}
+
+.qtds-section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-section-header__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-section-header p {
+    font-size: var(--text-xl);
+}
+
+/* ==========================================================================
+   4. COMPONENTS (Standardized)
+   ========================================================================== */
+
+
+
+/* Card Component */
+.qtds-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    height: 100%;
+}
+
+.qtds-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.qtds-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+}
+
+.qtds-card__title {
+    font-size: var(--text-2xl);
+    margin: 0;
+}
+
+.qtds-card__body {
+    padding: var(--space-8);
+}
+
+/* ==========================================================================
+   7. MOBILE OVERFLOW FIXES & RESPONSIVE (Standardized)
+   ========================================================================== */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    .qtds-container {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+
+    .qtds-section {
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .qtds-card {
+        max-width: 100%;
+    }
+    
+    .qtds-data-flow__item {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+    h3 { font-size: var(--text-2xl); }
+    h4 { font-size: var(--text-xl); }
+    body { font-size: var(--text-base); }
+}
+
+@media (max-width: 480px) {
+    .qtds-section-header h2 {
+        font-size: var(--text-3xl);
+    }
+}
+
+/**
+ * Utility: Text Colors
+ * Description: Defines color utility classes used across multiple sections.
+ */
+
+.text-danger { 
+    color: var(--danger); 
+}
+.text-warning { 
+    color: var(--accent); 
+}
+.text-purple { 
+    color: var(--purple); 
+}
+.text-success { 
+    color: var(--secondary); 
+}
+.text-primary { 
+    color: var(--primary); 
+} 
+
+/**
+ * Section: QTDS Navbar
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-navbar.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS NAVBAR
+   ========================================================================== */
+.qtds-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: box-shadow var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-navbar--scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-navbar__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.qtds-navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+}
+
+.qtds-navbar__logo {
+    height: 60px;
+}
+
+.qtds-navbar__brand-name {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.qtds-navbar__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+}
+
+.qtds-navbar__link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-base);
+}
+
+.qtds-navbar__link:hover {
+    color: var(--primary);
+}
+
+.qtds-navbar__mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: var(--text-2xl);
+    color: var(--gray-700);
+    cursor: pointer;
+}
+
+.qtds-navbar__mobile-menu {
+    display: none;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.qtds-navbar__mobile-menu--active {
+    display: block;
+}
+
+.qtds-navbar__mobile-link {
+    display: block;
+    padding: var(--space-4);
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: 500;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .qtds-navbar__links {
+        display: none;
+    }
+    .qtds-navbar__mobile-btn {
+        display: block;
+    }
+}
+
+
+/**
+ * Section: QTDS Hero
+ * Description: Defines styles for the main hero section, standardized with QTDS BEM convention.
+ * Version: 2.1 (Corrected)
+ * Changes:
+ * - Re-included standardized utility classes (.qtds-scroll-animate, .qtds-text-gradient) to maintain component integrity.
+ * - Applied 'qtds-' prefix to all classes.
+ * - Renamed '.hero' to '.qtds-hero' (Block).
+ * - Renamed all child elements to follow BEM (e.g., '.hero__content' to '.qtds-hero__content').
+ * - Renamed '.hero-bg' to '.qtds-hero__bg' for better BEM consistency.
+ * - Renamed animation keyframe 'float' to 'qtds-hero-float' to avoid global conflicts.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS HERO
+   ========================================================================== */
+
+.qtds-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-hero);
+    color: white;
+    overflow: hidden;
+    padding-top: var(--space-20);
+}
+
+/* --- ELEMENTS --- */
+
+.qtds-hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 var(--space-4);
+}
+
+.qtds-hero__content .qtds-tag--hero-badge {
+    margin-bottom: var(--space-6);
+}
+
+.qtds-hero__title {
+    color: white;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-hero__subtitle {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    color: #E2E8F0;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-hero__description {
+    font-size: var(--text-xl);
+    color: #94A3B8;
+    max-width: 800px;
+    margin: 0 auto var(--space-10);
+}
+
+.qtds-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+}
+
+/* Background Aurora Effect (Desktop Only) */
+.qtds-hero__bg {
+    display: none; /* Hidden by default, enabled via media query */
+}
+
+@media (min-width: 1024px) {
+    .qtds-hero__bg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .qtds-hero__bg::before,
+    .qtds-hero__bg::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.8;
+        animation: qtds-hero-float 25s ease-in-out infinite;
+    }
+
+    .qtds-hero__bg::before {
+        width: 500px;
+        height: 500px;
+        background: rgba(26, 115, 232, 0.25);
+        top: -150px;
+        right: -150px;
+        animation-delay: 0s;
+    }
+
+    .qtds-hero__bg::after {
+        width: 700px;
+        height: 700px;
+        background: rgba(52, 168, 83, 0.15);
+        bottom: -250px;
+        left: -200px;
+        animation-delay: 12s;
+    }
+}
+
+/* ==========================================================================
+   UTILITIES USED WITHIN HERO
+   ========================================================================== */
+
+/* Standardized Text gradient utility class */
+.qtds-text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Standardized Scroll Animation Classes */
+.qtds-scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.qtds-scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes qtds-hero-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-50px) translateX(30px) scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .qtds-hero__actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-4);
+    }
+
+    .qtds-hero__actions .qtds-btn {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .qtds-hero__content {
+        padding: 0 var(--space-3);
+    }
+
+    .qtds-hero__title {
+        font-size: var(--text-4xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__subtitle {
+        font-size: var(--text-2xl);
+        word-wrap: break-word;
+    }
+
+    .qtds-hero__description {
+        font-size: var(--text-lg);
+        padding: 0 var(--space-2);
+    }
+    
+    .qtds-scroll-animate {
+        transform: translateY(10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-hero__title {
+        font-size: var(--text-3xl);
+    }
+
+    .qtds-hero__subtitle {
+        font-size: 1.375rem; /* 22px mobile */
+    }
+}
+
+
+/* ==========================================================================
+   QTDS CHALLENGES SECTION - Optimized & Standardized
+   Version: 2.0
+   ========================================================================== */
+
+/* Base grid layout */
+.qtds-challenges__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    max-width: 1000px;
+    margin: 0 auto var(--space-12);
+}
+
+/* Mobile First - Mặc định 1 cột */
+.qtds-challenges__grid {
+    display: grid;
+    grid-template-columns: 1fr;  /* Mặc định 1 cột cho mobile */
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+/* Card base styles */
+.qtds-challenges__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.qtds-challenges__card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--gray-50);
+    border-bottom: 2px solid var(--gray-100);
+}
+
+.qtds-challenges__card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-2xl);
+    color: white;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Card icon variants */
+.qtds-challenges__card--1 .qtds-challenges__card-icon {
+    background: var(--gradient-primary);
+}
+
+.qtds-challenges__card--2 .qtds-challenges__card-icon {
+    background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+}
+
+.qtds-challenges__card--3 .qtds-challenges__card-icon {
+    background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%);
+}
+
+/* Card full-width modifier */
+.qtds-challenges__card--full-width {
+    grid-column: 1 / -1;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Card content */
+.qtds-challenges__card-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: 0;
+}
+
+.qtds-challenges__card-tag {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    letter-spacing: 0.5px;
+}
+
+.qtds-challenges__card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+}
+
+.qtds-challenges__card-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-800);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+}
+
+/* Card list */
+.qtds-challenges__card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+}
+
+.qtds-challenges__card-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.qtds-challenges__card-list li:last-child {
+    margin-bottom: 0;
+}
+
+.qtds-challenges__card-list i {
+    margin-top: 6px;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+    color: var(--primary);
+}
+
+/* Cost comparison */
+.qtds-challenges__cost-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-challenges__cost-item {
+    text-align: center;
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-100);
+}
+
+.qtds-challenges__cost-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.qtds-challenges__cost-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    display: block;
+}
+
+/* Card insight box */
+.qtds-challenges__card-insight {
+    margin-top: auto;
+    padding: var(--space-4);
+    background-color: var(--gray-50);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+}
+
+.qtds-challenges__card-insight strong {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+/* Legal elements */
+.qtds-challenges__legal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-challenges__legal-text {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+/* Deadline/Warning box */
+.qtds-challenges__deadline {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: #FEF3C7;
+    border: 1px solid #F59E0B;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-challenges__deadline i {
+    color: #F59E0B;
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.qtds-challenges__deadline span {
+    color: #92400E;
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* Highlight box */
+.qtds-challenges__highlight-box {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    max-width: 900px;
+    margin: var(--space-12) auto 0;
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-challenges__highlight-box * {
+    color: white;
+}
+
+.qtds-challenges__highlight-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-challenges__highlight-icon {
+    margin-right: var(--space-3);
+    font-size: var(--text-3xl);
+}
+
+.qtds-challenges__highlight-text {
+    font-size: var(--text-lg);
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Animation delays */
+.qtds-challenges__card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.qtds-challenges__card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.qtds-challenges__card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.qtds-challenges__highlight-box {
+    animation-delay: 0.3s;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+    .qtds-challenges__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+    }
+
+    .qtds-challenges__card--full-width {
+        grid-column: 1 / -1;
+    }
+
+    .qtds-challenges__stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-8);
+    }
+}
+
+/* Desktop - 992px and up */
+@media (min-width: 992px) {
+    .qtds-challenges__grid {
+        grid-template-columns: repeat(3, 1fr);  /* 3 cột cho desktop */
+        gap: var(--space-8);
+    }
+}
+
+    .qtds-challenges__card-list li {
+        font-size: var(--text-lg);
+    }
+
+/* Mobile - 767px and below */
+@media (max-width: 767px) {
+    .qtds-challenges__stats {
+        grid-template-columns: 1fr !important;
+        gap: var(--space-4);
+    }
+
+    .qtds-challenges__card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-3);
+        padding: var(--space-4);
+    }
+
+    .qtds-challenges__card-title {
+        font-size: var(--text-xl);
+    }
+
+    .qtds-challenges__cost-comparison {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .qtds-challenges__highlight-box {
+        padding: var(--space-6);
+    }
+
+    .qtds-challenges__highlight-title {
+        font-size: var(--text-xl);
+    }
+
+    .qtds-challenges__highlight-text {
+        font-size: var(--text-base);
+    }
+
+    .qtds-challenges__deadline {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Small mobile - 480px and below */
+@media (max-width: 480px) {
+    .qtds-challenges__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .qtds-challenges__card-body {
+        padding: var(--space-4);
+    }
+
+    .qtds-challenges__card-list li {
+        font-size: var(--text-sm);
+        gap: var(--space-2);
+    }
+
+    .qtds-challenges__cost-value {
+        font-size: var(--text-xl);
+    }
+}
+
+/* Utility classes for text colors */
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-warning {
+    color: var(--accent) !important;
+}
+
+.text-success {
+    color: var(--secondary) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+
+
+/**
+ * Section: QTDS Standardization
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-standardization.html.
+ * All original rules and structures are preserved.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS STANDARDIZATION
+   ========================================================================== */
+
+/* ----- Data Flow Element ----- */
+.qtds-standardization__data-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+    max-width: 900px;
+    margin: 0 auto var(--space-16);
+}
+
+@media (min-width: 768px) {
+    .qtds-standardization__data-flow {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-4);
+    }
+}
+
+.qtds-standardization__data-flow-item {
+    text-align: center;
+    max-width: 100%;
+}
+
+.qtds-standardization__data-flow-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    color: white;
+    font-size: var(--text-4xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-standardization__data-flow-arrow {
+    font-size: var(--text-4xl);
+    color: var(--gray-200);
+}
+
+@media (max-width: 767px) {
+    .qtds-standardization__data-flow-arrow i {
+        transform: rotate(90deg);
+    }
+}
+
+/* ----- Grid & Cards within Standardization Section ----- */
+.qtds-standardization__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+}
+
+.qtds-standardization__card-header {
+    /* This class is for specific overrides on top of .qtds-card__header if needed */
+    background-color: var(--gray-50);
+}
+
+.qtds-standardization__list {
+    list-style: none;
+    padding: 0;
+}
+
+.qtds-standardization__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.qtds-standardization__list-item:last-child {
+    margin-bottom: 0;
+}
+
+.qtds-standardization__list-item i {
+    margin-top: 8px;
+    font-size: var(--text-base);
+    flex-shrink: 0;
+}
+
+/* Impact Metrics */
+.qtds-standardization__impact-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.qtds-standardization__impact-metric {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.qtds-standardization__impact-metric-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+.qtds-standardization__impact-metric-content strong {
+    display: block;
+    font-size: var(--text-lg);
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-standardization__impact-metric-content p {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Barrier Insight */
+.qtds-standardization__barrier-insight {
+    background: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    position: relative;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-standardization__barrier-insight i {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    font-size: var(--text-3xl);
+    color: var(--primary);
+    opacity: 0.2;
+}
+
+.qtds-standardization__barrier-insight p {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-10);
+}
+
+.qtds-standardization__barrier-insight p:last-child {
+    margin-bottom: 0;
+}
+
+/* Barrier Flow */
+.qtds-standardization__barrier-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--space-4);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    gap: var(--space-2);
+}
+
+.qtds-standardization__barrier-flow i {
+    color: var(--gray-700);
+}
+
+/* Key Insight Box */
+.qtds-standardization__key-insight-box {
+    background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+    border: 2px solid #FFB74D;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--space-16);
+}
+
+.qtds-standardization__key-insight-box-icon {
+    width: 56px;
+    height: 56px;
+    background: #FF9800;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    flex-shrink: 0;
+}
+
+.qtds-standardization__key-insight-box-content h4 {
+    font-size: var(--text-xl);
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-standardization__key-insight-box-content p {
+    font-size: var(--text-lg);
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.qtds-standardization__key-insight-box-content strong {
+    color: #E65100;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .qtds-standardization__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .qtds-standardization__key-insight-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .qtds-standardization__barrier-flow {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .qtds-standardization__barrier-flow i {
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-standardization__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
+
+
+/**
+ * Section: QTDS Solutions
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of standardized-solutions-html-v1.
+ * All original rules and structures are preserved.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS SOLUTIONS
+   ========================================================================== */
+
+.qtds-solutions__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--space-12);
+}
+
+.qtds-solutions__device {
+    position: relative;
+}
+
+.qtds-solutions__features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Note: .qtds-feature-badge is a global component, its styles should be in a component file */
+.qtds-feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.qtds-feature-badge i {
+    color: var(--primary);
+}
+
+/* Pillars */
+.qtds-solutions__pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+}
+
+.qtds-solutions__pillar {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    border: 1px solid var(--gray-100);
+}
+
+.qtds-solutions__pillar:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-solutions__pillar-number {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-size: var(--text-5xl);
+    font-weight: 900;
+    color: var(--gray-100);
+}
+
+.qtds-solutions__pillar-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__pillar-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-solutions__pillar-subtitle {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-solutions__pillar-content p {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__benefit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Tech Features */
+.qtds-solutions__tech-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.qtds-solutions__tech-features-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.qtds-solutions__tech-features-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.qtds-solutions__tech-features-content strong {
+    display: block;
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+}
+
+.qtds-solutions__tech-features-content p {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin: 0;
+}
+
+/* Comparison */
+.qtds-solutions__comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-xl);
+}
+
+.qtds-solutions__comparison-item {
+    flex: 1;
+    text-align: center;
+}
+
+.qtds-solutions__comparison-item--highlight {
+    background: white;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-solutions__comparison-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__comparison-value {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__comparison-note {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.qtds-solutions__comparison-divider {
+    font-weight: 700;
+    color: var(--gray-400);
+}
+
+/* Process Flow */
+.qtds-solutions__process-section {
+    margin-top: var(--space-16);
+}
+
+.qtds-solutions__process-title {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.qtds-solutions__process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+.qtds-solutions__process-step {
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+}
+
+.qtds-solutions__process-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-3);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-solutions__process-step h4 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-solutions__process-step p {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin: 0;
+}
+
+.qtds-solutions__process-arrow {
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+}
+
+/* Benefits Highlight */
+.qtds-solutions__benefits-highlight {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border: 2px solid #1976D2;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    margin-top: var(--space-8);
+}
+
+.qtds-solutions__benefits-highlight-icon {
+    width: 64px;
+    height: 64px;
+    background: #1976D2;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-3xl);
+    flex-shrink: 0;
+}
+
+.qtds-solutions__benefits-highlight-content h4 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-solutions__benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-3);
+}
+
+.qtds-solutions__benefits-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+}
+
+.qtds-solutions__benefits-item i {
+    color: #1976D2;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .qtds-solutions__visual {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .qtds-solutions__pillars {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .qtds-feature-badge {
+        font-size: var(--text-sm);
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .qtds-solutions__process-flow {
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .qtds-solutions__process-arrow {
+        transform: rotate(90deg);
+    }
+
+    .qtds-solutions__comparison {
+        flex-direction: column;
+    }
+
+    .qtds-solutions__comparison-divider {
+        margin: var(--space-4) 0;
+        font-size: var(--text-2xl);
+    }
+
+    .qtds-solutions__benefits-highlight {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .qtds-solutions__benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qtds-solutions__benefits-item {
+        text-align: left;
+    }
+}
+
+
+/* ==========================================================================
+   SECTION: QTDS CONCLUSION
+   Version: 1.1 (Fixed - Reusing global styles)
+   Description: Styles for the conclusion section following BEM methodology
+   ========================================================================== */
+
+.qtds-conclusion {
+    position: relative;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+    overflow: hidden;
+}
+
+/* Reuse global section header styles */
+.qtds-conclusion__header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-16);
+}
+
+.qtds-conclusion__tagline {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.qtds-conclusion__title {
+    /* Inherit from global h2 styles - no need to redefine */
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: var(--space-3);
+}
+
+.qtds-conclusion__title-highlight {
+    display: block;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: var(--space-2);
+}
+
+/* Content Container */
+.qtds-conclusion__content {
+    display: grid;
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto var(--space-12);
+}
+
+/* Paragraph Blocks - Similar to intro section */
+.qtds-conclusion__paragraph {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.qtds-conclusion__paragraph:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--primary);
+}
+
+.qtds-conclusion__paragraph--highlight {
+    background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+    border: 2px solid var(--primary);
+    border-left-width: 4px;
+}
+
+.qtds-conclusion__paragraph-icon {
+    position: absolute;
+    top: var(--space-6);
+    left: var(--space-6);
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-conclusion__paragraph-text {
+    padding-left: calc(48px + var(--space-8));
+    font-size: var(--text-base); /* Changed from text-lg to match global */
+    line-height: 1.6; /* Match global line-height */
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.qtds-conclusion__paragraph-text strong {
+    color: var(--primary); /* Changed to match other sections */
+    font-weight: 600;
+}
+
+/* Journey Path - Similar to process flow in solutions */
+.qtds-conclusion__journey {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    padding: var(--space-10);
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--space-10);
+}
+
+.qtds-conclusion__journey-step {
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+}
+
+.qtds-conclusion__journey-step--final .qtds-conclusion__journey-icon {
+    background: linear-gradient(135deg, #FBBC04 0%, #F9AB00 100%);
+}
+
+.qtds-conclusion__journey-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-3);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-2xl);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base);
+}
+
+.qtds-conclusion__journey-step:hover .qtds-conclusion__journey-icon {
+    transform: scale(1.05);
+}
+
+.qtds-conclusion__journey-label {
+    font-size: var(--text-sm); /* Changed to match global */
+    font-weight: 600;
+    color: var(--gray-600); /* Changed to match global */
+    text-align: center;
+}
+
+.qtds-conclusion__journey-arrow {
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+}
+
+/* CTA Box - Similar to highlight boxes in other sections */
+.qtds-conclusion__cta {
+    text-align: center;
+    padding: var(--space-8);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.qtds-conclusion__cta-text {
+    font-size: var(--text-lg); /* Changed from text-xl */
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.qtds-conclusion__cta-text i {
+    margin-right: var(--space-3);
+    font-size: var(--text-2xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE - Match global breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-conclusion__paragraph {
+        padding: var(--space-6);
+    }
+
+    .qtds-conclusion__paragraph-icon {
+        position: static;
+        margin: 0 auto var(--space-4);
+    }
+
+    .qtds-conclusion__paragraph-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .qtds-conclusion__journey {
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-6);
+    }
+
+    .qtds-conclusion__journey-arrow {
+        transform: rotate(90deg);
+    }
+
+    .qtds-conclusion__cta {
+        padding: var(--space-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .qtds-conclusion__journey-icon {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+    }
+}
+
+
+
+
+/**
+ * Section: QTDS Benefits
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-benefits.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS BENEFITS
+   ========================================================================== */
+
+/* Overview Stats */
+.qtds-benefits__overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+/* Stakeholder Cards Container */
+.qtds-benefits__stakeholders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* Stakeholder Card */
+.qtds-benefits__stakeholder-card {
+  background: white;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.qtds-benefits__stakeholder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.qtds-benefits__stakeholder-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+}
+
+.qtds-benefits__stakeholder-card--staff::before { background: var(--primary); }
+.qtds-benefits__stakeholder-card--leader::before { background: var(--secondary); }
+.qtds-benefits__stakeholder-card--system::before { background: var(--accent); }
+
+/* Card Header */
+.qtds-benefits__stakeholder-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.qtds-benefits__stakeholder-card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-4xl);
+  color: white;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.qtds-benefits__stakeholder-card-icon--staff { background: var(--gradient-primary); }
+.qtds-benefits__stakeholder-card-icon--leader { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-benefits__stakeholder-card-icon--system { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+
+.qtds-benefits__stakeholder-card-title-wrapper { flex: 1; }
+.qtds-benefits__stakeholder-card-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+  color: var(--gray-900);
+}
+.qtds-benefits__stakeholder-card-subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Highlight List */
+.qtds-benefits__highlight-list {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.qtds-benefits__highlight-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.qtds-benefits__highlight-item-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.qtds-benefits__stakeholder-card--staff .qtds-benefits__highlight-item-icon { color: var(--primary); }
+.qtds-benefits__stakeholder-card--leader .qtds-benefits__highlight-item-icon { color: var(--secondary); }
+.qtds-benefits__stakeholder-card--system .qtds-benefits__highlight-item-icon { color: var(--accent); }
+
+.qtds-benefits__highlight-item-content h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+  color: var(--gray-900);
+}
+
+.qtds-benefits__highlight-item-content p {
+  font-size: var(--text-base);
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Quote Box */
+.qtds-benefits__stakeholder-card-quote {
+  background: var(--gray-50);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  position: relative;
+  border-left: 4px solid var(--primary);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__stakeholder-card-quote i {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  font-size: var(--text-3xl);
+  color: var(--primary);
+  opacity: 0.2;
+}
+
+.qtds-benefits__stakeholder-card-quote p {
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--gray-700);
+  margin: 0;
+  padding-left: var(--space-8);
+}
+
+/* Cost Comparison */
+.qtds-benefits__cost-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__cost-comparison-item { text-align: center; flex: 1; }
+.qtds-benefits__cost-comparison-item--highlight {
+  background: white;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--secondary);
+}
+
+.qtds-benefits__cost-comparison-label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--gray-600);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.qtds-benefits__cost-comparison-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+.qtds-benefits__cost-comparison-divider {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gray-400);
+}
+
+/* System Impact */
+.qtds-benefits__system-impact {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-10);
+  padding: var(--space-6);
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-6);
+}
+
+.qtds-benefits__system-impact-stat { text-align: center; }
+.qtds-benefits__system-impact-stat i {
+  font-size: var(--text-3xl);
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.qtds-benefits__system-impact-number {
+  display: block;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+.qtds-benefits__system-impact-label {
+  font-size: var(--text-base);
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+/* ROI Preview */
+.qtds-benefits__roi-preview {
+  background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.qtds-benefits__roi-preview-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.qtds-benefits__roi-preview-text h3 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+  color: var(--gray-900);
+}
+.qtds-benefits__roi-preview-text p {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.qtds-benefits__roi-preview-benefits li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-benefits i {
+  color: var(--secondary);
+  font-size: var(--text-xl);
+}
+
+.qtds-benefits__roi-preview-visual { text-align: center; }
+.qtds-benefits__roi-preview-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-10);
+  height: 250px;
+  margin-bottom: var(--space-6);
+}
+
+.qtds-benefits__roi-preview-bar {
+  width: 100px;
+  background: var(--gray-300);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  position: relative;
+  transition: height 0.8s ease-out;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-3);
+}
+
+.qtds-benefits__roi-preview-bar--benefit { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-benefits__roi-preview-bar-label {
+  position: absolute;
+  bottom: calc(-1 * var(--space-8));
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gray-700);
+  font-size: var(--text-base);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.qtds-benefits__roi-preview-caption {
+  font-size: var(--text-xl);
+  margin: 0;
+  color: var(--gray-700);
+}
+
+.qtds-benefits__roi-preview-caption strong {
+  font-size: var(--text-3xl);
+  color: var(--secondary);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .qtds-benefits__roi-preview-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .qtds-benefits__stakeholder-card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+  .qtds-benefits__cost-comparison,
+  .qtds-benefits__system-impact {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .qtds-benefits__cost-comparison-divider { transform: none; }
+  .qtds-benefits__roi-preview { padding: var(--space-6); }
+  .qtds-benefits__roi-preview-content { gap: var(--space-6); }
+  .qtds-benefits__roi-preview-chart { gap: var(--space-6); }
+  .qtds-benefits__roi-preview-bar { width: 80px; }
+  .qtds-benefits__roi-preview-caption { margin-top: var(--space-6); }
+}
+
+/* Animation delay for cards */
+.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(2) { animation-delay: 0.2s; }
+.qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
+
+
+
+
+
+/**
+ * Section: QTDS FAQ
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-faq.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS FAQ
+   ========================================================================== */
+
+.qtds-faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qtds-faq__item {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-faq__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qtds-faq__icon {
+    transition: transform var(--transition-base);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.qtds-faq__button--active .qtds-faq__icon {
+    transform: rotate(180deg);
+}
+
+.qtds-faq__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.qtds-faq__content-inner {
+    padding: 0 var(--space-6) var(--space-6);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-faq__button {
+        font-size: var(--text-lg);
+        padding: var(--space-4);
+    }
+}
+
+
+/**
+ * Section: QTDS Podcast
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-podcast.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS PODCAST CARD
+   ========================================================================== */
+.qtds-podcast-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.qtds-podcast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-podcast-card__icon-wrapper {
+    flex-shrink: 0;
+}
+
+.qtds-podcast-card__icon {
+    width: 120px;
+    height: 120px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-5xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.qtds-podcast-card__icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    animation: qtds-podcast-pulse 2s ease-in-out infinite;
+}
+
+@keyframes qtds-podcast-pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    50% { opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.qtds-podcast-card__content {
+    flex: 1;
+}
+
+.qtds-podcast-card__title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    color: var(--gray-900);
+}
+
+.qtds-podcast-card__description {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.qtds-podcast-card__player {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.qtds-podcast-card__player iframe {
+    display: block;
+    border-radius: var(--radius-lg);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .qtds-podcast-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-6);
+        gap: var(--space-6);
+    }
+
+    .qtds-podcast-card__icon {
+        width: 100px;
+        height: 100px;
+        font-size: var(--text-4xl);
+    }
+
+    .qtds-podcast-card__title {
+        font-size: var(--text-xl);
+    }
+
+    .qtds-podcast-card__description {
+        font-size: var(--text-base);
+    }
+}
+
+
+/**
+ * Section: QTDS CTA
+ * Version: 1.0 (Standardized)
+ * Description: Standardized CSS to match the BEM structure of section-cta.html.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS CTA
+   ========================================================================== */
+.qtds-cta {
+    background: white;
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-12);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background decoration */
+.qtds-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(26, 115, 232, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.qtds-cta__description {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    max-width: 800px;
+    margin: 0 auto var(--space-10);
+    line-height: 1.6;
+}
+
+/* Features Grid */
+.qtds-cta__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Action Buttons */
+.qtds-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    align-items: center;
+}
+
+.qtds-cta__btn--primary {
+    transform: scale(1.05);
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-8);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .qtds-cta {
+        padding: var(--space-8);
+    }
+
+    .qtds-cta__description {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-8);
+    }
+
+    .qtds-cta__features {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .qtds-cta__feature {
+        padding: var(--space-4);
+    }
+
+    .qtds-cta__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .qtds-cta__actions .qtds-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .qtds-cta__btn--primary {
+        transform: scale(1);
+    }
+}
+
+/* Override LadiPage CSS (Standardized) */
+[class*="qtds-btn--primary"] {
+    background: #1A73E8 !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+}
+
+[class*="qtds-btn--secondary"] {
+    background: white !important;
+    color: #1A73E8 !important;
+    border: 2px solid #1A73E8 !important;
+}
+
+/* Hover states (Standardized) */
+[class*="qtds-btn--primary"]:hover {
+    background: #1557B0 !important;
+    color: white !important;
+}
+
+[class*="qtds-btn--secondary"]:hover {
+    background: #F1F3F4 !important;
+    color: #1A73E8 !important;
+}
+
+
+/**
+ * Section: QTDS Library
+ * Version: 1.1 (Completed)
+ * Description: Standardized and completed CSS for the library section, 
+ * including the grid layout and individual article card styles.
+ */
+
+/* ==========================================================================
+   BLOCK: QTDS LIBRARY GRID LAYOUT
+   ========================================================================== */
+
+.qtds-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-8);
+}
+
+@media (max-width: 480px) {
+    .qtds-library__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
+
+
+
+
+/**
+ * Section: QTDS Footer
+ * Description: Defines styles for the main site footer.
+ * Version: 1.0 (Adopted from main branch)
+ */
+
+/* ----- Block: Footer Section ----- */
+.qtds-footer {
+    background: var(--gray-900);
+    color: var(--gray-600);
+    padding: var(--space-12) 0;
+}
+
+/* ----- Elements within Footer ----- */
+.qtds-footer__content {
+    text-align: center;
+}
+
+.qtds-footer__logo {
+    height: 120px;
+    margin-bottom: var(--space-4);
+}
+
+.qtds-footer__tagline {
+    color: var(--gray-600);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-footer__tagline strong {
+    color: white;
+}
+
+.qtds-footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.qtds-footer__social-link {
+    color: var(--gray-600);
+    font-size: var(--text-2xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-footer__social-link:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.qtds-footer__copyright {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+}
+
+
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+
+
+/**
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
+ */
+
+/* Back to Top Button - Hardened for LadiPage */
+.qtds-back-to-top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.qtds-back-to-top i {
+    color: white !important;
+}
+
+/* Show state - using simple .show class */
+.qtds-back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.qtds-back-to-top:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Fallback for any variation */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+
+
+/* library/01_atoms/atom-button/atom-button.css */
+
+/**
+ * Component: QTDS Button
+ * Description: Foundational styles for all button components.
+ * This is the master CSS for the button atom.
+ */
+
+.qtds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: 2px solid transparent;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.qtds-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-btn--primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.qtds-btn--primary:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+
+/* Đảm bảo icon trong button hiển thị đúng */
+.qtds-btn i {
+    color: inherit;
+}
+
+
+/* Responsive adjustments from theme.css */
+@media (max-width: 768px) {
+    .qtds-btn {
+        max-width: calc(100vw - var(--space-6));
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+    }
+}
+
+
+/* library/01_atoms/atom-tag/atom-tag.css */
+
+/**
+ * Component: QTDS Tag
+ * Description: Styles for small informational tags or badges.
+ */
+
+/* Base styles for all tags */
+.qtds-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Default style (used for article cards) */
+.qtds-tag--default {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+/* Hero Badge variant */
+.qtds-tag--hero-badge {
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    gap: var(--space-3);
+}
+
+
+/* library/02_molecules/molecule-article-card/molecule-article-card.css */
+
+/**
+ * Component: QTDS Article Card
+ * Description: A card component for displaying article summaries.
+ */
+
+.qtds-article-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.qtds-article-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.qtds-article-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-article-card__image {
+    transform: scale(1.05);
+}
+
+.qtds-article-card__tag {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-3);
+    margin-right: var(--space-2);
+}
+
+.qtds-article-card__title {
+    font-size: var(--text-xl);
+}
+
+.qtds-article-card .qtds-card__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.qtds-article-card__description {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+}
+
+.qtds-article-card__cta {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    text-align: center;
+}
+
+.qtds-btn-like {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--secondary);
+    color: white !important;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: white !important;
+    text-decoration: none;
+}
+
+.qtds-btn-like i {
+    margin-left: var(--space-2);
+    transition: transform var(--transition-base);
+}
+
+.qtds-article-card:hover .qtds-btn-like i {
+    transform: translateX(4px);
+}
+
+
+/* library/02_molecules/molecule-feature-card/molecule-feature-card.css */
+
+/**
+ * Component: QTDS Feature Card
+ * Description: A card used to highlight a specific feature or benefit.
+ */
+
+/* Feature Item */
+.qtds-feature-card {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-feature-card--primary {
+    border-color: var(--primary);
+}
+.qtds-feature-card--primary .qtds-feature-card__icon {
+    color: var(--primary);
+}
+
+.qtds-feature-card--secondary {
+    border-color: var(--secondary);
+}
+.qtds-feature-card--secondary .qtds-feature-card__icon {
+    color: var(--secondary);
+}
+
+.qtds-feature-card--accent {
+    border-color: var(--accent);
+}
+.qtds-feature-card--accent .qtds-feature-card__icon {
+    color: var(--accent);
+}
+
+.qtds-feature-card--purple {
+    border-color: var(--purple);
+}
+.qtds-feature-card--purple .qtds-feature-card__icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-feature-card__icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-feature-card__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-feature-card__text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* library/02_molecules/molecule-stat-card/molecule-stat-card.css */
+
+/**
+ * Component: QTDS Stat Card
+ * Description: A small card used to display a key statistic or metric.
+ */
+
+.qtds-stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md); 
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.qtds-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-stat-item__value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.qtds-stat-item__label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+        /* SECTION: Introduction (Phiên bản Tinh Chỉnh cho CT20 - Nền trắng)
+        Mô tả: CSS này giữ lại cấu trúc của phiên bản gốc nhưng thay đổi 
+                màu nền và màu chữ để phù hợp với giao diện sáng của CT20.
+        */
+        .qtds-intro {
+            position: relative;
+            background: white; 
+            overflow: hidden;
+        }
+
+        .qtds-intro__container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .qtds-intro__header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .qtds-intro__title {
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+            position: relative;
+            display: inline-block;
+        }
+
+        .qtds-intro__title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+
+        .qtds-intro__content {
+            display: grid;
+            gap: var(--space-8);
+        }
+
+        .qtds-intro__paragraph {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .qtds-intro__paragraph:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qtds-intro__paragraph-icon {
+            position: absolute;
+            top: var(--space-6);
+            left: var(--space-6);
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xl);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .qtds-intro__paragraph-text {
+            padding-left: calc(48px + var(--space-6));
+            font-size: var(--text-lg);
+            line-height: 1.8;
+            color: var(--gray-700);
+            margin: 0;
+        }
+
+        .qtds-intro__paragraph-text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .qtds-intro__highlight {
+            background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-top: var(--space-8);
+            text-align: center;
+            border: 1px solid var(--primary);
+        }
+
+        .qtds-intro__highlight-icon {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+            color: var(--primary);
+        }
+
+        .qtds-intro__highlight-text {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .qtds-intro__visual-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--space-6);
+            align-items: center;
+            margin-top: var(--space-12);
+            padding: var(--space-8);
+            background: var(--gray-50);
+            border-radius: var(--radius-2xl);
+        }
+
+        .qtds-intro__device {
+            text-align: center;
+        }
+
+        .qtds-intro__device-icon {
+            font-size: 5rem;
+            margin-bottom: var(--space-4);
+            display: block;
+        }
+
+        .qtds-intro__device--old .qtds-intro__device-icon {
+            color: var(--danger);
+        }
+
+        .qtds-intro__device--new .qtds-intro__device-icon {
+            color: var(--primary);
+            animation: qtds-intro-pulse 2s ease-in-out infinite;
+        }
+
+        .qtds-intro__device-label {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+            display: block;
+            color: var(--gray-900);
+        }
+
+        .qtds-intro__device-status {
+            font-size: var(--text-base);
+            color: var(--gray-600);
+        }
+
+        .qtds-intro__device--new .qtds-intro__device-status {
+            color: var(--secondary);
+        }
+
+        @keyframes qtds-intro-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        @media (max-width: 768px) {
+            .qtds-intro__title { font-size: var(--text-3xl); }
+            .qtds-intro__paragraph { padding: var(--space-6); }
+            .qtds-intro__paragraph-icon { position: static; margin: 0 auto var(--space-4); }
+            .qtds-intro__paragraph-text { padding-left: 0; font-size: var(--text-base); text-align: center; }
+            .qtds-intro__visual-comparison { grid-template-columns: 1fr; gap: var(--space-8); }
+            .qtds-intro__versus { 
+                transform: rotate(0deg); 
+                margin: var(--space-4) 0;
+                /* THAY ĐỔI: Thêm 2 dòng này để căn giữa và đổi màu cho mobile */
+                text-align: center;
+                color: var(--accent);
+            }
+        }
+
+        /* =========================================================================
+        CSS thêm ảnh
+        ========================================================================== */
+
+        .qtds-image-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto var(--space-12);
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: var(--gray-100);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qtds-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .qtds-image-wrapper {
+                margin-bottom: var(--space-8);
+                border-radius: var(--radius-xl);
+            }
+        }
+
+</style>
+</head>
+<body>
+    <nav id="navbar" class="qtds-navbar">
+        <div class="qtds-container qtds-navbar__content">
+            <a href="#" class="qtds-navbar__brand">
+                <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-navbar__logo">
+                <span class="qtds-navbar__brand-name">QTDS</span>
+            </a>
+            <div class="qtds-navbar__links">
+                <a href="#diem-nghen" class="qtds-navbar__link">Vấn Đề</a>
+                <a href="#giai-phap" class="qtds-navbar__link">Giải Pháp</a>
+                <a href="#loi-ich" class="qtds-navbar__link">Lợi Ích</a>
+                <a href="#faq" class="qtds-navbar__link">FAQ</a>
+                <a href="#gioi-thieu-san-pham" class="qtds-navbar__link">Giới Thiệu</a>
+            </div>
+            <button class="qtds-navbar__mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="qtds-navbar__mobile-menu" id="mobileMenu">
+            <a href="#diem-nghen" class="qtds-navbar__mobile-link">Vấn Đề</a>
+            <a href="#giai-phap" class="qtds-navbar__mobile-link">Giải Pháp</a>
+            <a href="#loi-ich" class="qtds-navbar__mobile-link">Lợi Ích</a>
+            <a href="#faq" class="qtds-navbar__mobile-link">FAQ</a>
+            <a href="#gioi-thieu-san-pham" class="qtds-navbar__mobile-link">Giới Thiệu</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="qtds-hero">
+            <div class="qtds-hero__bg"></div>
+            <div class="container qtds-hero__content">
+            <div class="qtds-scroll-animate">
+            <span class="qtds-tag qtds-tag--hero-badge">
+            <i class="fas fa-signature"></i>
+            <span>PHÁ VỠ ĐIỂM NGHẼN "CHỮ KÝ"</span>
+            </span>
+            </div>
+            <h1 class="qtds-scroll-animate qtds-hero__title">
+            Lãnh Đạo Từ Xa: <span class="qtds-text-gradient">Phê Duyệt Tức Thì</span>
+            </h1>
+            <h2 class="qtds-scroll-animate qtds-hero__subtitle">
+            Đảm bảo dòng chảy công việc tín dụng thông suốt ngay cả khi lãnh đạo vắng mặt
+            </h2>
+            <p class="qtds-scroll-animate qtds-hero__description">
+            Chuyển đổi từ "kiểm soát bằng sự có mặt" sang "quản lý bằng dòng chảy thông tin". Giải pháp cho lãnh đạo QTDND năng động trong kỷ nguyên số.
+            </p>
+            <div class="qtds-scroll-animate qtds-hero__actions">
+            <a href="#giai-phap" class="qtds-btn qtds-btn--primary">
+            <i class="fas fa-rocket"></i>
+            <span>Khám Phá Giải Pháp</span>
+            </a>
+            <a href="#diem-nghen" class="qtds-btn qtds-btn--secondary">
+            <i class="fas fa-search"></i>
+            <span>Xác Định Vấn Đề</span>
+            </a>
+            </div>
+            </div>
+        </section>
+
+<!-- Section: Mở bài - Phá Vỡ Điểm Nghẽn Chữ Ký
+Version: 2.0
+Mô tả: Giới thiệu vấn đề điểm nghẽn chữ ký trong quản lý tín dụng QTDND -->
+<section id="mo-bai" class="qtds-section qtds-intro">
+    <div class="qtds-container qtds-intro__container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-intro__header">
+            <h2 class="qtds-intro__title">Đã Đến Lúc Phá Vỡ "Điểm Nghẽn Mang Tên Chữ Ký"</h2>
+        </div>
+
+        <!-- Ảnh minh họa 16:9 -->
+        <div class="qtds-scroll-animate qtds-image-wrapper">
+            <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/kQAeacexNY6ahvTYkDewI.png"
+                alt="Lãnh đạo QTDND quản lý từ xa">
+        </div>
+
+        <!-- Content Grid -->
+        <div class="qtds-intro__content">
+            <!-- Paragraph 1: Vấn đề cốt lõi -->
+            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.1s;">
+                <div class="qtds-intro__paragraph-icon">
+                    <i class="fas fa-signature"></i>
+                </div>
+                <p class="qtds-intro__paragraph-text">
+                    Mỗi chuyến công tác, mỗi cuộc họp tại NHNN, thậm chí một ngày nghỉ phép của lãnh đạo đều có thể khiến <strong>hàng chục hồ sơ tín dụng bị ùn ứ</strong>, nằm chờ một chữ ký. Sự hiện diện vật lý của người lãnh đạo đang trở thành "điểm nghẽn" lớn nhất.
+                </p>
+            </div>
+
+            <!-- Paragraph 2: Hệ lụy -->
+            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.2s;">
+                <div class="qtds-intro__paragraph-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p class="qtds-intro__paragraph-text">
+                    Tình trạng này không chỉ <strong>làm chậm trễ quy trình</strong>, gây phiền hà cho thành viên đang cần vốn gấp, mà còn tạo ra rủi ro vận hành tiềm ẩn, trói buộc người lãnh đạo vào văn phòng.
+                </p>
+            </div>
+
+            <!-- Paragraph 3: Tư duy mới -->
+            <div class="qtds-scroll-animate qtds-intro__paragraph" style="animation-delay: 0.3s;">
+                <div class="qtds-intro__paragraph-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <p class="qtds-intro__paragraph-text">
+                    Đã đến lúc thay đổi tư duy: <strong>Quản lý hiệu quả không đồng nghĩa với việc phải có mặt 24/7</strong>. Lãnh đạo hiện đại là lãnh đạo có khả năng điều hành từ xa, ra quyết định kịp thời từ bất kỳ đâu.
+                </p>
+            </div>
+        </div>
+
+        <!-- Visual Comparison -->
+        <div class="qtds-scroll-animate qtds-intro__visual-comparison" style="animation-delay: 0.4s;">
+            <div class="qtds-intro__device qtds-intro__device--old">
+                <i class="fas fa-user-tie qtds-intro__device-icon"></i>
+                <span class="qtds-intro__device-label">Quản lý "Tại Chỗ"</span>
+                <span class="qtds-intro__device-status">Phụ thuộc • Ràng buộc • Chậm trễ</span>
+            </div>
+            <div class="qtds-intro__versus">→</div>
+            <div class="qtds-intro__device qtds-intro__device--new">
+                <i class="fas fa-laptop-house qtds-intro__device-icon"></i>
+                <span class="qtds-intro__device-label">Lãnh Đạo Từ Xa</span>
+                <span class="qtds-intro__device-status">Linh hoạt • Tức thì • Hiệu quả</span>
+            </div>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="qtds-scroll-animate qtds-intro__highlight" style="animation-delay: 0.5s;">
+            <i class="fas fa-shield-alt qtds-intro__highlight-icon"></i>
+            <p class="qtds-intro__highlight-text">
+                Giải pháp công nghệ an toàn, minh bạch<br>
+                giúp lãnh đạo QTDND điều hành hiệu quả từ bất kỳ đâu
+            </p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10); animation-delay: 0.6s;">
+            <a href="#diem-nghen" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-arrow-down"></i>
+                Xem Chi Tiết Vấn Đề
+            </a>
+        </div>
+    </div>
+</section>
+
+
+        <section id="diem-nghen" class="qtds-section">
+    <div class="qtds-container">
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">VẤN ĐỀ CỐT LÕI</span>
+            <h2>"Điểm Nghẽn Chữ Ký" & Những Rủi Ro Vô Hình</h2>
+            <p>Sự phụ thuộc vào quy trình thủ công và chữ ký giấy đang âm thầm tạo ra những rủi ro nghiêm trọng, làm suy giảm hiệu quả hoạt động và bào mòn lòng tin của thành viên.</p>
+        </div>
+
+        <div class="qtds-challenges__grid">
+            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--1">
+                <div class="qtds-card__header qtds-challenges__card-header">
+                    <div class="qtds-challenges__card-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div>
+                        <h3 class="qtds-challenges__card-title">Ùn Tắc Quy Trình</h3>
+                    </div>
+                </div>
+                <div class="qtds-card__body qtds-challenges__card-body">
+                    <ul class="qtds-challenges__card-list">
+                        <li><i class="fas fa-chevron-right"></i><span>Khi lãnh đạo vắng mặt, hồ sơ tín dụng bị ùn ứ.</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Tạo ra hiệu ứng domino chậm trễ cho các bộ phận khác (kế toán, giải ngân).</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Lãng phí thời gian và nguồn lực của toàn hệ thống.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--2">
+                <div class="qtds-card__header qtds-challenges__card-header">
+                    <div class="qtds-challenges__card-icon">
+                        <i class="fas fa-users-slash"></i>
+                    </div>
+                    <div>
+                        <h3 class="qtds-challenges__card-title">Suy Giảm Trải Nghiệm</h3>
+                    </div>
+                </div>
+                <div class="qtds-card__body qtds-challenges__card-body">
+                    <ul class="qtds-challenges__card-list">
+                        <li><i class="fas fa-chevron-right"></i><span>Thành viên phải chờ đợi 3-5 ngày, thậm chí cả tuần.</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Mất cơ hội kinh doanh vàng (kịp mùa vụ, nhập hàng lễ).</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Lòng tin bị bào mòn khi so sánh với các ngân hàng thương mại.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-card qtds-challenges__card qtds-challenges__card--3">
+                <div class="qtds-card__header qtds-challenges__card-header">
+                    <div class="qtds-challenges__card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="qtds-challenges__card-title">Ràng Buộc Lãnh Đạo</h3>
+                    </div>
+                </div>
+                <div class="qtds-card__body qtds-challenges__card-body">
+                    <ul class="qtds-challenges__card-list">
+                        <li><i class="fas fa-chevron-right"></i><span>Bị cuốn vào vòng xoáy công việc tác nghiệp, ký duyệt.</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Mất thời gian quý báu dành cho các nhiệm vụ chiến lược.</span></li>
+                        <li><i class="fas fa-chevron-right"></i><span>Hạn chế khả năng mở rộng quan hệ, gặp gỡ đối tác quan trọng.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote chốt - Dẫn dắt sang phần tiếp theo -->
+        <div class="qtds-scroll-animate qtds-challenges__highlight-box" style="animation-delay: 0.4s;">
+            <i class="fas fa-quote-left qtds-challenges__highlight-icon"></i>
+            <h3 class="qtds-challenges__highlight-title">
+                "Trong kỷ nguyên số, năng lực lãnh đạo không phải được đo bằng số giờ có mặt tại văn phòng,
+                mà bằng khả năng duy trì dòng chảy công việc thông suốt từ bất kỳ đâu"
+            </h3>
+            <p class="qtds-challenges__highlight-text">
+                Đã đến lúc chuyển từ "kiểm soát bằng sự có mặt" sang "quản lý bằng dòng chảy thông tin"
+            </p>
+        </div>
+    </div>
+</section>
+
+
+        <section id="giai-phap" class="qtds-section qtds-solutions" style="background: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">GIẢI PHÁP TỨC THÌ</span>
+                    <h2>Luồng Phê Duyệt Tín Dụng Online Của QTDS</h2>
+                    <p>QTDS tái định nghĩa quy trình phê duyệt, biến nó thành một luồng công việc liền mạch, minh bạch và tức thì ngay trên thiết bị di động của lãnh đạo.</p>
+                </div>
+
+                <!-- Ảnh minh họa 16:9 -->
+                <div class="qtds-scroll-animate qtds-image-wrapper">
+                    <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/zom_k18HMJe3VALp9MKE3.png"
+                        alt="Điểm nghẽn chữ ký trong quản lý QTDND">
+                </div>
+
+                <div class="qtds-solutions__process-flow">
+                    <div class="qtds-scroll-animate qtds-solutions__process-step">
+                        <div class="qtds-solutions__process-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h4>1. Truy Cập Tức Thì</h4>
+                        <p>Nhận thông báo và mở toàn bộ hồ sơ số hóa đầy đủ, được trình bày một cách khoa học.</p>
+                    </div>
+                    <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-scroll-animate qtds-solutions__process-step" style="animation-delay: 0.2s;">
+                        <div class="qtds-solutions__process-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h4>2. Ra Quyết Định Đa Chiều</h4>
+                        <p>Dễ dàng xem xét các ghi chú thẩm định, lịch sử CIC và kết quả định giá tài sản.</p>
+                    </div>
+                    <div class="qtds-solutions__process-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="qtds-scroll-animate qtds-solutions__process-step" style="animation-delay: 0.4s;">
+                        <div class="qtds-solutions__process-icon"><i class="fas fa-check-circle"></i></div>
+                        <h4>3. Phê Duyệt An Toàn</h4>
+                        <p>Mọi thao tác được tự động ghi lại vào "dấu vết kiểm toán" (audit trail) minh bạch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="loi-ich" class="qtds-section">
+    <div class="qtds-container">
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">VƯỢT LÊN TRÊN PHÊ DUYỆT</span>
+            <h2>Nâng Tầm Quản Trị & Giám Sát Từ Xa</h2>
+            <p>QTDS cung cấp cho lãnh đạo bộ công cụ toàn diện để giám sát hiệu suất, quản trị rủi ro và ra quyết định chiến lược dựa trên dữ liệu, dù ở bất kỳ đâu.</p>
+        </div>
+
+        <div class="qtds-solutions__pillars">
+            <div class="qtds-scroll-animate qtds-solutions__pillar">
+                <div class="qtds-solutions__pillar-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <h3 class="qtds-solutions__pillar-title">Dashboard Thời Gian Thực</h3>
+                <p class="qtds-solutions__pillar-subtitle">Nắm bắt toàn cảnh hoạt động của bộ phận tín dụng qua các chỉ số trực quan (tổng hồ sơ, thời gian xử lý trung bình...).</p>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
+                <div class="qtds-solutions__pillar-icon"><i class="fas fa-user-check"></i></div>
+                <h3 class="qtds-solutions__pillar-title">Đánh Giá Hiệu Suất</h3>
+                <p class="qtds-solutions__pillar-subtitle">Dễ dàng nhận ra ai đang làm việc hiệu quả, ai đang bị quá tải để có sự điều chỉnh và hỗ trợ kịp thời.</p>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
+                <div class="qtds-solutions__pillar-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="qtds-solutions__pillar-title">Quản Trị Rủi Ro Chủ Động</h3>
+                <p class="qtds-solutions__pillar-subtitle">Giám sát các "điểm nóng" rủi ro tiềm ẩn theo từng địa bàn và chỉ đạo đội ngũ tập trung thẩm định kỹ hơn.</p>
+            </div>
+        </div> <!-- Đóng qtds-solutions__pillars -->
+
+        <!-- CTA Button - ĐẶT NGOÀI GRID -->
+        <div style="display: flex; justify-content: center; margin-top: var(--space-10);">
+            <a href="#gioi-thieu-giai-phap" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-arrow-down"></i>
+                <span>Khám Phá Giải Pháp</span>
+            </a>
+        </div>
+    </div> 
+</section> 
+
+
+        <section id="faq" class="qtds-section" style="background: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <h2>Giải Đáp Thắc Mắc</h2>
+                </div>
+                <div class="qtds-faq">
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Quy trình phê duyệt online có đảm bảo an toàn và pháp lý không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Rất an toàn. Mỗi thao tác phê duyệt đều được hệ thống ghi nhận lại với danh tính người dùng và dấu thời gian, tạo ra một lịch sử không thể thay đổi. Hơn nữa, QTDS được thiết kế để có thể tích hợp với các giải pháp chữ ký số được công nhận, đảm bảo tính pháp lý cao nhất cho các quyết định và hợp đồng.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Làm thế nào để đảm bảo lãnh đạo lớn tuổi, không rành công nghệ có thể sử dụng được?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Giao diện phê duyệt của QTDS được thiết kế tối giản và trực quan, tập trung vào các nút bấm rõ ràng (Phê duyệt, Từ chối, Yêu cầu bổ sung). Quá trình sử dụng không đòi hỏi các thao tác kỹ thuật phức tạp, đảm bảo mọi nhà lãnh đạo đều có thể dễ dàng làm chủ.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qtds-scroll-animate qtds-faq__item">
+                        <button class="qtds-faq__button">
+                            <span>Hệ thống này có làm thay đổi cơ cấu phân quyền phê duyệt của Quỹ không?</span>
+                            <i class="fas fa-chevron-down qtds-faq__icon"></i>
+                        </button>
+                        <div class="qtds-faq__content">
+                            <div class="qtds-faq__content-inner">
+                                <p>Không. Hệ thống hoàn toàn tuân thủ theo cơ cấu và quy trình phê duyệt nội bộ mà Quỹ đã xây dựng. Dữ liệu sẽ được luân chuyển tuần tự qua các cấp (ví dụ: CBTD -> Trưởng phòng -> Giám đốc) đúng như quy định. Công nghệ chỉ số hóa và tăng tốc quy trình đó, chứ không thay đổi nó.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+  Section: QTDS Solutions (Standardized HTML)
+  Version: 1.0
+  Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+-->
+<section id="gioi-thieu-giai-phap" class="qtds-section qtds-solutions">
+    <div class="qtds-container">
+        <!-- Section Header -->
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">GIỚI THIỆU GIẢI PHÁP</span>
+            <h2>QTDS: Giải pháp Chuẩn hóa Dữ liệu Chuyên biệt</h2>
+            <p>Ứng dụng được thiết kế riêng cho QTDND, tập trung giải quyết triệt để vấn đề cốt lõi: thiếu chuẩn hóa dữ liệu đầu vào trong quy trình tín dụng</p>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="qtds-scroll-animate qtds-image-wrapper">
+            <img src="https://cdn.gamma.app/3j8c2hfjf1k24b8/generated-images/cffweePwBHVRvMMsaeWft.png"
+                alt="Môi trường QTDND">
+        </div>
+
+        <!-- 3 Pillars -->
+        <div class="qtds-solutions__pillars">
+            <!-- Pillar 1: Triết lý -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar">
+                <div class="qtds-solutions__pillar-number">01</div>
+                <div class="qtds-solutions__pillar-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="qtds-solutions__pillar-title">Triết lý "Từ dưới lên"</h3>
+                <p class="qtds-solutions__pillar-subtitle">Chuyển đổi số chủ động, thẩm thấu vào từng nghiệp vụ hàng ngày</p>
+                <div class="qtds-solutions__pillar-content">
+                    <p>QTDS trao quyền trực tiếp cho cán bộ tín dụng qua công cụ đơn giản trên điện thoại, biến họ thành "đại sứ số hóa" tự nguyện.</p>
+                    <div class="qtds-solutions__benefit-tag">
+                        <i class="fas fa-check-circle"></i>
+                        Vượt qua rào cản văn hóa
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Công nghệ -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.2s;">
+            <div class="qtds-solutions__pillar-number">02</div>
+            <div class="qtds-solutions__pillar-icon">
+            <i class="fas fa-microchip"></i>
+            </div>
+            <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
+            <p class="qtds-solutions__pillar-subtitle">Hai tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
+            <div class="qtds-solutions__tech-features">
+            <div class="qtds-solutions__tech-features-item">
+            <div class="qtds-solutions__tech-features-icon">
+            <i class="fas fa-database"></i>
+            </div>
+            <div class="qtds-solutions__tech-features-content">
+            <strong>Chuẩn hóa dữ liệu đầu vào</strong>
+            <p>Việc đặt ra tiêu chuẩn cho dữ liệu đầu vào và tuân thủ tiêu chuẩn giúp dữ liệu tồn tại ở hình thức dễ dàng để khai thác, lưu trữ và tái sử dụng.</p>
+            </div>
+            </div>
+            <div class="qtds-solutions__tech-features-item">
+            <div class="qtds-solutions__tech-features-icon">
+            <i class="fas fa-camera"></i>
+            </div>
+            <div class="qtds-solutions__tech-features-content">
+            <strong>OCR & AI</strong>
+            <p>Tự động nhận diện, trích xuất thông tin từ dữ liệu đầu vào đã được chuẩn hóa để đưa vào bộ hồ sơ tín dụng.</p>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <!-- Pillar 3: Định vị -->
+            <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
+                <div class="qtds-solutions__pillar-number">03</div>
+                <div class="qtds-solutions__pillar-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="qtds-solutions__pillar-title">Định vị Chiến lược</h3>
+                <p class="qtds-solutions__pillar-subtitle">Giải pháp tập trung với chi phí hợp lý cho QTDND nhỏ</p>
+                <div class="qtds-solutions__comparison">
+                    <div class="qtds-solutions__comparison-item">
+                        <span class="qtds-solutions__comparison-label">Core Banking</span>
+                        <span class="qtds-solutions__comparison-value text-danger">20-25 tỷ VNĐ</span>
+                        <span class="qtds-solutions__comparison-note">Phức tạp, triển khai lâu</span>
+                    </div>
+                    <div class="qtds-solutions__comparison-divider">VS</div>
+                    <div class="qtds-solutions__comparison-item qtds-solutions__comparison-item--highlight">
+                        <span class="qtds-solutions__comparison-label">QTDS</span>
+                        <span class="qtds-solutions__comparison-value text-success">Tiết kiệm 90%</span>
+                        <span class="qtds-solutions__comparison-note">Đơn giản, dùng ngay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="qtds-scroll-animate qtds-solutions__process-section">
+            <h3 class="qtds-solutions__process-title">Quy trình Chuẩn hóa Tự động</h3>
+            <div class="qtds-solutions__process-flow">
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Thu thập</h4>
+                    <p>Chụp ảnh giấy tờ</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>Xử lý AI</h4>
+                    <p>Trích xuất tự động</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h4>Chuẩn hóa</h4>
+                    <p>Định dạng chuẩn</p>
+                </div>
+                <div class="qtds-solutions__process-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="qtds-solutions__process-step">
+                    <div class="qtds-solutions__process-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h4>Hoàn thiện</h4>
+                    <p>Hồ sơ chuẩn mực</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Benefits Box -->
+        <div class="qtds-scroll-animate qtds-solutions__benefits-highlight">
+            <div class="qtds-solutions__benefits-highlight-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="qtds-solutions__benefits-highlight-content">
+                <h4>Lợi ích Cốt lõi:</h4>
+                <div class="qtds-solutions__benefits-grid">
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Loại bỏ hoàn toàn sai sót nhập liệu thủ công</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Ngăn chặn gian lận, lập khống hồ sơ</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Tăng tốc xử lý hồ sơ lên 70%</span>
+                    </div>
+                    <div class="qtds-solutions__benefits-item">
+                        <i class="fas fa-check"></i>
+                        <span>Tuân thủ 100% quy định NHNN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10);">
+            <a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-chart-line"></i>
+                Dùng Thử Miễn Phí Ngay
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+        
+        <section class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">LẮNG NGHE CHIA SẺ</span>
+                    <h2>Podcast Cùng QTDS</h2>
+                    <p>Lãnh Đạo Từ Xa: Giải Pháp Cho QTDND Hiện Đại - Chia sẻ sâu sắc về vai trò của công nghệ trong việc giải phóng lãnh đạo QTDND.</p>
+                </div>
+                <div class="qtds-scroll-animate qtds-podcast-card">
+                    <div class="qtds-podcast-card__icon-wrapper">
+                        <div class="qtds-podcast-card__icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="qtds-podcast-card__content">
+                        <h3 class="qtds-podcast-card__title">QTDS: Nâng Tầm Năng Lực QTDND</h3>
+                        <div class="qtds-podcast-card__player">
+                            <iframe src="https://drive.google.com/file/d/1YJSJCwSiBuHKR0MMDMzEBlQ5mySYlzAP/preview" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <!-- 
+        Section: QTDS CTA (Standardized HTML)
+        Version: 1.0
+        Description: Updated to use standardized QTDS BEM class names while keeping the original structure intact for comparison.
+        -->
+        <section id="san-sang-chuyen-doi" class="qtds-section">
+            <div class="qtds-container">
+                <!-- Section Header -->
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">HÀNH ĐỘNG NGAY</span>
+                    <h2>Sẵn Sàng Chuyển Đổi Số Cùng QTDS?</h2>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="qtds-scroll-animate qtds-cta">
+                    <p class="qtds-cta__description">
+                        Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.
+                    </p>
+
+                    <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
+                    <div class="qtds-cta__features">
+                        <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+        <div class="qtds-feature-card qtds-feature-card--primary">
+            <i class="fas fa-shield-alt qtds-feature-card__icon"></i>
+            <h4 class="qtds-feature-card__title">Bảo Mật Dữ Liệu</h4>
+            <p class="qtds-feature-card__text">Ngăn chặn gian lận hiệu quả</p>
+        </div>
+
+        <div class="qtds-feature-card qtds-feature-card--secondary">
+            <i class="fas fa-rocket qtds-feature-card__icon"></i>
+            <h4 class="qtds-feature-card__title">Tối Ưu Quy Trình</h4>
+            <p class="qtds-feature-card__text">Xử lý nhanh, giảm 70% thời gian</p>
+        </div>
+
+        <div class="qtds-feature-card qtds-feature-card--accent">
+            <i class="fas fa-chart-line qtds-feature-card__icon"></i>
+            <h4 class="qtds-feature-card__title">Nâng Cao Cạnh Tranh</h4>
+            <p class="qtds-feature-card__text">Hiện đại hóa, thu hút khách hàng</p>
+        </div>
+
+
+        <div class="qtds-feature-card qtds-feature-card--purple">
+            <i class="fas fa-check-circle qtds-feature-card__icon"></i>
+            <h4 class="qtds-feature-card__title">Tuân Thủ NHNN</h4>
+            <p class="qtds-feature-card__text">100% đáp ứng quy định</p>
+        </div>
+    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="qtds-cta__actions">
+                        <a href="https://giaiphap.qtds.vn" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-rocket"></i>
+                            Dùng Thử Miễn Phí
+                        </a>
+                        <a href="https://zalo.me/g/flgzlp294" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer" style="transition: none !important;" onmouseover="this.style.transform='scale(1)'" onmouseout="this.style.transform='scale(1)'">
+                            <i class="fas fa-users"></i>
+                            Tham Gia Cộng Đồng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qtds-section" style="background-color: white;">
+            <div class="qtds-container">
+                <div class="qtds-scroll-animate qtds-section-header">
+                    <span class="qtds-section-header__tagline">THƯ VIỆN TRI THỨC</span>
+                    <h2>Khám Phá <span class="qtds-text-gradient">Kho Tàng Kiến Thức QTDS</span></h2>
+                    <p>Tìm hiểu sâu hơn về chuyển đổi số, quản trị tín dụng và các giải pháp công nghệ qua bộ sưu tập nội dung được tuyển chọn kỹ lưỡng.</p>
+                </div>
+                <div id="library-grid" class="qtds-library__grid"></div>
+                <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
+                <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
+                    <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                        <i class="fas fa-book-open"></i>Xem Toàn Bộ Thư Viện
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="qtds-footer" style="padding: var(--space-12) 0;">
+        <div class="qtds-container" style="text-align: center;">
+            <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo" style="height: 80px; margin-bottom: var(--space-4);">
+            <p class="qtds-footer__tagline">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
+            <div class="qtds-footer__socials">
+                <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link"><i class="fas fa-home"></i></a>
+                <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link"><i class="fas fa-archive"></i></a>
+                <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link"><i class="fas fa-comments"></i></a>
+            </div>
+            <p class="qtds-footer__copyright">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="qtds-back-to-top" title="Lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
+
+        function initNavbar() {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
+                });
+            }
+            if (mobileMenuBtn && mobileMenu) {
+                const menuIcon = mobileMenuBtn.querySelector('i');
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+                    if (menuIcon) {
+                        menuIcon.classList.toggle('fa-bars');
+                        menuIcon.classList.toggle('fa-times');
+                    }
+                });
+                document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                        if (menuIcon) {
+                            menuIcon.classList.add('fa-bars');
+                            menuIcon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+        }
+
+        function initFaq() {
+            document.querySelectorAll('.qtds-faq__button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const isActive = button.classList.contains('qtds-faq__button--active');
+                    
+                    // Close all other items
+                    document.querySelectorAll('.qtds-faq__content').forEach(c => c.style.maxHeight = null);
+                    document.querySelectorAll('.qtds-faq__button').forEach(b => b.classList.remove('qtds-faq__button--active'));
+
+                    // Open the clicked one if it wasn't active
+                    if (!isActive) {
+                        button.classList.add('qtds-faq__button--active');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+
+        function initLibrary(obs) {
+            const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec?teaser';
+            const ARTICLES_TO_SHOW = 6;
+            const gridContainer = document.getElementById('library-grid');
+            const loader = document.getElementById('library-loader');
+            if (!gridContainer || !loader) return;
+            async function fetchArticles() {
+                try {
+                    const response = await fetch(API_URL);
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const data = await response.json();
+                    if (data && data.articles) {
+                        const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
+                        renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
+                    }
+                } catch (error) {
+                    loader.textContent = "Không thể tải thư viện.";
+                } finally {
+                    if (gridContainer.innerHTML !== '') loader.style.display = 'none';
+                }
+            }
+            function renderArticles(articles) {
+                gridContainer.innerHTML = '';
+                const fragment = document.createDocumentFragment();
+                articles.forEach(article => {
+                    const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
+                        .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
+                    const card = document.createElement('a');
+                    card.href = article.landing_page_url;
+                    card.target = "_blank";
+                    card.rel = "noopener noreferrer";
+                    card.className = "qtds-scroll-animate qtds-card qtds-article-card";
+                    card.innerHTML = `
+                        <div class="qtds-article-card__image-wrapper">
+                            <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
+                        </div>
+                        <div class="qtds-card__body">
+                            <div>${tagsHTML}</div>
+                            <h4 class="qtds-article-card__title">${article.title}</h4>
+                            <p class="qtds-article-card__description">${article.short_description}</p>
+                            <div class="qtds-article-card__cta">
+                                <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    `;
+                    fragment.appendChild(card);
+                });
+                gridContainer.appendChild(fragment);
+                if (obs) {
+                    document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => obs.observe(el));
+                }
+            }
+            fetchArticles();
+        }
+
+        function initBackToTop() {
+            const backToTopBtn = document.querySelector('.qtds-back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    backToTopBtn.classList.toggle('show', window.scrollY > 400);
+                });
+                backToTopBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+        
+        initNavbar();
+        initFaq();
+        initLibrary(observer);
+        initBackToTop();
+    });
+</script>
+</body>
+</html>
