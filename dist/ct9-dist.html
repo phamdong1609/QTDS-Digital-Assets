@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Phần Head chung -->
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Khám phá Quỹ Tín Dụng Số (QTDS) - giải pháp chuyển đổi số chiến lược cho hệ thống Quỹ Tín dụng Nhân dân Việt Nam, giúp tối ưu quản trị, vận hành và tuân thủ quy định NHNN.">
+    <meta name="keywords" content="Quỹ Tín Dụng Số, QTDS, chuyển đổi số, Quỹ Tín dụng Nhân dân, QTDND, Ngân hàng Nhà nước, NHNN, quản trị tín dụng, số hóa">
+    <meta property="og:title" content="Quỹ Tín Dụng Số: Chất Xúc tác Chuyển đổi số">
+    <meta property="og:description" content="Báo cáo phân tích chuyên sâu về sản phẩm QTDS, giải pháp chiến lược giúp các QTDND vượt qua thách thức quản trị, vận hành thủ công và đáp ứng yêu cầu chuyển đổi số cấp bách từ Ngân hàng Nhà nước.">
+    <meta property="og:image" content="https://qtds.vn/static/media/QTD.c29482539f277c5a0071.png">
+    <title>Chuẩn Hóa Dữ Liệu QTDND: Lá Chắn Thép Chống Rủi Ro &amp; Tuân Thủ NHNN</title>
+    
         <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -15,11 +19,7 @@
 <!-- External CSS & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-
-    <title>Trang CT9 Hoàn Chỉnh</title>
-    
-    <!-- Vị trí chờ để Robot nhúng toàn bộ CSS vào đây -->
-    <style>
+<style>
 /**
  * File: _global-ct6.css (Standardized)
  * Description: Foundational styles for the QTDS Design System from CT-6 workshop.
@@ -181,7 +181,49 @@ p:last-child {
    4. COMPONENTS (Standardized)
    ========================================================================== */
 
+/* Button Component */
+.qtds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: 2px solid transparent;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.qtds-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-btn--primary {
+    background: var(--primary);
+    color: white;
+}
+
+.qtds-btn--primary:hover {
+    background: var(--primary-dark);
+}
+
+.qtds-btn--secondary {
+    background: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.qtds-btn--secondary:hover {
+    background: var(--gray-100);
+}
 
 /* Card Component */
 .qtds-card {
@@ -248,6 +290,12 @@ p:last-child {
         overflow-x: hidden !important;
     }
 
+    .qtds-btn {
+        max-width: calc(100vw - var(--space-6));
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-base);
+    }
+
     .qtds-card {
         max-width: 100%;
     }
@@ -291,6 +339,8 @@ p:last-child {
     color: var(--primary); 
 } 
 
+/* --- */
+
 /**
  * Section: QTDS Navbar
  * Version: 1.0 (Standardized)
@@ -331,7 +381,7 @@ p:last-child {
 }
 
 .qtds-navbar__logo {
-    height: 60px;
+    height: 40px;
 }
 
 .qtds-navbar__brand-name {
@@ -401,6 +451,8 @@ p:last-child {
 }
 
 
+/* --- */
+
 /**
  * Section: QTDS Hero
  * Description: Defines styles for the main hero section, standardized with QTDS BEM convention.
@@ -441,8 +493,16 @@ p:last-child {
     padding: 0 var(--space-4);
 }
 
-.qtds-hero__content .qtds-tag--hero-badge {
+.qtds-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
     margin-bottom: var(--space-6);
+    backdrop-filter: blur(10px);
 }
 
 .qtds-hero__title {
@@ -602,6 +662,8 @@ p:last-child {
 }
 
 
+/* --- */
+
 /**
  * Section: QTDS Challenges
  * Version: 2.1 (Corrected to match original structure)
@@ -622,7 +684,46 @@ p:last-child {
     margin: 0 auto 3rem;
 }
 
+.qtds-stat-item {
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    /* Note: --shadow variable was missing in original, assuming --shadow-md */
+    box-shadow: var(--shadow-md); 
+    text-align: center;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
 
+.qtds-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+}
+
+.qtds-stat-item__value {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.qtds-stat-item__label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    margin-top: auto;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .qtds-challenges__grid {
     display: grid;
@@ -847,6 +948,8 @@ p:last-child {
     }
 }
 
+
+/* --- */
 
 /**
  * Section: QTDS Standardization
@@ -1107,6 +1210,8 @@ p:last-child {
     }
 }
 
+
+/* --- */
 
 /**
  * Section: QTDS Solutions
@@ -1471,6 +1576,8 @@ p:last-child {
 }
 
 
+/* --- */
+
 /**
  * Section: QTDS Benefits
  * Version: 1.0 (Standardized)
@@ -1488,6 +1595,42 @@ p:last-child {
   gap: 2rem;
   max-width: 800px;
   margin: 0 auto 3rem;
+}
+
+.qtds-benefits__overview-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-base);
+}
+
+.qtds-benefits__overview-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.qtds-benefits__overview-number {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.qtds-benefits__overview-label {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Stakeholder Cards Container */
@@ -1835,6 +1978,8 @@ p:last-child {
 .qtds-benefits__stakeholders .qtds-benefits__stakeholder-card:nth-child(3) { animation-delay: 0.4s; }
 
 
+/* --- */
+
 /**
  * Section: QTDS FAQ
  * Version: 1.0 (Standardized)
@@ -1901,6 +2046,8 @@ p:last-child {
     }
 }
 
+
+/* --- */
 
 /**
  * Section: QTDS Podcast
@@ -2022,6 +2169,8 @@ p:last-child {
 }
 
 
+/* --- */
+
 /**
  * Section: QTDS CTA
  * Version: 1.0 (Standardized)
@@ -2072,6 +2221,72 @@ p:last-child {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Feature Item */
+.qtds-cta__feature {
+    background-color: var(--gray-50);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    border-top: 4px solid transparent;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.qtds-cta__feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: white;
+}
+
+/* Feature color variants */
+.qtds-cta__feature--primary {
+    border-color: var(--primary);
+}
+.qtds-cta__feature--primary .qtds-cta__feature-icon {
+    color: var(--primary);
+}
+
+.qtds-cta__feature--secondary {
+    border-color: var(--secondary);
+}
+.qtds-cta__feature--secondary .qtds-cta__feature-icon {
+    color: var(--secondary);
+}
+
+.qtds-cta__feature--accent {
+    border-color: var(--accent);
+}
+.qtds-cta__feature--accent .qtds-cta__feature-icon {
+    color: var(--accent);
+}
+
+.qtds-cta__feature--purple {
+    border-color: var(--purple);
+}
+.qtds-cta__feature--purple .qtds-cta__feature-icon {
+    color: var(--purple);
+}
+
+/* Feature content */
+.qtds-cta__feature-icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.qtds-cta__feature-title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-cta__feature-text {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* Action Buttons */
@@ -2151,6 +2366,8 @@ p:last-child {
 }
 
 
+/* --- */
+
 /**
  * Section: QTDS Library
  * Version: 1.1 (Completed)
@@ -2175,287 +2392,9 @@ p:last-child {
     }
 }
 
-
-
-
-/**
- * Section: QTDS Footer
- * Description: Defines styles for the main site footer.
- * Version: 1.0 (Adopted from main branch)
- */
-
-/* ----- Block: Footer Section ----- */
-.qtds-footer {
-    background: var(--gray-900);
-    color: var(--gray-600);
-    padding: var(--space-12) 0;
-}
-
-/* ----- Elements within Footer ----- */
-.qtds-footer__content {
-    text-align: center;
-}
-
-.qtds-footer__logo {
-    height: 120px;
-    margin-bottom: var(--space-4);
-}
-
-.qtds-footer__tagline {
-    color: var(--gray-600);
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-6);
-}
-
-.qtds-footer__tagline strong {
-    color: white;
-}
-
-.qtds-footer__socials {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-6);
-    margin-bottom: var(--space-6);
-}
-
-.qtds-footer__social-link {
-    color: var(--gray-600);
-    font-size: var(--text-2xl);
-    transition: all var(--transition-base);
-}
-
-.qtds-footer__social-link:hover {
-    color: white;
-    transform: translateY(-2px);
-}
-
-.qtds-footer__copyright {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-}
-
-
-/**
- * Component: QTDS Back To Top
- * Description: Defines styles for the back-to-top button.
- * Version: 1.4 (Aligned with CT-7 working solution)
- * Changes:
- * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
- * - This ensures maximum compatibility with the LadiPage environment.
- */
-
-/* Back to Top Button - Hardened for LadiPage */
-.qtds-back-to-top {
-    position: fixed !important;
-    bottom: 30px !important;
-    right: 30px !important;
-    width: 48px !important;
-    height: 48px !important;
-    background: var(--primary) !important;
-    color: white !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 50% !important;
-    font-size: 1.5rem !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    z-index: 10000 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(20px) !important;
-    transition: all 0.3s ease !important;
-    border: none !important;
-    cursor: pointer !important;
-}
-
-.qtds-back-to-top i {
-    color: white !important;
-}
-
-/* Show state - using simple .show class */
-.qtds-back-to-top.show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-}
-
-.qtds-back-to-top:hover {
-    background: var(--primary-dark) !important;
-    transform: translateY(-3px) !important;
-}
-
-/* Fallback for any variation */
-[class*="qtds-back-to-top"].show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-}
-
-
-
-/**
- * Component: QTDS Back To Top
- * Description: Defines styles for the back-to-top button.
- * Version: 1.4 (Aligned with CT-7 working solution)
- * Changes:
- * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
- * - This ensures maximum compatibility with the LadiPage environment.
- */
-
-/* Back to Top Button - Hardened for LadiPage */
-.qtds-back-to-top {
-    position: fixed !important;
-    bottom: 30px !important;
-    right: 30px !important;
-    width: 48px !important;
-    height: 48px !important;
-    background: var(--primary) !important;
-    color: white !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 50% !important;
-    font-size: 1.5rem !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    z-index: 10000 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(20px) !important;
-    transition: all 0.3s ease !important;
-    border: none !important;
-    cursor: pointer !important;
-}
-
-.qtds-back-to-top i {
-    color: white !important;
-}
-
-/* Show state - using simple .show class */
-.qtds-back-to-top.show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-}
-
-.qtds-back-to-top:hover {
-    background: var(--primary-dark) !important;
-    transform: translateY(-3px) !important;
-}
-
-/* Fallback for any variation */
-[class*="qtds-back-to-top"].show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-}
-
-
-
-/* library/01_atoms/atom-button/atom-button.css */
-
-/**
- * Component: QTDS Button
- * Description: Foundational styles for all button components.
- * This is the master CSS for the button atom.
- */
-
-.qtds-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-lg);
-    font-weight: 600;
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    transition: all var(--transition-base);
-    cursor: pointer;
-    border: 2px solid transparent;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.qtds-btn:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
-}
-
-.qtds-btn--primary {
-    background: var(--primary);
-    color: white;
-}
-
-.qtds-btn--primary:hover {
-    background: var(--primary-dark);
-}
-
-.qtds-btn--secondary {
-    background: white;
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-.qtds-btn--secondary:hover {
-    background: var(--gray-100);
-}
-
-/* Responsive adjustments from theme.css */
-@media (max-width: 768px) {
-    .qtds-btn {
-        max-width: calc(100vw - var(--space-6));
-        padding: var(--space-3) var(--space-6);
-        font-size: var(--text-base);
-    }
-}
-
-
-/* library/01_atoms/atom-tag/atom-tag.css */
-
-/**
- * Component: QTDS Tag
- * Description: Styles for small informational tags or badges.
- */
-
-/* Base styles for all tags */
-.qtds-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-full);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/* Default style (used for article cards) */
-.qtds-tag--default {
-    background: var(--gray-100);
-    color: var(--gray-700);
-}
-
-/* Hero Badge variant */
-.qtds-tag--hero-badge {
-    padding: var(--space-2) var(--space-6);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    color: white;
-    gap: var(--space-3);
-}
-
-
-/* library/02_molecules/molecule-article-card/molecule-article-card.css */
-
-/**
- * Component: QTDS Article Card
- * Description: A card component for displaying article summaries.
- */
+/* ==========================================================================
+   COMPONENT: QTDS ARTICLE CARD (within Library)
+   ========================================================================== */
 
 .qtds-article-card {
     text-decoration: none;
@@ -2491,7 +2430,7 @@ p:last-child {
     padding: var(--space-2) var(--space-3);
     background: var(--gray-100);
     color: var(--gray-700);
-    font-size: var(--text-sm);
+    font-size: var(--text-sm); /* Adjusted for better fit */
     font-weight: 500;
     border-radius: var(--radius-full);
     margin-bottom: var(--space-3);
@@ -2499,7 +2438,7 @@ p:last-child {
 }
 
 .qtds-article-card__title {
-    font-size: var(--text-xl);
+    font-size: var(--text-xl); /* Adjusted for consistency */
 }
 
 .qtds-article-card .qtds-card__body {
@@ -2509,7 +2448,7 @@ p:last-child {
 }
 
 .qtds-article-card__description {
-    font-size: var(--text-base);
+    font-size: var(--text-base); /* Adjusted for better readability */
     color: var(--gray-600);
 }
 
@@ -2548,130 +2487,64 @@ p:last-child {
 }
 
 
-/* library/02_molecules/molecule-feature-card/molecule-feature-card.css */
+/* --- */
+
+
+
+/* --- */
 
 /**
- * Component: QTDS Feature Card
- * Description: A card used to highlight a specific feature or benefit.
+ * Component: QTDS Back To Top
+ * Description: Defines styles for the back-to-top button.
+ * Version: 1.4 (Aligned with CT-7 working solution)
+ * Changes:
+ * - Reverted the 'show' state class to a simple '.show' to match the proven CT-7 implementation.
+ * - This ensures maximum compatibility with the LadiPage environment.
  */
 
-/* Feature Item */
-.qtds-feature-card {
-    background-color: var(--gray-50);
-    padding: var(--space-6);
-    border-radius: var(--radius-xl);
-    border-top: 4px solid transparent;
-    transition: all var(--transition-base);
-    text-align: center;
+[class*="qtds-back-to-top"] {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--primary) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: var(--radius-full) !important;
+    font-size: var(--text-xl) !important;
+    text-decoration: none !important;
+    box-shadow: var(--shadow-lg) !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
 }
 
-.qtds-feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    background-color: white;
+[class*="qtds-back-to-top"] i {
+    color: white !important;
 }
 
-/* Feature color variants */
-.qtds-feature-card--primary {
-    border-color: var(--primary);
-}
-.qtds-feature-card--primary .qtds-feature-card__icon {
-    color: var(--primary);
-}
-
-.qtds-feature-card--secondary {
-    border-color: var(--secondary);
-}
-.qtds-feature-card--secondary .qtds-feature-card__icon {
-    color: var(--secondary);
+/* Show state - using simple '.show' class like in CT-7 */
+[class*="qtds-back-to-top"].show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
 }
 
-.qtds-feature-card--accent {
-    border-color: var(--accent);
-}
-.qtds-feature-card--accent .qtds-feature-card__icon {
-    color: var(--accent);
-}
-
-.qtds-feature-card--purple {
-    border-color: var(--purple);
-}
-.qtds-feature-card--purple .qtds-feature-card__icon {
-    color: var(--purple);
-}
-
-/* Feature content */
-.qtds-feature-card__icon {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-4);
-    display: block;
-}
-
-.qtds-feature-card__title {
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: var(--space-2);
-}
-
-.qtds-feature-card__text {
-    font-size: var(--text-base);
-    color: var(--gray-600);
-    margin: 0;
-    line-height: 1.5;
-}
-
-
-/* library/02_molecules/molecule-stat-card/molecule-stat-card.css */
-
-/**
- * Component: QTDS Stat Card
- * Description: A small card used to display a key statistic or metric.
- */
-
-.qtds-stat-item {
-    padding: 2rem 1rem;
-    background: white;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md); 
-    text-align: center;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
-.qtds-stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-    transition: all var(--transition-base);
-}
-
-.qtds-stat-item__value {
-    font-size: var(--text-4xl);
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: var(--space-3);
-}
-
-.qtds-stat-item__label {
-    font-size: var(--text-base);
-    color: var(--gray-700);
-    margin-top: auto;
-    line-height: 1.4;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 2.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+[class*="qtds-back-to-top"]:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-3px) !important;
 }
 
 </style>
-</head>
-<body>
+
+
     <!-- Navigation -->
     <!-- 
   Section: QTDS Navbar (Standardized HTML)
@@ -2714,30 +2587,12 @@ p:last-child {
   Description: This HTML has been updated to use the standardized QTDS BEM class names 
                to match the corresponding CSS file (standardized-hero-css-v1).
 -->
-<!-- library/03_sections/sections-hero/ct9--section-hero/section-hero.html -->
-
 <section id="tong-quan" class="qtds-hero">
     <div class="qtds-hero__bg"></div>
     <div class="container qtds-hero__content">
-        
-        <!-- THAY THẾ KHỐI DIV CŨ BẰNG INCLUDE NÀY -->
-        <div class="qtds-scroll-animate">
-             <!-- library/01_atoms/atom-tag/atom-tag.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ/nhãn (tag/badge).
-  - type: Kiểu style ('default' hoặc 'hero-badge').
-  - icon: Class của Font Awesome (tùy chọn).
-  - text: Nội dung chữ.
--->
-<span class="qtds-tag qtds-tag--hero-badge">
-  
-    <i class="fas fa-shield-alt"></i>
-  <span>BẢO MẬT DỮ LIỆU</span>
-</span>
-
+        <div class="qtds-scroll-animate qtds-hero__badge">
+            <i class="fas fa-shield-alt"></i><span>BẢO MẬT DỮ LIỆU</span>
         </div>
-        
         <h1 class="qtds-scroll-animate qtds-hero__title">
             <span class="qtds-text-gradient">QTDS</span> - Chuẩn Hóa Dữ Liệu Tín Dụng
         </h1>
@@ -2748,39 +2603,9 @@ p:last-child {
             Giải pháp số hóa quy trình tín dụng dành riêng cho 1.176 QTDND tại Việt Nam. Chấm dứt tình trạng nhập liệu thủ công, sai sót dữ liệu và vi phạm quy định.
         </p>
         <div class="qtds-scroll-animate qtds-hero__actions">
-            <!-- library/01_atoms/atom-button/atom-button.html -->
-
-<!-- 
-  Đây là khuôn mẫu cho một nút bấm.
-  Nó sử dụng các biến (locals) được truyền vào từ thẻ <include>.
-  - link: Đường dẫn URL của nút.
-  - type: Kiểu nút ('primary' hoặc 'secondary').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-rocket').
-  - text: Nội dung chữ của nút.
--->
-<a href="#giai-phap" class="qtds-btn qtds-btn--primary" title="Khám Phá Giải Pháp">
-  
-    <i class="fas fa-chart-line"></i>
-  <span>Khám Phá Giải Pháp</span>
-</a>
-
-            
-            <!-- library/01_atoms/atom-button/atom-button.html -->
-
-<!-- 
-  Đây là khuôn mẫu cho một nút bấm.
-  Nó sử dụng các biến (locals) được truyền vào từ thẻ <include>.
-  - link: Đường dẫn URL của nút.
-  - type: Kiểu nút ('primary' hoặc 'secondary').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-rocket').
-  - text: Nội dung chữ của nút.
--->
-<a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--secondary" title="Dùng Thử Miễn Phí">
-  
-    <i class="fas fa-calendar-check"></i>
-  <span>Dùng Thử Miễn Phí</span>
-</a>
-
+            <!-- Note: Assuming '.btn' is standardized to '.qtds-btn' -->
+            <a href="#giai-phap" class="qtds-btn qtds-btn--primary"><i class="fas fa-chart-line"></i>Khám Phá Giải Pháp</a>
+            <a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--secondary"><i class="fas fa-calendar-check"></i>Dùng Thử Miễn Phí</a>
         </div>
     </div>
 </section>
@@ -2801,63 +2626,24 @@ p:last-child {
             <p>Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</p>
         </div>
 
-         <!-- Stats Overview (THAY THẾ NỘI DUNG BÊN TRONG) -->
+        <!-- Stats Overview -->
         <div class="qtds-challenges__stats">
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
-    <div class="qtds-stat-item__value text-danger">59.8%</div>
-    <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-    <div class="qtds-stat-item__value text-warning">42%</div>
-    <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-    <div class="qtds-stat-item__value text-purple">38.8%</div>
-    <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
-    <div class="qtds-stat-item__value text-primary">1,176</div>
-    <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
-</div>
-
+            <div class="qtds-scroll-animate qtds-stat-item">
+                <div class="qtds-stat-item__value text-danger">59.8%</div>
+                <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
+            </div>
+            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+                <div class="qtds-stat-item__value text-warning">42%</div>
+                <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
+            </div>
+            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+                <div class="qtds-stat-item__value text-purple">38.8%</div>
+                <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
+            </div>
+            <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
+                <div class="qtds-stat-item__value text-primary">1,176</div>
+                <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
+            </div>
         </div>
 
         <!-- Highlight Box -->
@@ -3379,62 +3165,24 @@ p:last-child {
             </p>
         </div>
 
+        <!-- Overview Stats -->
         <div class="qtds-scroll-animate qtds-benefits__overview">
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
-    <div class="qtds-stat-item__value text-primary">70%</div>
-    <div class="qtds-stat-item__label">Tăng năng suất</div>
-</div>
-
-            
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-    <div class="qtds-stat-item__value text-danger">95%</div>
-    <div class="qtds-stat-item__label">Giảm sai sót</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-    <div class="qtds-stat-item__value text-success">100%</div>
-    <div class="qtds-stat-item__label">Tuân thủ NHNN</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
-    <div class="qtds-stat-item__value text-purple">80%</div>
-    <div class="qtds-stat-item__label">Tiết kiệm thời gian</div>
-</div>
-
+            <div class="qtds-benefits__overview-item">
+                <div class="qtds-benefits__overview-number text-primary">70%</div>
+                <div class="qtds-benefits__overview-label">Tăng năng suất</div>
+            </div>
+            <div class="qtds-benefits__overview-item">
+                <div class="qtds-benefits__overview-number text-danger">95%</div>
+                <div class="qtds-benefits__overview-label">Giảm sai sót</div>
+            </div>
+            <div class="qtds-benefits__overview-item">
+                <div class="qtds-benefits__overview-number text-success">100%</div>
+                <div class="qtds-benefits__overview-label">Tuân thủ NHNN</div>
+            </div>
+            <div class="qtds-benefits__overview-item">
+                <div class="qtds-benefits__overview-number text-purple">80%</div>
+                <div class="qtds-benefits__overview-label">Tiết kiệm thời gian</div>
+            </div>
         </div>
 
         <!-- Stakeholder Cards -->
@@ -3758,76 +3506,40 @@ p:last-child {
                 Vượt qua thách thức cũ. QTDS đồng hành cùng QTDND hiện đại hóa và tăng cường quản trị hiệu quả.
             </p>
 
-            <!-- Features Grid (THAY THẾ NỘI DUNG BÊN TRONG) -->
+            <!-- Features Grid -->
             <div class="qtds-cta__features">
-                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+                <!-- Feature 1 -->
+                <div class="qtds-cta__feature qtds-cta__feature--primary">
+                    <i class="fas fa-shield-alt qtds-cta__feature-icon"></i>
+                    <h4 class="qtds-cta__feature-title">Bảo Mật Dữ Liệu</h4>
+                    <p class="qtds-cta__feature-text">Ngăn chặn gian lận hiệu quả</p>
+                </div>
 
-<!-- 
-  Khuôn mẫu cho thẻ tính năng.
-  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
-  - title: Tiêu đề của thẻ.
-  - text: Nội dung mô tả.
--->
-<div class="qtds-feature-card qtds-feature-card--primary">
-    <i class="fas fa-shield-alt qtds-feature-card__icon"></i>
-    <h4 class="qtds-feature-card__title">Bảo Mật Dữ Liệu</h4>
-    <p class="qtds-feature-card__text">Ngăn chặn gian lận hiệu quả</p>
-</div>
+                <!-- Feature 2 -->
+                <div class="qtds-cta__feature qtds-cta__feature--secondary">
+                    <i class="fas fa-rocket qtds-cta__feature-icon"></i>
+                    <h4 class="qtds-cta__feature-title">Tối Ưu Quy Trình</h4>
+                    <p class="qtds-cta__feature-text">Xử lý nhanh, giảm 70% thời gian</p>
+                </div>
 
-                
-                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
+                <!-- Feature 3 -->
+                <div class="qtds-cta__feature qtds-cta__feature--accent">
+                    <i class="fas fa-chart-line qtds-cta__feature-icon"></i>
+                    <h4 class="qtds-cta__feature-title">Nâng Cao Cạnh Tranh</h4>
+                    <p class="qtds-cta__feature-text">Hiện đại hóa, thu hút khách hàng</p>
+                </div>
 
-<!-- 
-  Khuôn mẫu cho thẻ tính năng.
-  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
-  - title: Tiêu đề của thẻ.
-  - text: Nội dung mô tả.
--->
-<div class="qtds-feature-card qtds-feature-card--secondary">
-    <i class="fas fa-rocket qtds-feature-card__icon"></i>
-    <h4 class="qtds-feature-card__title">Tối Ưu Quy Trình</h4>
-    <p class="qtds-feature-card__text">Xử lý nhanh, giảm 70% thời gian</p>
-</div>
-
-
-                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ tính năng.
-  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
-  - title: Tiêu đề của thẻ.
-  - text: Nội dung mô tả.
--->
-<div class="qtds-feature-card qtds-feature-card--accent">
-    <i class="fas fa-chart-line qtds-feature-card__icon"></i>
-    <h4 class="qtds-feature-card__title">Nâng Cao Cạnh Tranh</h4>
-    <p class="qtds-feature-card__text">Hiện đại hóa, thu hút khách hàng</p>
-</div>
-
-
-                <!-- library/02_molecules/molecule-feature-card/molecule-feature-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ tính năng.
-  - color: Màu của viền trên ('primary', 'secondary', 'accent', 'purple').
-  - icon: Class của Font Awesome (ví dụ: 'fas fa-shield-alt').
-  - title: Tiêu đề của thẻ.
-  - text: Nội dung mô tả.
--->
-<div class="qtds-feature-card qtds-feature-card--purple">
-    <i class="fas fa-check-circle qtds-feature-card__icon"></i>
-    <h4 class="qtds-feature-card__title">Tuân Thủ NHNN</h4>
-    <p class="qtds-feature-card__text">100% đáp ứng quy định</p>
-</div>
-
+                <!-- Feature 4 -->
+                <div class="qtds-cta__feature qtds-cta__feature--purple">
+                    <i class="fas fa-check-circle qtds-cta__feature-icon"></i>
+                    <h4 class="qtds-cta__feature-title">Tuân Thủ NHNN</h4>
+                    <p class="qtds-cta__feature-text">100% đáp ứng quy định</p>
+                </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="qtds-cta__actions">
-                <a href="https://qtds.vn" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary" target="_blank" rel="noopener noreferrer">
+                <a href="https://giaiphap.qtds.vn" class="qtds-btn qtds-btn--primary qtds-cta__btn--primary" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-rocket"></i>
                     Dùng Thử Miễn Phí
                 </a>
@@ -3836,7 +3548,6 @@ p:last-child {
                     Tham Gia Cộng Đồng
                 </a>
             </div>
-
         </div>
     </div>
 </section>
@@ -3857,7 +3568,7 @@ p:last-child {
         </div>
 
         <div id="library-grid" class="qtds-library__grid"></div>
-        <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải thư viện...</div>
+        <div id="library-loader" style="text-align: center; margin-top: var(--space-8);">Đang tải...</div>
 
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-12);">
             <a href="https://thuvien.qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
@@ -3900,161 +3611,17 @@ p:last-child {
 </a>
 
 
-    <!-- Vị trí chờ để Robot nhúng toàn bộ JS vào đây -->
-    <script>
-/**
- * Section: QTDS Navbar (Standardized JS)
- * Version: 1.0
- * Description: This script handles the mobile menu toggle and scroll effects for the navbar.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
-        });
-    }
-
-    if (mobileMenuBtn && mobileMenu) {
-        const menuIcon = mobileMenuBtn.querySelector('i');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
-            if (menuIcon) {
-                menuIcon.classList.toggle('fa-bars');
-                menuIcon.classList.toggle('fa-times');
-            }
-        });
-
-        document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
-                if (menuIcon) {
-                    menuIcon.classList.add('fa-bars');
-                    menuIcon.classList.remove('fa-times');
-                }
-            });
-        });
-    }
-}
-
-
-// ===== 3. FAQ ACCORDION FUNCTIONALITY =====
-    function initFaq() {
-    document.querySelectorAll('.qtds-faq__button').forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            button.classList.toggle('qtds-faq__button--active');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    });
-}
-
-/**
- * Section: QTDS Library (Standardized JS)
- * Version: 1.1 (Fixed)
- * Description: This script handles fetching and displaying a limited number of articles.
- * It has been updated to use the standardized 'qtds-' prefixed class names.
- */
-
-// NOTE: This file has been updated to correctly match the import and function call
-// in the master initialization script (ct9-init.js).
-function initLibrary(observer) {
-    const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec?teaser';
-    const ARTICLES_TO_SHOW = 6;
-    const gridContainer = document.getElementById('library-grid');
-    const loader = document.getElementById('library-loader');
-
-    if (!gridContainer || !loader) return;
-
-    async function fetchArticles() {
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            if (data && data.articles) {
-                const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
-                renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
-            }
-        } catch (error) {
-            loader.textContent = "Không thể tải thư viện.";
-        } finally {
-            if (gridContainer.innerHTML !== '') loader.style.display = 'none';
-        }
-    }
-
-    function renderArticles(articles) {
-        gridContainer.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-
-        articles.forEach(article => {
-            const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
-                .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
-            
-            const card = document.createElement('a');
-            card.href = article.landing_page_url;
-            card.target = "_blank";
-            card.rel = "noopener noreferrer";
-            card.className = "qtds-scroll-animate qtds-card qtds-article-card";
-            card.innerHTML = `
-                <div class="qtds-article-card__image-wrapper">
-                    <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
-                </div>
-                <div class="qtds-card__body">
-                    <div>${tagsHTML}</div>
-                    <h4 class="qtds-article-card__title">${article.title}</h4>
-                    <p class="qtds-article-card__description">${article.short_description}</p>
-                    <div class="qtds-article-card__cta">
-                        <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </div>
-            `;
-            fragment.appendChild(card);
-        });
-        gridContainer.appendChild(fragment);
-
-        if (observer) {
-            document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
-        }
-    }
-    fetchArticles();
-}
-
-    /**
-     * Module: Back To Top Button
-     * Description: Handles the show/hide and smooth scroll functionality.
-     */
-    function initBackToTop() {
-        const backToTopBtn = document.querySelector('.qtds-back-to-top');
-        if (backToTopBtn) {
-            window.addEventListener('scroll', () => {
-                backToTopBtn.classList.toggle('show', window.scrollY > 400);
-            });
-            backToTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    }
     
-
+<script>
 /**
- * File: ct9-init.js (Master Initialization Script for CT9)
- * Version: 5.1 (Standardized & Co-located)
- * Description: Kích hoạt các module JavaScript cho trang CT9.
- * Tất cả các module được import từ vị trí gốc của chúng trong /library.
+ * File: _main-ct6.js (Standardized & Assembled)
+ * Version: 2.1 (Aligned with CT-7)
+ * Changes:
+ * - Updated Back To Top functionality to use a simple '.show' class for LadiPage compatibility.
  */
-// Global initialization script
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== 1. GLOBAL: SCROLL ANIMATIONS =====
+
+    // ===== GLOBAL: SCROLL ANIMATIONS =====
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -4066,12 +3633,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.qtds-scroll-animate').forEach(el => observer.observe(el));
 
-    // ===== INITIALIZE ALL MODULES =====
+    // ===== NAVBAR FUNCTIONALITY =====
+    function initNavbar() {
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('qtds-navbar--scrolled', window.scrollY > 50);
+            });
+        }
+
+        if (mobileMenuBtn && mobileMenu) {
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('qtds-navbar__mobile-menu--active');
+                if (menuIcon) {
+                    menuIcon.classList.toggle('fa-bars');
+                    menuIcon.classList.toggle('fa-times');
+                }
+            });
+
+            document.querySelectorAll('.qtds-navbar__mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('qtds-navbar__mobile-menu--active');
+                    if (menuIcon) {
+                        menuIcon.classList.add('fa-bars');
+                        menuIcon.classList.remove('fa-times');
+                    }
+                });
+            });
+        }
+    }
     initNavbar();
+
+    // ===== FAQ ACCORDION FUNCTIONALITY =====
+    function initFaq() {
+        document.querySelectorAll('.qtds-faq__button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                button.classList.toggle('qtds-faq__button--active');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+    }
     initFaq();
-    initLibrary(observer);
+
+    // ===== LIBRARY LOADER FUNCTIONALITY =====
+    function initLibrary() {
+        const API_URL = 'https://script.google.com/macros/s/AKfycby3YbARJUB4h1Xb77eANlUYyna4x9lHtuG_hzz34O1pZprwgVWX4iPszW9Bywi_agqT/exec';
+        const ARTICLES_TO_SHOW = 6;
+        const gridContainer = document.getElementById('library-grid');
+        const loader = document.getElementById('library-loader');
+
+        if (!gridContainer || !loader) return;
+
+        async function fetchArticles() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                if (data && data.articles) {
+                    const sortedArticles = data.articles.sort((a, b) => new Date(b.publish_date) - new Date(a.publish_date));
+                    renderArticles(sortedArticles.slice(0, ARTICLES_TO_SHOW));
+                }
+            } catch (error) {
+                console.error("Library fetch error:", error);
+                loader.textContent = "Không thể tải thư viện.";
+            } finally {
+                if (gridContainer.innerHTML !== '') loader.style.display = 'none';
+            }
+        }
+
+        function renderArticles(articles) {
+            gridContainer.innerHTML = articles.map(article => {
+                const tagsHTML = (Array.isArray(article.category_tags) ? article.category_tags : [article.category_tags])
+                    .map(tag => `<span class="qtds-article-card__tag">${tag}</span>`).join('');
+                return `
+                    <a href="${article.landing_page_url}" target="_blank" rel="noopener noreferrer" class="qtds-scroll-animate qtds-card qtds-article-card">
+                        <div class="qtds-article-card__image-wrapper">
+                            <img src="${article.featured_image_url}" alt="${article.title}" class="qtds-article-card__image" loading="lazy">
+                        </div>
+                        <div class="qtds-card__body">
+                            <div>${tagsHTML}</div>
+                            <h4 class="qtds-article-card__title">${article.title}</h4>
+                            <p class="qtds-article-card__description">${article.short_description}</p>
+                            <div class="qtds-article-card__cta">
+                                <span class="qtds-btn-like">Xem chi tiết <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>`;
+            }).join('');
+            document.querySelectorAll('.qtds-library__grid .qtds-scroll-animate').forEach(el => observer.observe(el));
+        }
+
+        fetchArticles();
+    }
+    initLibrary();
+
+    // ===== BACK TO TOP FUNCTIONALITY (Aligned with CT-7) =====
+    function initBackToTop() {
+        const backToTopBtn = document.querySelector('.qtds-back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                // Using simple '.show' class for LadiPage compatibility
+                backToTopBtn.classList.toggle('show', window.scrollY > 400);
+            });
+            // Add click event for smooth scroll
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
     initBackToTop();
+
 });
+
 </script>
-</body>
-</html>
+
