@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1836,6 +1836,252 @@ p:last-child {
 
 
 /**
+* Section: QTDS Registration Guide
+* Version: 1.2 (Fully Synchronized)
+* Description: Đồng bộ hoàn toàn với các section khác
+*/
+
+/* ==========================================================================
+   BLOCK: QTDS REGISTRATION
+   ========================================================================== */
+
+/**
+* Section: QTDS Registration Guide
+* Version: 2.0 (Refactored & Fully Synchronized)
+* Description: Tái cấu trúc để đồng bộ hoàn toàn với design system.
+* Changes:
+* - Sử dụng cấu trúc list để nhất quán với các section khác.
+* - Sửa lỗi font-size trên mobile bằng cách kế thừa biến --text-base (fluid).
+* - Đồng bộ hóa các style của label, text với các component đã có.
+*/
+
+/* ==========================================================================
+   BLOCK: QTDS REGISTRATION
+   ========================================================================== */
+
+.qtds-registration {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Step Card: Kế thừa từ .qtds-card nhưng có thêm border màu */
+.qtds-registration__step {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-8);
+    position: relative;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.qtds-registration__step:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-registration__step--1 { border-left-color: var(--primary); }
+.qtds-registration__step--2 { border-left-color: var(--secondary); }
+.qtds-registration__step--3 { border-left-color: var(--accent); }
+
+/* Layout bên trong mỗi step */
+.qtds-registration__step-header {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-registration__step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    color: white;
+    flex-shrink: 0;
+}
+
+.qtds-registration__step--1 .qtds-registration__step-icon { background: var(--gradient-primary); }
+.qtds-registration__step--2 .qtds-registration__step-icon { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-registration__step--3 .qtds-registration__step-icon { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+
+.qtds-registration__step-title {
+    flex: 1;
+    font-size: var(--text-2xl); /* Giống h3 và card__title */
+    margin: 0;
+    padding-right: var(--space-12); /* Chừa không gian cho step number */
+}
+
+/* Step Number */
+.qtds-registration__step-number {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 48px;
+    height: 48px;
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--gray-600);
+}
+
+.qtds-registration__step--1 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    color: var(--primary);
+}
+.qtds-registration__step--2 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    color: var(--secondary);
+}
+.qtds-registration__step--3 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFECB3 100%);
+    color: #F9AB00;
+}
+
+/* Content Body */
+.qtds-registration__step-body h4 {
+    font-size: var(--text-lg); /* Giống challenges__card-subtitle */
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-registration__step-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+}
+
+.qtds-registration__step-body ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--gray-700);
+    line-height: 1.6;
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__step-body ul li i {
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+}
+
+.qtds-registration__step-body .action-list i { color: var(--primary); }
+.qtds-registration__step-body .result-list i { color: var(--secondary); }
+
+/* Commitment Badge */
+.qtds-registration__commitment {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: #FEF3C7;
+    border-radius: var(--radius-lg);
+    color: #92400E;
+    font-weight: 500;
+    margin-top: var(--space-6);
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__commitment i {
+    color: #F59E0B;
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+/* Connector & CTA */
+.qtds-registration__connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--space-8);
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    position: relative;
+}
+
+.qtds-registration__connector::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: var(--gray-200);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.qtds-registration__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+    padding: var(--space-8);
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border-radius: var(--radius-2xl);
+}
+
+.qtds-registration__cta .qtds-btn {
+    font-size: var(--text-xl);
+    padding: var(--space-4) var(--space-10);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-registration__cta-note {
+    margin-top: var(--space-4);
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    line-height: 1.6;
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__cta-note i { color: var(--secondary); }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-registration {
+        gap: var(--space-6);
+        margin-top: var(--space-8);
+        padding: 0;
+        width: 100%;
+    }
+
+    .qtds-registration__step {
+        padding: var(--space-6);
+    }
+    
+    .qtds-registration__step-header {
+        margin-bottom: var(--space-4);
+    }
+
+    .qtds-registration__step-title {
+        font-size: var(--text-xl);
+        padding-right: var(--space-12);
+    }
+}
+
+
+
+
+
+/**
  * Section: QTDS FAQ
  * Version: 1.0 (Standardized)
  * Description: Standardized CSS to match the BEM structure of section-faq.html.
@@ -2407,7 +2653,7 @@ p:last-child {
 /* Responsive adjustments from theme.css */
 @media (max-width: 768px) {
     .qtds-btn {
-        max-width: calc(100vw - var(--space-6));
+        max-width: 100%;
         padding: var(--space-3) var(--space-6);
         font-size: var(--text-base);
     }
@@ -2670,8 +2916,8 @@ p:last-child {
 }
 
 </style>
-</head>
-<body>
+
+
     <!-- Navigation -->
     <!-- 
   Section: QTDS Navbar (Standardized HTML)
@@ -2775,7 +3021,7 @@ p:last-child {
   - icon: Class của Font Awesome (ví dụ: 'fas fa-rocket').
   - text: Nội dung chữ của nút.
 -->
-<a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--secondary" title="Dùng Thử Miễn Phí">
+<a href="#huong-dan-dang-ky" class="qtds-btn qtds-btn--secondary" title="Dùng Thử Miễn Phí">
   
     <i class="fas fa-calendar-check"></i>
   <span>Dùng Thử Miễn Phí</span>
@@ -3237,7 +3483,7 @@ p:last-child {
                             <i class="fas fa-camera"></i>
                         </div>
                         <div class="qtds-solutions__tech-features-content">
-                            <strong>OCR & AI</strong>
+                            <strong>OCR &amp; AI</strong>
                             <p>Tự động nhận diện, trích xuất thông tin từ dữ liệu đầu vào đã được chuẩn hóa để đưa vào bộ hồ sơ tín dụng.</p>
                         </div>
                     </div>
@@ -3601,14 +3847,122 @@ p:last-child {
 
         <!-- CTA Button -->
         <div class="qtds-scroll-animate" style="text-align: center; margin-top: var(--space-10);">
-            <a href="#san-sang-chuyen-doi" class="qtds-btn qtds-btn--primary">
+            <a href="#huong-dan-dang-ky" class="qtds-btn qtds-btn--primary">
                 <i class="fas fa-check-circle"></i>
-                Dùng Thử Miễn Phí
+                Tôi Muốn Dùng Thử Ngay
                 <i class="fas fa-arrow-down"></i>
             </a>
         </div>
     </div>
 </section>
+
+<!-- Section: QTDS Registration Guide -->
+<section id="huong-dan-dang-ky" class="qtds-section">
+    <div class="qtds-container">
+        <div class="qtds-scroll-animate qtds-section-header">
+            <span class="qtds-section-header__tagline">ĐĂNG KÝ DỄ DÀNG</span>
+            <h2>Trải nghiệm Sức mạnh của QTDS ngay hôm nay</h2>
+            <p>Quy trình đăng ký của chúng tôi được thiết kế để đơn giản và nhanh chóng nhất có thể. Chỉ với vài thao tác, bạn sẽ sẵn sàng khám phá các tính năng ưu việt giúp thay đổi cách Quỹ của bạn vận hành.</p>
+        </div>
+
+        <div class="qtds-registration">
+            <div class="qtds-scroll-animate qtds-registration__step qtds-registration__step--1">
+                <div class="qtds-registration__step-number">1</div>
+                <div class="qtds-registration__step-header">
+                    <div class="qtds-registration__step-icon">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3 class="qtds-registration__step-title">Cung cấp Thông tin Cơ bản</h3>
+                </div>
+                <div class="qtds-registration__step-body">
+                    <h4>Thao tác:</h4>
+                    <ul class="action-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Từ trang đăng nhập, nhấn "Đăng ký ngay". Điền các thông tin cơ bản của Quỹ tín dụng vào biểu mẫu, bao gồm tên người liên hệ, tên Quỹ, email và số điện thoại.</span>
+                        </li>
+                    </ul>
+                    <h4>Kết quả:</h4>
+                    <ul class="result-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Nhấn "Gửi thông tin" để hoàn tất bước đầu tiên.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qtds-registration__connector">
+                <i class="fas fa-arrow-down"></i>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-registration__step qtds-registration__step--2" style="animation-delay: 0.2s;">
+                <div class="qtds-registration__step-number">2</div>
+                <div class="qtds-registration__step-header">
+                    <div class="qtds-registration__step-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="qtds-registration__step-title">Khai báo Danh sách Nhân viên Dùng thử</h3>
+                </div>
+                <div class="qtds-registration__step-body">
+                    <h4>Thao tác:</h4>
+                    <ul class="action-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Một cửa sổ sẽ xuất hiện để bạn nhập thông tin các cán bộ sẽ tham gia dùng thử. Cung cấp Họ tên, Tên đăng nhập mong muốn và Vị trí công tác cho từng người.</span>
+                        </li>
+                    </ul>
+                    <h4>Kết quả:</h4>
+                    <ul class="result-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Nhấn "Lưu" để gửi danh sách này đến cho đội ngũ quản trị của QTDS.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qtds-registration__connector">
+                <i class="fas fa-arrow-down"></i>
+            </div>
+
+            <div class="qtds-scroll-animate qtds-registration__step qtds-registration__step--3" style="animation-delay: 0.4s;">
+                <div class="qtds-registration__step-number">3</div>
+                <div class="qtds-registration__step-header">
+                    <div class="qtds-registration__step-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="qtds-registration__step-title">Chờ Phê duyệt &amp; Nhận Tài khoản</h3>
+                </div>
+                <div class="qtds-registration__step-body">
+                    <h4>Kết quả:</h4>
+                    <ul class="result-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Sau khi yêu cầu được phê duyệt, một email sẽ tự động được gửi đến bạn, chứa thông tin tài khoản (Tên đăng nhập và Mật khẩu tạm thời) cho tất cả các nhân viên đã đăng ký.</span>
+                        </li>
+                    </ul>
+                    <div class="qtds-registration__commitment">
+                        <i class="fas fa-clock"></i>
+                        <span>Yêu cầu sẽ được xử lý trong vòng <strong>24 giờ</strong> làm việc.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="qtds-scroll-animate qtds-registration__cta">
+            <a href="https://qtds.vn" target="_blank" rel="noopener noreferrer" class="qtds-btn qtds-btn--primary">
+                <i class="fas fa-rocket"></i>
+                <span>Đăng ký Dùng thử Ngay</span>
+            </a>
+            <p class="qtds-registration__cta-note">
+                <i class="fas fa-shield-alt"></i>
+                Hoàn toàn miễn phí • Không cần thẻ tín dụng • Dễ dàng sử dụng
+            </p>
+        </div>
+    </div>
+</section>
+
 
 
         <!-- FAQ Section -->
@@ -4065,5 +4419,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
 });
 </script>
-</body>
-</html>
+

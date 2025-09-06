@@ -1,0 +1,231 @@
+/**
+* Section: QTDS Registration Guide
+* Version: 2.0 (Refactored & Fully Synchronized)
+* Description: Tái cấu trúc để đồng bộ hoàn toàn với design system.
+* Changes:
+* - Sử dụng cấu trúc list để nhất quán với các section khác.
+* - Sửa lỗi font-size trên mobile bằng cách kế thừa biến --text-base (fluid).
+* - Đồng bộ hóa các style của label, text với các component đã có.
+*/
+
+/* ==========================================================================
+   BLOCK: QTDS REGISTRATION
+   ========================================================================== */
+
+.qtds-registration {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Step Card: Kế thừa từ .qtds-card nhưng có thêm border màu */
+.qtds-registration__step {
+    background: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-8);
+    position: relative;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.qtds-registration__step:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.qtds-registration__step--1 { border-left-color: var(--primary); }
+.qtds-registration__step--2 { border-left-color: var(--secondary); }
+.qtds-registration__step--3 { border-left-color: var(--accent); }
+
+/* Layout bên trong mỗi step */
+.qtds-registration__step-header {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+}
+
+.qtds-registration__step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    color: white;
+    flex-shrink: 0;
+}
+
+.qtds-registration__step--1 .qtds-registration__step-icon { background: var(--gradient-primary); }
+.qtds-registration__step--2 .qtds-registration__step-icon { background: linear-gradient(135deg, var(--secondary) 0%, #2E7D32 100%); }
+.qtds-registration__step--3 .qtds-registration__step-icon { background: linear-gradient(135deg, var(--accent) 0%, #F9AB00 100%); }
+
+.qtds-registration__step-title {
+    flex: 1;
+    font-size: var(--text-2xl); /* Giống h3 và card__title */
+    margin: 0;
+    padding-right: var(--space-12); /* Chừa không gian cho step number */
+}
+
+/* Step Number */
+.qtds-registration__step-number {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 48px;
+    height: 48px;
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--gray-600);
+}
+
+.qtds-registration__step--1 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    color: var(--primary);
+}
+.qtds-registration__step--2 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    color: var(--secondary);
+}
+.qtds-registration__step--3 .qtds-registration__step-number {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFECB3 100%);
+    color: #F9AB00;
+}
+
+/* Content Body */
+.qtds-registration__step-body h4 {
+    font-size: var(--text-lg); /* Giống challenges__card-subtitle */
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--space-4);
+}
+
+.qtds-registration__step-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+}
+
+.qtds-registration__step-body ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--gray-700);
+    line-height: 1.6;
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__step-body ul li i {
+    margin-top: 8px;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+}
+
+.qtds-registration__step-body .action-list i { color: var(--primary); }
+.qtds-registration__step-body .result-list i { color: var(--secondary); }
+
+/* Commitment Badge */
+.qtds-registration__commitment {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: #FEF3C7;
+    border-radius: var(--radius-lg);
+    color: #92400E;
+    font-weight: 500;
+    margin-top: var(--space-6);
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__commitment i {
+    color: #F59E0B;
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+}
+
+/* Connector & CTA */
+.qtds-registration__connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--space-8);
+    color: var(--gray-300);
+    font-size: var(--text-2xl);
+    position: relative;
+}
+
+.qtds-registration__connector::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: var(--gray-200);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.qtds-registration__cta {
+    text-align: center;
+    margin-top: var(--space-12);
+    padding: var(--space-8);
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border-radius: var(--radius-2xl);
+}
+
+.qtds-registration__cta .qtds-btn {
+    font-size: var(--text-xl);
+    padding: var(--space-4) var(--space-10);
+    box-shadow: var(--shadow-lg);
+}
+
+.qtds-registration__cta-note {
+    margin-top: var(--space-4);
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    line-height: 1.6;
+    font-size: var(--text-base); /* **FIX:** Kế thừa font fluid */
+}
+
+.qtds-registration__cta-note i { color: var(--secondary); }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .qtds-registration {
+        gap: var(--space-6);
+        margin-top: var(--space-8);
+        padding: 0;
+        width: 100%;
+    }
+
+    .qtds-registration__step {
+        padding: var(--space-6);
+    }
+    
+    .qtds-registration__step-header {
+        margin-bottom: var(--space-4);
+    }
+
+    .qtds-registration__step-title {
+        font-size: var(--text-xl);
+        padding-right: var(--space-12);
+    }
+}
