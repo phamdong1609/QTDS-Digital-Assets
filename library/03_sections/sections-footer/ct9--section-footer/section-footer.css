@@ -1,7 +1,7 @@
 /**
  * Section: QTDS Footer
- * Description: Defines styles for the main site footer.
- * Version: 1.0 (Adopted from main branch)
+ * Description: Defines styles for the main site footer, updated for v2.1 structure.
+ * Version: 2.1
  */
 
 /* ----- Block: Footer Section ----- */
@@ -9,33 +9,58 @@
     background: var(--gray-900);
     color: var(--gray-600);
     padding: var(--space-12) 0;
-}
-
-/* ----- Elements within Footer ----- */
-.qtds-footer__content {
     text-align: center;
 }
 
+/* ----- Elements within Footer ----- */
 .qtds-footer__logo {
     height: 120px;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+/* Company Information Block */
+.qtds-footer__info {
+    margin-bottom: var(--space-8); /* Increased bottom margin for separation */
+}
+
+.qtds-footer__company-name {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--gray-200);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-footer__slogan,
+.qtds-footer__address,
+.qtds-footer__legal {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+}
+
+/* Credits, Socials & Copyright Block */
+.qtds-footer__credits {
+    border-top: 1px solid var(--gray-800);
+    padding-top: var(--space-8);
 }
 
 .qtds-footer__tagline {
     color: var(--gray-600);
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-6);
+    font-size: var(--text-md);
+    margin-bottom: var(--space-6); /* Spacing between tagline and icons */
 }
 
 .qtds-footer__tagline strong {
     color: white;
 }
 
+/* Social Media Links (Re-styled for new position) */
 .qtds-footer__socials {
     display: flex;
     justify-content: center;
     gap: var(--space-6);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-6); /* Spacing between icons and copyright */
 }
 
 .qtds-footer__social-link {
@@ -50,6 +75,7 @@
 }
 
 .qtds-footer__copyright {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--gray-700);
+    margin-bottom: 0; /* Remove default paragraph margin */
 }

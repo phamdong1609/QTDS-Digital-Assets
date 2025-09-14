@@ -2180,8 +2180,8 @@ p:last-child {
 
 /**
  * Section: QTDS Footer
- * Description: Defines styles for the main site footer.
- * Version: 1.0 (Adopted from main branch)
+ * Description: Defines styles for the main site footer, updated for v2.1 structure.
+ * Version: 2.1
  */
 
 /* ----- Block: Footer Section ----- */
@@ -2189,33 +2189,58 @@ p:last-child {
     background: var(--gray-900);
     color: var(--gray-600);
     padding: var(--space-12) 0;
-}
-
-/* ----- Elements within Footer ----- */
-.qtds-footer__content {
     text-align: center;
 }
 
+/* ----- Elements within Footer ----- */
 .qtds-footer__logo {
     height: 120px;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+/* Company Information Block */
+.qtds-footer__info {
+    margin-bottom: var(--space-8); /* Increased bottom margin for separation */
+}
+
+.qtds-footer__company-name {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--gray-200);
+    margin-bottom: var(--space-2);
+}
+
+.qtds-footer__slogan,
+.qtds-footer__address,
+.qtds-footer__legal {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+}
+
+/* Credits, Socials & Copyright Block */
+.qtds-footer__credits {
+    border-top: 1px solid var(--gray-800);
+    padding-top: var(--space-8);
 }
 
 .qtds-footer__tagline {
     color: var(--gray-600);
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-6);
+    font-size: var(--text-md);
+    margin-bottom: var(--space-6); /* Spacing between tagline and icons */
 }
 
 .qtds-footer__tagline strong {
     color: white;
 }
 
+/* Social Media Links (Re-styled for new position) */
 .qtds-footer__socials {
     display: flex;
     justify-content: center;
     gap: var(--space-6);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-6); /* Spacing between icons and copyright */
 }
 
 .qtds-footer__social-link {
@@ -2230,10 +2255,10 @@ p:last-child {
 }
 
 .qtds-footer__copyright {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--gray-700);
+    margin-bottom: 0; /* Remove default paragraph margin */
 }
-
 
 /**
  * Component: QTDS Back To Top
@@ -3221,29 +3246,37 @@ p:last-child {
                     <i class="fas fa-microchip"></i>
                 </div>
                 <h3 class="qtds-solutions__pillar-title">Công nghệ Cốt lõi</h3>
-                <p class="qtds-solutions__pillar-subtitle">Hai tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
+                <p class="qtds-solutions__pillar-subtitle">Ba tính năng then chốt loại bỏ hoàn toàn nhập liệu thủ công</p>
                 <div class="qtds-solutions__tech-features">
-                    <div class="qtds-solutions__tech-features-item">
-                        <div class="qtds-solutions__tech-features-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="qtds-solutions__tech-features-content">
-                            <strong>Chuẩn hóa dữ liệu đầu vào</strong>
-                            <p>Việc đặt ra tiêu chuẩn cho dữ liệu đầu vào và tuân thủ tiêu chuẩn giúp dữ liệu tồn tại ở hình thức dễ dàng để khai thác, lưu trữ và tái sử dụng.</p>
-                        </div>
-                    </div>
                     <div class="qtds-solutions__tech-features-item">
                         <div class="qtds-solutions__tech-features-icon">
                             <i class="fas fa-camera"></i>
                         </div>
                         <div class="qtds-solutions__tech-features-content">
-                            <strong>OCR & AI</strong>
-                            <p>Tự động nhận diện, trích xuất thông tin từ dữ liệu đầu vào đã được chuẩn hóa để đưa vào bộ hồ sơ tín dụng.</p>
+                            <strong>OCR &amp; AI</strong>
+                            <p>Tự động nhận diện, trích xuất dữ liệu từ giấy tờ</p>
+                        </div>
+                    </div>
+                    <div class="qtds-solutions__tech-features-item">
+                        <div class="qtds-solutions__tech-features-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="qtds-solutions__tech-features-content">
+                            <strong>Kết nối CIC</strong>
+                            <p>Tự động điền thông tin tín dụng chính xác</p>
+                        </div>
+                    </div>
+                    <div class="qtds-solutions__tech-features-item">
+                        <div class="qtds-solutions__tech-features-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="qtds-solutions__tech-features-content">
+                            <strong>Mẫu chuẩn</strong>
+                            <p>Hồ sơ đồng nhất, đầy đủ, tuân thủ quy định</p>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <!-- Pillar 3: Định vị -->
             <div class="qtds-scroll-animate qtds-solutions__pillar" style="animation-delay: 0.4s;">
@@ -3823,7 +3856,7 @@ p:last-child {
                     <i class="fas fa-rocket"></i>
                     Dùng Thử Miễn Phí
                 </a>
-                <a href="https://zalo.me/g/flgzlp294" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer" style="transition: none !important;" onmouseover="this.style.transform='scale(1)'" onmouseout="this.style.transform='scale(1)'">
+                <a href="https://zalo.me/g/zefmom912" class="qtds-btn qtds-btn--secondary" target="_blank" rel="noopener noreferrer" style="transition: none !important;" onmouseover="this.style.transform='scale(1)'" onmouseout="this.style.transform='scale(1)'">
                     <i class="fas fa-users"></i>
                     Tham Gia Cộng Đồng
                 </a>
@@ -3862,24 +3895,36 @@ p:last-child {
     </main>
 
     <!-- Footer -->
+        <!-- Footer -->
     <!-- 
   Section: QTDS Footer (Standardized HTML)
   Version: 1.0
   Description: Updated to use standardized QTDS BEM class names while keeping the original structure and inline styles intact for comparison.
 -->
-<footer class="qtds-footer" style="background: var(--gray-900); color: var(--gray-700); padding: var(--space-16) 0;">
-    <div class="qtds-container" style="text-align: center;">
-        <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo" style="height: 120px; margin: 0 auto var(--space-4);">
-        <p class="qtds-footer__tagline" style="margin-bottom: var(--space-6); font-size: var(--text-lg);">Thiết kế bởi <strong>QTDS</strong> &amp; vận hành cùng <strong style="color: white;">trợ lý AI QTDS</strong>.</p>
-        <div class="qtds-footer__socials" style="display: flex; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-8); font-size: var(--text-2xl);">
-            <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-home"></i></a>
-            <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-archive"></i></a>
-            <a href="https://zalo.me/g/flgzlp294" target="_blank" class="qtds-footer__social-link" style="color: inherit; text-decoration: none;"><i class="fas fa-comments"></i></a>
+<footer class="qtds-footer">
+    <div class="qtds-container">
+        <img src="https://w.ladicdn.com/5cdb79b830dba94fe2f5f09b/qtd473cda8ff74952c29949-20250812152525-akkqb.png" alt="Logo QTDS" class="qtds-footer__logo">
+
+        <div class="qtds-footer__info">
+            <p class="qtds-footer__company-name">Công ty TNHH Giải Pháp Số QTD</p>
+            <p class="qtds-footer__slogan">Đồng hành cùng QTDND trong hành trình chuyển đổi số an toàn, hiệu quả.</p>
+            <p class="qtds-footer__address">Địa chỉ: 139/D5 Lý Chính Thắng, Phường Võ Thị Sáu, Quận 3, Tp Hồ Chí Minh</p>
+            <p class="qtds-footer__legal">Mã số thuế: 0318906646 | Cấp ngày: 28/08/2025 | Nơi cấp: Phòng ĐKKD TP. Hồ Chí Minh</p>
         </div>
-        <p class="qtds-footer__copyright" style="font-size: var(--text-base); color: var(--gray-700);">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+
+        <div class="qtds-footer__credits">
+            <p class="qtds-footer__tagline">Thiết kế bởi <strong>QTDS</strong> & vận hành cùng <strong>trợ lý AI QTDS</strong>.</p>
+            
+            <div class="qtds-footer__socials">
+                <a href="https://giaiphap.qtds.vn" target="_blank" class="qtds-footer__social-link" aria-label="Homepage"><i class="fas fa-home"></i></a>
+                <a href="https://thuvien.qtds.vn" target="_blank" class="qtds-footer__social-link" aria-label="Library"><i class="fas fa-archive"></i></a>
+                <a href="https://zalo.me/g/zefmom912" target="_blank" class="qtds-footer__social-link" aria-label="Zalo Community"><i class="fas fa-comments"></i></a>
+            </div>
+
+            <p class="qtds-footer__copyright">© 2025 Quỹ Tín Dụng Số. All rights reserved.</p>
+        </div>
     </div>
 </footer>
-
 
     <!-- Back To Top -->
     <!-- 
