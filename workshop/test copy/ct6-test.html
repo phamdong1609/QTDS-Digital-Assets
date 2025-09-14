@@ -847,6 +847,25 @@ p:last-child {
     }
 }
 
+/*
+ * File: library/02_molecules/molecule-stat-card/molecule-stat-card.css
+ * Add this new modifier class for text-based values.
+*/
+
+/* NEW: Modifier for text-based stat values */
+.qtds-stat-item__value--text {
+    font-size: var(--text-4xl); /* Reduce font size for text */
+    font-weight: 600;          /* Adjust font weight for readability */
+    line-height: 1.2;          /* Ensure proper line spacing */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .qtds-stat-item__value--text {
+        font-size: var(--text-3xl);
+    }
+}
+
 
 /**
  * Section: QTDS Standardization
@@ -3073,64 +3092,32 @@ p:last-child {
             <p>Theo báo cáo thanh tra của Ngân hàng Nhà nước năm 2024, hệ thống Quỹ Tín dụng Nhân dân đang đối mặt với nhiều thách thức nghiêm trọng về quản trị, công nghệ và tuân thủ pháp lý.</p>
         </div>
 
-         <!-- Stats Overview (THAY THẾ NỘI DUNG BÊN TRONG) -->
-        <div class="qtds-challenges__stats">
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
+<!-- Stats Overview (UPDATED CONTENT) -->
+<div class="qtds-challenges__stats">
+    <!-- Stat Item 1: Text-based -->
+    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
+        <div class="qtds-stat-item__value text-danger qtds-stat-item__value--text">Phổ biến</div>
+        <div class="qtds-stat-item__label">Sai sót trong quy trình cho vay</div>
+    </div>
 
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
-    <div class="qtds-stat-item__value text-danger">59.8%</div>
-    <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
+    <!-- Stat Item 2: Text-based -->
+    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
+        <div class="qtds-stat-item__value text-warning qtds-stat-item__value--text">Tiềm ẩn</div>
+        <div class="qtds-stat-item__label">Rủi ro trong quản trị</div>
+    </div>
+
+    <!-- Stat Item 3: Text-based -->
+    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
+        <div class="qtds-stat-item__value text-purple qtds-stat-item__value--text">Hạn chế</div>
+        <div class="qtds-stat-item__label">Hạn chế về kiểm soát nội bộ</div>
+    </div>
+
+    <!-- Stat Item 4: Number-based (No change in class) -->
+    <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
+        <div class="qtds-stat-item__value text-primary">1,176</div>
+        <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
+    </div>
 </div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-    <div class="qtds-stat-item__value text-warning">42%</div>
-    <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-    <div class="qtds-stat-item__value text-purple">38.8%</div>
-    <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
-</div>
-
-
-            <!-- library/02_molecules/molecule-stat-card/molecule-stat-card.html -->
-
-<!-- 
-  Khuôn mẫu cho thẻ thống kê.
-  - value: Giá trị/con số (ví dụ: '59.8%').
-  - label: Nhãn mô tả (ví dụ: 'QTDND vi phạm...').
-  - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
--->
-<div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.3s;">
-    <div class="qtds-stat-item__value text-primary">1,176</div>
-    <div class="qtds-stat-item__label">QTDND trên toàn quốc</div>
-</div>
-
-        </div>
 
         <!-- Highlight Box -->
         <div class="qtds-scroll-animate qtds-challenges__highlight-box">
