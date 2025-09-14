@@ -65,6 +65,20 @@
     padding: var(--space-4) var(--space-8);
 }
 
+/*
+ * File: library/03_sections/sections-cta/ct9--section-cta/section-cta.css
+ * Add this new style for the support text.
+*/
+.qtds-cta__support-text {
+    margin-top: var(--space-4);
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    max-width: 650px; /* Giới hạn chiều rộng để dễ đọc */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */

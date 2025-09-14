@@ -2694,6 +2694,19 @@ p:last-child {
     justify-content: center;
 }
 
+/* NEW: Modifier for text-based stat values */
+.qtds-stat-item__value--text {
+    font-size: var(--text-4xl); /* Reduce font size for text */
+    font-weight: 600;          /* Adjust font weight for readability */
+    line-height: 1.2;          /* Ensure proper line spacing */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .qtds-stat-item__value--text {
+        font-size: var(--text-3xl);
+    }
+}
 </style>
 </head>
 <body>
@@ -2837,8 +2850,8 @@ p:last-child {
   - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
 -->
 <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0s;">
-    <div class="qtds-stat-item__value text-danger">59.8%</div>
-    <div class="qtds-stat-item__label">QTDND vi phạm quy định cho vay</div>
+    <div class="qtds-stat-item__value text-danger">Phổ biến</div>
+    <div class="qtds-stat-item__label">Sai sót trong quy trình cho vay</div>
 </div>
 
 
@@ -2851,8 +2864,8 @@ p:last-child {
   - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
 -->
 <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.1s;">
-    <div class="qtds-stat-item__value text-warning">42%</div>
-    <div class="qtds-stat-item__label">Có sai phạm về quản trị điều hành</div>
+    <div class="qtds-stat-item__value text-warning">Tiềm ẩn</div>
+    <div class="qtds-stat-item__label">Rủi ro trong quản trị</div>
 </div>
 
 
@@ -2865,8 +2878,8 @@ p:last-child {
   - colorClass: Lớp CSS để tô màu cho giá trị (ví dụ: 'text-danger').
 -->
 <div class="qtds-scroll-animate qtds-stat-item" style="animation-delay: 0.2s;">
-    <div class="qtds-stat-item__value text-purple">38.8%</div>
-    <div class="qtds-stat-item__label">Thiếu sót trong kiểm soát nội bộ</div>
+    <div class="qtds-stat-item__value text-purple">Hạn chế</div>
+    <div class="qtds-stat-item__label">Trong kiểm soát nội bộ</div>
 </div>
 
 
