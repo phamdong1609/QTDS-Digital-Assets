@@ -44,3 +44,17 @@
     align-items: center;
     justify-content: center;
 }
+
+/* NEW: Modifier for text-based stat values */
+.qtds-stat-item__value--text {
+    font-size: var(--text-4xl); /* Reduce font size for text */
+    font-weight: 600;          /* Adjust font weight for readability */
+    line-height: 1.2;          /* Ensure proper line spacing */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .qtds-stat-item__value--text {
+        font-size: var(--text-3xl);
+    }
+}
